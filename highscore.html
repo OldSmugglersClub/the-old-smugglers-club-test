@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Highscore und Ranglisten des The Old Smugglers Club">
+  <title>Ranglistenlogbuch | The Old Smugglers Club</title>
+  <link rel="stylesheet" href="./wettbewerb.css">
+  <link rel="stylesheet" href="./highscore.css">
+  <link rel="stylesheet" href="./accessibility-v33.css">
+  <link rel="stylesheet" href="./legal.css">
+</head>
+<body>
+<a class="hs-skip-link" href="#highscore-content">Direkt zum Highscore-Inhalt</a>
+<main class="hs-page" id="highscore-content">
+  <section class="hs-hero">
+    <div class="hs-hero-top">
+      <div class="hs-emblem" aria-hidden="true"><img src="./club-crest.svg" alt=""></div>
+      <div>
+        <div class="hs-kicker">Ranglistenlogbuch · Saison 2026/2027</div>
+        <h1>Highscore</h1>
+        <p>Die Ranglage der gesamten Crew mit Einzelwertung, Bonuswettbewerb, Teamduell, Rekorden und Piratenorden.</p>
+      </div>
+    </div>
+
+    <div class="hs-summary">
+      <article class="hs-stat-card"><span>Tabellenführer</span><strong id="summary-leader">–</strong><small id="summary-leader-points">0 Punkte</small></article>
+      <article class="hs-stat-card"><span>Letzter Spieltag</span><strong id="summary-matchday">–</strong><small id="summary-matchday-winner">Noch offen</small></article>
+      <article class="hs-stat-card"><span>Führendes Team</span><strong id="summary-team">Gleichstand</strong><small id="summary-team-points">0 Punkte</small></article>
+      <article class="hs-stat-card"><span>Teilnehmer</span><strong id="summary-participants">–</strong><small>aktive Smuggler</small></article>
+    </div>
+  </section>
+
+  <section class="hs-course-board" aria-label="Orientierung im Ranglistenlogbuch">
+    <div><span>Einzelwertung</span><strong>Gesamtrang und Spieltag</strong></div>
+    <div><span>Bonuswettbewerb</span><strong>25 Saisonfragen · je 5 Punkte</strong></div>
+    <div><span>Teamduell</span><strong>Old gegen New Smugglers</strong></div>
+    <div><span>Clubchronik</span><strong>Rekorde und Orden</strong></div>
+  </section>
+
+  <nav class="hs-main-tabs" aria-label="Highscore-Bereiche" role="tablist">
+    <button id="tab-individual" class="hs-main-tab is-active" data-section="individual" role="tab" aria-selected="true" aria-controls="section-individual">Einzelwertung</button>
+    <button id="tab-bonus" class="hs-main-tab" data-section="bonus" role="tab" aria-selected="false" aria-controls="section-bonus">Bonuswettbewerb</button>
+    <button id="tab-old-team" class="hs-main-tab" data-section="old-team" role="tab" aria-selected="false" aria-controls="section-old-team">Old Smugglers Team</button>
+    <button id="tab-new-team" class="hs-main-tab" data-section="new-team" role="tab" aria-selected="false" aria-controls="section-new-team">New Smugglers Team</button>
+    <button id="tab-records" class="hs-main-tab" data-section="records" role="tab" aria-selected="false" aria-controls="section-records">Rekorde & Orden</button>
+  </nav>
+
+  <div class="hs-system-status is-loading" id="hs-system-status" role="status" aria-live="polite">
+    <strong>Highscore wird geladen</strong><span>Die aktuellen Ranglisten werden vorbereitet.</span>
+  </div>
+
+  <section class="hs-section is-active" id="section-individual" role="tabpanel" aria-labelledby="tab-individual">
+    <div class="hs-panel hs-podium-panel">
+      <div class="hs-panel-head">
+        <div><div class="hs-eyebrow">Top 3</div><h2 id="podium-title">Podium</h2></div>
+        <div class="hs-view-switch">
+          <button class="hs-chip is-active" data-individual-view="overall" aria-pressed="true" aria-controls="podium individual-body">Gesamtwertung</button>
+          <button class="hs-chip" data-individual-view="matchday" aria-pressed="false" aria-controls="podium individual-body">Einzelspieltag</button>
+        </div>
+      </div>
+      <div class="hs-ranking-notice" id="ranking-notice" role="status" aria-live="polite"></div>
+      <div class="hs-podium" id="podium"></div>
+    </div>
+
+    <div class="hs-panel">
+      <div class="hs-panel-head hs-panel-head-tools">
+        <div><div class="hs-eyebrow">Komplette Rangliste</div><h2 id="individual-title">Einzelwertung – Gesamt</h2><p class="hs-status" id="individual-caption"></p></div>
+        <label class="hs-search"><span>Spieler suchen</span><input id="player-search" type="search" placeholder="Name eingeben …" autocomplete="off"></label>
+      </div>
+      <div class="hs-ranking-toolbar" id="ranking-toolbar" aria-live="polite">
+        <div><span>Ansicht</span><strong id="toolbar-view">Gesamtwertung</strong></div>
+        <div><span>Sortierung</span><strong id="toolbar-sort">Offizielle Rangfolge</strong></div>
+        <div><span>Treffer</span><strong id="toolbar-count">0 Spieler</strong></div>
+        <button class="hs-reset" id="ranking-reset" type="button" hidden>Filter zurücksetzen</button>
+      </div>
+      <div class="hs-table-wrap"><table class="hs-table"><caption class="sr-only">Rangliste der Einzelspieler</caption><thead id="individual-head"></thead><tbody id="individual-body"></tbody></table></div>
+      <div class="hs-pagination">
+        <button class="hs-page-btn" id="page-prev">‹ Zurück</button>
+        <span id="page-info">Seite 1 von 1</span>
+        <label>Einträge <select id="page-size"><option value="25" selected>25</option><option value="50">50</option><option value="100">100</option></select></label>
+        <button class="hs-page-btn" id="page-next">Weiter ›</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="hs-section" id="section-bonus" role="tabpanel" aria-labelledby="tab-bonus" hidden>
+    <div class="hs-panel hs-bonus-panel">
+      <div class="hs-panel-head">
+        <div><div class="hs-eyebrow">Tippspieltag Nr. 1</div><h2>Bonuswettbewerb</h2><p class="hs-status">25 Saisonfragen · jede richtige Antwort bringt 5 Punkte und zählt zur Gesamtwertung.</p></div>
+        <div class="hs-bonus-max"><span>Maximal</span><strong>125 Punkte</strong></div>
+      </div>
+      <div class="hs-ranking-notice" id="bonus-notice" role="status" aria-live="polite"></div>
+      <div class="hs-podium" id="bonus-podium"></div>
+    </div>
+    <div class="hs-panel">
+      <div class="hs-panel-head"><div><div class="hs-eyebrow">Bonus-Rangliste</div><h2>Stand des Bonuswettbewerbs</h2><p class="hs-status">Die Werte werden über die Saison ergänzt, sobald Kicktipp Bonusfragen auswertet.</p></div></div>
+      <div class="hs-table-wrap"><table class="hs-table"><caption class="sr-only">Rangliste des Bonuswettbewerbs</caption><thead><tr><th>Rang</th><th>Spieler</th><th>Richtige Antworten</th><th>Bonuspunkte</th></tr></thead><tbody id="bonus-body"></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="hs-section" id="section-old-team" role="tabpanel" aria-labelledby="tab-old-team" hidden><div class="hs-panel"><div class="hs-team-detail" data-team-name="Old Smugglers Team"></div></div></section>
+  <section class="hs-section" id="section-new-team" role="tabpanel" aria-labelledby="tab-new-team" hidden><div class="hs-panel"><div class="hs-team-detail" data-team-name="New Smugglers Team"></div></div></section>
+
+  <section class="hs-section" id="section-records" role="tabpanel" aria-labelledby="tab-records" hidden>
+    <div class="hs-panel"><div class="hs-eyebrow">Saisonbestwerte</div><h2>Rekorde</h2><div class="hs-record-grid" id="record-grid"></div></div>
+    <div class="hs-panel hs-field-analysis-panel">
+      <div class="hs-panel-head"><div><div class="hs-eyebrow">Das Teilnehmerfeld</div><h2>Feldanalyse</h2><p class="hs-status">Zeigt, wie eng oder deutlich die Abstände in der aktuellen Rangliste sind.</p></div></div>
+      <div class="hs-field-status" id="field-analysis-status" role="status" aria-live="polite"></div>
+      <div class="hs-field-metrics" id="field-analysis-metrics"></div>
+      <div class="hs-zone-chart" id="field-zone-chart" aria-label="Verteilung der Spieler nach Leistungszonen"></div>
+      <p class="hs-footnote" id="field-analysis-note"></p>
+    </div>
+    <div class="hs-panel"><div class="hs-eyebrow">Clubchronik</div><h2>Saisonarchiv & Bestmarken</h2><p class="hs-status">Vergangene Titel, Champions und besondere Bestleistungen des Clubs.</p><div class="hs-legacy-grid" id="legacy-grid"></div><p class="hs-footnote" id="legacy-note"></p></div>
+    <div class="hs-panel"><div class="hs-eyebrow">Auszeichnungen</div><h2>Piratenorden</h2><div class="hs-order-grid" id="order-grid"></div><p class="hs-footnote">Weitere Orden werden im Verlauf der Saison freigeschaltet.</p></div>
+    <div class="hs-panel"><div class="hs-eyebrow">Saisonverlauf</div><h2>Verlaufskompass</h2><p class="hs-status">Zeigt nach mehreren Spieltagen, wer Plätze gutgemacht hat und wie sich die Spitze entwickelt.</p><div id="season-trend" class="hs-season-trend"></div><div id="history-grid" class="hs-history"></div></div>
+  </section>
+
+  <div class="hs-actions"><a class="hs-btn" href="./index.html#highscore">Zurück zur Clubseite</a><a class="hs-btn" href="https://www.kicktipp.de/the-old-smugglers-club/" target="_blank" rel="noopener noreferrer">Zum Kicktipp</a></div>
+
+  <dialog class="hs-player-dialog" id="player-dialog" aria-labelledby="player-dialog-title">
+    <div class="hs-dialog-frame">
+      <button class="hs-dialog-close" id="player-dialog-close" type="button" aria-label="Spielerprofil schließen">×</button>
+      <div class="hs-eyebrow">Spielerprofil</div>
+      <h2 id="player-dialog-title">Spieler</h2>
+      <p class="hs-status" id="player-dialog-status"></p>
+      <div class="hs-profile-grid" id="player-profile-grid"></div>
+      <section class="hs-position-analysis" id="player-position-analysis" aria-labelledby="player-position-title">
+        <div class="hs-position-head">
+          <div><span class="hs-eyebrow">Ranglage</span><h3 id="player-position-title">Positionsanalyse</h3></div>
+          <p id="player-position-status"></p>
+        </div>
+        <div class="hs-position-grid" id="player-position-grid"></div>
+        <p class="hs-position-note" id="player-position-note"></p>
+      </section>
+      <section class="hs-player-legacy" id="player-legacy" aria-labelledby="player-legacy-title" hidden>
+        <div class="hs-player-legacy-head"><div><span class="hs-eyebrow">Clubchronik</span><h3 id="player-legacy-title">Historische Einträge</h3></div><strong id="player-legacy-count">0 Einträge</strong></div>
+        <div class="hs-player-legacy-grid" id="player-legacy-grid"></div>
+        <p class="hs-player-legacy-note">Es werden nur namentlich bestätigte Titel und Rekorde aus der Hall of Fame angezeigt.</p>
+      </section>
+      <section class="hs-player-trend" id="player-trend" aria-labelledby="player-trend-title">
+        <div class="hs-player-trend-head"><div><span class="hs-eyebrow">Saisonkurs</span><h3 id="player-trend-title">Verlaufsanalyse</h3></div><strong id="player-trend-state">Noch offen</strong></div>
+        <div class="hs-player-trend-grid" id="player-trend-grid"></div>
+        <p class="hs-player-trend-note" id="player-trend-note"></p>
+      </section>
+      <div class="hs-compare-controls" aria-labelledby="player-compare-title">
+        <div>
+          <span class="hs-eyebrow" id="player-compare-title">Direktvergleich</span>
+          <label for="player-compare-select">Mit Spieler vergleichen</label>
+        </div>
+        <div class="hs-compare-action">
+          <select id="player-compare-select"><option value="">Spieler auswählen …</option></select>
+          <button class="hs-register-btn" id="player-compare-start" type="button" disabled>Vergleichen</button>
+        </div>
+      </div>
+      <section class="hs-player-comparison" id="player-comparison" hidden aria-live="polite">
+        <div class="hs-comparison-head">
+          <div><span>Spieler A</span><strong id="comparison-name-a">–</strong></div>
+          <b aria-hidden="true">gegen</b>
+          <div><span>Spieler B</span><strong id="comparison-name-b">–</strong></div>
+        </div>
+        <div class="hs-comparison-grid" id="comparison-grid"></div>
+        <p class="hs-comparison-note" id="comparison-note"></p>
+      </section>
+      <p class="hs-profile-note" id="player-profile-note"></p>
+    </div>
+  </dialog>
+</main>
+<script src="./datenregister.js" defer></script>
+  <script src="./datenmodell.js" defer></script>
+<script src="./highscore.js?v=3.13" defer></script>
+  <script src="performance-v247.js" defer></script>
+  <script src="./accessibility-v33.js" defer></script>
+
+<footer class="legal-footer" aria-label="Rechtliche Hinweise">
+  <div class="legal-footer__inner">
+    <span>© 2026 The Old Smugglers Club</span>
+    <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
+      <a href="./impressum.html">Impressum</a>
+      <a href="./datenschutz.html">Datenschutz</a>
+      <span>Version 4.4.14</span>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

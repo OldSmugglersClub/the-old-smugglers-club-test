@@ -1,0 +1,31 @@
+{
+  "erstelltAm": "2026-08-01T16:44:13.175Z",
+  "auftrag": {
+    "wertung": "smugglerauftrag",
+    "label": "Smugglerauftrag",
+    "runde": "1. Spieltag",
+    "spiele": [
+      "sma-2026-27-auftakt-001"
+    ]
+  },
+  "ergebnisseBestaetigt": true,
+  "teilnehmer": 100,
+  "abgegebeneTipps": 0,
+  "nichtAbgegebeneTipps": 100,
+  "modus": "vorschau-nullstand",
+  "sichtbareTipps": 0,
+  "keineTippsSichtbar": true,
+  "vergebenePunkte": 0,
+  "dateien": [
+    "spieldaten.json",
+    "tipps.json",
+    "punkte.json",
+    "spieltagpunkte.json",
+    "wettbewerbspunkte.json",
+    "smugglerpunkte.json",
+    "teampunkte.json",
+    "ranglistenverlauf.json",
+    "highscore.json",
+    "topspieler.json"
+  ]
+}

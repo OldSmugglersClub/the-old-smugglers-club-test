@@ -1,0 +1,89 @@
+{
+  "bereich": "Smuggleraufträge",
+  "statusSchild": "Vorbereitung",
+  "titel": "Dynamo Dresden",
+  "beschreibung": "Ausgewählte Spiele von Dynamo Dresden werden als eigenständige Smuggleraufträge geführt, separat dokumentiert und ausgewertet.",
+  "karten": [
+    {
+      "titel": "Aufträge",
+      "text": "Nur ausdrücklich ausgewählte Dynamo-Spiele zählen als Smugglerauftrag."
+    },
+    {
+      "titel": "Wertung",
+      "text": "Jeder Auftrag wird mit Termin, Gegner, Tipp, Ergebnis und erreichten Punkten dokumentiert."
+    },
+    {
+      "titel": "Historie",
+      "text": "Abgeschlossene Aufträge bleiben dauerhaft als Saisonchronik sichtbar."
+    }
+  ],
+  "aktuellerStandTitel": "Aktueller Stand:",
+  "aktuellerStand": "Der erste Smugglerauftrag „Auftakt“ ist für den 09. August 2026 vorbereitet. Gegner und Anstoßzeit sind noch offen.",
+  "bereiche": [
+    {
+      "typ": "spiele",
+      "titel": "Aktueller Smugglerauftrag",
+      "anzeigen": true,
+      "spiele": [
+        {
+          "datum": "09.08.2026",
+          "anstoss": "Uhrzeit offen",
+          "heim": "Dynamo Dresden",
+          "trenner": "–",
+          "auswaerts": "Gegner noch offen",
+          "status": "Auftrag „Auftakt“ · vorbereitet"
+        }
+      ]
+    },
+    {
+      "typ": "tabelle",
+      "titel": "Auftragshistorie 2026/2027",
+      "anzeigen": true,
+      "spalten": [
+        "Auftrag",
+        "Datum",
+        "Begegnung",
+        "Ergebnis",
+        "Punkte",
+        "Status"
+      ],
+      "zeilen": [
+        [
+          "Auftakt",
+          "09.08.2026",
+          "Dynamo Dresden – Gegner offen",
+          "–",
+          "–",
+          "Vorbereitet"
+        ]
+      ]
+    },
+    {
+      "typ": "liste",
+      "titel": "Regeln der Dynamo-Aufträge",
+      "anzeigen": true,
+      "eintraege": [
+        "Nur ausdrücklich angekündigte Dynamo-Spiele werden gewertet.",
+        "Der Auftrag wird vor dem Spiel mit Name, Termin und Begegnung veröffentlicht.",
+        "Nach dem Spiel werden Ergebnis, Punkte und Status in der Historie ergänzt."
+      ]
+    }
+  ],
+  "buttons": [
+    {
+      "text": "Zum Kicktipp",
+      "link": "https://www.kicktipp.de/the-old-smugglers-club/",
+      "neuesFenster": true,
+      "stil": "primaer",
+      "anzeigen": true
+    },
+    {
+      "text": "Zurück zu allen Wettbewerben",
+      "link": "./index.html#wettbewerbe",
+      "neuesFenster": false,
+      "stil": "sekundaer",
+      "anzeigen": true
+    }
+  ],
+  "fusszeile": "The Old Smugglers Club · Smuggleraufträge Dynamo Dresden"
+}

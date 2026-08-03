@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#120b07">
+  <title>Hall of Fame | The Old Smugglers Club</title>
+  <link rel="icon" href="./favicon.jpeg">
+  <style>
+    :root{--gold:#d8ad52;--light:#f2d991;--muted:#c7b89c;--line:rgba(211,164,71,.52)}
+    *{box-sizing:border-box}body{margin:0;color:#f3e6c7;background:radial-gradient(circle at 80% 10%,rgba(146,91,25,.16),transparent 26%),linear-gradient(145deg,#21150d,#0b0704 62%);font-family:Georgia,"Times New Roman",serif;min-height:100vh}
+    a{color:inherit}.wrap{width:min(1120px,calc(100% - 28px));margin:auto;padding:24px 0 50px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.back{display:inline-flex;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:rgba(52,33,18,.86);text-decoration:none;font-weight:700}.crest{width:62px;height:62px;object-fit:contain}.hero,.panel{border:1px solid var(--line);border-radius:16px;background:linear-gradient(150deg,rgba(57,37,20,.94),rgba(17,10,6,.96));box-shadow:0 18px 42px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.05)}
+    .hero{padding:clamp(22px,4vw,42px);text-align:center}.eyebrow{color:var(--gold);font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{margin:.35rem 0 .6rem;color:var(--light);font-size:clamp(2rem,6vw,4rem)}.hero p{max-width:720px;margin:auto;color:var(--muted);line-height:1.65}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}.panel{padding:20px}.panel h2{margin:0 0 14px;color:var(--light);font-size:1.45rem}.champion{grid-column:1/-1;display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:24px;align-items:center}.trophy{width:min(100%,240px);max-height:250px;object-fit:contain;justify-self:center;filter:drop-shadow(0 12px 18px rgba(0,0,0,.55))}.champion-name{margin:.2rem 0;color:#fff0b2;font-size:clamp(2rem,5vw,3.4rem)}.meta{color:var(--gold);font-weight:700}.list{display:grid;gap:10px}.row{display:flex;justify-content:space-between;gap:14px;padding:12px 13px;border:1px solid rgba(190,143,61,.34);border-radius:9px;background:rgba(12,7,4,.45)}.row span{color:var(--muted)}.row strong{text-align:right;color:#f4d68b}.open{color:#b9aa8e!important}.note{margin-top:18px;padding:15px 16px;border-left:3px solid var(--gold);background:rgba(26,16,9,.72);color:var(--muted);line-height:1.55}.status{margin-top:18px;text-align:center;color:#a9987d;font-size:.86rem}
+    @media(max-width:720px){.top{align-items:flex-start}.crest{width:50px;height:50px}.grid,.champion{grid-template-columns:1fr}.champion{text-align:center}.row{align-items:flex-start}.row{min-width:0}.row span,.row strong{min-width:0;overflow-wrap:anywhere;word-break:normal}.wrap{width:min(100% - 20px,1120px);padding-top:14px}}
+  </style>
+  <link rel="stylesheet" href="./legal.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="top"><a class="back" href="./index.html#hall-of-fame">Zurück zur Startseite</a><img class="crest" src="./club-crest.svg" alt="Wappen des Old Smugglers Club"></div>
+    <header class="hero"><div class="eyebrow">Ehrenlogbuch der Crew</div><h1>Hall of Fame</h1><p>Die bestätigten Titel, Saisonssieger und Rekorde des Old Smugglers Club. Offene Wettbewerbe werden erst nach ihrer offiziellen Auswertung eingetragen.</p></header>
+    <section class="grid">
+      <article class="panel champion"><img class="trophy" src="./Champion-Trophäe.jpeg" alt="Champion-Pokal"><div><div class="eyebrow">Aktueller Champion</div><h2 class="champion-name" id="championName">ZweikampfGott</h2><div class="meta" id="championMeta">Weltmeisterschaft · Champion · 2026</div><p id="championLabel">Old Smugglers Champion</p></div></article>
+      <article class="panel"><h2>Titelkabinett</h2><div class="list" id="titles"></div></article>
+      <article class="panel"><h2>Meisterchronik</h2><div class="list" id="chronicle"></div></article>
+      <article class="panel"><h2>Rekordtafel</h2><div class="list" id="records"></div></article>
+      <article class="panel"><h2>Besondere Leistungen</h2><div class="list"><div class="row"><span id="honourLabel">Status</span><strong id="honourValue" class="open">Noch keine Einträge</strong></div></div><div class="note">Neue Einträge werden nur nach bestätigter Auswertung aufgenommen. Dadurch bleibt das Ehrenlogbuch nachvollziehbar und dauerhaft belastbar.</div></article>
+    </section>
+    <div class="status" id="dataStatus">Ehrenlogbuch wird geladen …</div>
+  </main>
+  <script src="./hall-of-fame-runtime.js"></script>
+  <script>
+    const row=(label,value,open=false)=>`<div class="row"><span>${label||''}</span><strong class="${open?'open':''}">${value||''}</strong></div>`;
+    window.OSCHallOfFame.load().then(d=>{
+      document.getElementById('championName').textContent=d.aktuellerChampion?.name||'';
+      document.getElementById('championMeta').textContent=[d.aktuellerChampion?.wettbewerb,d.aktuellerChampion?.titel,d.aktuellerChampion?.jahr].filter(Boolean).join(' · ');
+      document.getElementById('championLabel').textContent=d.aktuellerChampion?.label||'';
+      const titles=[['Sieger Bundesliga '+(d.bundesliga?.saison||d.meister?.saison||''),d.bundesliga?.name||d.meister?.name,d.bundesliga?.offen??d.meister?.offen],['DFB-Pokal '+(d.dfbPokal?.saison||''),d.dfbPokal?.name,d.dfbPokal?.offen],['Champions League '+(d.championsLeague?.saison||''),d.championsLeague?.name,d.championsLeague?.offen],['Europa League '+(d.europaLeague?.saison||''),d.europaLeague?.name,d.europaLeague?.offen],['Relegation '+(d.relegation?.saison||''),d.relegation?.name,d.relegation?.offen],['Smuggleraufträge '+(d.smugglerauftraege?.saison||''),d.smugglerauftraege?.name,d.smugglerauftraege?.offen],['Bonuswettbewerb '+(d.bonuswettbewerb?.saison||''),d.bonuswettbewerb?.name,d.bonuswettbewerb?.offen],['Weihnachtsregatta '+(d.weihnachtsregatta?.jahr||''),d.weihnachtsregatta?.name,d.weihnachtsregatta?.offen],['Piratenkodex '+(d.piratenkodex?.saison||''),d.piratenkodex?.name,d.piratenkodex?.offen]];
+      document.getElementById('titles').innerHTML=titles.map(x=>row(x[0],x[1],x[2])).join('');
+      document.getElementById('chronicle').innerHTML=(d.meisterchronik||[]).map(x=>row(x.saison,x.name,x.offen)).join('');
+      const rec=d.rekorde||{};document.getElementById('records').innerHTML=Object.values(rec).map(x=>row(x.label,[x.wert,x.name].filter(Boolean).join(' · '),x.offen)).join('');
+      document.getElementById('honourLabel').textContent=d.ehrenmitglieder?.label||'Status';document.getElementById('honourValue').textContent=d.ehrenmitglieder?.wert||'Noch keine Einträge';
+      document.getElementById('dataStatus').textContent=d.meta?.hinweis||'Ehrenlogbuch geladen.';
+    }).catch(()=>{document.getElementById('dataStatus').textContent='Das Ehrenlogbuch konnte nicht vollständig geladen werden.'});
+  </script>
+
+<footer class="legal-footer" aria-label="Rechtliche Hinweise">
+  <div class="legal-footer__inner">
+    <span>© 2026 The Old Smugglers Club</span>
+    <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
+      <a href="./impressum.html">Impressum</a>
+      <a href="./datenschutz.html">Datenschutz</a>
+      <span>Version 4.4.14</span>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

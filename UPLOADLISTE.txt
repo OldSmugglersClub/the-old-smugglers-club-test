@@ -1,0 +1,12 @@
+ERSETZEN:
+- index.html
+- highscore.js
+- highscore-teaser.js
+- teams.json
+
+NEU:
+- team-logo-nuernberg.svg
+- team-logo-dynamo-dresden.svg
+
+LÖSCHEN:
+- keine Dateien
