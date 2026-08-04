@@ -4226,5 +4226,344 @@
   "anzeige": {
     "berechnungInWebsite": false,
     "hinweis": "Alle Ranglisten, Teamwerte und Hall-of-Fame-Entscheidungen wurden im Admin erzeugt."
+  },
+  "schedule": {
+    "schemaVersion": 1,
+    "source": "Website 4.7.0-RC4 zentrale Spielbetriebsintegration",
+    "activeSeason": "2026-27",
+    "generatedAt": "2026-08-04T21:55:00+02:00",
+    "testNow": "2026-08-29T16:00:00+02:00",
+    "locale": "de-DE",
+    "liveDurationMinutes": 120,
+    "notice": "RC4-Test: Spieltagskachel und Highscore lesen dieselbe website-view.json.",
+    "overviewLink": "#aktueller-spieltag",
+    "overviewButtonText": "Spieltagslogbuch",
+    "kicktippLink": "https://www.kicktipp.de/the-old-smugglers-club/",
+    "kicktippButtonText": "Bei Kicktipp tippen",
+    "teams": [
+      {
+        "id": "koeln",
+        "name": "1. FC Köln",
+        "kurzname": "1. FC Köln",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": null,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "nuernberg",
+        "name": "1. FC Nürnberg",
+        "kurzname": "1. FC Nürnberg",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "2-bundesliga",
+        "international": {
+          "uefa": false,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "union-berlin",
+        "name": "1. FC Union Berlin",
+        "kurzname": "1. FC Union Berlin",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": null,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "mainz-05",
+        "name": "1. FSV Mainz 05",
+        "kurzname": "Mainz 05",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": null,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "leverkusen",
+        "name": "Bayer 04 Leverkusen",
+        "kurzname": "Bayer 04 Leverkusen",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": true,
+          "wettbewerb": "europa-league",
+          "wettbewerbe": [
+            "europa-league"
+          ],
+          "status2026_27": {
+            "europa-league": "league-phase"
+          }
+        }
+      },
+      {
+        "id": "dortmund",
+        "name": "Borussia Dortmund",
+        "kurzname": "Borussia Dortmund",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": true,
+          "wettbewerb": "champions-league",
+          "wettbewerbe": [
+            "champions-league"
+          ],
+          "status2026_27": {
+            "champions-league": "league-phase"
+          }
+        }
+      },
+      {
+        "id": "frankfurt",
+        "name": "Eintracht Frankfurt",
+        "kurzname": "Eintracht Frankfurt",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": null,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "augsburg",
+        "name": "FC Augsburg",
+        "kurzname": "FC Augsburg",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": null,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "bayern-muenchen",
+        "name": "FC Bayern München",
+        "kurzname": "FC Bayern",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": true,
+          "wettbewerb": "champions-league",
+          "wettbewerbe": [
+            "champions-league"
+          ],
+          "status2026_27": {
+            "champions-league": "league-phase"
+          }
+        }
+      },
+      {
+        "id": "hamburger-sv",
+        "name": "Hamburger SV",
+        "kurzname": "Hamburger SV",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": null,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "dynamo-dresden",
+        "name": "SG Dynamo Dresden",
+        "kurzname": "Dynamo Dresden",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "2-bundesliga",
+        "international": {
+          "uefa": false,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "freiburg",
+        "name": "Sport-Club Freiburg",
+        "kurzname": "SC Freiburg",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": null,
+          "wettbewerb": null
+        }
+      },
+      {
+        "id": "stuttgart",
+        "name": "VfB Stuttgart",
+        "kurzname": "VfB Stuttgart",
+        "land": "Deutschland",
+        "logo": "",
+        "aktiv": true,
+        "national": "bundesliga",
+        "international": {
+          "uefa": true,
+          "wettbewerb": "champions-league",
+          "wettbewerbe": [
+            "champions-league"
+          ],
+          "status2026_27": {
+            "champions-league": "league-phase"
+          }
+        }
+      }
+    ],
+    "games": [
+      {
+        "id": "rc4-dd-01",
+        "wettbewerb": "smugglerauftraege",
+        "wettbewerbAnzeige": "Smugglerauftrag · Dynamo Dresden",
+        "spieltagNummer": 1,
+        "datum": "2026-08-28",
+        "anstoss": "18:30",
+        "heimTeamId": "dynamo-dresden",
+        "auswaertsTeamId": "nuernberg",
+        "status": "beendet",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-01",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-28",
+        "anstoss": "20:30",
+        "heimTeamId": "bayern-muenchen",
+        "auswaertsTeamId": "augsburg",
+        "status": "beendet",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-02",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-29",
+        "anstoss": "15:30",
+        "heimTeamId": "dortmund",
+        "auswaertsTeamId": "union-berlin",
+        "status": "live",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-03",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-29",
+        "anstoss": "15:30",
+        "heimTeamId": "leverkusen",
+        "auswaertsTeamId": "stuttgart",
+        "status": "live",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-04",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-29",
+        "anstoss": "15:30",
+        "heimTeamId": "frankfurt",
+        "auswaertsTeamId": "freiburg",
+        "status": "live",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-05",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-29",
+        "anstoss": "18:30",
+        "heimTeamId": "mainz-05",
+        "auswaertsTeamId": "koeln",
+        "status": "geplant",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-06",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-30",
+        "anstoss": "15:30",
+        "heimTeamId": "hamburger-sv",
+        "auswaertsTeamId": "bayern-muenchen",
+        "status": "geplant",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-07",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-30",
+        "anstoss": "17:30",
+        "heimTeamId": "augsburg",
+        "auswaertsTeamId": "dortmund",
+        "status": "geplant",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      },
+      {
+        "id": "rc4-bl-08",
+        "wettbewerb": "bundesliga",
+        "wettbewerbAnzeige": "Bundesliga",
+        "spieltagNummer": 1,
+        "datum": "2026-08-30",
+        "anstoss": "19:30",
+        "heimTeamId": "union-berlin",
+        "auswaertsTeamId": "leverkusen",
+        "status": "geplant",
+        "ereignisLink": "https://www.kicktipp.de/the-old-smugglers-club/"
+      }
+    ],
+    "matchdays": [
+      {
+        "nummer": 1,
+        "id": "rc4-tippspieltag-1",
+        "name": "Tippspieltag 1 · Bundesliga + Smugglerauftrag",
+        "typ": "kombiniert",
+        "aktiv": true,
+        "spielIds": [
+          "rc4-dd-01",
+          "rc4-bl-01",
+          "rc4-bl-02",
+          "rc4-bl-03",
+          "rc4-bl-04",
+          "rc4-bl-05",
+          "rc4-bl-06",
+          "rc4-bl-07",
+          "rc4-bl-08"
+        ]
+      }
+    ]
   }
 }

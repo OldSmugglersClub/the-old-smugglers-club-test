@@ -1,3 +1,11 @@
+# Website 4.7.0-RC4-TEST — Zentrale Spielbetriebsintegration
+
+- Spieltagskachel liest primär den neuen `schedule`-Block aus `website-view.json`.
+- Highscore und Spieltagskachel verwenden damit dieselbe Website-Momentaufnahme.
+- Rückfall auf `spieltag.json`, `spieldaten.json`, `teams.json` und `tippspieltage.json` bleibt erhalten.
+- RC4-Testdaten bilden Freitag bis Sonntag, parallelen Smugglerauftrag, mehrere Spiele und Schmugglersiegel ab.
+- Keine Änderung an Grid, Kachelgröße, Navigation oder Grundlayout.
+
 # Website 4.7.0 FINAL – freigegebener Referenzstand – 04.08.2026
 
 - Highscore-Grundsystem mit Wettbewerbsauswahl und saisonweiten Gesamtwertungen freigegeben.
@@ -103,3 +111,10 @@
 - Kontrollierte Punktesimulation für Release-Validierung.
 - Startseite, Highscore, Bonus- und Teamwertung mit Nicht-Null-Daten prüfbar.
 - Hall of Fame bleibt absichtlich leer.
+
+## 4.7.0 FINAL – Gold Master (04.08.2026)
+
+- Freigegebenen FINAL-Stand als unveränderlichen Gold Master gekennzeichnet.
+- Produktivsetzung ausdrücklich ausgenommen; separate Freigabe erforderlich.
+- `GOLD-MASTER.md` und Integritätsmanifest ergänzt.
+- Keine Änderungen an Anwendungslogik, Datenmodell, Layout oder Saison-Nullstand.

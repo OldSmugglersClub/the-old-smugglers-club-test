@@ -5722,6 +5722,7 @@
   <script src="./datenregister.js"></script>
   <script src="./datenmodell.js"></script>
   <script src="./team-badge.js"></script>
+  <script src="./schedule-data-adapter.js"></script>
   <script>
     const menuButton = document.querySelector(".menu-button");
     const navigation = document.getElementById("navigation");
@@ -5932,33 +5933,13 @@
       };
 
       try {
-        const registry = window.OSCDataRegistry;
-        const [configUrl, gamesUrl, teamsUrl, matchdaysUrl] = registry
-          ? await Promise.all([
-              registry.url("spieltag"), registry.url("spiele"),
-              registry.url("teams"), registry.url("tippspieltage")
-            ])
-          : ["./spieltag.json", "./spieldaten.json", "./teams.json", "./tippspieltage.json"];
-        const [configResponse, gamesResponse, teamsResponse, matchdaysResponse] = await Promise.all([
-          fetch(configUrl, { cache: "no-store" }),
-          fetch(gamesUrl, { cache: "no-store" }),
-          fetch(teamsUrl, { cache: "no-store" }),
-          fetch(matchdaysUrl, { cache: "no-store" })
-        ]);
-
-        for (const [name, response] of [
-          ["Spieltag-Konfiguration", configResponse],
-          ["zentrale Spieldaten", gamesResponse],
-          ["zentrales Teamregister", teamsResponse],
-          ["zentrale Tippspieltage", matchdaysResponse]
-        ]) {
-          if (!response.ok) throw new Error(`${name} konnte nicht geladen werden (${response.status})`);
-        }
-
-        const data = await configResponse.json();
-        const gameData = await gamesResponse.json();
-        const teamData = await teamsResponse.json();
-        const matchdayData = await matchdaysResponse.json();
+        if (!window.OSCScheduleDataAdapter) throw new Error("Spielbetriebsadapter fehlt");
+        const schedulePayload = await window.OSCScheduleDataAdapter.loadSchedule();
+        const data = schedulePayload.config;
+        const gameData = schedulePayload.games;
+        const teamData = schedulePayload.teams;
+        const matchdayData = schedulePayload.matchdays;
+        document.documentElement.dataset.scheduleSource = schedulePayload.source;
         const locale = data.locale || "de-DE";
         const liveMinutesDefault = Math.max(1, Number(data.liveDauerMinuten) || 120);
         const teamLookup = new Map((Array.isArray(teamData.teams) ? teamData.teams : []).map(team => [team.id, team]));
@@ -6364,7 +6345,7 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
-      <span>Version 4.7.0-FINAL</span>
+      <span>Version 4.7.0-RC4-TEST</span>
     </nav>
   </div>
 </footer>
