@@ -5006,6 +5006,61 @@
       .welcome-command-button { min-height: 49px; white-space: normal; text-align: center; }
       .welcome-secondary-nav { gap: .18rem .5rem; line-height: 1.45; }
     }
+
+
+    /* Website 4.7.0-RC5 – Team-Siegel in allen Spielzeilen */
+    .sm-event-row__match {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: .62rem;
+      text-align: center;
+    }
+
+    .sm-event-row__team {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      gap: .5rem;
+    }
+
+    .sm-event-row__team--home { justify-content: flex-end; text-align: right; }
+    .sm-event-row__team--away { justify-content: flex-start; text-align: left; }
+    .sm-event-row__team-name { min-width: 0; overflow-wrap: anywhere; }
+    .sm-event-row__separator { color: #d7ad58; font-size: 1.05rem; }
+
+    .sm-event-row__seal {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      overflow: hidden;
+      border: 1px solid rgba(211,160,69,.72);
+      border-radius: 50%;
+      background: linear-gradient(145deg,#3a2512,#120b06);
+      box-shadow: inset 0 0 0 2px rgba(28,16,7,.72), 0 2px 6px rgba(0,0,0,.38);
+      font-size: .48rem;
+      font-weight: 900;
+    }
+
+    .sm-event-row__seal img,
+    .sm-event-row__seal svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 760px) {
+      .sm-event-row__match { grid-template-columns: 1fr; gap: .35rem; text-align: left; }
+      .sm-event-row__team,
+      .sm-event-row__team--home,
+      .sm-event-row__team--away { justify-content: flex-start; text-align: left; }
+      .sm-event-row__team--away { flex-direction: row-reverse; justify-content: flex-end; }
+      .sm-event-row__separator { display: none; }
+    }
+
   </style>
   <link rel="stylesheet" href="./highscore.css?v=4.0.1">
   <link rel="stylesheet" href="./accessibility-v33.css">
@@ -5234,7 +5289,7 @@
 
       <aside class="panel countdown-panel">
         <div class="countdown-plaque" id="countdown-plaque">
-          Bundesliga-Start · 28. August 2026
+          Nächstes Event
         </div>
 
         <div class="countdown" aria-live="polite" aria-label="Countdown bis zum Bundesliga-Start">
@@ -5280,12 +5335,8 @@
         </div>
 
         <div class="countdown-message" id="countdown-note">
-          <strong>Der Zähler läuft bis zum offiziellen Bundesliga-Start.</strong>
-          <span>Bundesliga-Start: 28. August 2026</span>
-          <span class="mission-note">
-            <span class="mission-note-icon" aria-hidden="true"></span>
-            <span>Bereits am 09. August startet der Smugglerauftrag „Auftakt“.</span>
-          </span>
+          <strong>Der Zähler läuft bis zum nächsten bestätigten Event.</strong>
+          <span>Termin und Begegnung werden aus dem zentralen Spielbetrieb geladen.</span>
         </div>
       </aside>
     </section>
@@ -5748,44 +5799,96 @@
       });
     });
 
-    let countdownTarget = new Date("2026-08-28T20:30:00+02:00").getTime();
     let countdownSeason = "2026/2027";
+    let countdownRuntime = null;
 
     function setFlipValue(id, value) {
       const element = document.getElementById(id);
+      if (!element) return;
       const card = element.closest(".flip-card");
-      const formatted = String(value).padStart(2, "0");
-
+      const formatted = String(Math.max(0, value)).padStart(2, "0");
       if (element.textContent === formatted) return;
+      if (card) {
+        card.classList.remove("is-flipping");
+        void card.offsetWidth;
+        card.classList.add("is-flipping");
+      }
+      window.setTimeout(() => { element.textContent = formatted; }, 210);
+    }
 
-      card.classList.remove("is-flipping");
-      void card.offsetWidth;
-      card.classList.add("is-flipping");
+    function countdownClockNow() {
+      if (!countdownRuntime) return new Date();
+      return new Date(countdownRuntime.baseNow + (Date.now() - countdownRuntime.startedAt));
+    }
 
-      window.setTimeout(() => {
-        element.textContent = formatted;
-      }, 210);
+    function configureEventCountdown(events, now, locale = "de-DE") {
+      countdownRuntime = {
+        events: [...events].sort((a, b) => a._start - b._start),
+        baseNow: now.getTime(),
+        startedAt: Date.now(),
+        locale
+      };
+      updateCountdown();
+    }
+
+    function setCountdownInfo(plaqueText, headline, lines = []) {
+      const plaque = document.getElementById("countdown-plaque");
+      const note = document.getElementById("countdown-note");
+      if (plaque) plaque.textContent = plaqueText;
+      if (note) {
+        note.replaceChildren();
+        const strong = document.createElement("strong");
+        strong.textContent = headline;
+        note.appendChild(strong);
+        lines.filter(Boolean).forEach(line => {
+          const span = document.createElement("span");
+          span.textContent = line;
+          note.appendChild(span);
+        });
+      }
     }
 
     function updateCountdown() {
-      const distance = countdownTarget - Date.now();
-
-      if (distance <= 0) {
-        setFlipValue("days", 0);
-        setFlipValue("hours", 0);
-        setFlipValue("minutes", 0);
-        setFlipValue("seconds", 0);
-        const plaque = document.getElementById("countdown-plaque");
-        if (plaque) plaque.textContent = `Bundesliga-Saison ${countdownSeason} · gestartet`;
-        document.getElementById("countdown-note").innerHTML =
-          `<strong>Die Bundesliga-Saison ${countdownSeason} hat begonnen.</strong><span>Der Chronometer hat sein Ziel erreicht. Die nächsten Termine stehen im Spieltagslogbuch.</span>`;
+      if (!countdownRuntime || !countdownRuntime.events.length) {
+        ["days", "hours", "minutes", "seconds"].forEach(id => setFlipValue(id, 0));
+        setCountdownInfo("Nächstes Event", "Noch kein bestätigter Termin vorhanden.", ["Der Admin liefert den nächsten freigegebenen Spieltermin."]);
         return;
       }
 
-      setFlipValue("days", Math.floor(distance / (1000 * 60 * 60 * 24)));
-      setFlipValue("hours", Math.floor((distance / (1000 * 60 * 60)) % 24));
-      setFlipValue("minutes", Math.floor((distance / (1000 * 60)) % 60));
+      const now = countdownClockNow();
+      const live = countdownRuntime.events.filter(event => event._start <= now && event._end > now);
+      if (live.length) {
+        ["days", "hours", "minutes", "seconds"].forEach(id => setFlipValue(id, 0));
+        const event = live[0];
+        const liveLabel = live.length > 1 ? `${live.length} EVENTS LIVE` : "JETZT LIVE";
+        const match = live.length > 1
+          ? `${live.length} Begegnungen laufen gleichzeitig`
+          : `${event.heim} ${event.trenner || "–"} ${event.auswaerts}`;
+        setCountdownInfo(liveLabel, event.matchdayName || event.wettbewerbAnzeige || "Event läuft", [match]);
+        return;
+      }
+
+      const next = countdownRuntime.events.find(event => event._start > now);
+      if (!next) {
+        ["days", "hours", "minutes", "seconds"].forEach(id => setFlipValue(id, 0));
+        setCountdownInfo("SAISON BEENDET", `Für die Saison ${countdownSeason} ist kein weiteres Event terminiert.`, ["Neue Termine erscheinen nach Freigabe durch den Admin."]);
+        return;
+      }
+
+      const distance = next._start.getTime() - now.getTime();
+      setFlipValue("days", Math.floor(distance / 86400000));
+      setFlipValue("hours", Math.floor((distance / 3600000) % 24));
+      setFlipValue("minutes", Math.floor((distance / 60000) % 60));
       setFlipValue("seconds", Math.floor((distance / 1000) % 60));
+
+      const dateLabel = new Intl.DateTimeFormat(countdownRuntime.locale, {
+        weekday: "short", day: "2-digit", month: "2-digit", year: "numeric",
+        hour: "2-digit", minute: "2-digit"
+      }).format(next._start);
+      setCountdownInfo("NÄCHSTES EVENT", next.matchdayName || next.wettbewerbAnzeige || "Nächstes Tippspiel", [
+        dateLabel,
+        `${next.heim} ${next.trenner || "–"} ${next.auswaerts}`
+      ]);
     }
 
     updateCountdown();
@@ -5803,10 +5906,6 @@
         setText("welcome-season", season);
         setText("welcome-season-badge", `Saison ${season}`);
 
-        if (data.kickoff) {
-          const parsedTarget = new Date(data.kickoff).getTime();
-          if (Number.isFinite(parsedTarget)) countdownTarget = parsedTarget;
-        }
       } catch (error) {
         console.error("Seitendaten konnten nicht geladen werden:", error);
       }
@@ -6024,6 +6123,12 @@
           .filter(matchday => matchday._games.length > 0)
           .sort((a, b) => a._start - b._start || Number(a.nummer) - Number(b.nummer));
 
+        const countdownEvents = preparedMatchdays.flatMap(matchday => matchday._games.map(game => ({
+          ...game,
+          matchdayName: matchday.name || `Tippspieltag ${matchday.nummer}`
+        })));
+        configureEventCountdown(countdownEvents, now, locale);
+
         const currentMatchday = preparedMatchdays.find(matchday => matchday._start <= now && matchday._end >= now);
         const nextMatchday = preparedMatchdays.find(matchday => matchday._end >= now);
         const selectedMatchday = currentMatchday || nextMatchday;
@@ -6096,7 +6201,30 @@
                 competition.textContent = game.wettbewerbAnzeige || game.wettbewerb || "Ereignis";
                 const match = document.createElement("span");
                 match.className = "sm-event-row__match";
-                match.textContent = `${game.heim} ${game.trenner || "–"} ${game.auswaerts}`;
+                const home = document.createElement("span");
+                home.className = "sm-event-row__team sm-event-row__team--home";
+                const homeSeal = document.createElement("span");
+                homeSeal.className = "sm-event-row__seal";
+                homeSeal.setAttribute("aria-hidden", "true");
+                const homeName = document.createElement("span");
+                homeName.className = "sm-event-row__team-name";
+                homeName.textContent = game.heim;
+                home.append(homeSeal, homeName);
+                const separator = document.createElement("span");
+                separator.className = "sm-event-row__separator";
+                separator.textContent = game.trenner || "–";
+                const away = document.createElement("span");
+                away.className = "sm-event-row__team sm-event-row__team--away";
+                const awayName = document.createElement("span");
+                awayName.className = "sm-event-row__team-name";
+                awayName.textContent = game.auswaerts;
+                const awaySeal = document.createElement("span");
+                awaySeal.className = "sm-event-row__seal";
+                awaySeal.setAttribute("aria-hidden", "true");
+                away.append(awayName, awaySeal);
+                match.append(home, separator, away);
+                renderTeamSeal(homeSeal, game.heimTeamId, game.heim);
+                renderTeamSeal(awaySeal, game.auswaertsTeamId, game.auswaerts);
                 const rowStatus = document.createElement("span");
                 rowStatus.className = "sm-event-row__status";
                 rowStatus.textContent = game._start <= now && game._end > now ? "LIVE" : (game.status || "");
@@ -6354,7 +6482,7 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
-      <span>Version 4.7.0-RC4-HF2-TEST</span>
+      <span>Version 4.7.0-RC5-TEST</span>
     </nav>
   </div>
 </footer>

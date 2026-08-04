@@ -1,3 +1,12 @@
+# Website 4.7.0-RC5-TEST – Spielzeilen-Siegel und Event-Countdown – 04.08.2026
+
+- Alle Begegnungen der Spieltagsliste zeigen Heim- und Auswärtssiegel aus dem bestehenden Teamregister.
+- Der bisherige Bundesliga-Start-Zähler zählt dauerhaft bis zum nächsten zentral bestätigten Event.
+- Während eines laufenden Events zeigt der Chronometer „JETZT LIVE“; anschließend wechselt er zum nächsten Termin.
+- Ohne weiteren Termin wird ein definierter Saison-/Leerzustand angezeigt.
+- Countdown und Spieltagskachel nutzen dieselben zentralen Schedule-Daten aus `website-view.json`.
+- Keine Änderungen an Grid, Kachelgrößen, Navigation, Highscore-Berechnung oder Grundlayout.
+
 # Website 4.7.0-RC4-HF2-TEST – Spieltagslogbuch und Ausrichtung – 04.08.2026
 
 - Der vorhandene Button „Spieltagslogbuch“ wird im zentralen Spielbetriebsmodus wieder angezeigt.
