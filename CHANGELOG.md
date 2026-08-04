@@ -1,3 +1,11 @@
+# Version 4.7.0-a4-TEST – Startseiten-Highscore – 04.08.2026
+
+- Highscore-Kachel der Startseite liest die normalisierte Admin-6.2-Struktur.
+- Saisonführender wird aus `overall.individual` übernommen; Nullstand bleibt als Saisonstart gekennzeichnet.
+- Letzter verarbeiteter Spieltag und dessen Führender werden aus dem Wettbewerbsblock übernommen.
+- Saison-Teamduell liest `overall.team` und zeigt Old gegen New als Durchschnitt `0,0 : 0,0 Punkte`.
+- Keine Änderungen an Grid, Kachelgrößen, Navigation, HTML-Struktur oder Grundlayout.
+
 # Version 4.7.0-a3-HF3-TEST – Datenbereitstellung korrigiert – 04.08.2026
 
 - `website-view-test.json` aus Admin 6.2 als `website-view.json` in die Website-Testversion übernommen.
