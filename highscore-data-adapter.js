@@ -15,6 +15,9 @@
     if(d&&d.highscore) d=d.highscore;
     d=d||{};
     if(!d.overall) d.overall={individual:d.individual?.overall||[],team:d.teams?.overall||[],bonus:d.individual?.bonus||[]};
+    d.overall.individual=Array.isArray(d.overall.individual)?d.overall.individual:[];
+    d.overall.team=Array.isArray(d.overall.team)?d.overall.team:[];
+    d.overall.bonus=Array.isArray(d.overall.bonus)?d.overall.bonus:[];
     if(!d.competitions) d.competitions=d.wettbewerbe||{};
     return d;
   }
@@ -33,7 +36,7 @@
     };
   }
   window.OSCHighscoreDataAdapter={
-    version:'4.7.0-a1',
+    version:'4.7.0-a3',
     async loadHighscore(){const r=await first(['./website-view.json','./highscore.json']);return legacyHighscore(r.data)},
     async loadHallOfFame(){
       try{const v=await readJson('./website-view.json');if(v?.hallOfFame)return legacyHall(v.hallOfFame)}catch(e){}
