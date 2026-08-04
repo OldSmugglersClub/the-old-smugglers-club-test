@@ -1,87 +1,15 @@
 {
   "schemaVersion": 1,
   "datenVersion": 1,
-  "aktualisiertAm": "2026-08-04T17:44:00.000Z",
+  "aktualisiertAm": "2026-08-04T20:03:00.000Z",
   "saison": "2026-27",
   "modus": "test-simulation",
-  "quelle": "Website 4.7.0-RC1 kontrollierte Punktesimulation auf Basis Admin 6.2",
+  "quelle": "Website 4.7.0-RC2 kontrollierter Bundesliga-Wettbewerbstest auf Basis Admin 6.2",
   "highscore": {
     "wettbewerbe": {
       "bundesliga": {
         "id": "bundesliga",
         "label": "Bundesliga",
-        "status": "noch-ohne-wertung",
-        "matchday": [],
-        "overall": [],
-        "team": [],
-        "overallLeader": null,
-        "matchdayLeader": null,
-        "teamWinner": null,
-        "teamResult": null
-      },
-      "champions-league": {
-        "id": "champions-league",
-        "label": "Champions League",
-        "status": "noch-ohne-wertung",
-        "matchday": [],
-        "overall": [],
-        "team": [],
-        "overallLeader": null,
-        "matchdayLeader": null,
-        "teamWinner": null,
-        "teamResult": null
-      },
-      "europa-league": {
-        "id": "europa-league",
-        "label": "Europa League",
-        "status": "noch-ohne-wertung",
-        "matchday": [],
-        "overall": [],
-        "team": [],
-        "overallLeader": null,
-        "matchdayLeader": null,
-        "teamWinner": null,
-        "teamResult": null
-      },
-      "dfb-pokal": {
-        "id": "dfb-pokal",
-        "label": "DFB-Pokal",
-        "status": "noch-ohne-wertung",
-        "matchday": [],
-        "overall": [],
-        "team": [],
-        "overallLeader": null,
-        "matchdayLeader": null,
-        "teamWinner": null,
-        "teamResult": null
-      },
-      "relegation": {
-        "id": "relegation",
-        "label": "Relegation",
-        "status": "noch-ohne-wertung",
-        "matchday": [],
-        "overall": [],
-        "team": [],
-        "overallLeader": null,
-        "matchdayLeader": null,
-        "teamWinner": null,
-        "teamResult": null
-      },
-      "piratenkodex": {
-        "id": "piratenkodex",
-        "label": "Piratenkodex",
-        "status": "noch-ohne-wertung",
-        "matchday": [],
-        "overall": [],
-        "team": [],
-        "overallLeader": null,
-        "matchdayLeader": null,
-        "teamWinner": null,
-        "teamResult": null
-      },
-      "smugglerauftraege": {
-        "id": "smugglerauftraege",
-        "label": "Smuggleraufträge",
         "status": "laufend",
         "matchday": [
           {
@@ -2309,7 +2237,7 @@
             "validated": true
           }
         ],
-        "matchdayLabel": "Smuggleraufträge · 1. Spieltag",
+        "matchdayLabel": "Bundesliga · 1. Spieltag",
         "overallLeader": {
           "participantId": "alex2507",
           "name": "Alex2507",
@@ -2324,6 +2252,78 @@
         },
         "teamWinner": "Old Smugglers Team",
         "teamResult": "Old Smugglers Team"
+      },
+      "champions-league": {
+        "id": "champions-league",
+        "label": "Champions League",
+        "status": "noch-ohne-wertung",
+        "matchday": [],
+        "overall": [],
+        "team": [],
+        "overallLeader": null,
+        "matchdayLeader": null,
+        "teamWinner": null,
+        "teamResult": null
+      },
+      "europa-league": {
+        "id": "europa-league",
+        "label": "Europa League",
+        "status": "noch-ohne-wertung",
+        "matchday": [],
+        "overall": [],
+        "team": [],
+        "overallLeader": null,
+        "matchdayLeader": null,
+        "teamWinner": null,
+        "teamResult": null
+      },
+      "dfb-pokal": {
+        "id": "dfb-pokal",
+        "label": "DFB-Pokal",
+        "status": "noch-ohne-wertung",
+        "matchday": [],
+        "overall": [],
+        "team": [],
+        "overallLeader": null,
+        "matchdayLeader": null,
+        "teamWinner": null,
+        "teamResult": null
+      },
+      "relegation": {
+        "id": "relegation",
+        "label": "Relegation",
+        "status": "noch-ohne-wertung",
+        "matchday": [],
+        "overall": [],
+        "team": [],
+        "overallLeader": null,
+        "matchdayLeader": null,
+        "teamWinner": null,
+        "teamResult": null
+      },
+      "piratenkodex": {
+        "id": "piratenkodex",
+        "label": "Piratenkodex",
+        "status": "noch-ohne-wertung",
+        "matchday": [],
+        "overall": [],
+        "team": [],
+        "overallLeader": null,
+        "matchdayLeader": null,
+        "teamWinner": null,
+        "teamResult": null
+      },
+      "smugglerauftraege": {
+        "id": "smugglerauftraege",
+        "label": "Smuggleraufträge",
+        "status": "noch-ohne-wertung",
+        "matchday": [],
+        "overall": [],
+        "team": [],
+        "overallLeader": null,
+        "matchdayLeader": null,
+        "teamWinner": null,
+        "teamResult": null
       },
       "weihnachtsregatta": {
         "id": "weihnachtsregatta",
@@ -4338,11 +4338,11 @@
         "bundesliga": {
           "id": "bundesliga",
           "label": "Bundesliga",
-          "status": "noch-ohne-wertung",
+          "status": "laufend",
           "abschluss": {
             "completed": false,
             "target": 34,
-            "processed": 0,
+            "processed": 1,
             "source": "wertungstage-ziel"
           },
           "sieger": null

@@ -1,3 +1,12 @@
+# Website 4.7.0-RC2-TEST – Wettbewerbstest – 04.08.2026
+
+- Kontrollierte Nicht-Null-Simulation ausschließlich für Bundesliga.
+- Spieltags-, Gesamt- und Teamwertung der Bundesliga befüllt.
+- Alle übrigen Wettbewerbe bleiben ohne Wertung.
+- Saisonweite Gesamtwertungen spiegeln nur die Bundesliga-Simulation.
+- Hall of Fame bleibt unverändert ohne Sieger.
+- Keine Änderungen an Grid, Navigation, Kachelgrößen oder Grundlayout.
+
 # Website 4.7.0-RC1-HF1-TEST – Rangsortierung und Tabellenkopf – 04.08.2026
 
 - Offizielle Ranglisten werden vor Zusammenfassung, Podium, Tabelle und Pagination stabil nach Rang sortiert.
