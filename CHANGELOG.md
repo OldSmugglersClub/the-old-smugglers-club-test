@@ -1,3 +1,14 @@
+# Website 4.7.0 FINAL – freigegebener Referenzstand – 04.08.2026
+
+- Highscore-Grundsystem mit Wettbewerbsauswahl und saisonweiten Gesamtwertungen freigegeben.
+- Einzel-, Team- und Bonuswertungen über mehrere Wettbewerbe erfolgreich aggregiert.
+- Teamwertung verwendet das arithmetische Mittel als Rangentscheidung und zeigt zusätzlich Punktesumme sowie Mitgliederzahl.
+- Startseiten-Highscore, Podium, Suche und 25er-Pagination validiert.
+- Hall of Fame bleibt bis zum endgültigen Wettbewerbsabschluss getrennt und ohne künstliche Einträge.
+- Produktionsdaten auf den bestätigten Nullstand vor Saisonbeginn zurückgesetzt; RC-Simulationswerte sind nicht enthalten.
+- Version 4.7.0 wird als verbindlicher Referenzstand eingefroren.
+- Bewusst auf 4.8.0 verschoben: historische Spieltagsnavigation, Nachholspielverwaltung und dynamisches Podium bei Ranggleichstand.
+
 # Website 4.7.0-RC3-HF1-TEST – Spieltagslabel und Team-Podium – 04.08.2026
 
 - Spieltagsbezeichnungen schützen „N. Spieltag“ nun wettbewerbsübergreifend vor einer Trennung zwischen Nummer und Wort.
