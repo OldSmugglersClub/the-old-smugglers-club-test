@@ -1,3 +1,10 @@
+# Version 4.7.0-a4-HF1-TEST – Startseiten-Highscore Textkorrektur – 04.08.2026
+
+- Bezeichnung „Letzter Spieltag“ in der Highscore-Kachel zu „Aktueller Spieltag“ geändert.
+- Smugglerauftrags-Bezeichnung kompakt als `Smuggleraufträge · 1. Spieltag` dargestellt.
+- Geschütztes Leerzeichen hält `1. Spieltag` als zusammengehörige Einheit und verhindert einen isolierten Zeilenumbruch der Zahl.
+- Keine Änderungen an Grid, Kachelgröße, Navigation, Datenlogik oder Grundlayout.
+
 # Version 4.7.0-a4-TEST – Startseiten-Highscore – 04.08.2026
 
 - Highscore-Kachel der Startseite liest die normalisierte Admin-6.2-Struktur.

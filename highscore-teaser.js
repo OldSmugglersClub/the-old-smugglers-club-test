@@ -30,7 +30,7 @@
     const withLabel=entries.filter(item=>item.matchdayLabel||item.spieltagLabel);
     const withRows=entries.filter(item=>Array.isArray(item.matchday)&&item.matchday.length);
     const item=withLeader.at(-1)||withLabel.at(-1)||withRows.at(-1)||null;
-    const label=data?.meta?.matchday||data?.meta?.lastMatchday||item?.matchdayLabel||item?.spieltagLabel||'Letzter Spieltag';
+    const label=data?.meta?.matchday||data?.meta?.lastMatchday||item?.matchdayLabel||item?.spieltagLabel||'Aktueller Spieltag';
     const rows=item?.matchday||[];
     const declared=item?.matchdayLeader||item?.spieltagLeader||null;
     const leader=declared||rows.find(row=>totalOf(row)>0)||null;
@@ -44,9 +44,14 @@
     set('hs-leader-points',leader?`${format(totalOf(leader))} Punkte`:'Alle starten bei 0 Punkten');
   }
 
+  function compactMatchdayLabel(label){
+    return String(label||'Aktueller Spieltag')
+      .replace(/Smuggleraufträge\s+(\d+)\.\s*Spieltag/i,'Smuggleraufträge · $1.\u00a0Spieltag');
+  }
+
   function renderMatchday(data){
     const matchday=currentMatchday(data);
-    set('hs-matchday-name',matchday.label);
+    set('hs-matchday-name',compactMatchdayLabel(matchday.label));
     set('hs-matchday-winner',matchday.leader?`${nameOf(matchday.leader)} · ${format(totalOf(matchday.leader))} Punkte`:'Noch ohne Wertung');
   }
 
