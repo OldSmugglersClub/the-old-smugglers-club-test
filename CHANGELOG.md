@@ -1,3 +1,13 @@
+# Website 4.7.0-RC4-HF1-TEST – offizieller Tippspielkalender und Statusplakette – 04.08.2026
+
+- Die zentrale Spieltagskachel nutzt nun den vollständigen, aus 4.6.1 übernommenen offiziellen Tippspielkalender.
+- Bonusfragen bleiben Tippspieltag Nr. 1; „Smugglerauftrag Auftakt“ ist Tippspieltag Nr. 2.
+- Ein Tippspieltag enthält stets alle ihm zugeordneten Spiele; Bundesliga-Spieltage werden vollständig nach Kalendertagen gruppiert.
+- Der falsche künstliche Kombinationsspieltag „Bundesliga + Smugglerauftrag“ wurde entfernt.
+- Sichtbarer RC4-Testhinweis wurde entfernt.
+- Die Statusplakette verhindert Umbrüche wie „LIV / E“.
+- Keine Änderungen an Grid, Navigation, Kachelgrößen, Highscore-Berechnung oder Grundlayout.
+
 # Website 4.7.0-RC4-TEST — Zentrale Spielbetriebsintegration
 
 - Spieltagskachel liest primär den neuen `schedule`-Block aus `website-view.json`.
