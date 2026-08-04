@@ -1,3 +1,8 @@
+# Website 4.7.0-RC5-HF1-TEST – Abstand Event-Infobox – 04.08.2026
+
+- Der vertikale Abstand zwischen Countdown-Zähler und Event-Infobox wurde innerhalb der bestehenden Countdown-Kachel vergrößert.
+- Keine Änderung an Kachelgröße, Grid, Countdown-Logik, Eventdaten oder Navigation.
+
 # Website 4.7.0-RC5-TEST – Spielzeilen-Siegel und Event-Countdown – 04.08.2026
 
 - Alle Begegnungen der Spieltagsliste zeigen Heim- und Auswärtssiegel aus dem bestehenden Teamregister.
