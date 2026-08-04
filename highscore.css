@@ -758,3 +758,7 @@
 
 /* 4.7.0-a3-HF2: In der Teamtabelle darf die dekorative Registermarke keine Spaltenüberschrift überlagern. */
 .hs-table-wrap.is-team-table::before{display:none}
+
+
+/* 4.7.0-RC1-HF1: Registermarke in allen Ranglistentabellen ausblenden. */
+.hs-table-wrap::before{display:none!important;content:none!important}

@@ -1,3 +1,12 @@
+# Website 4.7.0-RC1-HF1-TEST – Rangsortierung und Tabellenkopf – 04.08.2026
+
+- Offizielle Ranglisten werden vor Zusammenfassung, Podium, Tabelle und Pagination stabil nach Rang sortiert.
+- Bei gleichem Rang gilt: Punkte absteigend, danach Name alphabetisch.
+- Gespeicherte Rangnummern aus dem Datenpaket werden nicht verändert oder neu berechnet.
+- Vollständiger Nullstand bleibt alphabetisch sortiert und erzeugt weiterhin kein Podium.
+- Die dekorative Registermarke „SCHIFFSREGISTER“ wird in allen Ranglistentabellen ausgeblendet.
+- Keine Änderungen an Grid, Navigation, Kachelgrößen, Datenmodell oder Grundlayout.
+
 # Version 4.7.0-a4-HF1-TEST – Startseiten-Highscore Textkorrektur – 04.08.2026
 
 - Bezeichnung „Letzter Spieltag“ in der Highscore-Kachel zu „Aktueller Spieltag“ geändert.
