@@ -1,3 +1,11 @@
+# Version 4.7.0-a3-HF3-TEST – Datenbereitstellung korrigiert – 04.08.2026
+
+- `website-view-test.json` aus Admin 6.2 als `website-view.json` in die Website-Testversion übernommen.
+- Datenadapter meldet die tatsächlich verwendete Quelle.
+- Rückfall auf `highscore.json` wird sichtbar als Warnung ausgewiesen.
+- Gesamt-Teamwertung zeigt die zwei Admin-6.2-Teamzeilen auch bei Nullstand.
+- Footer und Versionsdatei auf 4.7.0-a3-HF3-TEST korrigiert.
+
 # Website 4.7.0-a3-HF2-TEST – 04.08.2026
 
 - Saison-Teamwertung liest Teamzeilen robust aus `overall.team`, `gesamt.team` oder `teams.overall`.

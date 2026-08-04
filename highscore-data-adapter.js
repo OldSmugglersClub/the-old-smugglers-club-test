@@ -1,32 +1,39 @@
 (function(){
   'use strict';
   const cache=new Map();
+
   async function readJson(path){
     if(cache.has(path)) return cache.get(path);
-    const p=fetch(path,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(path+' konnte nicht geladen werden: '+r.status);return r.json();});
-    cache.set(path,p); return p;
+    const promise=fetch(path,{cache:'no-store'}).then(response=>{
+      if(!response.ok) throw new Error(path+' konnte nicht geladen werden: '+response.status);
+      return response.json();
+    });
+    cache.set(path,promise);
+    return promise;
   }
+
   async function first(paths){
-    let last;
-    for(const path of paths){try{return {path,data:await readJson(path)}}catch(e){last=e}}
-    throw last||new Error('Keine Datenquelle verfügbar.');
+    let lastError;
+    for(const path of paths){
+      try{return {path,data:await readJson(path)}}catch(error){lastError=error}
+    }
+    throw lastError||new Error('Keine Datenquelle verfügbar.');
   }
+
   function firstArray(){
-    for(const value of arguments){
-      if(Array.isArray(value)&&value.length) return value;
-    }
-    for(const value of arguments){
-      if(Array.isArray(value)) return value;
-    }
+    for(const value of arguments){if(Array.isArray(value)&&value.length)return value;}
+    for(const value of arguments){if(Array.isArray(value))return value;}
     return [];
   }
-  function legacyHighscore(input){
+
+  function normalizeHighscore(input,sourcePath){
     const envelope=input||{};
     const root=(envelope.highscore&&typeof envelope.highscore==='object')?envelope.highscore:envelope;
     const gesamt=root.gesamt||{};
     const legacyOverall=root.overall||{};
     const teamSources=root.teams||envelope.teams||{};
     const normalized={...root};
+
     normalized.overall={
       individual:firstArray(legacyOverall.individual,gesamt.individual,root.individual?.overall,envelope.individual?.overall),
       team:firstArray(legacyOverall.team,gesamt.team,teamSources.overall,root.teamOverall,envelope.teamOverall),
@@ -34,37 +41,52 @@
     };
     normalized.teams=teamSources;
     normalized.competitions=root.competitions||root.wettbewerbe||{};
-    normalized.meta=root.meta||{
-      season:envelope.saison||'',
-      participantCount:normalized.overall.individual.length
+    normalized.meta={
+      ...(root.meta||{}),
+      season:root.meta?.season||envelope.saison||'',
+      participantCount:root.meta?.participantCount||normalized.overall.individual.length
     };
     normalized.adapterDiagnostics={
+      sourcePath,
+      fallbackUsed:sourcePath!=='./website-view.json',
       overallTeams:normalized.overall.team.length,
       sourceHasGesamtTeam:Array.isArray(gesamt.team),
-      sourceHasTeamsOverall:Array.isArray(teamSources.overall)
+      sourceHasTeamsOverall:Array.isArray(teamSources.overall),
+      warning:sourcePath!=='./website-view.json'
+        ? 'Admin-6.2-Datei website-view.json fehlt. Es wird die ältere highscore.json als Rückfallquelle verwendet.'
+        : ''
     };
     return normalized;
   }
-  function legacyHall(d){
-    if(!d||!d.aktuelleSaison) return d||{};
-    const season=d.aktuelleSaison.saison||d.saison||'2026/2027';
-    const comps=d.aktuelleSaison.wettbewerbe||{};
-    const map=(id)=>{const x=comps[id]||{};return {saison:season,jahr:String(season).slice(0,4),name:x.sieger?.name||'Noch offen',offen:!x.sieger};};
+
+  function legacyHall(data){
+    if(!data||!data.aktuelleSaison)return data||{};
+    const season=data.aktuelleSaison.saison||data.saison||'2026/2027';
+    const competitions=data.aktuelleSaison.wettbewerbe||{};
+    const map=id=>{const item=competitions[id]||{};return {saison:season,jahr:String(season).slice(0,4),name:item.sieger?.name||'Noch offen',offen:!item.sieger};};
     return {
-      meta:{hinweis:d.pruefung?.gueltig===false?'Ehrenlogbuch mit Prüfhinweisen geladen.':'Ehrenlogbuch geladen.'},
-      aktuellerChampion:d.aktuelleSaison.gesamtChampion?{name:d.aktuelleSaison.gesamtChampion.name,wettbewerb:'Gesamtwertung',titel:'Champion',jahr:String(season).slice(0,4),label:'Old Smugglers Champion'}:{name:'Noch offen',wettbewerb:'Saison '+season,titel:'Champion',jahr:'',label:'Old Smugglers Champion'},
-      teamChampion:{saison:season,name:d.aktuelleSaison.gesamtTeamSieger?.name||'Noch offen',offen:!d.aktuelleSaison.gesamtTeamSieger},
+      meta:{hinweis:data.pruefung?.gueltig===false?'Ehrenlogbuch mit Prüfhinweisen geladen.':'Ehrenlogbuch geladen.'},
+      aktuellerChampion:data.aktuelleSaison.gesamtChampion?{name:data.aktuelleSaison.gesamtChampion.name,wettbewerb:'Gesamtwertung',titel:'Champion',jahr:String(season).slice(0,4),label:'Old Smugglers Champion'}:{name:'Noch offen',wettbewerb:'Saison '+season,titel:'Champion',jahr:'',label:'Old Smugglers Champion'},
+      teamChampion:{saison:season,name:data.aktuelleSaison.gesamtTeamSieger?.name||'Noch offen',offen:!data.aktuelleSaison.gesamtTeamSieger},
       meister:map('bundesliga'),dfbPokal:map('dfb-pokal'),championsLeague:map('champions-league'),europaLeague:map('europa-league'),
       smugglerauftraege:map('smugglerauftraege'),bonuswettbewerb:{saison:season,name:'Noch offen',offen:true},weihnachtsregatta:map('weihnachtsregatta'),piratenkodex:map('piratenkodex'),
       meisterchronik:[],rekorde:{},ehrenmitglieder:{label:'Status',wert:'Noch keine Einträge'}
     };
   }
+
   window.OSCHighscoreDataAdapter={
-    version:'4.7.0-a3-HF2',
-    async loadHighscore(){const r=await first(['./website-view.json','./highscore.json']);return legacyHighscore(r.data)},
+    version:'4.7.0-a3-HF3',
+    async loadHighscore(){
+      const result=await first(['./website-view.json','./highscore.json']);
+      return normalizeHighscore(result.data,result.path);
+    },
     async loadHallOfFame(){
-      try{const v=await readJson('./website-view.json');if(v?.hallOfFame)return legacyHall(v.hallOfFame)}catch(e){}
-      const r=await first(['./hall-of-fame.json']);return legacyHall(r.data);
+      try{
+        const view=await readJson('./website-view.json');
+        if(view?.hallOfFame)return legacyHall(view.hallOfFame);
+      }catch(error){}
+      const result=await first(['./hall-of-fame.json']);
+      return legacyHall(result.data);
     },
     clear(){cache.clear()}
   };
