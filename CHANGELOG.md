@@ -1,3 +1,12 @@
+# Website 4.7.0-RC3-TEST – Mehrwettbewerbs-Aggregation – 04.08.2026
+
+- Kontrollierte Nicht-Null-Simulation für Bundesliga und Champions League gleichzeitig.
+- Beide Wettbewerbe behalten getrennte Spieltags-, Gesamt- und Teamwertungen.
+- Saisonweite Einzel-, Team- und Bonuswertung bildet die Summe beider Wettbewerbe ab.
+- Startseiten-Highscore zeigt den zuletzt befüllten Wettbewerb Champions League.
+- Hall of Fame bleibt unverändert ohne Sieger.
+- Keine Änderungen an Grid, Navigation, Kachelgrößen, Highscore-Code oder Grundlayout.
+
 # Website 4.7.0-RC2-TEST – Wettbewerbstest – 04.08.2026
 
 - Kontrollierte Nicht-Null-Simulation ausschließlich für Bundesliga.
