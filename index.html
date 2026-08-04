@@ -5026,6 +5026,7 @@
     }
   </style>
   <link rel="stylesheet" href="./legal.css">
+  <script src="./highscore-data-adapter.js"></script>
 </head>
 
 <body>
@@ -5721,7 +5722,6 @@
   <script src="./datenregister.js"></script>
   <script src="./datenmodell.js"></script>
   <script src="./team-badge.js"></script>
-  <script src="./hall-of-fame-runtime.js"></script>
   <script>
     const menuButton = document.querySelector(".menu-button");
     const navigation = document.getElementById("navigation");
@@ -6201,7 +6201,7 @@
 
     async function loadClubData() {
       try {
-        const data = await window.OSCHallOfFame.load();
+        const data = await window.OSCHighscoreDataAdapter.loadHallOfFame();
 
         setText("champion-name", data.aktuellerChampion?.name);
         setText("welcome-champion", data.aktuellerChampion?.name || "Noch offen");
@@ -6213,8 +6213,8 @@
         );
         setText("champion-label", data.aktuellerChampion?.label);
 
-        setText("meister-title", `Sieger Bundesliga ${data.bundesliga?.saison ?? data.meister?.saison ?? ""}`.trim());
-        setText("meister-name", data.bundesliga?.name ?? data.meister?.name);
+        setText("meister-title", `Meister ${data.meister?.saison ?? ""}`.trim());
+        setText("meister-name", data.meister?.name);
 
         setText("dfb-title", `DFB-Pokal ${data.dfbPokal?.saison ?? ""}`.trim());
         setText("dfb-name", data.dfbPokal?.name);

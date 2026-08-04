@@ -1,11 +1,10 @@
-# Website 4.6.1-I03-TEST – funktionale Integrationsanpassung
+# Version 4.7.0-a1-TEST – Highscore-Datenadapter – 04.08.2026
 
-- Keine visuellen Änderungen.
-- `highscore.json` bleibt alleinige offizielle Quelle für Gesamt-, Spieltags- und Bonusranglisten; die Website überschreibt oder sortiert Kicktipp-Ränge nicht neu.
-- Lokale Bonusfragenberechnung aus `bonusfragen.json` und `bonusantworten.json` ist abgeschaltet; beide Dateien bleiben unverändert erhalten.
-- Hall-of-Fame-Laufzeitlogik ergänzt Titel ausschließlich bei explizitem Abschlussstatus und gültiger offizieller Rangliste.
-- Gesamt-Champion und Bundesliga-Sieger bleiben getrennte Titel.
-- Bestehende historische Hall-of-Fame-Einträge bleiben erhalten.
+- Zentralen Adapter `highscore-data-adapter.js` ergänzt.
+- Neue Admin-6.2-Ausgabe `website-view.json` wird bevorzugt gelesen.
+- Abwärtskompatibler Rückfall auf `highscore.json` und `hall-of-fame.json`.
+- Highscore-Seite, Highscore-Teaser, Hall of Fame und Startseiten-Hall-of-Fame verwenden den Adapter.
+- Keine Änderung an Grid, Navigation, Kachelgrößen, Design oder sichtbarer Highscore-Struktur.
 
 # CHANGELOG
 
