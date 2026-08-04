@@ -1,3 +1,10 @@
+# Website 4.7.0-a2-TEST – Neue Highscore-Struktur – 04.08.2026
+
+- Eindeutige saisonweite Bezeichnungen.
+- Nullstand ohne künstliches Podium.
+- Acht Wettbewerbe mit einheitlichen Ansichten.
+- Keine Grundlayoutänderung.
+
 # Version 4.7.0-a1-TEST – Highscore-Datenadapter – 04.08.2026
 
 - Zentralen Adapter `highscore-data-adapter.js` ergänzt.
