@@ -1,3 +1,11 @@
+# Website 4.7.0-RC4-HF2-TEST – Spieltagslogbuch und Ausrichtung – 04.08.2026
+
+- Der vorhandene Button „Spieltagslogbuch“ wird im zentralen Spielbetriebsmodus wieder angezeigt.
+- Der zentrale `schedule`-Block enthält den Link und den Buttontext ausdrücklich.
+- Der Adapter besitzt zusätzlich robuste Standardwerte, falls ein späterer Admin-Export diese optionalen Angaben nicht liefert.
+- Die Paarung in den unteren Spielzeilen der Spieltagskachel wird innerhalb ihrer bestehenden Spalte weiter zentriert.
+- Keine Änderungen an Grid, Kachelgröße, Navigation, Kalenderlogik, Siegeln oder Highscore.
+
 # Website 4.7.0-RC4-HF1-TEST – offizieller Tippspielkalender und Statusplakette – 04.08.2026
 
 - Die zentrale Spieltagskachel nutzt nun den vollständigen, aus 4.6.1 übernommenen offiziellen Tippspielkalender.

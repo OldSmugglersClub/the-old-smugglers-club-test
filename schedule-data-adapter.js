@@ -27,8 +27,8 @@
             liveDauerMinuten: schedule.liveDurationMinutes || 120,
             hinweisAnzeigen: Boolean(schedule.notice),
             hinweis: schedule.notice || "",
-            uebersichtLink: schedule.overviewLink || "",
-            uebersichtButtonText: schedule.overviewButtonText || "",
+            uebersichtLink: schedule.overviewLink || "./saison-2026-2027.html",
+            uebersichtButtonText: schedule.overviewButtonText || "Spieltagslogbuch",
             kicktippLink: schedule.kicktippLink || "",
             kicktippButtonText: schedule.kicktippButtonText || ""
           },
