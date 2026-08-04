@@ -1,3 +1,13 @@
+# Website 4.7.0-RC6-TEST – Belastungstest Spieltagskachel – 04.08.2026
+
+- Vollständiger Bundesliga-Tippspieltag mit 9 Begegnungen als zentraler Testdatenstand aktiviert.
+- Verteilung: Freitag 1 Spiel, Samstag 6 Spiele, Sonntag 2 Spiele.
+- Simulierter Zeitpunkt: Samstag, 29.08.2026, 16:00 Uhr.
+- Freitagsspiel erscheint beendet, fünf Samstagsspiele erscheinen LIVE, das Abend- und die Sonntagsspiele terminiert.
+- Team-Siegel, Tagesgruppierung, Sortierung, Scrollbereich, Statusdarstellung und Event-Countdown werden unter hoher Belegung geprüft.
+- Smuggleraufträge werden gemäß Architekturregel nicht mit einem eigenständigen Bundesliga-Tippspieltag vermischt.
+- Keine Änderung an Grid, Kachelgröße, Navigation, Berechnungslogik oder Highscore-Nullstand.
+
 # Website 4.7.0-RC5-HF1-TEST – Abstand Event-Infobox – 04.08.2026
 
 - Der vertikale Abstand zwischen Countdown-Zähler und Event-Infobox wurde innerhalb der bestehenden Countdown-Kachel vergrößert.
