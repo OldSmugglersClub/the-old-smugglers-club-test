@@ -1,3 +1,11 @@
+# Version 4.7.0-a3-HF1-TEST – Gesamt-Teamwertung korrigiert – 04.08.2026
+
+- Admin-6.2-Struktur `highscore.gesamt.team` wird korrekt auf die Website-Struktur übernommen.
+- Old Smugglers und New Smugglers bleiben auch bei einem Nullstand sichtbar.
+- Trefferanzeige zeigt bei vollständigem Teamdatensatz `2 Teams`.
+- Suchfeld heißt in der Teamansicht `Team suchen` und filtert Teamnamen.
+- Keine Änderungen an Grid, Navigation, Kachelgrößen oder Grundlayout.
+
 # Version 4.7.0-a3-TEST – Gesamtwertungen – 04.08.2026
 
 - Gesamt-Einzelwertung, Gesamt-Teamwertung und Gesamt-Bonuswertung werden strikt getrennt aus Admin-6.2-Daten gelesen.

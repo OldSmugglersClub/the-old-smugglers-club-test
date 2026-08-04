@@ -12,13 +12,28 @@
     throw last||new Error('Keine Datenquelle verfügbar.');
   }
   function legacyHighscore(d){
-    if(d&&d.highscore) d=d.highscore;
+    const envelope=d||{};
+    if(envelope.highscore) d=envelope.highscore;
+    else d=envelope;
     d=d||{};
-    if(!d.overall) d.overall={individual:d.individual?.overall||[],team:d.teams?.overall||[],bonus:d.individual?.bonus||[]};
+
+    // Admin 6.2 website-view.json uses highscore.gesamt / highscore.wettbewerbe.
+    // The website component consumes overall / competitions.
+    const gesamt=d.gesamt||{};
+    const legacyOverall=d.overall||{};
+    d.overall={
+      individual:Array.isArray(legacyOverall.individual)?legacyOverall.individual:(Array.isArray(gesamt.individual)?gesamt.individual:(d.individual?.overall||[])),
+      team:Array.isArray(legacyOverall.team)?legacyOverall.team:(Array.isArray(gesamt.team)?gesamt.team:(d.teams?.overall||[])),
+      bonus:Array.isArray(legacyOverall.bonus)?legacyOverall.bonus:(Array.isArray(gesamt.bonus)?gesamt.bonus:(d.individual?.bonus||[]))
+    };
     d.overall.individual=Array.isArray(d.overall.individual)?d.overall.individual:[];
     d.overall.team=Array.isArray(d.overall.team)?d.overall.team:[];
     d.overall.bonus=Array.isArray(d.overall.bonus)?d.overall.bonus:[];
-    if(!d.competitions) d.competitions=d.wettbewerbe||{};
+    d.competitions=d.competitions||d.wettbewerbe||{};
+    d.meta=d.meta||{
+      season:envelope.saison||'',
+      participantCount:d.overall.individual.length
+    };
     return d;
   }
   function legacyHall(d){
@@ -36,7 +51,7 @@
     };
   }
   window.OSCHighscoreDataAdapter={
-    version:'4.7.0-a3',
+    version:'4.7.0-a3-HF1',
     async loadHighscore(){const r=await first(['./website-view.json','./highscore.json']);return legacyHighscore(r.data)},
     async loadHallOfFame(){
       try{const v=await readJson('./website-view.json');if(v?.hallOfFame)return legacyHall(v.hallOfFame)}catch(e){}
