@@ -1,3 +1,9 @@
+# Website 4.7.0-RC3-HF1-TEST – Spieltagslabel und Team-Podium – 04.08.2026
+
+- Spieltagsbezeichnungen schützen „N. Spieltag“ nun wettbewerbsübergreifend vor einer Trennung zwischen Nummer und Wort.
+- Team-Podium zeigt Punktesumme, Durchschnitt und Mitgliederzahl eindeutig getrennt.
+- Keine Änderungen an Datenmodell, Grid, Navigation, Kachelgrößen oder Aggregationslogik.
+
 # Website 4.7.0-RC3-TEST – Mehrwettbewerbs-Aggregation – 04.08.2026
 
 - Kontrollierte Nicht-Null-Simulation für Bundesliga und Champions League gleichzeitig.

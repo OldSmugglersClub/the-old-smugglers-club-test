@@ -46,7 +46,7 @@
 
   function compactMatchdayLabel(label){
     return String(label||'Aktueller Spieltag')
-      .replace(/Smuggleraufträge\s+(\d+)\.\s*Spieltag/i,'Smuggleraufträge · $1.\u00a0Spieltag');
+      .replace(/(\d+)\.\s*Spieltag/gi,'$1.\u00a0Spieltag');
   }
 
   function renderMatchday(data){
