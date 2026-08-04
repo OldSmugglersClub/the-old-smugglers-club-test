@@ -11,30 +11,39 @@
     for(const path of paths){try{return {path,data:await readJson(path)}}catch(e){last=e}}
     throw last||new Error('Keine Datenquelle verfügbar.');
   }
-  function legacyHighscore(d){
-    const envelope=d||{};
-    if(envelope.highscore) d=envelope.highscore;
-    else d=envelope;
-    d=d||{};
-
-    // Admin 6.2 website-view.json uses highscore.gesamt / highscore.wettbewerbe.
-    // The website component consumes overall / competitions.
-    const gesamt=d.gesamt||{};
-    const legacyOverall=d.overall||{};
-    d.overall={
-      individual:Array.isArray(legacyOverall.individual)?legacyOverall.individual:(Array.isArray(gesamt.individual)?gesamt.individual:(d.individual?.overall||[])),
-      team:Array.isArray(legacyOverall.team)?legacyOverall.team:(Array.isArray(gesamt.team)?gesamt.team:(d.teams?.overall||[])),
-      bonus:Array.isArray(legacyOverall.bonus)?legacyOverall.bonus:(Array.isArray(gesamt.bonus)?gesamt.bonus:(d.individual?.bonus||[]))
+  function firstArray(){
+    for(const value of arguments){
+      if(Array.isArray(value)&&value.length) return value;
+    }
+    for(const value of arguments){
+      if(Array.isArray(value)) return value;
+    }
+    return [];
+  }
+  function legacyHighscore(input){
+    const envelope=input||{};
+    const root=(envelope.highscore&&typeof envelope.highscore==='object')?envelope.highscore:envelope;
+    const gesamt=root.gesamt||{};
+    const legacyOverall=root.overall||{};
+    const teamSources=root.teams||envelope.teams||{};
+    const normalized={...root};
+    normalized.overall={
+      individual:firstArray(legacyOverall.individual,gesamt.individual,root.individual?.overall,envelope.individual?.overall),
+      team:firstArray(legacyOverall.team,gesamt.team,teamSources.overall,root.teamOverall,envelope.teamOverall),
+      bonus:firstArray(legacyOverall.bonus,gesamt.bonus,root.individual?.bonus,envelope.individual?.bonus)
     };
-    d.overall.individual=Array.isArray(d.overall.individual)?d.overall.individual:[];
-    d.overall.team=Array.isArray(d.overall.team)?d.overall.team:[];
-    d.overall.bonus=Array.isArray(d.overall.bonus)?d.overall.bonus:[];
-    d.competitions=d.competitions||d.wettbewerbe||{};
-    d.meta=d.meta||{
+    normalized.teams=teamSources;
+    normalized.competitions=root.competitions||root.wettbewerbe||{};
+    normalized.meta=root.meta||{
       season:envelope.saison||'',
-      participantCount:d.overall.individual.length
+      participantCount:normalized.overall.individual.length
     };
-    return d;
+    normalized.adapterDiagnostics={
+      overallTeams:normalized.overall.team.length,
+      sourceHasGesamtTeam:Array.isArray(gesamt.team),
+      sourceHasTeamsOverall:Array.isArray(teamSources.overall)
+    };
+    return normalized;
   }
   function legacyHall(d){
     if(!d||!d.aktuelleSaison) return d||{};
@@ -51,7 +60,7 @@
     };
   }
   window.OSCHighscoreDataAdapter={
-    version:'4.7.0-a3-HF1',
+    version:'4.7.0-a3-HF2',
     async loadHighscore(){const r=await first(['./website-view.json','./highscore.json']);return legacyHighscore(r.data)},
     async loadHallOfFame(){
       try{const v=await readJson('./website-view.json');if(v?.hallOfFame)return legacyHall(v.hallOfFame)}catch(e){}

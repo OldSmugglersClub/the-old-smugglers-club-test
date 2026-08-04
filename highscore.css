@@ -755,3 +755,6 @@
 .hs-page-btn:disabled{opacity:.38;cursor:not-allowed}
 #pagination-top .hs-pagination{margin:0 0 14px}#pagination-bottom .hs-pagination{margin:14px 0 0}
 @media(max-width:700px){.hs-pagination{grid-template-columns:1fr 1fr}.hs-pagination>span{grid-column:1/-1;grid-row:1}.hs-page-numbers{grid-column:1/-1}.hs-page-btn{min-height:44px}}
+
+/* 4.7.0-a3-HF2: In der Teamtabelle darf die dekorative Registermarke keine Spaltenüberschrift überlagern. */
+.hs-table-wrap.is-team-table::before{display:none}

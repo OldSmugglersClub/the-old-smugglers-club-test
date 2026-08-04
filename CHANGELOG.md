@@ -1,3 +1,10 @@
+# Website 4.7.0-a3-HF2-TEST – 04.08.2026
+
+- Saison-Teamwertung liest Teamzeilen robust aus `overall.team`, `gesamt.team` oder `teams.overall`.
+- Old und New Smugglers bleiben auch beim Nullstand sichtbar.
+- Dekorativer Schriftzug „SCHIFFSREGISTER“ wird in der Teamtabelle ausgeblendet, damit „Durchschnitt“ nicht überlagert wird.
+- Keine Änderungen an Grid, Navigation, Kachelgrößen oder Grundlayout.
+
 # Version 4.7.0-a3-HF1-TEST – Gesamt-Teamwertung korrigiert – 04.08.2026
 
 - Admin-6.2-Struktur `highscore.gesamt.team` wird korrekt auf die Website-Struktur übernommen.
