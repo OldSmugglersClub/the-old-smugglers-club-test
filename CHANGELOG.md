@@ -53,3 +53,9 @@
 - Keine Änderung an Rangdaten, Sortierung, Podium, Grid oder Grundlayout.
 
 # CHANGELOG
+
+
+## 4.7.0-RC1-TEST
+- Kontrollierte Punktesimulation für Release-Validierung.
+- Startseite, Highscore, Bonus- und Teamwertung mit Nicht-Null-Daten prüfbar.
+- Hall of Fame bleibt absichtlich leer.

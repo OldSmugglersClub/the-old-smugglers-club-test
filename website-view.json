@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "datenVersion": 1,
-  "aktualisiertAm": "2026-08-04T14:02:58.792Z",
+  "aktualisiertAm": "2026-08-04T17:44:00.000Z",
   "saison": "2026-27",
-  "modus": "test",
-  "quelle": "Admin 6.2.0-a4-HF1 Website-Adapter",
+  "modus": "test-simulation",
+  "quelle": "Website 4.7.0-RC1 kontrollierte Punktesimulation auf Basis Admin 6.2",
   "highscore": {
     "wettbewerbe": {
       "bundesliga": {
@@ -82,32 +82,32 @@
       "smugglerauftraege": {
         "id": "smugglerauftraege",
         "label": "Smuggleraufträge",
-        "status": "noch-ohne-wertung",
+        "status": "laufend",
         "matchday": [
           {
             "rank": 1,
             "participantId": "alex2507",
             "name": "Alex2507",
-            "points": 0,
-            "bonusPoints": 0,
-            "matchdayWinner": 0,
-            "totalPoints": 0,
-            "matchdayWins": 0,
+            "points": 9,
+            "bonusPoints": 3,
+            "matchdayWinner": 1,
+            "totalPoints": 12,
+            "matchdayWins": 1,
             "matchdayRank": 1
           },
           {
-            "rank": 1,
+            "rank": 2,
             "participantId": "manuel",
             "name": "Manuel",
-            "points": 0,
-            "bonusPoints": 0,
+            "points": 7,
+            "bonusPoints": 2,
             "matchdayWinner": 0,
-            "totalPoints": 0,
+            "totalPoints": 9,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 2
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "kleinersachse",
             "name": "kleinersachse",
             "points": 0,
@@ -115,21 +115,21 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 2,
             "participantId": "zweikampfgott",
             "name": "ZweikampfGott",
-            "points": 0,
-            "bonusPoints": 0,
+            "points": 7,
+            "bonusPoints": 1,
             "matchdayWinner": 0,
-            "totalPoints": 0,
+            "totalPoints": 8,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 2
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "ximmox",
             "name": "xIMMOx",
             "points": 0,
@@ -137,10 +137,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "handgottes",
             "name": "HandGottes",
             "points": 0,
@@ -148,10 +148,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "glueckspfennig",
             "name": "Glückspfennig",
             "points": 0,
@@ -159,10 +159,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "normiks",
             "name": "Normiks",
             "points": 0,
@@ -170,43 +170,43 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 6,
             "participantId": "kevin",
             "name": "Kevin",
-            "points": 0,
+            "points": 3,
             "bonusPoints": 0,
             "matchdayWinner": 0,
-            "totalPoints": 0,
+            "totalPoints": 3,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 6
           },
           {
-            "rank": 1,
+            "rank": 4,
             "participantId": "marius",
             "name": "Marius",
-            "points": 0,
+            "points": 5,
             "bonusPoints": 0,
             "matchdayWinner": 0,
-            "totalPoints": 0,
+            "totalPoints": 5,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 4
           },
           {
-            "rank": 1,
+            "rank": 5,
             "participantId": "mary-grace",
             "name": "Mary-Grace",
-            "points": 0,
+            "points": 4,
             "bonusPoints": 0,
             "matchdayWinner": 0,
-            "totalPoints": 0,
+            "totalPoints": 4,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 5
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "11le",
             "name": "11LE",
             "points": 0,
@@ -214,10 +214,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "jungunddurstig",
             "name": "JungundDurstig",
             "points": 0,
@@ -225,10 +225,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "lucaspodolski",
             "name": "LucasPodolski",
             "points": 0,
@@ -236,10 +236,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "quick",
             "name": "Quick",
             "points": 0,
@@ -247,10 +247,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "nick-zg-1501",
             "name": "Nick_ZG_1501",
             "points": 0,
@@ -258,10 +258,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "flying-dutchman",
             "name": "Flying-Dutchman",
             "points": 0,
@@ -269,10 +269,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "salas1904",
             "name": "Salas1904",
             "points": 0,
@@ -280,10 +280,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "sven-huhn",
             "name": "Sven_Huhn",
             "points": 0,
@@ -291,10 +291,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "luca",
             "name": "Luca",
             "points": 0,
@@ -302,10 +302,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "hardy17",
             "name": "Hardy17",
             "points": 0,
@@ -313,10 +313,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "lucipher",
             "name": "LuCipher",
             "points": 0,
@@ -324,10 +324,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "wildemoni",
             "name": "WildeMoni",
             "points": 0,
@@ -335,10 +335,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "oliver",
             "name": "Oliver",
             "points": 0,
@@ -346,10 +346,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "baslermario",
             "name": "baslermario",
             "points": 0,
@@ -357,10 +357,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "birgit-blaubart",
             "name": "Birgit_Blaubart",
             "points": 0,
@@ -368,10 +368,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "maikiliii",
             "name": "Maikiliii",
             "points": 0,
@@ -379,10 +379,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "bigdog",
             "name": "Bigdog",
             "points": 0,
@@ -390,10 +390,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "kev1999",
             "name": "Kev1999",
             "points": 0,
@@ -401,10 +401,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "rk69",
             "name": "RK69",
             "points": 0,
@@ -412,10 +412,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "adamj",
             "name": "AdamJ",
             "points": 0,
@@ -423,10 +423,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "mariusv",
             "name": "mariusv",
             "points": 0,
@@ -434,10 +434,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "borussiamg1900",
             "name": "BORUSSIAMG1900",
             "points": 0,
@@ -445,10 +445,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "mythos",
             "name": "Mythos",
             "points": 0,
@@ -456,10 +456,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "souvard",
             "name": "Souvard",
             "points": 0,
@@ -467,10 +467,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "gruber",
             "name": "gRuBer",
             "points": 0,
@@ -478,10 +478,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "jakob",
             "name": "Jakob",
             "points": 0,
@@ -489,10 +489,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "oifinger",
             "name": "Oifinger",
             "points": 0,
@@ -500,10 +500,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "medic",
             "name": "Medic",
             "points": 0,
@@ -511,10 +511,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "yauguru",
             "name": "Yauguru",
             "points": 0,
@@ -522,10 +522,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "modric2000",
             "name": "Modric2000",
             "points": 0,
@@ -533,10 +533,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "berndibroti",
             "name": "Berndibroti",
             "points": 0,
@@ -544,10 +544,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "glatze583",
             "name": "Glatze583",
             "points": 0,
@@ -555,10 +555,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "cobra",
             "name": "cobra",
             "points": 0,
@@ -566,10 +566,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "best10",
             "name": "Best10",
             "points": 0,
@@ -577,10 +577,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "co",
             "name": "Co",
             "points": 0,
@@ -588,10 +588,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "andy1304",
             "name": "Andy1304",
             "points": 0,
@@ -599,10 +599,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "realzaragoza",
             "name": "Realzaragoza",
             "points": 0,
@@ -610,10 +610,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "milad",
             "name": "Milad",
             "points": 0,
@@ -621,10 +621,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "lattenkracher",
             "name": "Lattenkracher",
             "points": 0,
@@ -632,10 +632,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "cobra75",
             "name": "Cobra75",
             "points": 0,
@@ -643,10 +643,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "juri",
             "name": "JuRi",
             "points": 0,
@@ -654,10 +654,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "lucas",
             "name": "Lucas",
             "points": 0,
@@ -665,10 +665,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "luki1887",
             "name": "Luki1887",
             "points": 0,
@@ -676,10 +676,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "fcahnungslos",
             "name": "FCAhnungslos",
             "points": 0,
@@ -687,10 +687,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "aufdieblaue",
             "name": "AufdieBlaue",
             "points": 0,
@@ -698,10 +698,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "dani1893",
             "name": "Dani1893",
             "points": 0,
@@ -709,10 +709,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "ronny75",
             "name": "Ronny75",
             "points": 0,
@@ -720,10 +720,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "yorik",
             "name": "Yorik",
             "points": 0,
@@ -731,10 +731,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "dominik1966",
             "name": "dominik1966",
             "points": 0,
@@ -742,10 +742,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "g-1000",
             "name": "G.1000",
             "points": 0,
@@ -753,10 +753,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "servus",
             "name": "Servus",
             "points": 0,
@@ -764,10 +764,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "potterhead",
             "name": "Potterhead",
             "points": 0,
@@ -775,10 +775,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "opipeter",
             "name": "Opipeter",
             "points": 0,
@@ -786,10 +786,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "flokicker94",
             "name": "FloKicker94",
             "points": 0,
@@ -797,10 +797,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "mikoog",
             "name": "MiKoog",
             "points": 0,
@@ -808,10 +808,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "tribuna33",
             "name": "TRIBUNA33",
             "points": 0,
@@ -819,10 +819,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "tortugasge",
             "name": "TortugaSGE",
             "points": 0,
@@ -830,10 +830,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "bvb09-opam",
             "name": "BvB09-OpaM",
             "points": 0,
@@ -841,10 +841,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "nurderscf",
             "name": "NurDerSCF",
             "points": 0,
@@ -852,10 +852,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "audauzvares",
             "name": "Audauzvares",
             "points": 0,
@@ -863,10 +863,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "playboymarc88",
             "name": "PlayBoyMarc88",
             "points": 0,
@@ -874,10 +874,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "erik",
             "name": "Erik",
             "points": 0,
@@ -885,10 +885,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "marcor",
             "name": "MarcoR",
             "points": 0,
@@ -896,10 +896,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "pochzerjung",
             "name": "PochzerJung",
             "points": 0,
@@ -907,10 +907,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "sam2004",
             "name": "Sam2004",
             "points": 0,
@@ -918,10 +918,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "maxpam",
             "name": "MaxPam",
             "points": 0,
@@ -929,10 +929,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "ben1909",
             "name": "Ben1909",
             "points": 0,
@@ -940,10 +940,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "bene",
             "name": "Bene",
             "points": 0,
@@ -951,10 +951,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "cali79",
             "name": "Cali79",
             "points": 0,
@@ -962,10 +962,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "ibra-goat",
             "name": "ibra.goat",
             "points": 0,
@@ -973,10 +973,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "waltersen",
             "name": "Waltersen",
             "points": 0,
@@ -984,10 +984,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "kunstblume",
             "name": "Kunstblume",
             "points": 0,
@@ -995,10 +995,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "steff77",
             "name": "Steff77",
             "points": 0,
@@ -1006,10 +1006,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "18amfg99",
             "name": "18AMFG99",
             "points": 0,
@@ -1017,10 +1017,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "sam-entspender",
             "name": "SAM_ENTSPENDER",
             "points": 0,
@@ -1028,10 +1028,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "jwfussball",
             "name": "JWFUSSBALL",
             "points": 0,
@@ -1039,10 +1039,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "laaura0804",
             "name": "Laaura0804",
             "points": 0,
@@ -1050,10 +1050,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "gerrit1887",
             "name": "Gerrit1887",
             "points": 0,
@@ -1061,10 +1061,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "finch",
             "name": "Finch",
             "points": 0,
@@ -1072,10 +1072,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "xib0o",
             "name": "Xib0o",
             "points": 0,
@@ -1083,10 +1083,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "marc86",
             "name": "Marc86",
             "points": 0,
@@ -1094,10 +1094,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "redwing",
             "name": "Redwing",
             "points": 0,
@@ -1105,10 +1105,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "franzi12345",
             "name": "Franzi12345",
             "points": 0,
@@ -1116,10 +1116,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "ddd",
             "name": "Ddd",
             "points": 0,
@@ -1127,10 +1127,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "frankfurterjung",
             "name": "FrankfurterJung",
             "points": 0,
@@ -1138,10 +1138,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "juergen70",
             "name": "Juergen70",
             "points": 0,
@@ -1149,10 +1149,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "pauli",
             "name": "Pauli",
             "points": 0,
@@ -1160,10 +1160,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "eckes2359",
             "name": "Eckes2359",
             "points": 0,
@@ -1171,10 +1171,10 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           },
           {
-            "rank": 1,
+            "rank": 7,
             "participantId": "stevie26",
             "name": "Stevie26",
             "points": 0,
@@ -1182,934 +1182,1148 @@
             "matchdayWinner": 0,
             "totalPoints": 0,
             "matchdayWins": 0,
-            "matchdayRank": 1
+            "matchdayRank": 7
           }
         ],
         "overall": [
           {
-            "rank": null,
+            "rank": 1,
             "participantId": "alex2507",
             "name": "Alex2507",
-            "totalPoints": 0,
+            "totalPoints": 12,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 3,
+            "matchdayWins": 1
           },
           {
-            "rank": null,
+            "rank": 2,
             "participantId": "manuel",
             "name": "Manuel",
-            "totalPoints": 0,
+            "totalPoints": 9,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 2,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "kleinersachse",
             "name": "kleinersachse",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 3,
             "participantId": "zweikampfgott",
             "name": "ZweikampfGott",
-            "totalPoints": 0,
+            "totalPoints": 8,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 1,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "ximmox",
             "name": "xIMMOx",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "handgottes",
             "name": "HandGottes",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "glueckspfennig",
             "name": "Glückspfennig",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "normiks",
             "name": "Normiks",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 6,
             "participantId": "kevin",
             "name": "Kevin",
-            "totalPoints": 0,
+            "totalPoints": 3,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 4,
             "participantId": "marius",
             "name": "Marius",
-            "totalPoints": 0,
+            "totalPoints": 5,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 5,
             "participantId": "mary-grace",
             "name": "Mary-Grace",
-            "totalPoints": 0,
+            "totalPoints": 4,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "11le",
             "name": "11LE",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "jungunddurstig",
             "name": "JungundDurstig",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "lucaspodolski",
             "name": "LucasPodolski",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "quick",
             "name": "Quick",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "nick-zg-1501",
             "name": "Nick_ZG_1501",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "flying-dutchman",
             "name": "Flying-Dutchman",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "salas1904",
             "name": "Salas1904",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "sven-huhn",
             "name": "Sven_Huhn",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "luca",
             "name": "Luca",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "hardy17",
             "name": "Hardy17",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "lucipher",
             "name": "LuCipher",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "wildemoni",
             "name": "WildeMoni",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "oliver",
             "name": "Oliver",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "baslermario",
             "name": "baslermario",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "birgit-blaubart",
             "name": "Birgit_Blaubart",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "maikiliii",
             "name": "Maikiliii",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "bigdog",
             "name": "Bigdog",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "kev1999",
             "name": "Kev1999",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "rk69",
             "name": "RK69",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "adamj",
             "name": "AdamJ",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "mariusv",
             "name": "mariusv",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "borussiamg1900",
             "name": "BORUSSIAMG1900",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "mythos",
             "name": "Mythos",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "souvard",
             "name": "Souvard",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "gruber",
             "name": "gRuBer",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "jakob",
             "name": "Jakob",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "oifinger",
             "name": "Oifinger",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "medic",
             "name": "Medic",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "yauguru",
             "name": "Yauguru",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "modric2000",
             "name": "Modric2000",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "berndibroti",
             "name": "Berndibroti",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "glatze583",
             "name": "Glatze583",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "cobra",
             "name": "cobra",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "best10",
             "name": "Best10",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "co",
             "name": "Co",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "andy1304",
             "name": "Andy1304",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "realzaragoza",
             "name": "Realzaragoza",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "milad",
             "name": "Milad",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "lattenkracher",
             "name": "Lattenkracher",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "cobra75",
             "name": "Cobra75",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "juri",
             "name": "JuRi",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "lucas",
             "name": "Lucas",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "luki1887",
             "name": "Luki1887",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "fcahnungslos",
             "name": "FCAhnungslos",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "aufdieblaue",
             "name": "AufdieBlaue",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "dani1893",
             "name": "Dani1893",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "ronny75",
             "name": "Ronny75",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "yorik",
             "name": "Yorik",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "dominik1966",
             "name": "dominik1966",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "g-1000",
             "name": "G.1000",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "servus",
             "name": "Servus",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "potterhead",
             "name": "Potterhead",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "opipeter",
             "name": "Opipeter",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "flokicker94",
             "name": "FloKicker94",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "mikoog",
             "name": "MiKoog",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "tribuna33",
             "name": "TRIBUNA33",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "tortugasge",
             "name": "TortugaSGE",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "bvb09-opam",
             "name": "BvB09-OpaM",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "nurderscf",
             "name": "NurDerSCF",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "audauzvares",
             "name": "Audauzvares",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "playboymarc88",
             "name": "PlayBoyMarc88",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "erik",
             "name": "Erik",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "marcor",
             "name": "MarcoR",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "pochzerjung",
             "name": "PochzerJung",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "sam2004",
             "name": "Sam2004",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "maxpam",
             "name": "MaxPam",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "ben1909",
             "name": "Ben1909",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "bene",
             "name": "Bene",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "cali79",
             "name": "Cali79",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "ibra-goat",
             "name": "ibra.goat",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "waltersen",
             "name": "Waltersen",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "kunstblume",
             "name": "Kunstblume",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "steff77",
             "name": "Steff77",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "18amfg99",
             "name": "18AMFG99",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "sam-entspender",
             "name": "SAM_ENTSPENDER",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "jwfussball",
             "name": "JWFUSSBALL",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "laaura0804",
             "name": "Laaura0804",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "gerrit1887",
             "name": "Gerrit1887",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "finch",
             "name": "Finch",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "xib0o",
             "name": "Xib0o",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "marc86",
             "name": "Marc86",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "redwing",
             "name": "Redwing",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "franzi12345",
             "name": "Franzi12345",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "ddd",
             "name": "Ddd",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "frankfurterjung",
             "name": "FrankfurterJung",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "juergen70",
             "name": "Juergen70",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "pauli",
             "name": "Pauli",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "eckes2359",
             "name": "Eckes2359",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           },
           {
-            "rank": null,
+            "rank": 7,
             "participantId": "stevie26",
             "name": "Stevie26",
             "totalPoints": 0,
             "exactHits": 0,
             "differenceHits": 0,
-            "tendencyHits": 0
+            "tendencyHits": 0,
+            "bonusPoints": 0,
+            "matchdayWins": 0
           }
         ],
         "team": [
           {
-            "rank": null,
-            "name": "New Smugglers Team",
-            "memberCount": 76,
-            "pointsSum": 0,
-            "averagePoints": 0,
-            "totalPoints": 0
-          },
-          {
-            "rank": null,
+            "rank": 1,
             "name": "Old Smugglers Team",
             "memberCount": 24,
-            "pointsSum": 0,
-            "averagePoints": 0,
-            "totalPoints": 0
+            "pointsSum": 24,
+            "totalPoints": 24,
+            "averagePoints": 1.0,
+            "kicktippControlValue": 1.0,
+            "validated": true
+          },
+          {
+            "rank": 2,
+            "name": "New Smugglers Team",
+            "memberCount": 76,
+            "pointsSum": 17,
+            "totalPoints": 17,
+            "averagePoints": 0.2236842105,
+            "kicktippControlValue": 0.2,
+            "validated": true
           }
         ],
-        "matchdayLabel": "Smuggleraufträge 1. Spieltag",
-        "overallLeader": null,
-        "matchdayLeader": null,
-        "teamWinner": null,
-        "teamResult": "Gleichstand"
+        "matchdayLabel": "Smuggleraufträge · 1. Spieltag",
+        "overallLeader": {
+          "participantId": "alex2507",
+          "name": "Alex2507",
+          "points": 12,
+          "rank": 1
+        },
+        "matchdayLeader": {
+          "participantId": "alex2507",
+          "name": "Alex2507",
+          "points": 9,
+          "rank": 1
+        },
+        "teamWinner": "Old Smugglers Team",
+        "teamResult": "Old Smugglers Team"
       },
       "weihnachtsregatta": {
         "id": "weihnachtsregatta",
@@ -2130,20 +2344,20 @@
           "rank": 1,
           "participantId": "alex2507",
           "name": "Alex2507",
-          "bonusPoints": 0,
-          "matchdayWins": 0,
-          "totalPoints": 0
+          "bonusPoints": 3,
+          "matchdayWins": 1,
+          "totalPoints": 12
         },
         {
-          "rank": 1,
+          "rank": 2,
           "participantId": "manuel",
           "name": "Manuel",
-          "bonusPoints": 0,
+          "bonusPoints": 2,
           "matchdayWins": 0,
-          "totalPoints": 0
+          "totalPoints": 9
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "kleinersachse",
           "name": "kleinersachse",
           "bonusPoints": 0,
@@ -2151,15 +2365,15 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 3,
           "participantId": "zweikampfgott",
           "name": "ZweikampfGott",
-          "bonusPoints": 0,
+          "bonusPoints": 1,
           "matchdayWins": 0,
-          "totalPoints": 0
+          "totalPoints": 8
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ximmox",
           "name": "xIMMOx",
           "bonusPoints": 0,
@@ -2167,7 +2381,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "handgottes",
           "name": "HandGottes",
           "bonusPoints": 0,
@@ -2175,7 +2389,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "glueckspfennig",
           "name": "Glückspfennig",
           "bonusPoints": 0,
@@ -2183,7 +2397,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "normiks",
           "name": "Normiks",
           "bonusPoints": 0,
@@ -2191,31 +2405,31 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 6,
           "participantId": "kevin",
           "name": "Kevin",
           "bonusPoints": 0,
           "matchdayWins": 0,
-          "totalPoints": 0
+          "totalPoints": 3
         },
         {
-          "rank": 1,
+          "rank": 4,
           "participantId": "marius",
           "name": "Marius",
           "bonusPoints": 0,
           "matchdayWins": 0,
-          "totalPoints": 0
+          "totalPoints": 5
         },
         {
-          "rank": 1,
+          "rank": 5,
           "participantId": "mary-grace",
           "name": "Mary-Grace",
           "bonusPoints": 0,
           "matchdayWins": 0,
-          "totalPoints": 0
+          "totalPoints": 4
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "11le",
           "name": "11LE",
           "bonusPoints": 0,
@@ -2223,7 +2437,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "jungunddurstig",
           "name": "JungundDurstig",
           "bonusPoints": 0,
@@ -2231,7 +2445,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lucaspodolski",
           "name": "LucasPodolski",
           "bonusPoints": 0,
@@ -2239,7 +2453,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "quick",
           "name": "Quick",
           "bonusPoints": 0,
@@ -2247,7 +2461,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "nick-zg-1501",
           "name": "Nick_ZG_1501",
           "bonusPoints": 0,
@@ -2255,7 +2469,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "flying-dutchman",
           "name": "Flying-Dutchman",
           "bonusPoints": 0,
@@ -2263,7 +2477,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "salas1904",
           "name": "Salas1904",
           "bonusPoints": 0,
@@ -2271,7 +2485,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "sven-huhn",
           "name": "Sven_Huhn",
           "bonusPoints": 0,
@@ -2279,7 +2493,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "luca",
           "name": "Luca",
           "bonusPoints": 0,
@@ -2287,7 +2501,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "hardy17",
           "name": "Hardy17",
           "bonusPoints": 0,
@@ -2295,7 +2509,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lucipher",
           "name": "LuCipher",
           "bonusPoints": 0,
@@ -2303,7 +2517,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "wildemoni",
           "name": "WildeMoni",
           "bonusPoints": 0,
@@ -2311,7 +2525,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "oliver",
           "name": "Oliver",
           "bonusPoints": 0,
@@ -2319,7 +2533,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "baslermario",
           "name": "baslermario",
           "bonusPoints": 0,
@@ -2327,7 +2541,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "birgit-blaubart",
           "name": "Birgit_Blaubart",
           "bonusPoints": 0,
@@ -2335,7 +2549,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "maikiliii",
           "name": "Maikiliii",
           "bonusPoints": 0,
@@ -2343,7 +2557,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "bigdog",
           "name": "Bigdog",
           "bonusPoints": 0,
@@ -2351,7 +2565,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "kev1999",
           "name": "Kev1999",
           "bonusPoints": 0,
@@ -2359,7 +2573,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "rk69",
           "name": "RK69",
           "bonusPoints": 0,
@@ -2367,7 +2581,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "adamj",
           "name": "AdamJ",
           "bonusPoints": 0,
@@ -2375,7 +2589,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "mariusv",
           "name": "mariusv",
           "bonusPoints": 0,
@@ -2383,7 +2597,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "borussiamg1900",
           "name": "BORUSSIAMG1900",
           "bonusPoints": 0,
@@ -2391,7 +2605,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "mythos",
           "name": "Mythos",
           "bonusPoints": 0,
@@ -2399,7 +2613,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "souvard",
           "name": "Souvard",
           "bonusPoints": 0,
@@ -2407,7 +2621,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "gruber",
           "name": "gRuBer",
           "bonusPoints": 0,
@@ -2415,7 +2629,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "jakob",
           "name": "Jakob",
           "bonusPoints": 0,
@@ -2423,7 +2637,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "oifinger",
           "name": "Oifinger",
           "bonusPoints": 0,
@@ -2431,7 +2645,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "medic",
           "name": "Medic",
           "bonusPoints": 0,
@@ -2439,7 +2653,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "yauguru",
           "name": "Yauguru",
           "bonusPoints": 0,
@@ -2447,7 +2661,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "modric2000",
           "name": "Modric2000",
           "bonusPoints": 0,
@@ -2455,7 +2669,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "berndibroti",
           "name": "Berndibroti",
           "bonusPoints": 0,
@@ -2463,7 +2677,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "glatze583",
           "name": "Glatze583",
           "bonusPoints": 0,
@@ -2471,7 +2685,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "cobra",
           "name": "cobra",
           "bonusPoints": 0,
@@ -2479,7 +2693,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "best10",
           "name": "Best10",
           "bonusPoints": 0,
@@ -2487,7 +2701,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "co",
           "name": "Co",
           "bonusPoints": 0,
@@ -2495,7 +2709,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "andy1304",
           "name": "Andy1304",
           "bonusPoints": 0,
@@ -2503,7 +2717,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "realzaragoza",
           "name": "Realzaragoza",
           "bonusPoints": 0,
@@ -2511,7 +2725,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "milad",
           "name": "Milad",
           "bonusPoints": 0,
@@ -2519,7 +2733,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lattenkracher",
           "name": "Lattenkracher",
           "bonusPoints": 0,
@@ -2527,7 +2741,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "cobra75",
           "name": "Cobra75",
           "bonusPoints": 0,
@@ -2535,7 +2749,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "juri",
           "name": "JuRi",
           "bonusPoints": 0,
@@ -2543,7 +2757,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lucas",
           "name": "Lucas",
           "bonusPoints": 0,
@@ -2551,7 +2765,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "luki1887",
           "name": "Luki1887",
           "bonusPoints": 0,
@@ -2559,7 +2773,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "fcahnungslos",
           "name": "FCAhnungslos",
           "bonusPoints": 0,
@@ -2567,7 +2781,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "aufdieblaue",
           "name": "AufdieBlaue",
           "bonusPoints": 0,
@@ -2575,7 +2789,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "dani1893",
           "name": "Dani1893",
           "bonusPoints": 0,
@@ -2583,7 +2797,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ronny75",
           "name": "Ronny75",
           "bonusPoints": 0,
@@ -2591,7 +2805,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "yorik",
           "name": "Yorik",
           "bonusPoints": 0,
@@ -2599,7 +2813,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "dominik1966",
           "name": "dominik1966",
           "bonusPoints": 0,
@@ -2607,7 +2821,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "g-1000",
           "name": "G.1000",
           "bonusPoints": 0,
@@ -2615,7 +2829,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "servus",
           "name": "Servus",
           "bonusPoints": 0,
@@ -2623,7 +2837,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "potterhead",
           "name": "Potterhead",
           "bonusPoints": 0,
@@ -2631,7 +2845,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "opipeter",
           "name": "Opipeter",
           "bonusPoints": 0,
@@ -2639,7 +2853,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "flokicker94",
           "name": "FloKicker94",
           "bonusPoints": 0,
@@ -2647,7 +2861,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "mikoog",
           "name": "MiKoog",
           "bonusPoints": 0,
@@ -2655,7 +2869,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "tribuna33",
           "name": "TRIBUNA33",
           "bonusPoints": 0,
@@ -2663,7 +2877,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "tortugasge",
           "name": "TortugaSGE",
           "bonusPoints": 0,
@@ -2671,7 +2885,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "bvb09-opam",
           "name": "BvB09-OpaM",
           "bonusPoints": 0,
@@ -2679,7 +2893,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "nurderscf",
           "name": "NurDerSCF",
           "bonusPoints": 0,
@@ -2687,7 +2901,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "audauzvares",
           "name": "Audauzvares",
           "bonusPoints": 0,
@@ -2695,7 +2909,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "playboymarc88",
           "name": "PlayBoyMarc88",
           "bonusPoints": 0,
@@ -2703,7 +2917,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "erik",
           "name": "Erik",
           "bonusPoints": 0,
@@ -2711,7 +2925,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "marcor",
           "name": "MarcoR",
           "bonusPoints": 0,
@@ -2719,7 +2933,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "pochzerjung",
           "name": "PochzerJung",
           "bonusPoints": 0,
@@ -2727,7 +2941,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "sam2004",
           "name": "Sam2004",
           "bonusPoints": 0,
@@ -2735,7 +2949,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "maxpam",
           "name": "MaxPam",
           "bonusPoints": 0,
@@ -2743,7 +2957,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ben1909",
           "name": "Ben1909",
           "bonusPoints": 0,
@@ -2751,7 +2965,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "bene",
           "name": "Bene",
           "bonusPoints": 0,
@@ -2759,7 +2973,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "cali79",
           "name": "Cali79",
           "bonusPoints": 0,
@@ -2767,7 +2981,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ibra-goat",
           "name": "ibra.goat",
           "bonusPoints": 0,
@@ -2775,7 +2989,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "waltersen",
           "name": "Waltersen",
           "bonusPoints": 0,
@@ -2783,7 +2997,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "kunstblume",
           "name": "Kunstblume",
           "bonusPoints": 0,
@@ -2791,7 +3005,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "steff77",
           "name": "Steff77",
           "bonusPoints": 0,
@@ -2799,7 +3013,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "18amfg99",
           "name": "18AMFG99",
           "bonusPoints": 0,
@@ -2807,7 +3021,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "sam-entspender",
           "name": "SAM_ENTSPENDER",
           "bonusPoints": 0,
@@ -2815,7 +3029,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "jwfussball",
           "name": "JWFUSSBALL",
           "bonusPoints": 0,
@@ -2823,7 +3037,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "laaura0804",
           "name": "Laaura0804",
           "bonusPoints": 0,
@@ -2831,7 +3045,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "gerrit1887",
           "name": "Gerrit1887",
           "bonusPoints": 0,
@@ -2839,7 +3053,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "finch",
           "name": "Finch",
           "bonusPoints": 0,
@@ -2847,7 +3061,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "xib0o",
           "name": "Xib0o",
           "bonusPoints": 0,
@@ -2855,7 +3069,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "marc86",
           "name": "Marc86",
           "bonusPoints": 0,
@@ -2863,7 +3077,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "redwing",
           "name": "Redwing",
           "bonusPoints": 0,
@@ -2871,7 +3085,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "franzi12345",
           "name": "Franzi12345",
           "bonusPoints": 0,
@@ -2879,7 +3093,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ddd",
           "name": "Ddd",
           "bonusPoints": 0,
@@ -2887,7 +3101,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "frankfurterjung",
           "name": "FrankfurterJung",
           "bonusPoints": 0,
@@ -2895,7 +3109,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "juergen70",
           "name": "Juergen70",
           "bonusPoints": 0,
@@ -2903,7 +3117,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "pauli",
           "name": "Pauli",
           "bonusPoints": 0,
@@ -2911,7 +3125,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "eckes2359",
           "name": "Eckes2359",
           "bonusPoints": 0,
@@ -2919,7 +3133,7 @@
           "totalPoints": 0
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "stevie26",
           "name": "Stevie26",
           "bonusPoints": 0,
@@ -2929,23 +3143,23 @@
       ],
       "team": [
         {
-          "rank": null,
-          "name": "New Smugglers Team",
-          "memberCount": 76,
-          "pointsSum": 0,
-          "totalPoints": 0,
-          "averagePoints": 0,
-          "kicktippControlValue": 0,
+          "rank": 1,
+          "name": "Old Smugglers Team",
+          "memberCount": 24,
+          "pointsSum": 24,
+          "totalPoints": 24,
+          "averagePoints": 1.0,
+          "kicktippControlValue": 1.0,
           "validated": true
         },
         {
-          "rank": null,
-          "name": "Old Smugglers Team",
-          "memberCount": 24,
-          "pointsSum": 0,
-          "totalPoints": 0,
-          "averagePoints": 0,
-          "kicktippControlValue": 0,
+          "rank": 2,
+          "name": "New Smugglers Team",
+          "memberCount": 76,
+          "pointsSum": 17,
+          "totalPoints": 17,
+          "averagePoints": 0.2236842105,
+          "kicktippControlValue": 0.2,
           "validated": true
         }
       ],
@@ -2954,26 +3168,26 @@
           "rank": 1,
           "participantId": "alex2507",
           "name": "Alex2507",
-          "points": 0,
-          "bonusPoints": 0,
+          "points": 3,
+          "bonusPoints": 3,
           "matchdayWinner": 0,
-          "totalPoints": 0,
+          "totalPoints": 3,
           "matchdayWins": 0,
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 2,
           "participantId": "manuel",
           "name": "Manuel",
-          "points": 0,
-          "bonusPoints": 0,
+          "points": 2,
+          "bonusPoints": 2,
           "matchdayWinner": 0,
-          "totalPoints": 0,
+          "totalPoints": 2,
           "matchdayWins": 0,
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "kleinersachse",
           "name": "kleinersachse",
           "points": 0,
@@ -2984,18 +3198,18 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 3,
           "participantId": "zweikampfgott",
           "name": "ZweikampfGott",
-          "points": 0,
-          "bonusPoints": 0,
+          "points": 1,
+          "bonusPoints": 1,
           "matchdayWinner": 0,
-          "totalPoints": 0,
+          "totalPoints": 1,
           "matchdayWins": 0,
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ximmox",
           "name": "xIMMOx",
           "points": 0,
@@ -3006,7 +3220,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "handgottes",
           "name": "HandGottes",
           "points": 0,
@@ -3017,7 +3231,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "glueckspfennig",
           "name": "Glückspfennig",
           "points": 0,
@@ -3028,7 +3242,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "normiks",
           "name": "Normiks",
           "points": 0,
@@ -3039,7 +3253,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 4,
           "participantId": "kevin",
           "name": "Kevin",
           "points": 0,
@@ -3050,7 +3264,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 4,
           "participantId": "marius",
           "name": "Marius",
           "points": 0,
@@ -3061,7 +3275,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 4,
           "participantId": "mary-grace",
           "name": "Mary-Grace",
           "points": 0,
@@ -3072,7 +3286,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "11le",
           "name": "11LE",
           "points": 0,
@@ -3083,7 +3297,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "jungunddurstig",
           "name": "JungundDurstig",
           "points": 0,
@@ -3094,7 +3308,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lucaspodolski",
           "name": "LucasPodolski",
           "points": 0,
@@ -3105,7 +3319,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "quick",
           "name": "Quick",
           "points": 0,
@@ -3116,7 +3330,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "nick-zg-1501",
           "name": "Nick_ZG_1501",
           "points": 0,
@@ -3127,7 +3341,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "flying-dutchman",
           "name": "Flying-Dutchman",
           "points": 0,
@@ -3138,7 +3352,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "salas1904",
           "name": "Salas1904",
           "points": 0,
@@ -3149,7 +3363,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "sven-huhn",
           "name": "Sven_Huhn",
           "points": 0,
@@ -3160,7 +3374,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "luca",
           "name": "Luca",
           "points": 0,
@@ -3171,7 +3385,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "hardy17",
           "name": "Hardy17",
           "points": 0,
@@ -3182,7 +3396,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lucipher",
           "name": "LuCipher",
           "points": 0,
@@ -3193,7 +3407,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "wildemoni",
           "name": "WildeMoni",
           "points": 0,
@@ -3204,7 +3418,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "oliver",
           "name": "Oliver",
           "points": 0,
@@ -3215,7 +3429,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "baslermario",
           "name": "baslermario",
           "points": 0,
@@ -3226,7 +3440,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "birgit-blaubart",
           "name": "Birgit_Blaubart",
           "points": 0,
@@ -3237,7 +3451,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "maikiliii",
           "name": "Maikiliii",
           "points": 0,
@@ -3248,7 +3462,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "bigdog",
           "name": "Bigdog",
           "points": 0,
@@ -3259,7 +3473,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "kev1999",
           "name": "Kev1999",
           "points": 0,
@@ -3270,7 +3484,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "rk69",
           "name": "RK69",
           "points": 0,
@@ -3281,7 +3495,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "adamj",
           "name": "AdamJ",
           "points": 0,
@@ -3292,7 +3506,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "mariusv",
           "name": "mariusv",
           "points": 0,
@@ -3303,7 +3517,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "borussiamg1900",
           "name": "BORUSSIAMG1900",
           "points": 0,
@@ -3314,7 +3528,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "mythos",
           "name": "Mythos",
           "points": 0,
@@ -3325,7 +3539,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "souvard",
           "name": "Souvard",
           "points": 0,
@@ -3336,7 +3550,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "gruber",
           "name": "gRuBer",
           "points": 0,
@@ -3347,7 +3561,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "jakob",
           "name": "Jakob",
           "points": 0,
@@ -3358,7 +3572,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "oifinger",
           "name": "Oifinger",
           "points": 0,
@@ -3369,7 +3583,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "medic",
           "name": "Medic",
           "points": 0,
@@ -3380,7 +3594,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "yauguru",
           "name": "Yauguru",
           "points": 0,
@@ -3391,7 +3605,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "modric2000",
           "name": "Modric2000",
           "points": 0,
@@ -3402,7 +3616,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "berndibroti",
           "name": "Berndibroti",
           "points": 0,
@@ -3413,7 +3627,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "glatze583",
           "name": "Glatze583",
           "points": 0,
@@ -3424,7 +3638,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "cobra",
           "name": "cobra",
           "points": 0,
@@ -3435,7 +3649,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "best10",
           "name": "Best10",
           "points": 0,
@@ -3446,7 +3660,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "co",
           "name": "Co",
           "points": 0,
@@ -3457,7 +3671,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "andy1304",
           "name": "Andy1304",
           "points": 0,
@@ -3468,7 +3682,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "realzaragoza",
           "name": "Realzaragoza",
           "points": 0,
@@ -3479,7 +3693,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "milad",
           "name": "Milad",
           "points": 0,
@@ -3490,7 +3704,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lattenkracher",
           "name": "Lattenkracher",
           "points": 0,
@@ -3501,7 +3715,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "cobra75",
           "name": "Cobra75",
           "points": 0,
@@ -3512,7 +3726,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "juri",
           "name": "JuRi",
           "points": 0,
@@ -3523,7 +3737,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "lucas",
           "name": "Lucas",
           "points": 0,
@@ -3534,7 +3748,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "luki1887",
           "name": "Luki1887",
           "points": 0,
@@ -3545,7 +3759,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "fcahnungslos",
           "name": "FCAhnungslos",
           "points": 0,
@@ -3556,7 +3770,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "aufdieblaue",
           "name": "AufdieBlaue",
           "points": 0,
@@ -3567,7 +3781,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "dani1893",
           "name": "Dani1893",
           "points": 0,
@@ -3578,7 +3792,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ronny75",
           "name": "Ronny75",
           "points": 0,
@@ -3589,7 +3803,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "yorik",
           "name": "Yorik",
           "points": 0,
@@ -3600,7 +3814,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "dominik1966",
           "name": "dominik1966",
           "points": 0,
@@ -3611,7 +3825,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "g-1000",
           "name": "G.1000",
           "points": 0,
@@ -3622,7 +3836,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "servus",
           "name": "Servus",
           "points": 0,
@@ -3633,7 +3847,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "potterhead",
           "name": "Potterhead",
           "points": 0,
@@ -3644,7 +3858,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "opipeter",
           "name": "Opipeter",
           "points": 0,
@@ -3655,7 +3869,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "flokicker94",
           "name": "FloKicker94",
           "points": 0,
@@ -3666,7 +3880,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "mikoog",
           "name": "MiKoog",
           "points": 0,
@@ -3677,7 +3891,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "tribuna33",
           "name": "TRIBUNA33",
           "points": 0,
@@ -3688,7 +3902,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "tortugasge",
           "name": "TortugaSGE",
           "points": 0,
@@ -3699,7 +3913,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "bvb09-opam",
           "name": "BvB09-OpaM",
           "points": 0,
@@ -3710,7 +3924,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "nurderscf",
           "name": "NurDerSCF",
           "points": 0,
@@ -3721,7 +3935,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "audauzvares",
           "name": "Audauzvares",
           "points": 0,
@@ -3732,7 +3946,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "playboymarc88",
           "name": "PlayBoyMarc88",
           "points": 0,
@@ -3743,7 +3957,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "erik",
           "name": "Erik",
           "points": 0,
@@ -3754,7 +3968,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "marcor",
           "name": "MarcoR",
           "points": 0,
@@ -3765,7 +3979,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "pochzerjung",
           "name": "PochzerJung",
           "points": 0,
@@ -3776,7 +3990,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "sam2004",
           "name": "Sam2004",
           "points": 0,
@@ -3787,7 +4001,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "maxpam",
           "name": "MaxPam",
           "points": 0,
@@ -3798,7 +4012,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ben1909",
           "name": "Ben1909",
           "points": 0,
@@ -3809,7 +4023,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "bene",
           "name": "Bene",
           "points": 0,
@@ -3820,7 +4034,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "cali79",
           "name": "Cali79",
           "points": 0,
@@ -3831,7 +4045,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ibra-goat",
           "name": "ibra.goat",
           "points": 0,
@@ -3842,7 +4056,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "waltersen",
           "name": "Waltersen",
           "points": 0,
@@ -3853,7 +4067,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "kunstblume",
           "name": "Kunstblume",
           "points": 0,
@@ -3864,7 +4078,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "steff77",
           "name": "Steff77",
           "points": 0,
@@ -3875,7 +4089,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "18amfg99",
           "name": "18AMFG99",
           "points": 0,
@@ -3886,7 +4100,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "sam-entspender",
           "name": "SAM_ENTSPENDER",
           "points": 0,
@@ -3897,7 +4111,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "jwfussball",
           "name": "JWFUSSBALL",
           "points": 0,
@@ -3908,7 +4122,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "laaura0804",
           "name": "Laaura0804",
           "points": 0,
@@ -3919,7 +4133,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "gerrit1887",
           "name": "Gerrit1887",
           "points": 0,
@@ -3930,7 +4144,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "finch",
           "name": "Finch",
           "points": 0,
@@ -3941,7 +4155,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "xib0o",
           "name": "Xib0o",
           "points": 0,
@@ -3952,7 +4166,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "marc86",
           "name": "Marc86",
           "points": 0,
@@ -3963,7 +4177,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "redwing",
           "name": "Redwing",
           "points": 0,
@@ -3974,7 +4188,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "franzi12345",
           "name": "Franzi12345",
           "points": 0,
@@ -3985,7 +4199,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "ddd",
           "name": "Ddd",
           "points": 0,
@@ -3996,7 +4210,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "frankfurterjung",
           "name": "FrankfurterJung",
           "points": 0,
@@ -4007,7 +4221,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "juergen70",
           "name": "Juergen70",
           "points": 0,
@@ -4018,7 +4232,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "pauli",
           "name": "Pauli",
           "points": 0,
@@ -4029,7 +4243,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "eckes2359",
           "name": "Eckes2359",
           "points": 0,
@@ -4040,7 +4254,7 @@
           "matchdayRank": 1
         },
         {
-          "rank": 1,
+          "rank": 7,
           "participantId": "stevie26",
           "name": "Stevie26",
           "points": 0,
@@ -4055,65 +4269,65 @@
     "teams": {
       "overall": [
         {
-          "rank": null,
-          "name": "New Smugglers Team",
-          "memberCount": 76,
-          "pointsSum": 0,
-          "totalPoints": 0,
-          "averagePoints": 0,
-          "kicktippControlValue": 0,
+          "rank": 1,
+          "name": "Old Smugglers Team",
+          "memberCount": 24,
+          "pointsSum": 24,
+          "totalPoints": 24,
+          "averagePoints": 1.0,
+          "kicktippControlValue": 1.0,
           "validated": true
         },
         {
-          "rank": null,
-          "name": "Old Smugglers Team",
-          "memberCount": 24,
-          "pointsSum": 0,
-          "totalPoints": 0,
-          "averagePoints": 0,
-          "kicktippControlValue": 0,
+          "rank": 2,
+          "name": "New Smugglers Team",
+          "memberCount": 76,
+          "pointsSum": 17,
+          "totalPoints": 17,
+          "averagePoints": 0.2236842105,
+          "kicktippControlValue": 0.2,
           "validated": true
         }
       ],
       "matchday": [
         {
-          "rank": null,
-          "name": "New Smugglers Team",
-          "memberCount": 76,
-          "pointsSum": 0,
-          "points": 0,
-          "totalPoints": 0,
-          "averagePoints": 0,
-          "kicktippControlValue": 0,
-          "validated": true
-        },
-        {
-          "rank": null,
+          "rank": 1,
           "name": "Old Smugglers Team",
           "memberCount": 24,
-          "pointsSum": 0,
-          "points": 0,
-          "totalPoints": 0,
-          "averagePoints": 0,
-          "kicktippControlValue": 0,
-          "validated": true
+          "pointsSum": 24,
+          "totalPoints": 24,
+          "averagePoints": 1.0,
+          "kicktippControlValue": 1.0,
+          "validated": true,
+          "points": 24
+        },
+        {
+          "rank": 2,
+          "name": "New Smugglers Team",
+          "memberCount": 76,
+          "pointsSum": 17,
+          "totalPoints": 17,
+          "averagePoints": 0.2236842105,
+          "kicktippControlValue": 0.2,
+          "validated": true,
+          "points": 17
         }
       ],
       "duel": {
-        "label": "Gleichstand",
+        "label": "Old Smugglers Team",
         "leftTeam": "Old Smugglers Team",
         "rightTeam": "New Smugglers Team",
-        "left": 0,
-        "right": 0,
-        "display": "0,0 : 0,0 Punkte"
+        "left": 1.0,
+        "right": 0.2236842105,
+        "display": "1,0 : 0,2 Punkte"
       },
       "matchdayDuel": {
-        "label": "Gleichstand",
+        "label": "Old Smugglers Team",
         "leftTeam": "Old Smugglers Team",
         "rightTeam": "New Smugglers Team",
-        "left": 0,
-        "right": 0,
-        "display": "0,0 : 0,0 Punkte"
+        "left": 1.0,
+        "right": 0.2236842105,
+        "display": "1,0 : 0,2 Punkte"
       }
     }
   },
