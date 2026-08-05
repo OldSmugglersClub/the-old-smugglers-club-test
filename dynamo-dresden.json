@@ -1,6 +1,6 @@
 {
   "bereich": "Smuggleraufträge",
-  "statusSchild": "Vorbereitung",
+  "statusSchild": "Saisonplanung",
   "titel": "Dynamo Dresden",
   "beschreibung": "Ausgewählte Spiele von Dynamo Dresden werden als eigenständige Smuggleraufträge geführt, separat dokumentiert und ausgewertet.",
   "karten": [
@@ -18,46 +18,8 @@
     }
   ],
   "aktuellerStandTitel": "Aktueller Stand:",
-  "aktuellerStand": "Der erste Smugglerauftrag „Auftakt“ ist für den 09. August 2026 vorbereitet. Gegner und Anstoßzeit sind noch offen.",
+  "aktuellerStand": "Termine, Gegner, Ergebnisse und Status der Smuggleraufträge werden ausschließlich aus dem zentralen Spielplan geladen.",
   "bereiche": [
-    {
-      "typ": "spiele",
-      "titel": "Aktueller Smugglerauftrag",
-      "anzeigen": true,
-      "spiele": [
-        {
-          "datum": "09.08.2026",
-          "anstoss": "Uhrzeit offen",
-          "heim": "Dynamo Dresden",
-          "trenner": "–",
-          "auswaerts": "Gegner noch offen",
-          "status": "Auftrag „Auftakt“ · vorbereitet"
-        }
-      ]
-    },
-    {
-      "typ": "tabelle",
-      "titel": "Auftragshistorie 2026/2027",
-      "anzeigen": true,
-      "spalten": [
-        "Auftrag",
-        "Datum",
-        "Begegnung",
-        "Ergebnis",
-        "Punkte",
-        "Status"
-      ],
-      "zeilen": [
-        [
-          "Auftakt",
-          "09.08.2026",
-          "Dynamo Dresden – Gegner offen",
-          "–",
-          "–",
-          "Vorbereitet"
-        ]
-      ]
-    },
     {
       "typ": "liste",
       "titel": "Regeln der Dynamo-Aufträge",
