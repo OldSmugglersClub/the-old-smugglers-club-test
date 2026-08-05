@@ -1,3 +1,10 @@
+# Website 4.7.0-RC6-HF1-TEST – Eindeutige LIVE-Anzeige – 04.08.2026
+
+- Die vier Nullfelder des Countdowns werden während laufender Begegnungen ausgeblendet.
+- Stattdessen erscheint zentral „JETZT LIVE“ beziehungsweise „N SPIELE LIVE“.
+- Infobox, parallele LIVE-Erkennung und automatischer Wechsel zum nächsten Event bleiben unverändert.
+- Keine Änderungen an Grid, Kachelgröße, Spieltagsdaten, Navigation oder Highscore.
+
 # Website 4.7.0-RC6-TEST – Belastungstest Spieltagskachel – 04.08.2026
 
 - Vollständiger Bundesliga-Tippspieltag mit 9 Begegnungen als zentraler Testdatenstand aktiviert.
