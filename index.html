@@ -4568,6 +4568,42 @@
       }
     }
 
+
+    /* RC8.5-HF1 – besondere Leistungen als Ehrenauszeichnung */
+    #hall-of-fame .special-achievement-card {
+      display: grid;
+      grid-template-columns: 92px minmax(0,1fr);
+      gap: 1.15rem;
+      align-items: center;
+      padding: 1.25rem 1.35rem;
+      border: 1px solid rgba(242,210,126,.58);
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 12% 50%, rgba(213,161,59,.22), transparent 34%),
+        linear-gradient(145deg, rgba(66,40,18,.96), rgba(17,10,6,.96));
+      box-shadow: inset 0 1px rgba(255,255,255,.06), 0 14px 30px rgba(0,0,0,.28);
+    }
+    #hall-of-fame .special-achievement-medal {
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(242,210,126,.7);
+      border-radius: 50%;
+      color: var(--gold-light);
+      background: radial-gradient(circle, rgba(213,161,59,.28), rgba(54,31,13,.96) 70%);
+      box-shadow: inset 0 0 0 6px rgba(0,0,0,.22), 0 8px 18px rgba(0,0,0,.38);
+    }
+    #hall-of-fame .special-achievement-medal .pirate-icon { width: 44px; height: 44px; }
+    #hall-of-fame .special-achievement-copy { display: grid; gap: .28rem; min-width: 0; }
+    #hall-of-fame .special-achievement-copy span { color: var(--muted); font-weight: 700; }
+    #hall-of-fame .special-achievement-copy strong { color: #fff0b2; font-size: clamp(1.35rem,3vw,2rem); }
+    #hall-of-fame .special-achievement-copy small { color: var(--gold); letter-spacing: .05em; }
+    @media(max-width:620px){
+      #hall-of-fame .special-achievement-card { grid-template-columns: 1fr; text-align:center; }
+      #hall-of-fame .special-achievement-medal { justify-self:center; }
+    }
+
     /* Version 4.4.14 – Hall of Fame als öffentliches Ehrenlogbuch */
     #hall-of-fame .hall-intro-row {
       display: flex;
@@ -5641,7 +5677,7 @@
           <div>
             <p class="champion-kicker">Gesamtchampion der letzten abgeschlossenen Saison</p>
             <h3 class="champion-name" id="champion-name">Manuel</h3>
-            <p class="champion-meta" id="champion-meta">Gesamtwertung · Gesamtchampion · 2025/2026</p>
+            <p class="champion-meta" id="champion-meta">Gesamtchampion</p>
             <div class="champion-season" id="champion-label">Old Smugglers Saison-Champion</div>
           </div>
         </article>
@@ -5650,7 +5686,7 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-crown"></use></svg></div>
             <div>
-              <strong id="meister-title">Bundesliga 2025/2026</strong>
+              <strong id="meister-title">Bundesliga</strong>
               <small id="meister-name">Manuel</small>
             </div>
           </div>
@@ -5658,7 +5694,7 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-trophy"></use></svg></div>
             <div>
-              <strong id="dfb-title">DFB-Pokal 2025/2026</strong>
+              <strong id="dfb-title">DFB-Pokal</strong>
               <small id="dfb-name">Manuel</small>
             </div>
           </div>
@@ -5666,7 +5702,7 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-star-compass"></use></svg></div>
             <div>
-              <strong id="cl-title">Champions League 2025/2026</strong>
+              <strong id="cl-title">Champions League</strong>
               <small id="cl-name">ZweikampfGott</small>
             </div>
           </div>
@@ -5674,7 +5710,7 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-football"></use></svg></div>
             <div>
-              <strong id="el-title">Europa League 2025/2026</strong>
+              <strong id="el-title">Europa League</strong>
               <small id="el-name">Marius</small>
             </div>
           </div>
@@ -5691,7 +5727,7 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-scroll"></use></svg></div>
             <div>
-              <strong id="bonus-title">Bonuswettbewerb 2025/2026</strong>
+              <strong id="bonus-title">Bonuswettbewerb</strong>
               <small id="bonus-name">Marius</small>
             </div>
           </div>
@@ -5749,9 +5785,15 @@
       </div>
 
       <h3 class="hall-section-title">Ehrenmitglieder & besondere Leistungen</h3>
-      <div class="history-row">
-        <span id="honours-label">Champion der WM-Runde 2026</span>
-        <strong id="honours-value">ZweikampfGott</strong>
+      <div class="special-achievement-card">
+        <div class="special-achievement-medal" aria-hidden="true">
+          <svg class="pirate-icon" aria-hidden="true"><use href="#icon-star-compass"></use></svg>
+        </div>
+        <div class="special-achievement-copy">
+          <span id="honours-label">Champion der WM-Runde 2026</span>
+          <strong id="honours-value">ZweikampfGott</strong>
+          <small>Außergewöhnliche Leistung der Crew</small>
+        </div>
       </div>
 
       <div class="hall-logbook">
@@ -6444,30 +6486,30 @@
         setText("welcome-champion", data.aktuellerChampion?.name || "Noch offen");
         setText(
           "champion-meta",
-          [data.aktuellerChampion?.wettbewerb, data.aktuellerChampion?.titel, data.aktuellerChampion?.jahr]
+          [data.aktuellerChampion?.titel]
             .filter(Boolean)
             .join(" · ")
         );
         setText("champion-label", data.aktuellerChampion?.label);
 
-        setText("meister-title", `Bundesliga ${data.meister?.saison ?? ""}`.trim());
+        setText("meister-title", "Bundesliga");
         setText("meister-name", data.meister?.name);
 
-        setText("dfb-title", `DFB-Pokal ${data.dfbPokal?.saison ?? ""}`.trim());
+        setText("dfb-title", "DFB-Pokal");
         setText("dfb-name", data.dfbPokal?.name);
         setOpenState("dfb-name", Boolean(data.dfbPokal?.offen), "Noch offen");
 
-        setText("cl-title", `Champions League ${data.championsLeague?.saison ?? ""}`.trim());
+        setText("cl-title", "Champions League");
         setText("cl-name", data.championsLeague?.name);
         setOpenState("cl-name", Boolean(data.championsLeague?.offen), "Noch offen");
 
-        setText("el-title", `Europa League ${data.europaLeague?.saison ?? ""}`.trim());
+        setText("el-title", "Europa League");
         setText("el-name", data.europaLeague?.name);
         setOpenState("el-name", Boolean(data.europaLeague?.offen), "Sieger noch offen");
 
         setText(
           "smugglerwertung-title",
-          data.smugglerauftraege?.saison ? `Smuggleraufträge ${data.smugglerauftraege.saison}` : "Smuggleraufträge"
+          "Smuggleraufträge"
         );
         setText("smugglerwertung-name", data.smugglerauftraege?.name);
         setOpenState(
@@ -6477,13 +6519,13 @@
         );
 
 
-        setText("bonus-title", `Bonuswettbewerb ${data.bonuswettbewerb?.saison ?? ""}`.trim());
+        setText("bonus-title", "Bonuswettbewerb");
         setText("bonus-name", data.bonuswettbewerb?.name);
         setOpenState("bonus-name", Boolean(data.bonuswettbewerb?.offen), "Sieger noch offen");
 
         setText(
           "weihnachtsregatta-title",
-          data.weihnachtsregatta?.jahr ? `Weihnachtsregatta ${data.weihnachtsregatta.jahr}` : "Weihnachtsregatta"
+          "Weihnachtsregatta"
         );
         setText("weihnachtsregatta-name", data.weihnachtsregatta?.name);
         setOpenState(
@@ -6494,7 +6536,7 @@
 
         setText(
           "piratenkodex-title",
-          data.piratenkodex?.saison ? `Piratenkodex ${data.piratenkodex.saison}` : "Piratenkodex"
+          "Piratenkodex"
         );
         setText("piratenkodex-name", data.piratenkodex?.name);
         setOpenState(

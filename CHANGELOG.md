@@ -278,3 +278,6 @@
 - Produktivsetzung ausdrücklich ausgenommen; separate Freigabe erforderlich.
 - `GOLD-MASTER.md` und Integritätsmanifest ergänzt.
 - Keine Änderungen an Anwendungslogik, Datenmodell, Layout oder Saison-Nullstand.
+
+## 4.7.0-RC8.5-HF1-TEST
+- Startseite kompakter, Ehrenlogbuch historisch vollständig; besondere Leistungen optisch hervorgehoben.
