@@ -5252,6 +5252,8 @@
       }
     }
 
+  
+    .hall-columns--records-only { grid-template-columns: minmax(0, 1fr); }
   </style>
   <link rel="stylesheet" href="./highscore.css?v=4.0.1">
   <link rel="stylesheet" href="./accessibility-v33.css">
@@ -5749,18 +5751,7 @@
           </div>
         </div>
       </div>
-
-      <div class="hall-columns">
-        <div>
-          <h3 class="hall-section-title">Meisterchronik</h3>
-          <div class="history-table">
-            <div class="history-row">
-              <span id="chronik-season-1">2025/2026</span>
-              <strong id="chronik-name-1">Manuel</strong>
-            </div>
-          </div>
-        </div>
-
+      <div class="hall-columns hall-columns--records-only">
         <div>
           <h3 class="hall-section-title">Rekordtafel</h3>
           <div class="records-grid">
@@ -6638,6 +6629,12 @@
   <script src="./highscore-teaser.js" defer></script>
   <script src="performance-v247.js" defer></script>
   <script src="./accessibility-v33.js" defer></script>
+  <script>
+    fetch('./VERSION.txt', { cache: 'no-store' })
+      .then(function (response) { if (!response.ok) throw new Error('VERSION.txt'); return response.text(); })
+      .then(function (version) { document.getElementById('legal-version').textContent = 'Version ' + version.trim(); })
+      .catch(function () { document.getElementById('legal-version').textContent = 'Version nicht verfügbar'; });
+  </script>
 
 <footer class="legal-footer" aria-label="Rechtliche Hinweise">
   <div class="legal-footer__inner">
@@ -6645,7 +6642,7 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
-      <span>Version 4.7.0-RC6-HF7-TEST</span>
+      <span id="legal-version">Version wird geladen</span>
     </nav>
   </div>
 </footer>

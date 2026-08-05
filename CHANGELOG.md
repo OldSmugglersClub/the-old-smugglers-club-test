@@ -1,3 +1,11 @@
+# Website 4.7.0-RC8.5-HF3-TEST – Hall of Fame Bereinigung – 05.08.2026
+
+- Meisterchronik von der Startseite entfernt; sie bleibt ausschließlich im Ehrenlogbuch.
+- Startseiten-Footer auf dynamische Versionsanzeige aus `VERSION.txt` umgestellt.
+- Champion-Pokal im Ehrenlogbuch auf den robusten ASCII-Dateinamen `champion-trophy.jpeg` umgestellt.
+- Fehlerhaft codierte Duplikate der Champion-Trophäe entfernt.
+- Keine Änderungen an Hall-of-Fame-Daten, Titelkabinett, Rekordtafel oder besonderer Leistung.
+
 # Website 4.7.0-RC8.5-HF2-TEST – Ehrenlogbuch statistisch trennen – 05.08.2026
 
 - Die repräsentative Sonderauszeichnung bleibt ausschließlich auf der Startseite.

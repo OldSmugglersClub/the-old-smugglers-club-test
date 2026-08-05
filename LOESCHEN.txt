@@ -1,0 +1,5 @@
+Optional zu löschen, falls im Repository vorhanden:
+- fehlerhaft codierte Duplikate der Champion-Trophäe
+
+Der gültige und zu behaltende Dateiname lautet:
+- champion-trophy.jpeg
