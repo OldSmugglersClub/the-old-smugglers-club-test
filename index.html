@@ -5245,6 +5245,7 @@
     }
   </style>
   <link rel="stylesheet" href="./legal.css">
+  <script src="./hall-of-fame-runtime.js"></script>
   <script src="./highscore-data-adapter.js"></script>
 </head>
 
@@ -5638,10 +5639,10 @@
           </div>
 
           <div>
-            <p class="champion-kicker">Titelträger der letzten abgeschlossenen Mission</p>
-            <h3 class="champion-name" id="champion-name">ZweikampfGott</h3>
-            <p class="champion-meta" id="champion-meta">Weltmeisterschaft · Champion 2026</p>
-            <div class="champion-season" id="champion-label">Old Smugglers Champion</div>
+            <p class="champion-kicker">Gesamtchampion der letzten abgeschlossenen Saison</p>
+            <h3 class="champion-name" id="champion-name">Manuel</h3>
+            <p class="champion-meta" id="champion-meta">Gesamtwertung · Gesamtchampion · 2025/2026</p>
+            <div class="champion-season" id="champion-label">Old Smugglers Saison-Champion</div>
           </div>
         </article>
 
@@ -5649,7 +5650,7 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-crown"></use></svg></div>
             <div>
-              <strong id="meister-title">Meister 2025/2026</strong>
+              <strong id="meister-title">Bundesliga 2025/2026</strong>
               <small id="meister-name">Manuel</small>
             </div>
           </div>
@@ -5673,16 +5674,16 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-football"></use></svg></div>
             <div>
-              <strong id="el-title">Europa League 2026/2027</strong>
-              <small class="status-open" id="el-name">Sieger noch offen</small>
+              <strong id="el-title">Europa League 2025/2026</strong>
+              <small id="el-name">Marius</small>
             </div>
           </div>
 
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-map"></use></svg></div>
             <div>
-              <strong id="smugglerwertung-title">Smuggleraufträge 2026/2027</strong>
-              <small class="status-open" id="smugglerwertung-name">Sieger noch offen</small>
+              <strong id="smugglerwertung-title">Smuggleraufträge</strong>
+              <small class="status-open" id="smugglerwertung-name">Erstmals 2026/2027</small>
             </div>
           </div>
 
@@ -5690,24 +5691,24 @@
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-scroll"></use></svg></div>
             <div>
-              <strong id="bonus-title">Bonuswettbewerb 2026/2027</strong>
-              <small class="status-open" id="bonus-name">Sieger noch offen</small>
+              <strong id="bonus-title">Bonuswettbewerb 2025/2026</strong>
+              <small id="bonus-name">Marius</small>
             </div>
           </div>
 
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-ship-lantern"></use></svg></div>
             <div>
-              <strong id="weihnachtsregatta-title">Weihnachtsregatta 2026</strong>
-              <small class="status-open" id="weihnachtsregatta-name">Noch offen</small>
+              <strong id="weihnachtsregatta-title">Weihnachtsregatta</strong>
+              <small class="status-open" id="weihnachtsregatta-name">Erstmals 2026/2027</small>
             </div>
           </div>
 
           <div class="honour-card">
             <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-scroll"></use></svg></div>
             <div>
-              <strong id="piratenkodex-title">Piratenkodex 2026/2027</strong>
-              <small class="status-open" id="piratenkodex-name">Sieger noch offen</small>
+              <strong id="piratenkodex-title">Piratenkodex</strong>
+              <small class="status-open" id="piratenkodex-name">Erstmals 2026/2027</small>
             </div>
           </div>
         </div>
@@ -5720,10 +5721,6 @@
             <div class="history-row">
               <span id="chronik-season-1">2025/2026</span>
               <strong id="chronik-name-1">Manuel</strong>
-            </div>
-            <div class="history-row">
-              <span id="chronik-season-2">2026/2027</span>
-              <strong class="status-open" id="chronik-name-2">Noch offen</strong>
             </div>
           </div>
         </div>
@@ -5753,8 +5750,8 @@
 
       <h3 class="hall-section-title">Ehrenmitglieder & besondere Leistungen</h3>
       <div class="history-row">
-        <span id="honours-label">Status</span>
-        <strong class="status-open" id="honours-value">Noch keine Einträge</strong>
+        <span id="honours-label">Champion der WM-Runde 2026</span>
+        <strong id="honours-value">ZweikampfGott</strong>
       </div>
 
       <div class="hall-logbook">
@@ -6453,7 +6450,7 @@
         );
         setText("champion-label", data.aktuellerChampion?.label);
 
-        setText("meister-title", `Meister ${data.meister?.saison ?? ""}`.trim());
+        setText("meister-title", `Bundesliga ${data.meister?.saison ?? ""}`.trim());
         setText("meister-name", data.meister?.name);
 
         setText("dfb-title", `DFB-Pokal ${data.dfbPokal?.saison ?? ""}`.trim());
@@ -6470,7 +6467,7 @@
 
         setText(
           "smugglerwertung-title",
-          `Smuggleraufträge ${data.smugglerauftraege?.saison ?? ""}`.trim()
+          data.smugglerauftraege?.saison ? `Smuggleraufträge ${data.smugglerauftraege.saison}` : "Smuggleraufträge"
         );
         setText("smugglerwertung-name", data.smugglerauftraege?.name);
         setOpenState(
@@ -6486,7 +6483,7 @@
 
         setText(
           "weihnachtsregatta-title",
-          `Weihnachtsregatta ${data.weihnachtsregatta?.jahr ?? ""}`.trim()
+          data.weihnachtsregatta?.jahr ? `Weihnachtsregatta ${data.weihnachtsregatta.jahr}` : "Weihnachtsregatta"
         );
         setText("weihnachtsregatta-name", data.weihnachtsregatta?.name);
         setOpenState(
@@ -6497,7 +6494,7 @@
 
         setText(
           "piratenkodex-title",
-          `Piratenkodex ${data.piratenkodex?.saison ?? ""}`.trim()
+          data.piratenkodex?.saison ? `Piratenkodex ${data.piratenkodex.saison}` : "Piratenkodex"
         );
         setText("piratenkodex-name", data.piratenkodex?.name);
         setOpenState(
@@ -6512,10 +6509,13 @@
           setText("chronik-name-1", chronik[0].name);
           setOpenState("chronik-name-1", Boolean(chronik[0].offen));
         }
-        if (chronik[1]) {
+        const chronikRow2 = document.getElementById("chronik-name-2")?.closest(".history-row");
+        if (chronik[1] && chronikRow2) {
           setText("chronik-season-2", chronik[1].saison);
           setText("chronik-name-2", chronik[1].name);
           setOpenState("chronik-name-2", Boolean(chronik[1].offen));
+        } else if (chronikRow2) {
+          chronikRow2.hidden = true;
         }
 
         setText("record-total-label", data.rekorde?.gesamtpunkte?.label);

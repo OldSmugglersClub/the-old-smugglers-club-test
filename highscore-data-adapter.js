@@ -75,18 +75,15 @@
   }
 
   window.OSCHighscoreDataAdapter={
-    version:'4.7.0-a3-HF3',
+    version:'4.7.0-RC8.5-TEST',
     async loadHighscore(){
       const result=await first(['./website-view.json','./highscore.json']);
       return normalizeHighscore(result.data,result.path);
     },
     async loadHallOfFame(){
-      try{
-        const view=await readJson('./website-view.json');
-        if(view?.hallOfFame)return legacyHall(view.hallOfFame);
-      }catch(error){}
+      if(window.OSCHallOfFame?.load)return window.OSCHallOfFame.load();
       const result=await first(['./hall-of-fame.json']);
-      return legacyHall(result.data);
+      return result.data||{};
     },
     clear(){cache.clear()}
   };
