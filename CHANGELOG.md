@@ -1,3 +1,10 @@
+# Website 4.7.0-RC6-HF7-TEST – Spielzeilen-Refactoring – 05.08.2026
+
+- Die Paarung jeder Spielzeile wird als eine geschlossene Einheit gerendert: Wappen, Heimteam, Trennzeichen, Auswärtsteam, Wappen.
+- Die in HF6 versehentlich entfernte sichtbare Siegelgestaltung wurde vollständig wiederhergestellt.
+- Eine einzige verbindliche Regelgruppe steuert die Desktop- und Mobildarstellung der Paarung.
+- Keine Änderungen an Grid, Kachelgröße, Spieltagsdaten, Navigation, Countdown oder Highscore.
+
 # Website 4.7.0-RC6-HF6-TEST – CSS-Kaskade der Spielpaarungen bereinigt – 05.08.2026
 
 - Widersprüchliche RC5-, HF2-, HF4- und HF5-Regeln der Spielpaarung wurden aus `index.html` bereinigt.

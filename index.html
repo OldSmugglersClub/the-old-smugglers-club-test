@@ -5072,15 +5072,62 @@
     }
 
 
-    /* Website 4.7.0-RC6-HF6 – verbindliche Paarungsdarstellung ohne Patch-Konflikte */
+    /* Website 4.7.0-RC6-HF7 – Spielpaarung als geschlossene, wartbare Einheit */
+    .sm-event-row__match {
+      min-width: 0;
+      width: 100%;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .sm-event-row__team {
+      min-width: 0;
+    }
+
+    .sm-event-row__team-name {
+      min-width: 0;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    .sm-event-row__seal {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      overflow: hidden;
+      border: 1px solid rgba(211,160,69,.72);
+      border-radius: 50%;
+      background: linear-gradient(145deg,#3a2512,#120b06);
+      box-shadow:
+        inset 0 0 0 2px rgba(28,16,7,.72),
+        0 2px 6px rgba(0,0,0,.38);
+      font-size: .48rem;
+      font-weight: 900;
+    }
+
+    .sm-event-row__seal img,
+    .sm-event-row__seal svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .sm-event-row__separator {
+      color: #d7ad58;
+      font-size: 1.05rem;
+      flex: 0 0 auto;
+    }
+
     @media (min-width: 761px) {
       .sm-event-row__match {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: .62rem;
-        width: 100%;
-        min-width: 0;
         text-align: center;
       }
 
@@ -5091,30 +5138,40 @@
         align-items: center;
         justify-content: center;
         width: auto;
-        min-width: 0;
         gap: .42rem;
       }
 
       .sm-event-row__team-name {
         width: auto;
-        min-width: 0;
         white-space: nowrap;
       }
+    }
 
-      .sm-event-row__team--home .sm-event-row__team-name {
-        text-align: right;
-      }
-
-      .sm-event-row__team--away .sm-event-row__team-name {
+    @media (max-width: 760px) {
+      .sm-event-row__match {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .35rem;
         text-align: left;
       }
 
-      .sm-event-row__seal {
-        justify-self: auto;
+      .sm-event-row__team,
+      .sm-event-row__team--home,
+      .sm-event-row__team--away {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: .5rem;
+        text-align: left;
+      }
+
+      .sm-event-row__team--away {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
       }
 
       .sm-event-row__separator {
-        flex: 0 0 auto;
+        display: none;
       }
     }
 
@@ -6563,7 +6620,7 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
-      <span>Version 4.7.0-RC6-HF6-TEST</span>
+      <span>Version 4.7.0-RC6-HF7-TEST</span>
     </nav>
   </div>
 </footer>
