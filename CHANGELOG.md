@@ -1,3 +1,10 @@
+# Website 4.7.0-RC6-HF3-TEST – Spielzeilen exakt ausgerichtet – 05.08.2026
+
+- Heim- und Auswärtsteamnamen beginnen in allen Desktop-Spielzeilen auf identischen vertikalen Achsen.
+- Die rechtsbündige Ausrichtung der Heimteam-Namen wurde entfernt; unterschiedliche Namenslängen verschieben die Zeilen nicht mehr optisch.
+- Die hervorgehobene Begegnung wird abhängig vom Zustand als „Aktuelles Spiel“, „Nächstes Spiel“ oder „Letztes Spiel“ bezeichnet.
+- Keine Änderungen an Grid, Kachelgröße, Kalenderdaten, Navigation, Countdown-Logik oder Highscore.
+
 # Website 4.7.0-RC6-HF2-TEST – Ausrichtung der Spielzeilen – 05.08.2026
 
 - Die Paarungen sämtlicher Spielzeilen verwenden feste, identische Achsen für Heim-Siegel, Vereinsnamen, Trennzeichen und Auswärts-Siegel.

@@ -5121,7 +5121,7 @@
       .sm-event-row__team--home {
         grid-template-columns: 32px minmax(0, 1fr);
         justify-content: stretch;
-        text-align: right;
+        text-align: left;
       }
 
       .sm-event-row__team--away {
@@ -5142,6 +5142,16 @@
       .sm-event-row__separator {
         justify-self: center;
         align-self: center;
+      }
+    }
+
+
+    /* Website 4.7.0-RC6-HF3 – identische Textachsen und semantische Hauptspielbezeichnung */
+    @media (min-width: 761px) {
+      .sm-event-row__team--home .sm-event-row__team-name,
+      .sm-event-row__team--away .sm-event-row__team-name {
+        width: 100%;
+        text-align: left;
       }
     }
 
@@ -6285,7 +6295,12 @@
           elements.next?.classList.remove("is-placeholder");
           const firstDate = new Intl.DateTimeFormat(locale, { weekday: "short", day: "2-digit", month: "2-digit", year: "numeric" }).format(firstGame._start);
           if (elements.nextDate) elements.nextDate.textContent = `${firstDate} · ${firstGame.anstoss || "--:--"}`;
-          if (elements.nextCompetition) elements.nextCompetition.textContent = selectedMatchday.name || firstGame.wettbewerbAnzeige || "Tippspieltag";
+          if (elements.nextCompetition) {
+            const mainGameLabel = liveGames.length
+              ? "Aktuelles Spiel"
+              : (firstGame._start > now ? "Nächstes Spiel" : "Letztes Spiel");
+            elements.nextCompetition.textContent = mainGameLabel;
+          }
           if (elements.nextHomeName) elements.nextHomeName.textContent = firstGame.heim;
           if (elements.nextSeparator) elements.nextSeparator.textContent = firstGame.trenner || "–";
           if (elements.nextAwayName) elements.nextAwayName.textContent = firstGame.auswaerts;
@@ -6607,7 +6622,7 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
-      <span>Version 4.7.0-RC6-HF1-TEST</span>
+      <span>Version 4.7.0-RC6-HF3-TEST</span>
     </nav>
   </div>
 </footer>
