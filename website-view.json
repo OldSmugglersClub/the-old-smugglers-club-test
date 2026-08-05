@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "datenVersion": "4.7.0-RC6-HF1-TEST",
-  "aktualisiertAm": "2026-08-04T22:55:00+02:00",
+  "datenVersion": "4.7.0-RC8.1-HF1-TEST",
+  "aktualisiertAm": "2026-08-05T15:45:00+02:00",
   "saison": "2026-27",
   "modus": "produktiv",
-  "quelle": "Website 4.7.0-RC4-HF1 zentrale Spielbetriebsintegration mit offiziellem Tippspielkalender",
+  "quelle": "Website 4.7.0-RC8.1-HF1 Missionsname und Termin mit Testzeitpunkt vor Smugglerauftrag Auftakt",
   "highscore": {
     "wettbewerbe": {
       "bundesliga": {
@@ -4229,10 +4229,10 @@
   },
   "schedule": {
     "schemaVersion": 1,
-    "source": "Website 4.7.0-RC4-HF1 offizieller Tippspielkalender aus 4.6.1/4.7.0",
+    "source": "Website 4.7.0-RC8.1-HF1 Testkalender vor Smugglerauftrag Auftakt",
     "activeSeason": "2026-27",
-    "generatedAt": "2026-08-04T22:55:00+02:00",
-    "testNow": "2026-08-29T16:00:00+02:00",
+    "generatedAt": "2026-08-05T15:45:00+02:00",
+    "testNow": "2026-08-05T15:45:00+02:00",
     "locale": "de-DE",
     "liveDurationMinutes": 120,
     "notice": "",

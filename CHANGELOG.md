@@ -1,3 +1,11 @@
+# Website 4.7.0-RC8.1-HF1-TEST – Missionsname und Termin abgesichert – 05.08.2026
+
+- „Nächste Mission“ zeigt jetzt den Namen des nächsten bestätigten Events und das Datum in getrennten Zeilen.
+- Der Missionsname ist auf zwei sichtbare Zeilen begrenzt und bricht lange Bezeichnungen kontrolliert um.
+- Der Testzeitpunkt liegt vor dem Smugglerauftrag „Auftakt“, damit die fachlich erste Mission der Saison geprüft wird.
+- Countdown, Spieltagskachel und Schmugglerrat verwenden weiterhin dieselbe zentrale Eventauswahl.
+- Keine Änderungen an Grid, Kachelgröße, Navigation oder Grundlayout.
+
 # Website 4.7.0-RC8.1-TEST – Hoher Schmugglerrat dynamisiert – 05.08.2026
 
 - Saisonplakette und Saisonfeld lesen die aktive Saison aus dem zentralen Spielbetriebsdatenstand.

@@ -4951,6 +4951,30 @@
       word-break: normal;
     }
 
+    /* Website 4.7.0-RC8.1-HF1 – Missionsname und Termin in zwei belastbaren Zeilen */
+    #welcome-next-mission {
+      display: grid;
+      gap: .08rem;
+      min-width: 0;
+    }
+    .welcome-mission-name {
+      display: -webkit-box;
+      min-width: 0;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow-wrap: anywhere;
+      line-height: 1.08;
+    }
+    .welcome-mission-date {
+      display: block;
+      color: #d7b85f;
+      font-size: .88em;
+      line-height: 1.08;
+      white-space: nowrap;
+    }
+
     .welcome-command-actions {
       width: min(100%, 720px);
       display: grid;
@@ -5375,7 +5399,7 @@
             </div>
             <div class="welcome-status-item">
               <svg aria-hidden="true"><use href="#icon-anchor"></use></svg>
-              <span><small>Nächste Mission</small><strong id="welcome-next-mission">Noch kein Termin</strong></span>
+              <span><small>Nächste Mission</small><strong id="welcome-next-mission"><span class="welcome-mission-name">Noch kein Termin</span><span class="welcome-mission-date" aria-hidden="true"></span></strong></span>
             </div>
             <div class="welcome-status-item">
               <svg aria-hidden="true"><use href="#icon-trophy"></use></svg>
@@ -6194,6 +6218,24 @@
         return Number.isNaN(value.getTime()) ? null : value;
       };
 
+      const setWelcomeMission = (name, date = "") => {
+        const target = document.getElementById("welcome-next-mission");
+        if (!target) return;
+        let nameNode = target.querySelector(".welcome-mission-name");
+        let dateNode = target.querySelector(".welcome-mission-date");
+        if (!nameNode || !dateNode) {
+          target.replaceChildren();
+          nameNode = document.createElement("span");
+          nameNode.className = "welcome-mission-name";
+          dateNode = document.createElement("span");
+          dateNode.className = "welcome-mission-date";
+          target.append(nameNode, dateNode);
+        }
+        nameNode.textContent = String(name || "Noch kein Termin").trim() || "Noch kein Termin";
+        dateNode.textContent = String(date || "").trim();
+        dateNode.setAttribute("aria-hidden", String(!dateNode.textContent));
+      };
+
       try {
         if (!window.OSCScheduleDataAdapter) throw new Error("Spielbetriebsadapter fehlt");
         const schedulePayload = await window.OSCScheduleDataAdapter.loadSchedule();
@@ -6289,9 +6331,10 @@
         const welcomeEvent = countdownEvents.find(event => event._end > now);
         if (welcomeEvent) {
           const missionDate = new Intl.DateTimeFormat(locale, { day: "2-digit", month: "2-digit", year: "numeric" }).format(welcomeEvent._start);
-          setText("welcome-next-mission", missionDate, "Noch kein Termin");
+          const missionName = welcomeEvent.matchdayName || welcomeEvent.runde || welcomeEvent.wettbewerb || "Nächstes Event";
+          setWelcomeMission(missionName, missionDate);
         } else {
-          setText("welcome-next-mission", "Noch kein Termin");
+          setWelcomeMission("Noch kein Termin");
         }
 
         const currentMatchday = preparedMatchdays.find(matchday => matchday._start <= now && matchday._end >= now);
@@ -6426,7 +6469,7 @@
           elements.kicktipp.setAttribute("aria-hidden", String(!visible));
         }
       } catch (error) {
-        setText("welcome-next-mission", "Noch kein Termin");
+        setWelcomeMission("Noch kein Termin");
         configureWelcomeKicktipp(null);
         console.error("Spieltagskachel:", error);
         if (elements.label) elements.label.textContent = "Nächster Tippspieltag";
