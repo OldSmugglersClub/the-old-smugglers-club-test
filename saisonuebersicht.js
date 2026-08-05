@@ -72,6 +72,23 @@
     return fallbackStatus || "geplant";
   }
 
+  async function loadFooterVersion() {
+    const target = $("footer-version");
+    if (!target) return;
+    try {
+      const registry = window.OSCDataRegistry;
+      const versionUrl = registry ? await registry.url("version") : "./VERSION.txt";
+      const response = await fetch(versionUrl, { cache: "no-store" });
+      if (!response.ok) throw new Error(`Versionsdatei konnte nicht geladen werden (${response.status})`);
+      const version = (await response.text()).trim();
+      if (!version) throw new Error("Versionsdatei ist leer");
+      target.textContent = `Version ${version}`;
+    } catch (error) {
+      console.warn("Footer-Version konnte nicht dynamisch geladen werden.", error);
+      target.textContent = "Version nicht verfügbar";
+    }
+  }
+
   async function init() {
     try {
       const registry = window.OSCDataRegistry;
@@ -143,5 +160,6 @@
     }
   }
 
+  loadFooterVersion();
   init();
 })();

@@ -1,3 +1,10 @@
+# Website 4.7.0-RC7-HF1-TEST – Dynamische Footer-Version – 05.08.2026
+
+- Die Versionsanzeige der Saisonübersicht wird nicht mehr statisch im HTML gepflegt.
+- `saisonuebersicht.js` lädt die aktuelle Version über das Datenregister aus `VERSION.txt`.
+- Bei fehlender oder leerer Versionsdatei erscheint ein eindeutiger Fehlerhinweis statt einer veralteten Versionsnummer.
+- Keine Änderungen an Saisonkennzahlen, Wettbewerbsstatus, Tabellenstruktur, Grid, Navigation oder Grundlayout.
+
 # Website 4.7.0-RC7-TEST
 
 - Saisonübersicht fachlich nachgeschärft.
