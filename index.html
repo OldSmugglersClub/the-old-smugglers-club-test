@@ -4951,10 +4951,21 @@
       word-break: normal;
     }
 
-    /* Website 4.7.0-RC8.1-HF1 – Missionsname und Termin in zwei belastbaren Zeilen */
+    /* Website 4.7.0-RC8.1-HF2 – Missionsinhalt mit ruhiger vertikaler Gliederung */
+    .welcome-status-item--mission > span {
+      align-self: stretch;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .welcome-status-item--mission > span > small {
+      margin-bottom: .22rem;
+      line-height: 1.05;
+    }
     #welcome-next-mission {
       display: grid;
-      gap: .08rem;
+      gap: .16rem;
       min-width: 0;
     }
     .welcome-mission-name {
@@ -4965,13 +4976,13 @@
       -webkit-line-clamp: 2;
       line-clamp: 2;
       overflow-wrap: anywhere;
-      line-height: 1.08;
+      line-height: 1.14;
     }
     .welcome-mission-date {
       display: block;
       color: #d7b85f;
       font-size: .88em;
-      line-height: 1.08;
+      line-height: 1.12;
       white-space: nowrap;
     }
 
@@ -5397,7 +5408,7 @@
               <svg aria-hidden="true"><use href="#icon-map"></use></svg>
               <span><small>Aktuelle Saison</small><strong id="welcome-season">Noch offen</strong></span>
             </div>
-            <div class="welcome-status-item">
+            <div class="welcome-status-item welcome-status-item--mission">
               <svg aria-hidden="true"><use href="#icon-anchor"></use></svg>
               <span><small>Nächste Mission</small><strong id="welcome-next-mission"><span class="welcome-mission-name">Noch kein Termin</span><span class="welcome-mission-date" aria-hidden="true"></span></strong></span>
             </div>

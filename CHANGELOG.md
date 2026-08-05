@@ -1,3 +1,10 @@
+# Website 4.7.0-RC8.1-HF2-TEST – Missionsfeld typografisch entzerrt – 05.08.2026
+
+- Überschrift, Missionsname und Datum erhalten eine klarere vertikale Gliederung innerhalb der bestehenden Statusbox.
+- Der Abstand unter „Nächste Mission“ und zwischen Missionsname und Datum wurde gezielt vergrößert.
+- Missionsname und Datum bleiben vollständig dynamisch; die Begrenzung auf höchstens zwei Namenszeilen bleibt erhalten.
+- Keine Änderungen an Grid, Kachelgröße, Datenquelle, Navigation oder Grundlayout.
+
 # Website 4.7.0-RC8.1-HF1-TEST – Missionsname und Termin abgesichert – 05.08.2026
 
 - „Nächste Mission“ zeigt jetzt den Namen des nächsten bestätigten Events und das Datum in getrennten Zeilen.
