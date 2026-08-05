@@ -17,8 +17,8 @@
       "text": "Spieltage, Endergebnisse, Tabelle, Formkurven sowie Heim-, Auswärts- und Torstatistiken werden zentral aus den Spieldaten aufgebaut."
     }
   ],
-  "aktuellerStandTitel": "Datenmanagement:",
-  "aktuellerStand": "Endergebnisse werden direkt bei den Spielen in spieldaten.json gepflegt. Tabelle, Form und Saisonrekorde berechnen sich daraus automatisch. Spielerbezogene Statistiken benötigen später eine separate Datenquelle.",
+  "aktuellerStandTitel": "",
+  "aktuellerStand": "",
   "bereiche": [],
   "buttons": [
     {

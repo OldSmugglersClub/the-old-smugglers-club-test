@@ -1202,9 +1202,12 @@ function renderCards(cards) {
       text("status-text", data.aktuellerStand);
 
       const centralSection = centralGamesSection(centralGameData, teamData);
+      const editorialSections = safeArray(data.bereiche);
       const sections = centralSection
-        ? [centralSection, ...safeArray(data.bereiche)]
-        : safeArray(data.bereiche);
+        ? (slug === "dynamo-dresden"
+            ? [...editorialSections, centralSection]
+            : [centralSection, ...editorialSections])
+        : editorialSections;
 
       renderSections(sections, data.buttons, centralGameData, teamData, bundesligaTableData);
       renderButtons(data.buttons);
