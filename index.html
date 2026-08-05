@@ -5104,6 +5104,69 @@
       .sm-event-row__separator { display: none; }
     }
 
+    /* Website 4.7.0-RC6-HF2 – feste Achsen und Statusplaketten in Spielzeilen */
+    @media (min-width: 761px) {
+      .sm-event-row__match {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr);
+        gap: .55rem;
+      }
+
+      .sm-event-row__team {
+        display: grid;
+        width: 100%;
+        gap: .5rem;
+      }
+
+      .sm-event-row__team--home {
+        grid-template-columns: 32px minmax(0, 1fr);
+        justify-content: stretch;
+        text-align: right;
+      }
+
+      .sm-event-row__team--away {
+        grid-template-columns: minmax(0, 1fr) 32px;
+        justify-content: stretch;
+        text-align: left;
+      }
+
+      .sm-event-row__team--home .sm-event-row__seal,
+      .sm-event-row__team--away .sm-event-row__seal {
+        justify-self: center;
+      }
+
+      .sm-event-row__team-name {
+        align-self: center;
+      }
+
+      .sm-event-row__separator {
+        justify-self: center;
+        align-self: center;
+      }
+    }
+
+    .sm-event-row__status {
+      min-width: 78px;
+      padding: .28rem .58rem;
+      border: 1px solid rgba(190,129,39,.58);
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(82,48,17,.92), rgba(31,18,9,.96));
+      box-shadow: inset 0 1px rgba(255,255,255,.06);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .045em;
+      line-height: 1.1;
+      justify-self: center;
+    }
+
+    @media (max-width: 760px) {
+      .sm-event-row__status {
+        min-width: 0;
+        width: fit-content;
+        justify-self: start;
+      }
+    }
+
   </style>
   <link rel="stylesheet" href="./highscore.css?v=4.0.1">
   <link rel="stylesheet" href="./accessibility-v33.css">

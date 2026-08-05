@@ -1,3 +1,10 @@
+# Website 4.7.0-RC6-HF2-TEST – Ausrichtung der Spielzeilen – 05.08.2026
+
+- Die Paarungen sämtlicher Spielzeilen verwenden feste, identische Achsen für Heim-Siegel, Vereinsnamen, Trennzeichen und Auswärts-Siegel.
+- Unterschiedlich lange Vereinsnamen verschieben die darunterliegenden Begegnungen nicht mehr seitlich.
+- Spielstatus werden als kompakte Messingplaketten innerhalb der vorhandenen Statusspalte dargestellt.
+- Keine Änderungen an Grid, Kachelgröße, Spieltagsdaten, Navigation oder Spielbetriebslogik.
+
 # Website 4.7.0-RC6-HF1-TEST – Eindeutige LIVE-Anzeige – 04.08.2026
 
 - Die vier Nullfelder des Countdowns werden während laufender Begegnungen ausgeblendet.
