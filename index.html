@@ -5357,7 +5357,7 @@
       <article class="panel welcome-panel">
         <div class="welcome-command-center" aria-labelledby="welcome-command-title">
           <div class="welcome-command-copy">
-            <span class="welcome-season-badge" id="welcome-season-badge">Saison 2026/2027</span>
+            <span class="welcome-season-badge" id="welcome-season-badge">Saison noch offen</span>
             <span class="welcome-headquarters-label">Hauptquartier des Old Smugglers Club</span>
             <h1 id="welcome-command-title">Der Hohe Schmugglerrat</h1>
             <div class="welcome-divider" aria-hidden="true"><span></span></div>
@@ -5371,21 +5371,21 @@
           <div class="welcome-status" aria-label="Aktueller Saisonstatus">
             <div class="welcome-status-item">
               <svg aria-hidden="true"><use href="#icon-map"></use></svg>
-              <span><small>Aktuelle Saison</small><strong id="welcome-season">2026/2027</strong></span>
+              <span><small>Aktuelle Saison</small><strong id="welcome-season">Noch offen</strong></span>
             </div>
             <div class="welcome-status-item">
               <svg aria-hidden="true"><use href="#icon-anchor"></use></svg>
-              <span><small>Nächste Mission</small><strong id="welcome-next-mission">09.08.2026</strong></span>
+              <span><small>Nächste Mission</small><strong id="welcome-next-mission">Noch kein Termin</strong></span>
             </div>
             <div class="welcome-status-item">
               <svg aria-hidden="true"><use href="#icon-trophy"></use></svg>
-              <span><small>Aktueller Champion</small><strong id="welcome-champion">ZweikampfGott</strong></span>
+              <span><small>Aktueller Champion</small><strong id="welcome-champion">Noch offen</strong></span>
             </div>
           </div>
 
           <div class="welcome-command-actions">
-            <a class="welcome-command-button"
-               href="https://www.kicktipp.de/the-old-smugglers-club/"
+            <a class="welcome-command-button" id="welcome-kicktipp-link"
+               href="#"
                target="_blank" rel="noopener noreferrer">
               <svg aria-hidden="true"><use href="#icon-skull"></use></svg>
               <span>Zur Tipprunde</span>
@@ -6126,6 +6126,27 @@
       }).join("");
     }
 
+    const formatSeasonLabel = value => {
+      const raw = String(value || "").trim();
+      const match = raw.match(/^(\d{4})[-/](\d{2}|\d{4})$/);
+      if (!match) return raw || "Noch offen";
+      const end = match[2].length === 2 ? `${match[1].slice(0, 2)}${match[2]}` : match[2];
+      return `${match[1]}/${end}`;
+    };
+
+    const configureWelcomeKicktipp = config => {
+      const link = document.getElementById("welcome-kicktipp-link");
+      if (!link) return;
+      const href = typeof config?.kicktippLink === "string" ? config.kicktippLink.trim() : "";
+      const text = typeof config?.kicktippButtonText === "string" ? config.kicktippButtonText.trim() : "";
+      const label = text || "Zur Tipprunde";
+      link.querySelector("span")?.replaceChildren(label);
+      link.href = href || "#";
+      link.classList.toggle("is-hidden", !href);
+      link.setAttribute("aria-hidden", String(!href));
+      if (!href) link.removeAttribute("target");
+    };
+
     async function loadMatchdayData() {
       const elements = {
         label: document.getElementById("sm-schedule-label"),
@@ -6180,6 +6201,10 @@
         const gameData = schedulePayload.games;
         const teamData = schedulePayload.teams;
         const matchdayData = schedulePayload.matchdays;
+        const activeSeasonLabel = formatSeasonLabel(matchdayData.aktiveSaison || gameData.aktiveSaison || schedulePayload.config?.activeSeason);
+        setText("welcome-season", activeSeasonLabel, "Noch offen");
+        setText("welcome-season-badge", `Saison ${activeSeasonLabel}`, "Saison noch offen");
+        configureWelcomeKicktipp(data);
         document.documentElement.dataset.scheduleSource = schedulePayload.source;
         const locale = data.locale || "de-DE";
         const liveMinutesDefault = Math.max(1, Number(data.liveDauerMinuten) || 120);
@@ -6261,6 +6286,13 @@
           matchdayName: matchday.name || `Tippspieltag ${matchday.nummer}`
         })));
         configureEventCountdown(countdownEvents, now, locale);
+        const welcomeEvent = countdownEvents.find(event => event._end > now);
+        if (welcomeEvent) {
+          const missionDate = new Intl.DateTimeFormat(locale, { day: "2-digit", month: "2-digit", year: "numeric" }).format(welcomeEvent._start);
+          setText("welcome-next-mission", missionDate, "Noch kein Termin");
+        } else {
+          setText("welcome-next-mission", "Noch kein Termin");
+        }
 
         const currentMatchday = preparedMatchdays.find(matchday => matchday._start <= now && matchday._end >= now);
         const nextMatchday = preparedMatchdays.find(matchday => matchday._end >= now);
@@ -6394,6 +6426,8 @@
           elements.kicktipp.setAttribute("aria-hidden", String(!visible));
         }
       } catch (error) {
+        setText("welcome-next-mission", "Noch kein Termin");
+        configureWelcomeKicktipp(null);
         console.error("Spieltagskachel:", error);
         if (elements.label) elements.label.textContent = "Nächster Tippspieltag";
         if (elements.title) elements.title.textContent = "Daten konnten nicht geladen werden";
@@ -6424,7 +6458,6 @@
         setText("smuggler-intro", data.einleitung, "Spezialmissionen außerhalb der regulären Wettbewerbe.");
         const mission = data.mission || {};
         const missionDate = String(mission.termin || "").split("·")[0].trim();
-        setText("welcome-next-mission", missionDate || "Noch offen");
         setText("smuggler-current", mission.titel || data.aktuellerAuftrag, "Operation „Auftakt“");
         setText("smuggler-subtitle", mission.untertitel, "Smugglerauftrag 1 · 2. Bundesliga");
         setText("smuggler-home", mission.heim, "1. FC Nürnberg");

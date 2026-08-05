@@ -1,3 +1,12 @@
+# Website 4.7.0-RC8.1-TEST – Hoher Schmugglerrat dynamisiert – 05.08.2026
+
+- Saisonplakette und Saisonfeld lesen die aktive Saison aus dem zentralen Spielbetriebsdatenstand.
+- „Nächste Mission“ nutzt dieselbe Ereignisauswahl wie Countdown und Spieltagskachel.
+- Der alte Smugglerauftrag-spezifische Überschreibpfad für „Nächste Mission“ wurde entfernt.
+- „Aktueller Champion“ behält die Hall-of-Fame-Datenanbindung; statische Altwerte im HTML wurden durch neutrale Fallbacks ersetzt.
+- Link und Beschriftung „Zur Tipprunde“ werden aus der zentralen Schedule-Konfiguration geladen und bei fehlendem Link ausgeblendet.
+- Keine Änderungen an Grid, Kachelgröße, Navigation, Grundlayout oder Design.
+
 # Website 4.7.0-RC7-HF1-TEST – Dynamische Footer-Version – 05.08.2026
 
 - Die Versionsanzeige der Saisonübersicht wird nicht mehr statisch im HTML gepflegt.
