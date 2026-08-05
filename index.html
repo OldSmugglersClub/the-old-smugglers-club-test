@@ -5384,7 +5384,6 @@
           <li><a href="#wettbewerbe">Wettbewerbe</a></li>
           <li><a href="./saison-2026-2027.html">Saisonübersicht</a></li>
           <li><a href="./highscore.html">Highscore</a></li>
-          <li><a href="#auftraege">Smuggleraufträge</a></li>
           <li><a href="#hall-of-fame">Hall of Fame</a></li>
           <li><a href="#piratenkodex">Piratenkodex</a></li>
           <li><a href="#kummerkasten">Kummerkasten</a></li>
@@ -5607,64 +5606,6 @@
         </a>
       </div>
     </section>
-
-    <section class="section panel smuggler-panel" id="auftraege">
-      <div class="smuggler-header">
-        <div>
-          <div class="eyebrow" id="smuggler-label">Sondermission</div>
-          <h2 id="smuggler-title">Smuggleraufträge</h2>
-        </div>
-        <div class="matchday-status" id="smuggler-status">IN VORBEREITUNG</div>
-      </div>
-
-      <p class="lead" id="smuggler-intro">
-        Spezialmissionen außerhalb der regulären Wettbewerbe.
-      </p>
-
-      <div class="smuggler-grid" id="smuggler-grid">
-        <article class="smuggler-card">
-          <div class="smuggler-card__head">
-            <span class="smuggler-card__medallion" aria-hidden="true"><svg class="pirate-icon"><use href="#icon-map"></use></svg></span>
-            <div>
-              <p class="smuggler-mission-kicker">Aktuelle Mission</p>
-              <h3 id="smuggler-current">Operation „Auftakt“</h3>
-              <p id="smuggler-subtitle">Smugglerauftrag 1 · 2. Bundesliga</p>
-            </div>
-          </div>
-
-          <div class="smuggler-match" aria-label="Aktuelle Spielpaarung">
-            <span class="smuggler-match__team" id="smuggler-home">1. FC Nürnberg</span>
-            <span class="smuggler-match__versus">gegen</span>
-            <span class="smuggler-match__team" id="smuggler-away">Dynamo Dresden</span>
-          </div>
-
-          <div class="smuggler-mission-meta">
-            <div><span>Termin</span><strong id="smuggler-date">09.08.2026 · 13:30 Uhr</strong></div>
-            <div><span>Status</span><strong id="smuggler-mission-status">Auftrag offen</strong></div>
-            <div><span>Wertung</span><strong id="smuggler-scoring">2 / 3 / 5 Punkte</strong></div>
-          </div>
-
-          <p class="smuggler-description" id="smuggler-description"></p>
-
-          <div class="smuggler-actions">
-            <a class="button button-primary" id="smuggler-link" href="./smugglerauftrag-auftakt.html">
-              Missionsakte öffnen
-            </a>
-            <a class="button" href="./dynamo-dresden.html">Alle Aufträge</a>
-          </div>
-        </article>
-
-        <aside class="smuggler-sidecard">
-          <div class="smuggler-sidecard__plaque" id="smuggler-side-title">Piratenlogbuch</div>
-          <p id="smuggler-side-text">Der erste Auftrag führt die Crew nach Nürnberg. Jeder Smugglerauftrag ist ein eigener Spieltag und zählt zur Einzel-Gesamtwertung.</p>
-          <div class="smuggler-sidecard__seal" aria-hidden="true">
-            <span class="smuggler-hourglass"></span>
-          </div>
-          <div class="smuggler-sidecard__status"><span id="smuggler-progress">0 / 34</span> abgeschlossen</div>
-        </aside>
-      </div>
-    </section>
-
 
     <section class="section panel" id="hall-of-fame">
       <div class="section-title"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-trophy"></use></svg><h2>Hall of Fame</h2></div>
@@ -6498,56 +6439,6 @@
       }
     }
 
-    async function loadSmugglerData() {
-      try {
-        const response = await fetch("./smugglerauftraege.json", { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`smugglerauftraege.json: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        const setText = (id, value, fallback = "") => {
-          const element = document.getElementById(id);
-          if (element) element.textContent = value || fallback;
-        };
-
-        setText("smuggler-label", data.bereich, "Sondermission");
-        setText("smuggler-title", data.titel, "Smuggleraufträge");
-        setText("smuggler-status", data.status, "IN VORBEREITUNG");
-        setText("smuggler-intro", data.einleitung, "Spezialmissionen außerhalb der regulären Wettbewerbe.");
-        const mission = data.mission || {};
-        const missionDate = String(mission.termin || "").split("·")[0].trim();
-        setText("smuggler-current", mission.titel || data.aktuellerAuftrag, "Operation „Auftakt“");
-        setText("smuggler-subtitle", mission.untertitel, "Smugglerauftrag 1 · 2. Bundesliga");
-        setText("smuggler-home", mission.heim, "1. FC Nürnberg");
-        setText("smuggler-away", mission.auswaerts, "Dynamo Dresden");
-        setText("smuggler-date", mission.termin, "09.08.2026 · 13:30 Uhr");
-        setText("smuggler-mission-status", mission.statusText, "Auftrag offen");
-        setText("smuggler-scoring", mission.wertung, "2 / 3 / 5 Punkte");
-
-        const completed = Number(data.abgeschlossen) || 0;
-        const total = Number(data.gesamt) || 0;
-        setText("smuggler-progress", `${completed} / ${total}`);
-
-        setText("smuggler-description", data.beschreibung, "");
-        setText("smuggler-side-title", data.logbuchTitel, "Piratenlogbuch");
-        setText(
-          "smuggler-side-text",
-          data.logbuchText,
-          "Sobald ein Auftrag festgelegt ist, erscheinen hier Status und Fortschritt."
-        );
-
-        const link = document.getElementById("smuggler-link");
-        if (link) {
-          link.href = mission.link || "./smugglerauftrag-auftakt.html";
-          link.textContent = mission.buttonText || "Missionsakte öffnen";
-        }
-      } catch (error) {
-        console.error("Smuggleraufträge konnten nicht geladen werden:", error);
-      }
-    }
-
     async function loadClubData() {
       try {
         const data = await window.OSCHighscoreDataAdapter.loadHallOfFame();
@@ -6660,7 +6551,6 @@
     }
 
     loadSiteData();
-    loadSmugglerData();
     loadClubData();
     loadMatchdayData();
 

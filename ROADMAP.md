@@ -295,3 +295,15 @@ Als nächstes wird ein lokaler, nicht veröffentlichender Importprototyp entwick
 - [ ] automatische Berechnungskette anbinden
 - [ ] GitHub-Exportgenerator anbinden
 - [ ] realen Testspieltag durchführen
+## Nachgelagerter Ausbau: Sondermissionszentrale
+
+Die in 4.7.0 entfernte Startseitenkachel für Smuggleraufträge soll erst in einer späteren Website-Version zurückkehren, wenn sie vollständig automatisiert ist. Geplanter Umfang:
+
+- Auswahl zwischen Smuggleraufträgen, Piratenkodex und Weihnachtsregatta,
+- automatische Ermittlung der jeweils aktuellen Mission,
+- dynamische Gegner-, Termin-, Status-, Wertungs- und Fortschrittsdaten,
+- wiederverwendbare dynamische Missionsakte und Historie,
+- vollständige Desktop- und Mobiltests.
+
+Bis dahin bleiben die drei Bereiche über „Unsere Wettbewerbe“ erreichbar.
+
