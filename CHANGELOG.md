@@ -1,3 +1,10 @@
+# Website 4.7.0-RC6-HF6-TEST – CSS-Kaskade der Spielpaarungen bereinigt – 05.08.2026
+
+- Widersprüchliche RC5-, HF2-, HF4- und HF5-Regeln der Spielpaarung wurden aus `index.html` bereinigt.
+- Für Desktop gilt nur noch eine verbindliche Paarungsregel: Wappen direkt am jeweiligen Mannschaftsnamen, gesamte Paarung mittig.
+- HTML-Struktur, Spielbetriebsdaten, Kachelgröße, Grid, Navigation und Berechnungslogik bleiben unverändert.
+- Der Hotfix behebt die nachträgliche Überschreibung der HF5-Regel durch ältere CSS-Blöcke.
+
 # Website 4.7.0-RC6-HF5-TEST – Wappen direkt an den Mannschaftsnamen – 05.08.2026
 
 - Heimwappen steht unmittelbar vor dem Heimteam.

@@ -3482,52 +3482,7 @@
       color: #b99b62;
       font-size: .75rem;
       font-weight: 400;
-    }
-
-
-
-    /* Website 4.7.0-RC6-HF5 – Wappen direkt an den Mannschaftsnamen */
-    @media (min-width: 761px) {
-      .sm-event-row__match {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: .62rem;
-        width: 100%;
-        min-width: 0;
-      }
-
-      .sm-event-row__team,
-      .sm-event-row__team--home,
-      .sm-event-row__team--away {
-        display: inline-flex;
-        width: auto;
-        min-width: 0;
-        gap: .42rem;
-        justify-content: center;
-      }
-
-      .sm-event-row__team--home {
-        text-align: right;
-      }
-
-      .sm-event-row__team--away {
-        text-align: left;
-      }
-
-      .sm-event-row__team--home .sm-event-row__team-name,
-      .sm-event-row__team--away .sm-event-row__team-name {
-        width: auto;
-        white-space: nowrap;
-      }
-
-      .sm-event-row__team--home .sm-event-row__seal,
-      .sm-event-row__team--away .sm-event-row__seal {
-        justify-self: auto;
-      }
-    }
-
-    .sm-event-row__status {
+    }    .sm-event-row__status {
       color: #cda65b;
       font-size: .75rem;
       white-space: nowrap;
@@ -5094,117 +5049,6 @@
     }
 
 
-    /* Website 4.7.0-RC5 – Team-Siegel in allen Spielzeilen */
-    .sm-event-row__match {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      align-items: center;
-      gap: .62rem;
-      text-align: center;
-    }
-
-    .sm-event-row__team {
-      display: inline-flex;
-      align-items: center;
-      min-width: 0;
-      gap: .5rem;
-    }
-
-    .sm-event-row__team--home { justify-content: flex-end; text-align: right; }
-    .sm-event-row__team--away { justify-content: flex-start; text-align: left; }
-    .sm-event-row__team-name { min-width: 0; overflow-wrap: anywhere; }
-    .sm-event-row__separator { color: #d7ad58; font-size: 1.05rem; }
-
-    .sm-event-row__seal {
-      display: grid;
-      place-items: center;
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-      overflow: hidden;
-      border: 1px solid rgba(211,160,69,.72);
-      border-radius: 50%;
-      background: linear-gradient(145deg,#3a2512,#120b06);
-      box-shadow: inset 0 0 0 2px rgba(28,16,7,.72), 0 2px 6px rgba(0,0,0,.38);
-      font-size: .48rem;
-      font-weight: 900;
-    }
-
-    .sm-event-row__seal img,
-    .sm-event-row__seal svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    @media (max-width: 760px) {
-      .sm-event-row__match { grid-template-columns: 1fr; gap: .35rem; text-align: left; }
-      .sm-event-row__team,
-      .sm-event-row__team--home,
-      .sm-event-row__team--away { justify-content: flex-start; text-align: left; }
-      .sm-event-row__team--away { flex-direction: row-reverse; justify-content: flex-end; }
-      .sm-event-row__separator { display: none; }
-    }
-
-    /* Website 4.7.0-RC6-HF2 – feste Achsen und Statusplaketten in Spielzeilen */
-    @media (min-width: 761px) {
-      .sm-event-row__match {
-        width: 100%;
-        grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr);
-        gap: .55rem;
-      }
-
-      .sm-event-row__team {
-        display: grid;
-        width: 100%;
-        gap: .5rem;
-      }
-
-      .sm-event-row__team--home {
-        grid-template-columns: 32px minmax(0, 1fr);
-        justify-content: stretch;
-        text-align: left;
-      }
-
-      .sm-event-row__team--away {
-        grid-template-columns: minmax(0, 1fr) 32px;
-        justify-content: stretch;
-        text-align: left;
-      }
-
-      .sm-event-row__team--home .sm-event-row__seal,
-      .sm-event-row__team--away .sm-event-row__seal {
-        justify-self: center;
-      }
-
-      .sm-event-row__team-name {
-        align-self: center;
-      }
-
-      .sm-event-row__separator {
-        justify-self: center;
-        align-self: center;
-      }
-    }
-
-
-    /* Website 4.7.0-RC6-HF4 – Paarungen als optisch geschlossene Einheit */
-    @media (min-width: 761px) {
-      .sm-event-row__team--home .sm-event-row__team-name,
-      .sm-event-row__team--away .sm-event-row__team-name {
-        width: 100%;
-      }
-
-      .sm-event-row__team--home .sm-event-row__team-name {
-        text-align: right;
-      }
-
-      .sm-event-row__team--away .sm-event-row__team-name {
-        text-align: left;
-      }
-    }
-
     .sm-event-row__status {
       min-width: 78px;
       padding: .28rem .58rem;
@@ -5224,6 +5068,53 @@
         min-width: 0;
         width: fit-content;
         justify-self: start;
+      }
+    }
+
+
+    /* Website 4.7.0-RC6-HF6 – verbindliche Paarungsdarstellung ohne Patch-Konflikte */
+    @media (min-width: 761px) {
+      .sm-event-row__match {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .62rem;
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+      }
+
+      .sm-event-row__team,
+      .sm-event-row__team--home,
+      .sm-event-row__team--away {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        min-width: 0;
+        gap: .42rem;
+      }
+
+      .sm-event-row__team-name {
+        width: auto;
+        min-width: 0;
+        white-space: nowrap;
+      }
+
+      .sm-event-row__team--home .sm-event-row__team-name {
+        text-align: right;
+      }
+
+      .sm-event-row__team--away .sm-event-row__team-name {
+        text-align: left;
+      }
+
+      .sm-event-row__seal {
+        justify-self: auto;
+      }
+
+      .sm-event-row__separator {
+        flex: 0 0 auto;
       }
     }
 
@@ -6672,7 +6563,7 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
-      <span>Version 4.7.0-RC6-HF5-TEST</span>
+      <span>Version 4.7.0-RC6-HF6-TEST</span>
     </nav>
   </div>
 </footer>
