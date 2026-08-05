@@ -45,6 +45,33 @@
     return `<span class="season-count">automatisch<small>${suffix}</small></span>`;
   }
 
+  function hasConfirmedKickoff(game) {
+    return Boolean(
+      game &&
+      /^\d{4}-\d{2}-\d{2}$/.test(game.datum || "") &&
+      /^\d{2}:\d{2}$/.test(game.anstoss || "") &&
+      game.terminBestaetigt !== false
+    );
+  }
+
+  function hasResult(game) {
+    return Number.isFinite(game && game.heimtore) && Number.isFinite(game && game.auswaertstore);
+  }
+
+  function deriveCompetitionStatus(competitionGames, fallbackStatus) {
+    if (!competitionGames.length) return fallbackStatus || "wartet auf Spielplan";
+
+    const completed = competitionGames.filter(hasResult).length;
+    const scheduled = competitionGames.filter(hasConfirmedKickoff).length;
+    const live = competitionGames.some(game => String(game && game.status || "").toLowerCase() === "live");
+
+    if (completed === competitionGames.length) return "abgeschlossen";
+    if (live || completed > 0) return "läuft";
+    if (scheduled === competitionGames.length) return "terminiert";
+    if (scheduled > 0) return "teilweise terminiert";
+    return fallbackStatus || "geplant";
+  }
+
   async function init() {
     try {
       const registry = window.OSCDataRegistry;
@@ -71,31 +98,38 @@
       $("season-title").textContent = overview.titel || "Saisonübersicht 2026/2027";
       $("season-subtitle").textContent = overview.untertitel || "";
       $("competition-count").textContent = competitions.length;
-      $("stored-games").textContent = games.length;
+      const scheduledGames = games.filter(hasConfirmedKickoff).length;
+      $("stored-games").textContent = scheduledGames;
 
       const knownMatchdays = competitions.reduce((sum, item) => sum + (Number.isFinite(item.saison.tippspieltageZiel) ? item.saison.tippspieltageZiel : 0), 0);
       const knownGames = competitions.reduce((sum, item) => sum + (Number.isFinite(item.saison.spieleZiel) ? item.saison.spieleZiel : 0), 0);
       const openMatchdayCompetitions = competitions.filter(item => !Number.isFinite(item.saison.tippspieltageZiel)).length;
       const openGameCompetitions = competitions.filter(item => !Number.isFinite(item.saison.spieleZiel)).length;
 
-      $("matchday-total").textContent = `${knownMatchdays}+`;
-      $("matchday-note").textContent = `${openMatchdayCompetitions} Wettbewerbe werden ergänzt`;
-      $("game-total").textContent = `${knownGames}+`;
-      $("game-note").textContent = `${openGameCompetitions} Wettbewerbe werden ergänzt`;
+      $("matchday-total").textContent = String(knownMatchdays);
+      $("matchday-note").textContent = openMatchdayCompetitions > 0
+        ? `bekannte Saisonplanung · ${openMatchdayCompetitions} Wettbewerbe offen`
+        : "vollständig bekannte Saisonplanung";
+      $("game-total").textContent = String(knownGames);
+      $("game-note").textContent = openGameCompetitions > 0
+        ? `bekannte Saisonplanung · ${openGameCompetitions} Wettbewerbe offen`
+        : "vollständig bekannte Saisonplanung";
 
       const tbody = $("season-table-body");
       tbody.replaceChildren();
       competitions.forEach(competition => {
         const season = competition.saison;
-        const actualGames = matchingGames(games, competition).length;
+        const competitionGames = matchingGames(games, competition);
+        const actualGames = competitionGames.length;
         const actualMatchdays = matchingMatchdays(matchdays, competition).length;
+        const derivedStatus = deriveCompetitionStatus(competitionGames, season.status);
         const row = document.createElement("tr");
         row.innerHTML = `
           <td><a class="season-competition-link" href="./${competition.page}">${season.seasonLabel || competition.label}</a></td>
           <td>${displayCount(season.tippspieltageZiel, actualMatchdays, "nach Auslosung")}</td>
           <td>${displayCount(season.spieleZiel, actualGames, "nach Auslosung")}</td>
           <td>${season.zeitraum || "Noch offen"}</td>
-          <td><span class="season-status-pill">${season.status || "geplant"}</span></td>`;
+          <td><span class="season-status-pill">${derivedStatus}</span></td>`;
         tbody.appendChild(row);
       });
 

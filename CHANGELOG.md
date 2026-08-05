@@ -1,3 +1,12 @@
+# Website 4.7.0-RC7-TEST
+
+- Saisonübersicht fachlich nachgeschärft.
+- „Bereits terminiert“ zählt nur Spiele mit bestätigtem Datum und Anstoßzeit.
+- Wettbewerbsstatus wird aus Terminierung und Ergebnissen abgeleitet; statische Angaben bleiben nur als Fallback für Wettbewerbe ohne Spiele erhalten.
+- Saison-Sollwerte werden ohne missverständliches Pluszeichen als bekannte Planung angezeigt; offene Wettbewerbe werden im Hinweis ausgewiesen.
+- Versionsanzeige der Saisonübersicht aktualisiert.
+- Keine Änderung an Grid, Tabellenstruktur, Navigation oder Grundlayout.
+
 # Website 4.7.0-RC6-HF7-TEST – Spielzeilen-Refactoring – 05.08.2026
 
 - Die Paarung jeder Spielzeile wird als eine geschlossene Einheit gerendert: Wappen, Heimteam, Trennzeichen, Auswärtsteam, Wappen.
