@@ -1,3 +1,10 @@
+# Website 4.7.0-RC8.5-HF2-TEST – Ehrenlogbuch statistisch trennen – 05.08.2026
+
+- Die repräsentative Sonderauszeichnung bleibt ausschließlich auf der Startseite.
+- Das Ehrenlogbuch zeigt besondere Leistungen jetzt als kompakte chronologische Liste.
+- Meisterchronik, Titelkabinett, Rekordtafel und Hall-of-Fame-Daten bleiben unverändert.
+- Keine Änderungen an Grid, Kachelgrößen, Navigation oder Admin-Logik.
+
 # Website 4.7.0-RC8.4-TEST – nicht automatisierte Sondermissionskachel entfernt – 05.08.2026
 
 - Die eigenständige Smugglerauftragskachel wurde von der Startseite entfernt.
