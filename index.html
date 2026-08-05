@@ -3484,6 +3484,49 @@
       font-weight: 400;
     }
 
+
+
+    /* Website 4.7.0-RC6-HF5 – Wappen direkt an den Mannschaftsnamen */
+    @media (min-width: 761px) {
+      .sm-event-row__match {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .62rem;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .sm-event-row__team,
+      .sm-event-row__team--home,
+      .sm-event-row__team--away {
+        display: inline-flex;
+        width: auto;
+        min-width: 0;
+        gap: .42rem;
+        justify-content: center;
+      }
+
+      .sm-event-row__team--home {
+        text-align: right;
+      }
+
+      .sm-event-row__team--away {
+        text-align: left;
+      }
+
+      .sm-event-row__team--home .sm-event-row__team-name,
+      .sm-event-row__team--away .sm-event-row__team-name {
+        width: auto;
+        white-space: nowrap;
+      }
+
+      .sm-event-row__team--home .sm-event-row__seal,
+      .sm-event-row__team--away .sm-event-row__seal {
+        justify-self: auto;
+      }
+    }
+
     .sm-event-row__status {
       color: #cda65b;
       font-size: .75rem;
@@ -6629,7 +6672,7 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
-      <span>Version 4.7.0-RC6-HF4-TEST</span>
+      <span>Version 4.7.0-RC6-HF5-TEST</span>
     </nav>
   </div>
 </footer>

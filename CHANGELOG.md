@@ -1,3 +1,11 @@
+# Website 4.7.0-RC6-HF5-TEST – Wappen direkt an den Mannschaftsnamen – 05.08.2026
+
+- Heimwappen steht unmittelbar vor dem Heimteam.
+- Auswärtswappen steht unmittelbar hinter dem Auswärtsteam.
+- Die vollständige Paarung wird als geschlossene Einheit innerhalb der Spielzeile zentriert.
+- Uhrzeit, Wettbewerb und Statusplakette bleiben unverändert.
+- Keine Änderungen an Grid, Kachelgröße, Spieltagsdaten, Navigation oder Berechnungslogik.
+
 # Website 4.7.0-RC6-HF4-TEST – Paarungen optisch zentriert – 05.08.2026
 
 - Heimteamnamen stehen rechtsbündig zum festen Trennzeichen; Auswärtsteamnamen beginnen linksbündig dahinter.
