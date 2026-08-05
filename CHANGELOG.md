@@ -1,3 +1,9 @@
+# Website 4.7.0-RC8.1-HF3-TEST – Missionsblock vertikal zentriert – 05.08.2026
+
+- Symbol und vollständiger Textblock der Box „Nächste Mission“ werden als gemeinsame Einheit vertikal zentriert.
+- Überschrift, Missionsname und Datum erhalten feste, ruhige Abstände ohne zusätzliche obere Verschiebung.
+- Keine Änderungen an Grid, Kachelgröße, Datenquelle, Navigation oder Grundlayout.
+
 # Website 4.7.0-RC8.1-HF2-TEST – Missionsfeld typografisch entzerrt – 05.08.2026
 
 - Überschrift, Missionsname und Datum erhalten eine klarere vertikale Gliederung innerhalb der bestehenden Statusbox.

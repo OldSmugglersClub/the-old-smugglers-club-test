@@ -4951,22 +4951,28 @@
       word-break: normal;
     }
 
-    /* Website 4.7.0-RC8.1-HF2 – Missionsinhalt mit ruhiger vertikaler Gliederung */
+    /* Website 4.7.0-RC8.1-HF3 – Missionsblock als geschlossene Einheit zentriert */
+    .welcome-status-item--mission {
+      align-items: center;
+    }
+    .welcome-status-item--mission > svg {
+      align-self: center;
+    }
     .welcome-status-item--mission > span {
-      align-self: stretch;
-      display: flex;
+      align-self: center;
+      display: grid;
       min-width: 0;
-      flex-direction: column;
-      justify-content: center;
+      gap: .11rem;
     }
     .welcome-status-item--mission > span > small {
-      margin-bottom: .22rem;
-      line-height: 1.05;
+      margin: 0;
+      line-height: 1;
     }
     #welcome-next-mission {
       display: grid;
-      gap: .16rem;
+      gap: .08rem;
       min-width: 0;
+      margin-top: 0;
     }
     .welcome-mission-name {
       display: -webkit-box;
@@ -4976,13 +4982,13 @@
       -webkit-line-clamp: 2;
       line-clamp: 2;
       overflow-wrap: anywhere;
-      line-height: 1.14;
+      line-height: 1.08;
     }
     .welcome-mission-date {
       display: block;
       color: #d7b85f;
-      font-size: .88em;
-      line-height: 1.12;
+      font-size: .86em;
+      line-height: 1;
       white-space: nowrap;
     }
 
