@@ -1,3 +1,11 @@
+# Website 4.7.0-RC8.5-HF4-TEST – Hall of Fame final strukturieren – 05.08.2026
+
+- Auf der Startseite steht „Ehrenmitglieder & besondere Leistungen“ nun vor der Rekordtafel.
+- Die Rekordtafel wurde unter die besondere Leistung verschoben.
+- Die redaktionelle Ehrenlogbuch-Erklärbox wurde von der Startseite entfernt.
+- Im Ehrenlogbuch steht die Erklärbox als letzter inhaltlicher Abschnitt direkt vor Status und Footer.
+- Keine Änderungen an Daten, Siegerlogik, Rekordwerten, Grid, Navigation oder Kachelgrößen.
+
 # Website 4.7.0-RC8.5-HF3-TEST – Hall of Fame Bereinigung – 05.08.2026
 
 - Meisterchronik von der Startseite entfernt; sie bleibt ausschließlich im Ehrenlogbuch.
