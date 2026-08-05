@@ -1,3 +1,10 @@
+# Website 4.7.0-RC6-HF4-TEST – Paarungen optisch zentriert – 05.08.2026
+
+- Heimteamnamen stehen rechtsbündig zum festen Trennzeichen; Auswärtsteamnamen beginnen linksbündig dahinter.
+- Jede Begegnung wirkt damit wieder als geschlossene Einheit „Mannschaft A – Mannschaft B“.
+- Feste Siegel-, Trennzeichen- und Statusachsen aus RC6-HF2 bleiben erhalten.
+- Keine Änderungen an Grid, Kachelgröße, Kalenderdaten, Navigation, Countdown-Logik oder Highscore.
+
 # Website 4.7.0-RC6-HF3-TEST – Spielzeilen exakt ausgerichtet – 05.08.2026
 
 - Heim- und Auswärtsteamnamen beginnen in allen Desktop-Spielzeilen auf identischen vertikalen Achsen.
