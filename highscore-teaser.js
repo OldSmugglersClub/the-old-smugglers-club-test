@@ -69,7 +69,7 @@
     const newAverage=averageOf(newTeam);
     const label=oldAverage===newAverage?'Gleichstand':oldAverage>newAverage?'Old Smugglers':'New Smugglers';
     set('hs-team-leader',label);
-    set('hs-team-points',`${format(oldAverage,1)} : ${format(newAverage,1)} Punkte`);
+    set('hs-team-points',`${format(oldAverage,2)} : ${format(newAverage,2)} Punkte`);
   }
 
   async function init(){

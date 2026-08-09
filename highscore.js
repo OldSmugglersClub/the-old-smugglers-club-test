@@ -31,7 +31,7 @@ function renderSummary(list){
  const a=num(old?.averagePoints??old?.durchschnitt??old?.totalPoints),b=num(neu?.averagePoints??neu?.durchschnitt??neu?.totalPoints);
  $('summary-team-label').textContent=scope==='overall'?'Saison-Teamduell':'Teamduell';
  $('summary-team').textContent=a===b?'Gleichstand':a>b?'Old Smugglers':'New Smugglers';
- $('summary-team-points').textContent=`${fmt(a,1)} : ${fmt(b,1)} Punkte`;
+ $('summary-team-points').textContent=`${fmt(a,2)} : ${fmt(b,2)} Punkte`;
  const count=view==='team'?list.length:(source.meta?.participantCount||source.overall?.individual?.length||list.length);
  $('summary-count-label').textContent=view==='team'?'Teams':'Teilnehmer';
  $('summary-participants').textContent=String(count);

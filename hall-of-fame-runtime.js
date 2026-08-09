@@ -10,6 +10,8 @@
     const base=clone(await json("./hall-of-fame.json",{}));
     const view=await json("./website-view.json",{});
     const update=view?.hallOfFame;
+    const baseSpecial=Array.isArray(base.besondereLeistungen)?base.besondereLeistungen.find(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false)):null;
+    if(baseSpecial) base.ehrenmitglieder={label:baseSpecial.titel,wert:baseSpecial.name,offen:false};
     if(!update||update.freigegeben!==true){
       base.meta={...(base.meta||{}),runtime:"Historische Ehrungen werden angezeigt."};
       return base;
@@ -21,7 +23,7 @@
     for(const [id,key] of Object.entries(mapping)) result[key]=mergeEntry(result[key],update.wettbewerbe?.[id]);
     if(Array.isArray(update.besondereLeistungen)){
       const existing=Array.isArray(result.besondereLeistungen)?result.besondereLeistungen:[];
-      const additions=update.besondereLeistungen.filter(x=>x&&x.freigegeben===true&&x.name&&x.titel);
+      const additions=update.besondereLeistungen.filter(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false));
       result.besondereLeistungen=[...existing,...additions.filter(a=>!existing.some(e=>e.titel===a.titel&&e.name===a.name))];
     }
     if(Array.isArray(update.meisterchronik)) result.meisterchronik=update.meisterchronik.filter(x=>x&&x.freigegeben===true&&x.name&&x.saison);
