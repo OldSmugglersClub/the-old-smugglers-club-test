@@ -60,3 +60,18 @@
   .season-summary-card { min-height: 108px; }
   .season-board { padding: 16px; }
 }
+
+
+/* 4.7.1-TEST5: Besucheransicht Desktop/Mobil konsistent; keine Wortzerlegung in Tabellenbezeichnungen. */
+.season-table th,
+.season-competition-link{
+  white-space:nowrap;
+  overflow-wrap:normal;
+  word-break:keep-all;
+  hyphens:none;
+}
+@media(max-width:520px){
+  .season-table{min-width:820px}
+  .season-table th,
+  .season-table td{padding-left:10px;padding-right:10px}
+}

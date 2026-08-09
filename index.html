@@ -5253,7 +5253,55 @@
     }
 
   
+    /* Website 4.7.0-HF2 – adaptive mobile Spieltagsliste */
+    @media (max-width: 760px) {
+      .sm-schedule {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+      }
+
+      .sm-event-list:not(.is-empty) {
+        flex: 0 0 auto;
+        min-height: 0;
+      }
+
+      .sm-event-list.is-single,
+      .sm-event-list.is-double {
+        max-height: none;
+        overflow-y: visible;
+        scrollbar-gutter: auto;
+      }
+
+      .sm-event-list.is-multiple {
+        max-height: 700px;
+        overflow-y: auto;
+      }
+
+      .sm-day__title {
+        position: sticky;
+        top: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .sm-event-list.is-multiple {
+        max-height: 680px;
+      }
+    }
+
     .hall-columns--records-only { grid-template-columns: minmax(0, 1fr); }
+  
+    /* Website 4.7.2-TEST1 – Hauptnavigation um Stalk-O-Meter erweitert.
+       Nur Desktop: moderate Typografie-/Padding-Kompaktierung, keine Strukturänderung. */
+    @media (min-width: 721px) {
+      #navigation > ul > li > a {
+        font-size: .92rem;
+        padding-left: .68rem;
+        padding-right: .68rem;
+      }
+    }
+
   </style>
   <link rel="stylesheet" href="./highscore.css?v=4.0.1">
   <link rel="stylesheet" href="./accessibility-v33.css">
@@ -5281,7 +5329,51 @@
         radial-gradient(ellipse at 76% 86%, rgba(132,78,22,.055), transparent 34%),
         linear-gradient(105deg, #160e08 0 68%, #090604 100%) !important;
     }
-  </style>
+  
+
+    /* Website 4.7.1-TEST3 – gezielte mobile Stabilisierung */
+    @media (max-width: 720px) {
+      /* Header: Markenname und Menü erhalten getrennte, kollisionsfreie Bereiche. */
+      .nav-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        justify-content: stretch;
+        flex-wrap: nowrap;
+        gap: .5rem;
+      }
+
+      .mini-brand {
+        min-width: 0;
+        max-width: 100%;
+        overflow: visible;
+      }
+
+      .mini-brand span {
+        min-width: 0;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        font-size: clamp(.72rem, 3.2vw, .94rem);
+        line-height: 1.05;
+      }
+
+      .menu-button {
+        flex: 0 0 auto;
+        min-width: 96px;
+        max-width: 100%;
+      }
+
+      /* Wettbewerbsnavigator: keine willkürliche Trennung von Weihnachtsregatta. */
+      #wettbewerbe [data-wettbewerb-id="weihnachtsregatta"] b {
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-break: keep-all;
+        hyphens: none;
+        font-size: clamp(1.25rem, 5.2vw, 1.8rem);
+      }
+    }
+</style>
   <link rel="stylesheet" href="./legal.css">
   <script src="./hall-of-fame-runtime.js"></script>
   <script src="./highscore-data-adapter.js"></script>
@@ -5410,7 +5502,7 @@
     <div class="nav-inner">
       <a class="mini-brand" href="#start">
         <img src="./logo.jpeg" alt="" decoding="async">
-        <span>Old Smugglers</span>
+        <span>Old Smugglers Club</span>
       </a>
 
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="navigation">
@@ -5426,6 +5518,7 @@
           <li><a href="#hall-of-fame">Hall of Fame</a></li>
           <li><a href="#piratenkodex">Piratenkodex</a></li>
           <li><a href="#kummerkasten">Kummerkasten</a></li>
+          <li><a href="./stalk-o-meter.html">Stalk-O-Meter</a></li>
         </ul>
       </nav>
     </div>
@@ -5898,7 +5991,7 @@
       <div>
         <a href="#start">Nach oben</a>
         &nbsp;·&nbsp;
-        <a href="mailto:captain@the-old-smugglers-club.de">Kontakt</a>
+        <a href="mailto:kontakt@the-old-smugglers-club.de">Kontakt</a>
       </div>
 
       <div>© <span id="year"></span> The Old Smugglers Club</div>
@@ -5990,7 +6083,7 @@
       if (!countdownRuntime || !countdownRuntime.events.length) {
         setCountdownLiveMode(0);
         ["days", "hours", "minutes", "seconds"].forEach(id => setFlipValue(id, 0));
-        setCountdownInfo("Nächstes Event", "Noch kein bestätigter Termin vorhanden.", ["Der Admin liefert den nächsten freigegebenen Spieltermin."]);
+        setCountdownInfo("Nächstes Event", "Noch kein bestätigter Termin vorhanden.", ["Der nächste bestätigte Spieltermin steht noch nicht fest."]);
         return;
       }
 
@@ -6011,7 +6104,7 @@
       if (!next) {
         setCountdownLiveMode(0);
         ["days", "hours", "minutes", "seconds"].forEach(id => setFlipValue(id, 0));
-        setCountdownInfo("SAISON BEENDET", `Für die Saison ${countdownSeason} ist kein weiteres Event terminiert.`, ["Neue Termine erscheinen nach Freigabe durch den Admin."]);
+        setCountdownInfo("SAISON BEENDET", `Für die Saison ${countdownSeason} ist kein weiteres Event terminiert.`, ["Neue Termine erscheinen nach ihrer Freigabe."]);
         return;
       }
 
@@ -6368,7 +6461,8 @@
 
           if (elements.list) {
             elements.list.replaceChildren();
-            elements.list.classList.remove("is-empty");
+            elements.list.classList.remove("is-empty", "is-single", "is-double", "is-multiple");
+            elements.list.classList.add(games.length === 1 ? "is-single" : (games.length === 2 ? "is-double" : "is-multiple"));
             const groups = new Map();
             games.forEach(game => {
               const key = game.datum || game.datumVon;
@@ -6638,10 +6732,13 @@
     <nav class="legal-footer__links" aria-label="Rechtliche Navigation">
       <a href="./impressum.html">Impressum</a>
       <a href="./datenschutz.html">Datenschutz</a>
+      <a href="./nutzungsrechte.html">Nutzungsrechte</a>
       <span id="legal-version">Version wird geladen</span>
     </nav>
   </div>
 </footer>
 
+  <script data-goatcounter="https://oldsmugglersclub.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

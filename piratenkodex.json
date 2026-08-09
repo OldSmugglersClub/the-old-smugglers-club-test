@@ -17,8 +17,8 @@
       "text": "Gewertet werden gezielt ausgewählte Klassiker und Derbys aus den europäischen Topligen."
     }
   ],
-  "aktuellerStandTitel": "Aktueller Stand:",
-  "aktuellerStand": "Piratenkodex I bis VI sind terminiert und werden unten automatisch aus den zentralen Spieldaten angezeigt. Zwei weitere Wertungsspieltage folgen beim Weihnachts-Update.",
+  "aktuellerStandTitel": "",
+  "aktuellerStand": "",
   "bereiche": [
     {
       "typ": "liste",

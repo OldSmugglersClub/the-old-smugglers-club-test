@@ -26,3 +26,54 @@
 @media(min-width:721px){
   .legal-footer__links{gap:18px}
 }
+
+
+/* HF2 Korrektur: keine Wortzerreißung in Überschriften auf Rechtsseiten */
+.legal-page h1,
+.legal-page h2,
+.legal-page .legal-kicker {
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+@media (max-width: 700px) {
+  .legal-page h1,
+  .legal-page h2 {
+    hyphens: none;
+    -webkit-hyphens: none;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+
+/* HF2 Abnahmekorrektur 2:
+   Mobile Rechtsseiten: vollständige Wörter in H1 nicht trennen.
+   Schriftgröße nur mobil reduzieren, damit "Nutzungsrechte" ungeteilt passt. */
+@media (max-width: 700px) {
+  .legal-page h1 {
+    font-size: clamp(1.72rem, 7.1vw, 2.25rem);
+    line-height: 1.08;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+}
+
+
+/* 4.7.2-HF3: Nur lange Kontakt-Mailadressen dürfen auf schmalen Displays umbrechen.
+   Fließtext und Überschriften behalten die HF2-Regeln gegen Wortzerreißung. */
+.legal-page .legal-email {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+
+/* 4.7.2-HF3-HF1: Mobile Rechtsseiten-H1 verkleinert, damit lange Titel wie
+   „Datenschutzerklärung“ vollständig im bestehenden Kasten bleiben.
+   Keine Worttrennung, kein Desktop-Eingriff. */

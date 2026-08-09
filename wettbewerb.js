@@ -604,7 +604,7 @@
       const link = document.createElement("a");
       link.href = `./${definition.page || `${id}.html`}`;
       link.textContent = label;
-      link.className = `competition-link${id === slug ? " is-current" : ""}`;
+      link.className = `competition-link${id === slug ? " is-current" : ""}${id === "weihnachtsregatta" ? " competition-link--weihnachtsregatta" : ""}`;
       if (id === slug) link.setAttribute("aria-current", "page");
       links.appendChild(link);
     });

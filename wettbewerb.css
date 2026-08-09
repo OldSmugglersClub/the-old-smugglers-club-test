@@ -805,3 +805,29 @@ body.page-dynamo-dresden{
   .match-pairing .team-identity--home,.match-pairing .team-identity--away{justify-content:center;text-align:center}
   .match-pairing__separator{line-height:1}
 }
+
+/* Website 4.7.1-TEST2 – lange Wettbewerbsnamen mobil sauber umbrechen */
+@media(max-width:800px){
+  h1{
+    font-size:clamp(1.95rem,9.2vw,2.75rem);
+    line-height:1.04;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+}
+
+/* Website 4.7.1 FINAL – gezielter Mobilfix im tatsaechlichen dynamischen Wettbewerbs-Navigator. */
+@media(max-width:600px){
+  .competition-link--weihnachtsregatta{
+    white-space:nowrap !important;
+    overflow-wrap:normal !important;
+    word-break:normal !important;
+    hyphens:none !important;
+    font-size:clamp(.68rem,3.1vw,.82rem);
+    line-height:1.08;
+    letter-spacing:-.02em;
+    padding-left:.35rem;
+    padding-right:.35rem;
+  }
+}

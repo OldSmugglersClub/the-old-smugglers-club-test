@@ -20,8 +20,8 @@
           "datumAnzeige": "09.08.2026",
           "anstoss": "13:30",
           "terminBestaetigt": true,
-          "heimtore": 1,
-          "auswaertstore": 1,
+          "heimtore": 3,
+          "auswaertstore": 0,
           "status": "beendet",
           "sonderwertungen": [
             "smugglerauftrag"
@@ -31,7 +31,7 @@
           "heimTeamId": "nuernberg",
           "auswaertsTeamId": "dynamo-dresden",
           "ergebnisNach90MinutenBestaetigt": true,
-          "aktualisiertAm": "2026-08-03T20:59:28.589Z"
+          "aktualisiertAm": "2026-08-09T18:11:13.460Z"
         },
         {
           "id": "sma-2026-27-02-013",
@@ -8275,5 +8275,5 @@
     }
   ],
   "datenVersion": 4,
-  "aktualisiert": "2026-08-03"
+  "aktualisiert": "2026-08-09"
 }

@@ -762,3 +762,74 @@
 
 /* 4.7.0-RC1-HF1: Registermarke in allen Ranglistentabellen ausblenden. */
 .hs-table-wrap::before{display:none!important;content:none!important}
+
+/* Website 4.7.1-TEST2 – gezielte mobile Typografie ohne Wortzerlegung */
+@media(max-width:720px){
+  .hs-hero-top{display:grid;grid-template-columns:72px minmax(0,1fr);align-items:start;gap:12px}
+  .hs-emblem{width:72px;height:72px;flex-basis:auto}
+  .hs-kicker{font-size:.68rem;line-height:1.35;letter-spacing:.1em}
+  .hs-hero h1{font-size:clamp(2.25rem,11vw,3rem);line-height:.95;overflow-wrap:normal;word-break:normal;hyphens:none}
+  .hs-hero p{font-size:.95rem;line-height:1.45}
+  .hs-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .hs-stat-card{min-width:0;padding:14px 12px}
+  .hs-stat-card span{font-size:.64rem;letter-spacing:.08em}
+  .hs-stat-card strong{font-size:1.05rem;line-height:1.15;overflow-wrap:normal;word-break:normal;hyphens:none}
+  .hs-stat-card small{font-size:.82rem;line-height:1.25;overflow-wrap:normal;word-break:normal;hyphens:none}
+}
+@media(max-width:390px){
+  .hs-summary{grid-template-columns:1fr}
+}
+
+
+/* 4.7.1-TEST4: Besucher-Audit – keine willkürliche Worttrennung in Wettbewerbsnamen */
+.hs-competition-tabs .hs-main-tab{overflow-wrap:normal;word-break:normal;hyphens:none}
+.hs-actions .hs-btn--back{color:#e7d2a5;background:linear-gradient(180deg,#271b10,#171008)}
+.hs-actions .hs-btn--kicktipp{color:#211305;border-color:#e2bd68;background:linear-gradient(180deg,#e8c66f,#a96b1f)}
+
+
+/* 4.7.1-TEST5: Wettbewerbsnamen auf Desktop und Mobil niemals innerhalb eines Wortes trennen. */
+.hs-competition-tabs .hs-main-tab{
+  white-space:nowrap;
+  overflow-wrap:normal;
+  word-break:keep-all;
+  hyphens:none;
+  padding-left:8px;
+  padding-right:8px;
+  font-size:clamp(.62rem,1.05vw,.82rem);
+}
+@media(max-width:720px){
+  .hs-competition-tabs .hs-main-tab{
+    white-space:nowrap;
+    overflow-wrap:normal;
+    word-break:keep-all;
+    hyphens:none;
+    font-size:clamp(.58rem,2.45vw,.76rem);
+    letter-spacing:.025em;
+    padding-left:5px;
+    padding-right:5px;
+  }
+}
+
+/* Website 4.7.1-TEST7 – lange Wettbewerbsnamen bleiben vollständig innerhalb ihrer Buttons. */
+.hs-competition-tabs .hs-main-tab{
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+  white-space:nowrap;
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:none;
+  overflow:hidden;
+  font-size:.66rem;
+  letter-spacing:.012em;
+  padding-left:4px;
+  padding-right:4px;
+}
+@media(max-width:720px){
+  .hs-competition-tabs .hs-main-tab{
+    font-size:.62rem;
+    letter-spacing:0;
+    padding-left:3px;
+    padding-right:3px;
+  }
+}

@@ -1,3 +1,84 @@
+# Website 4.7.1 FINAL – 07.08.2026
+
+- 4.7.1-TEST10 nach erfolgreicher Desktop-/Mobile-Abnahme unverändert als FINAL freigegeben.
+- Letzter bestätigter Besucherfehler im mobilen dynamischen Wettbewerbs-Navigator behoben: „Weihnachtsregatta“ wird nicht mehr innerhalb des Wortes getrennt.
+- Highscore-Navigator, Hall of Fame, mobile Kopfzeile, Saisonübersicht und Button-Konventionen aus dem 4.7.1-Audit bestätigt.
+- Release-/Pfadfehler aus TEST5-HF1 dauerhaft berücksichtigt; Updatepakete liegen flach für den Repository-Stamm vor.
+- Keine neuen Funktionen, keine Änderung an Grid, Kachelgrößen, Navigation, Fachlogik, JSON-Datenmodell oder Admin.
+
+# Website 4.7.1-TEST9
+
+- Kumulativer Nachfolger von 4.7.1-TEST8.
+- Einziger Fix: Die Wettbewerbs-Synchronisierung erhält bei „Weihnachtsregatta“ den vorhandenen `competition-label-nowrap`-Span, statt ihn per `textContent` zu entfernen.
+- Dadurch greift die bereits vorhandene mobile `white-space: nowrap`-Regel tatsächlich.
+- Keine Änderungen an Grid, Kachelgrößen, Navigation, Datenmodell oder Fachlogik.
+
+# Website 4.7.1-TEST8
+
+- Kumulativer Nachfolger von 4.7.1-TEST7.
+- Ausschließlich mobiler Besucherfix: „Weihnachtsregatta“ wird im Wettbewerbs-Navigator nicht mehr innerhalb des Wortes getrennt.
+- Gezielte Markup-/CSS-Absicherung nur für diese Kachel; Grid, Kachelmaße, Navigation und Fachlogik unverändert.
+
+# Website 4.7.1-TEST7
+
+- Mobile Wettbewerbsnavigator: „Weihnachtsregatta“ bleibt vollständig innerhalb der bestehenden Kachel.
+- Desktop Highscore/Wettbewerb: lange Wettbewerbsnamen verlassen ihre Buttons nicht mehr.
+- Keine Änderungen an Fachlogik, Navigation, Grid oder Kachelgrößen.
+
+# Website 4.7.1-TEST6
+
+- Hall of Fame: Hinweisbox „Gesamt-Team-Sieger“ verwendet nun dasselbe Piratensymbol wie „Besondere Leistungen“ statt gelbem Seitenstrich.
+- Hall of Fame: Hinweisbox „Ehrenlogbuch“ verwendet nun dasselbe Piratensymbol statt gelbem Seitenstrich.
+- Mobile Navigation: vollständiger Markenname „Old Smugglers Club“ wird angezeigt; Größen-/Überlaufregel gezielt stabilisiert.
+- Saisonübersicht: CSS/JS und Saisondaten werden für TEST6 versionsgebunden frisch geladen, damit Mobil und Desktop denselben DFB-Pokal-Zeitraum „Ab Achtelfinale“ verwenden.
+- Keine Änderungen an Fachlogik, Navigation, Grid, Kachelgrößen oder Admin.
+
+# Website 4.7.1-TEST5
+
+- TEST4 als nicht veröffentlichten Zwischenstand verworfen und vollständig in TEST5 übernommen.
+- Hinweisblock „Besondere Leistungen“ mit Piratensymbol statt gelbem Seitenstrich.
+- Wettbewerbsnamen im Highscore auf Desktop und Mobil ohne willkürliche Worttrennung.
+- DFB-Pokal in der Saisonübersicht einheitlich als „Ab Achtelfinale“ dargestellt.
+- Buttonfarbregel vereinheitlicht: Gelb für Kicktipp, Braun für interne Rücknavigation.
+- Interne Pflegehinweise wie „aktuell hinterlegt“ aus der öffentlichen Saisonübersicht entfernt.
+- Saisonübersicht auf Mobil und Desktop inhaltlich vereinheitlicht.
+- Keine Änderungen an Fachlogik, Datenmodell, Navigation, Grid oder Kachelgrößen.
+
+# Website 4.7.1-TEST4
+
+- Hall-of-Fame-Hinweis „Besondere Leistungen“: gelben Seitenstrich durch vorhandenes Club-Piratensymbol ersetzt.
+- Highscore-Wettbewerbsnavigation: willkürliche Worttrennung bei Gesamtwertung, Bundesliga und Piratenkodex verhindert.
+- Saisonübersicht: DFB-Pokal-Zeitraum besucherorientiert auf „Ab Achtelfinale“ vereinheitlicht.
+- Aktionsfarben vereinheitlicht: Kicktipp gelb, interne Rücknavigation braun.
+- Keine Änderungen an Fachlogik, Buttonzielen, Grid, Kachelgrößen, Admin oder JSON-Strukturen.
+
+# Website 4.7.1-TEST3
+
+- Mobile Header-Kollision zwischen Markenname und Menü behoben.
+- Willkürliche Worttrennung bei „Weihnachtsregatta“ verhindert.
+- Keine Funktions- oder Architekturänderungen.
+
+# Website 4.7.0-HF2 – Adaptive mobile Spieltagsliste – 05.08.2026
+
+- Mobile Höhe der unteren Spieltagsliste richtet sich nach der tatsächlichen Spielanzahl.
+- Ein Spiel wird kompakt ohne Scrollbereich und ohne Leerfläche angezeigt.
+- Zwei Spiele werden vollständig ohne internes Scrollen angezeigt.
+- Ab drei Spielen bleibt die Liste scrollbar; etwa zwei Begegnungen sind gleichzeitig sichtbar.
+- Desktop-Darstellung, Daten und Spieltagslogik bleiben unverändert.
+
+# Website 4.7.0-HF1 – Mobile Spieltagsliste – 05.08.2026
+
+- Mobile Spieltagsliste vergrößert, sodass mindestens zwei Begegnungen sichtbar sind.
+- Desktop und Logik unverändert.
+
+# Website 4.7.0 FINAL – Produktionsfreigabe – 05.08.2026
+
+- Freigegebener Stand RC8.5-HF4 übernommen.
+- Simulierter Testzeitpunkt aus `website-view.json` entfernt.
+- Versionsangaben auf `4.7.0` vereinheitlicht.
+- Hall of Fame, Wettbewerbsseiten, Saisonübersicht, Highscore, Spieltagskachel und Countdown als freigegebener Produktionsstand gebündelt.
+- Smugglerauftrags-Startseitenkachel bleibt entfernt; Wettbewerb und Berechnungen bleiben erhalten.
+
 # Website 4.7.0-RC8.5-HF4-TEST – Hall of Fame final strukturieren – 05.08.2026
 
 - Auf der Startseite steht „Ehrenmitglieder & besondere Leistungen“ nun vor der Rekordtafel.
@@ -304,3 +385,18 @@
 
 ## 4.7.0-RC8.5-HF1-TEST
 - Startseite kompakter, Ehrenlogbuch historisch vollständig; besondere Leistungen optisch hervorgehoben.
+
+# Website 4.7.1-TEST5-HF1
+
+- Release-/Einspiel-Hotfix: Die bereits freigegebenen TEST5-Website-Dateien werden direkt in den Repository-Stamm eingespielt.
+- Der fälschlich veröffentlichte Ordner `DATEIEN_FUER_GITHUB` ist zu löschen.
+- Keine neuen Fach- oder Layoutänderungen gegenüber TEST5.
+- Enthält weiterhin die kumulativen TEST3-/TEST5-Korrekturen.
+
+
+## 4.7.1-TEST10
+- Letzten mobilen Besucherfehler im tatsaechlichen dynamischen Wettbewerbs-Navigator lokalisiert.
+- `wettbewerb.js`: Weihnachtsregatta erhaelt ausschliesslich im Navigator eine eigene Zielklasse.
+- `wettbewerb.css`: gezielte mobile No-Wrap-/Schriftregel nur fuer diese Navigator-Kachel.
+- Wettbewerbsseiten laden `wettbewerb.css` und `wettbewerb.js` versionsgebunden, damit Safari keinen Altstand verwendet.
+- Fehlgeleitete TEST7/8/9-Sonderaenderungen an der Startseiten-Komponente wurden auf den bestaetigten TEST6-Stand zurueckgesetzt; keine neue Fachlogik.

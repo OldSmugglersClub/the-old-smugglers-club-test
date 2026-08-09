@@ -17,8 +17,8 @@
       "text": "Abgeschlossene Aufträge bleiben dauerhaft als Saisonchronik sichtbar."
     }
   ],
-  "aktuellerStandTitel": "Aktueller Stand:",
-  "aktuellerStand": "Termine, Gegner, Ergebnisse und Status der Smuggleraufträge werden ausschließlich aus dem zentralen Spielplan geladen.",
+  "aktuellerStandTitel": "",
+  "aktuellerStand": "",
   "bereiche": [
     {
       "typ": "liste",

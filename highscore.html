@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Highscore und Ranglisten des The Old Smugglers Club">
   <title>Highscore | The Old Smugglers Club</title>
-  <link rel="stylesheet" href="./wettbewerb.css"><link rel="stylesheet" href="./highscore.css"><link rel="stylesheet" href="./accessibility-v33.css"><link rel="stylesheet" href="./legal.css">
+  <link rel="stylesheet" href="./wettbewerb.css"><link rel="stylesheet" href="./highscore.css?v=4.7.1-TEST7"><link rel="stylesheet" href="./accessibility-v33.css"><link rel="stylesheet" href="./legal.css">
 </head>
 <body>
 <a class="hs-skip-link" href="#highscore-content">Direkt zum Highscore-Inhalt</a>
@@ -39,9 +39,23 @@
     <div id="pagination-top"></div><div class="hs-table-wrap"><table class="hs-table"><caption class="sr-only">Highscore-Rangliste</caption><thead id="ranking-head"></thead><tbody id="ranking-body"></tbody></table></div><div id="pagination-bottom"></div>
   </section>
 
-  <div class="hs-actions"><a class="hs-btn" href="./index.html#highscore">Zurück zur Clubseite</a><a class="hs-btn" href="https://www.kicktipp.de/the-old-smugglers-club/" target="_blank" rel="noopener noreferrer">Zum Kicktipp</a></div>
+  <div class="hs-actions"><a class="hs-btn hs-btn--back" href="./index.html#highscore">Zurück zur Clubseite</a><a class="hs-btn hs-btn--kicktipp" href="https://www.kicktipp.de/the-old-smugglers-club/" target="_blank" rel="noopener noreferrer">Zum Kicktipp</a></div>
 </main>
-<footer class="legal-footer" aria-label="Rechtliche Hinweise"><div class="legal-footer__inner"><span>© 2026 The Old Smugglers Club</span><nav class="legal-footer__links"><a href="./impressum.html">Impressum</a><a href="./datenschutz.html">Datenschutz</a><span>Version 4.7.0-FINAL</span></nav></div></footer>
+<footer class="legal-footer" aria-label="Rechtliche Hinweise"><div class="legal-footer__inner"><span>© 2026 The Old Smugglers Club</span><nav class="legal-footer__links"><a href="./impressum.html">Impressum</a><a href="./datenschutz.html">Datenschutz</a>
+      <a href="./nutzungsrechte.html">Nutzungsrechte</a><span id="legal-version">Version wird geladen</span></nav></div></footer>
 <script src="./highscore-data-adapter.js"></script>
 <script src="./highscore.js"></script>
+
+<script>
+(function(){
+  const target=document.getElementById('legal-version');
+  if(!target) return;
+  fetch('./VERSION.txt',{cache:'no-store'})
+    .then(response=>response.ok?response.text():Promise.reject())
+    .then(value=>{target.textContent='Version '+value.trim();})
+    .catch(()=>{target.textContent='Version nicht verfügbar';});
+})();
+</script>
+  <script data-goatcounter="https://oldsmugglersclub.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </body></html>

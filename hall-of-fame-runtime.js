@@ -11,7 +11,7 @@
     const view=await json("./website-view.json",{});
     const update=view?.hallOfFame;
     if(!update||update.freigegeben!==true){
-      base.meta={...(base.meta||{}),runtime:"Historischer Bestand aktiv; keine freigegebene Admin-Aktualisierung vorhanden."};
+      base.meta={...(base.meta||{}),runtime:"Historische Ehrungen werden angezeigt."};
       return base;
     }
     const result=clone(base);
@@ -28,7 +28,7 @@
     if(update.rekorde&&update.rekordeFreigegeben===true) result.rekorde={...(result.rekorde||{}),...update.rekorde};
     const special=result.besondereLeistungen?.[0];
     if(special) result.ehrenmitglieder={label:special.titel,wert:special.name,offen:false};
-    result.meta={...(result.meta||{}),runtime:"Freigegebene Admin-Titel wurden auf den historischen Bestand angewendet."};
+    result.meta={...(result.meta||{}),runtime:"Das Ehrenlogbuch wurde aktualisiert."};
     return result;
   }
   window.OSCHallOfFame={load};

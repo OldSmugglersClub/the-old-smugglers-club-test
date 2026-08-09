@@ -38,5 +38,5 @@
     "datenqualitaet": "datenqualitaet.json",
     "teilnehmerImportbericht": "teilnehmer-importbericht.json"
   },
-  "websiteVersion": "4.0"
+  "websiteVersion": "4.7.0"
 }

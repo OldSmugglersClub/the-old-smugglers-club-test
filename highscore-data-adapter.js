@@ -53,7 +53,7 @@
       sourceHasGesamtTeam:Array.isArray(gesamt.team),
       sourceHasTeamsOverall:Array.isArray(teamSources.overall),
       warning:sourcePath!=='./website-view.json'
-        ? 'Admin-6.2-Datei website-view.json fehlt. Es wird die ältere highscore.json als Rückfallquelle verwendet.'
+        ? 'Aktuelle Ranglistendaten sind nicht vollständig verfügbar.'
         : ''
     };
     return normalized;
@@ -75,7 +75,7 @@
   }
 
   window.OSCHighscoreDataAdapter={
-    version:'4.7.0-RC8.5-TEST',
+    version:'4.7.0',
     async loadHighscore(){
       const result=await first(['./website-view.json','./highscore.json']);
       return normalizeHighscore(result.data,result.path);
