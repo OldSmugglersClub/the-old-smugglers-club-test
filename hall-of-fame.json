@@ -79,24 +79,30 @@
   "rekorde": {
     "gesamtpunkte": {
       "label": "Gesamtpunkte",
-      "wert": 346,
-      "name": "Manuel",
-      "saison": "2025/2026",
-      "offen": false
+      "wert": 347,
+      "name": "xIMMOx",
+      "saison": "2026-27",
+      "offen": false,
+      "bestaetigtAm": "2026-08-10T20:00:00+02:00",
+      "quelle": "Kicktipp-Gesamtwertung"
     },
     "bonuspunkte": {
       "label": "Bonuspunkte",
-      "wert": 60,
-      "name": "ZweikampfGott",
-      "saison": "2025/2026",
-      "offen": false
+      "wert": 61,
+      "name": "AdamJ",
+      "saison": "2026-27",
+      "offen": false,
+      "bestaetigtAm": "2026-08-10T20:00:00+02:00",
+      "quelle": "Kicktipp-Bonuswertung"
     },
     "exakteTipps": {
       "label": "Exakte Tipps",
-      "wert": 17,
-      "name": "Marius",
-      "saison": "2025/2026",
-      "offen": false
+      "wert": 18,
+      "name": "kleinersachse",
+      "saison": "2026-27",
+      "offen": false,
+      "bestaetigtAm": "2026-08-10T20:00:00+02:00",
+      "quelle": "Summe Wettbewerbswertungen"
     },
     "weitere": {
       "label": "Weitere Rekorde",
@@ -110,10 +116,10 @@
     "offen": true
   },
   "schemaVersion": 3,
-  "datenVersion": 1,
-  "aktualisiertAm": "2026-08-09T18:11:13.460Z",
+  "datenVersion": 2,
+  "aktualisiertAm": "2026-08-10T20:00:00+02:00",
   "saison": "2026-27",
-  "quelle": "Admin 6.2.0-a6-HF3 – bestätigte Titel, Bestandsschutz und Website-Zielstruktur",
+  "quelle": "Admin 6.2.0-a6-HF3-HF2 – bestätigte Titel, Bestandsschutz und Website-Zielstruktur",
   "aktuelleSaison": {
     "saison": "2026-27",
     "wettbewerbe": {
@@ -228,8 +234,8 @@
   },
   "meta": {
     "titel": "Ehrenlogbuch des Old Smugglers Club",
-    "stand": "2026-08-09T18:11:13.460Z",
+    "stand": "2026-08-10T20:00:00+02:00",
     "hinweis": "Nur bestätigte Titel und Rekorde werden dauerhaft eingetragen.",
-    "generatorVersion": "6.2.0-a6-HF3"
+    "generatorVersion": "6.2.0-a6-HF3-HF2"
   }
 }
