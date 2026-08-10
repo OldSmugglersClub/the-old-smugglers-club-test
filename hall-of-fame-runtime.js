@@ -19,7 +19,7 @@
     const result=clone(base);
     result.aktuellerChampion=mergeEntry(result.aktuellerChampion,update.gesamtChampion);
     result.teamChampion=mergeEntry(result.teamChampion,update.gesamtTeamSieger);
-    const mapping={bundesliga:"meister","dfb-pokal":"dfbPokal","champions-league":"championsLeague","europa-league":"europaLeague",smugglerauftraege:"smugglerauftraege",bonuswettbewerb:"bonuswettbewerb",weihnachtsregatta:"weihnachtsregatta",piratenkodex:"piratenkodex"};
+    const mapping={bundesliga:"meister","dfb-pokal":"dfbPokal","champions-league":"championsLeague","europa-league":"europaLeague",smugglerauftraege:"smugglerauftraege",bonuswettbewerb:"bonuswettbewerb",weihnachtsregatta:"weihnachtsregatta",piratenkodex:"piratenkodex",relegation:"relegation"};
     for(const [id,key] of Object.entries(mapping)) result[key]=mergeEntry(result[key],update.wettbewerbe?.[id]);
     if(Array.isArray(update.besondereLeistungen)){
       const existing=Array.isArray(result.besondereLeistungen)?result.besondereLeistungen:[];

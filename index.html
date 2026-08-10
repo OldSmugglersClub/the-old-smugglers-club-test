@@ -5842,6 +5842,14 @@
               <small class="status-open" id="piratenkodex-name">Erstmals 2026/2027</small>
             </div>
           </div>
+
+          <div class="honour-card">
+            <div class="honour-icon"><svg class="pirate-icon" aria-hidden="true"><use href="#icon-football"></use></svg></div>
+            <div>
+              <strong id="relegation-title">Relegation</strong>
+              <small class="status-open" id="relegation-name">Erstmals 2026/2027</small>
+            </div>
+          </div>
         </div>
       </div>
       <h3 class="hall-section-title">Ehrenmitglieder & besondere Leistungen</h3>
@@ -6623,6 +6631,17 @@
         setOpenState(
           "piratenkodex-name",
           Boolean(data.piratenkodex?.offen),
+          "Sieger noch offen"
+        );
+
+        setText(
+          "relegation-title",
+          "Relegation"
+        );
+        setText("relegation-name", data.relegation?.name);
+        setOpenState(
+          "relegation-name",
+          Boolean(data.relegation?.offen),
           "Sieger noch offen"
         );
 
