@@ -107,66 +107,9 @@
   },
   "meta": {
     "titel": "Ehrenlogbuch des Old Smugglers Club",
-    "stand": "2027-05-30T18:00:00Z",
-    "hinweis": "Nur bestätigte Titel und Rekorde werden dauerhaft eingetragen.",
+    "stand": "05.08.2026",
+    "hinweis": "Bestätigte Titel bleiben erhalten, bis ein neuer Titel durch den Admin ausdrücklich freigegeben wurde.",
     "schemaVersion": 2,
-    "adminUebergabeErforderlich": true,
-    "generatorVersion": "6.2.0-a6-HF3-HF4"
-  },
-  "relegation": {
-    "saison": "2026/2027",
-    "name": "TEST Relegation",
-    "offen": false,
-    "erstmals": true,
-    "bestaetigtAm": "2027-05-30T18:00:00Z",
-    "teilnehmerId": "p-test-relegation",
-    "punkte": 12,
-    "label": "Relegation"
-  },
-  "schemaVersion": 3,
-  "datenVersion": 1,
-  "aktualisiertAm": "2027-05-30T18:00:00Z",
-  "saison": "2026/2027",
-  "quelle": "Admin 6.2.0-a6-HF3-HF4 – bestätigte Titel, Bestandsschutz und Website-Zielstruktur",
-  "aktuelleSaison": {
-    "saison": "2026/2027",
-    "wettbewerbe": {
-      "relegation": {
-        "id": "relegation",
-        "label": "Relegation",
-        "status": "abgeschlossen",
-        "abschluss": {
-          "completed": true,
-          "target": 1,
-          "processed": 1,
-          "source": "wertungstage-ziel"
-        },
-        "sieger": {
-          "participantId": "p-test-relegation",
-          "name": "TEST Relegation",
-          "punkte": 12,
-          "bestaetigtAm": "2027-05-30T18:00:00Z"
-        }
-      }
-    },
-    "gesamtChampion": null,
-    "gesamtTeamSieger": null,
-    "status": "laufend"
-  },
-  "pruefung": {
-    "gueltig": true,
-    "hinweise": [],
-    "entscheidungen": [
-      "Relegation: TEST Relegation (2026/2027) übernommen."
-    ],
-    "bestandsschutz": true,
-    "websiteFeldzuordnung": true,
-    "fehlendeWebsiteFelder": [],
-    "bonuswettbewerb": {
-      "erforderlich": false,
-      "vorhanden": false,
-      "gueltig": true,
-      "anzahlErstplatzierte": 0
-    }
+    "adminUebergabeErforderlich": true
   }
 }
