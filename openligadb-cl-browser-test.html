@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenLigaDB Champions-League-Test – TOSMC</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1000px;margin:40px auto;padding:0 20px;background:#111;color:#eee}
+    .box{border:1px solid #666;border-radius:12px;padding:20px;background:#1b1b1b;margin-bottom:20px}
+    code{word-break:break-all}
+    .ok{color:#8fd18f}.warn{color:#f5c76d}.err{color:#ff9c9c}
+    table{width:100%;border-collapse:collapse;margin-top:16px}
+    th,td{padding:8px;border-bottom:1px solid #444;text-align:left;vertical-align:top}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>OpenLigaDB – Champions League 2026/27</h1>
+    <p>Isolierter Test für die Liga <code>ucl</code>, Saison <code>2026</code>.</p>
+    <p id="summary">Abrufe laufen …</p>
+  </div>
+
+  <div class="box">
+    <h2>Ligatabelle</h2>
+    <p><code>https://api.openligadb.de/getbltable/ucl/2026</code></p>
+    <p id="tableStatus">Abruf läuft …</p>
+    <div id="tableDetails"></div>
+  </div>
+
+  <div class="box">
+    <h2>Spiele / Runden</h2>
+    <p><code>https://api.openligadb.de/getmatchdata/ucl/2026</code></p>
+    <p id="matchStatus">Abruf läuft …</p>
+    <div id="matchDetails"></div>
+  </div>
+
+<script>
+const esc = v => String(v ?? "").replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+const tableUrl = "https://api.openligadb.de/getbltable/ucl/2026";
+const matchUrl = "https://api.openligadb.de/getmatchdata/ucl/2026";
+
+async function getJson(url){
+  const r = await fetch(url,{headers:{Accept:"application/json"},cache:"no-store"});
+  if(!r.ok) throw new Error("HTTP "+r.status+" "+r.statusText);
+  return await r.json();
+}
+
+(async function(){
+  const tableStatus=document.getElementById("tableStatus");
+  const tableDetails=document.getElementById("tableDetails");
+  const matchStatus=document.getElementById("matchStatus");
+  const matchDetails=document.getElementById("matchDetails");
+  const summary=document.getElementById("summary");
+
+  let tableOk=false, matchesOk=false, tableCount=0, matchCount=0;
+
+  try{
+    const data=await getJson(tableUrl);
+    if(!Array.isArray(data)) throw new Error("Antwort ist kein Array.");
+    tableOk=true; tableCount=data.length;
+    tableStatus.className=data.length ? "ok" : "warn";
+    tableStatus.textContent=data.length
+      ? "Tabelle empfangen – "+data.length+" Mannschaften."
+      : "Endpoint erreichbar, aber Tabelle aktuell leer.";
+    if(data.length){
+      const rows=data.slice(0,8).map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.teamName ?? x.TeamName)}</td><td>${esc(x.points ?? x.Points)}</td></tr>`).join("");
+      tableDetails.innerHTML=`<table><thead><tr><th>#</th><th>Team</th><th>Punkte</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+  }catch(e){
+    tableStatus.className="err";
+    tableStatus.textContent="Tabellenabruf FEHLGESCHLAGEN.";
+    tableDetails.innerHTML="<p>"+esc(e.message || e)+"</p>";
+  }
+
+  try{
+    const data=await getJson(matchUrl);
+    if(!Array.isArray(data)) throw new Error("Antwort ist kein Array.");
+    matchesOk=true; matchCount=data.length;
+    matchStatus.className=data.length ? "ok" : "warn";
+    matchStatus.textContent=data.length
+      ? "Spielplan empfangen – "+data.length+" Spiele."
+      : "Endpoint erreichbar, aber aktuell keine Spiele vorhanden.";
+    if(data.length){
+      const groups=[...new Set(data.map(x=>x.group?.groupName ?? x.group?.GroupName).filter(Boolean))];
+      const first=data.slice(0,10).map(x=>{
+        const home=x.team1?.teamName ?? x.team1?.TeamName ?? "?";
+        const away=x.team2?.teamName ?? x.team2?.TeamName ?? "?";
+        const group=x.group?.groupName ?? x.group?.GroupName ?? "";
+        return `<tr><td>${esc(group)}</td><td>${esc(home)} – ${esc(away)}</td></tr>`;
+      }).join("");
+      matchDetails.innerHTML=
+        "<p><strong>Gefundene Runden/Gruppen:</strong> "+esc(groups.join(" | ") || "keine Angabe")+"</p>"+
+        `<table><thead><tr><th>Runde</th><th>Paarung</th></tr></thead><tbody>${first}</tbody></table>`;
+    }
+  }catch(e){
+    matchStatus.className="err";
+    matchStatus.textContent="Spielplanabruf FEHLGESCHLAGEN.";
+    matchDetails.innerHTML="<p>"+esc(e.message || e)+"</p>";
+  }
+
+  if(tableOk && matchesOk){
+    summary.className=(tableCount || matchCount) ? "ok" : "warn";
+    summary.textContent=
+      "OpenLigaDB technisch erreichbar. Tabelle: "+tableCount+
+      " Zeilen | Spiele: "+matchCount+".";
+  } else {
+    summary.className="err";
+    summary.textContent="Mindestens ein OpenLigaDB-Abruf ist fehlgeschlagen.";
+  }
+})();
+</script>
+</body>
+</html>
