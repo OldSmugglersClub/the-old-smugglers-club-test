@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenLigaDB Browser-Test – TOSMC</title>
+  <style>
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      max-width:900px;
+      margin:40px auto;
+      padding:0 20px;
+      background:#111;
+      color:#eee;
+    }
+    .box{
+      border:1px solid #666;
+      border-radius:12px;
+      padding:20px;
+      background:#1b1b1b;
+    }
+    code{word-break:break-all}
+    .ok{color:#8fd18f}
+    .err{color:#ff9c9c}
+    table{width:100%;border-collapse:collapse;margin-top:16px}
+    th,td{padding:8px;border-bottom:1px solid #444;text-align:left}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>OpenLigaDB Browser-Test</h1>
+    <p>Dieser Test prüft ausschließlich, ob eine statische GitHub-Pages-Seite OpenLigaDB direkt per Browser-Fetch abrufen kann.</p>
+    <p><strong>Endpoint:</strong><br><code id="endpoint">https://api.openligadb.de/getbltable/bl1/2026</code></p>
+    <p id="status">Abruf läuft …</p>
+    <div id="details"></div>
+  </div>
+
+<script>
+(async function(){
+  const url = "https://api.openligadb.de/getbltable/bl1/2026";
+  const status = document.getElementById("status");
+  const details = document.getElementById("details");
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: { "Accept": "application/json" },
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("HTTP " + response.status + " " + response.statusText);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error("Unerwartetes Datenformat: Antwort ist kein Array.");
+    }
+
+    status.className = "ok";
+    status.textContent = "OpenLigaDB erreichbar – " + data.length + " Mannschaften empfangen.";
+
+    const first = data[0] || null;
+    if (first) {
+      const teamName = first.teamName ?? first.TeamName ?? "unbekannt";
+      const points = first.points ?? first.Points ?? "-";
+      details.innerHTML =
+        "<p><strong>Erster Datensatz:</strong> " +
+        String(teamName).replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s])) +
+        " | Punkte: " + points + "</p>";
+    } else {
+      details.innerHTML = "<p>Antwort war erfolgreich, aber die Tabelle ist aktuell leer.</p>";
+    }
+  } catch (err) {
+    status.className = "err";
+    status.textContent = "OpenLigaDB-Abruf FEHLGESCHLAGEN.";
+    details.innerHTML =
+      "<p><strong>Fehler:</strong> " +
+      String(err && err.message ? err.message : err).replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s])) +
+      "</p><p>Wenn dies auf GitHub Pages fehlschlägt, ist direkter Browser-Fetch für unsere Zielarchitektur nicht bestätigt.</p>";
+    console.error("OpenLigaDB Browser-Test:", err);
+  }
+})();
+</script>
+</body>
+</html>
