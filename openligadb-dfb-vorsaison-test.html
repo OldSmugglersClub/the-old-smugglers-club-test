@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OpenLigaDB DFB-Pokal Vorsaison-Test – TOSMC</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1150px;margin:40px auto;padding:0 20px;background:#111;color:#eee}
+    .box{border:1px solid #666;border-radius:12px;padding:20px;background:#1b1b1b;margin-bottom:20px}
+    code{word-break:break-all}
+    .ok{color:#8fd18f}.warn{color:#f5c76d}.err{color:#ff9c9c}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:8px;border-bottom:1px solid #444;text-align:left;vertical-align:top}
+    .round{margin-top:20px;padding-top:12px;border-top:1px solid #444}
+    .target{border-left:4px solid #888;padding-left:12px}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>OpenLigaDB – DFB-Pokal 2025/26</h1>
+    <p>Vorsaison-Test für <code>dfb</code>, Saison <code>2025</code>.</p>
+    <p id="summary">Abruf läuft …</p>
+  </div>
+
+  <div class="box">
+    <h2>Rundenstruktur</h2>
+    <p><code>https://api.openligadb.de/getmatchdata/dfb/2025</code></p>
+    <p id="status">Abruf läuft …</p>
+    <div id="details"></div>
+  </div>
+
+<script>
+const esc = v => String(v ?? "").replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+const url = "https://api.openligadb.de/getmatchdata/dfb/2025";
+
+function finalScore(match){
+  const results = Array.isArray(match.matchResults) ? match.matchResults : [];
+  const final = results.find(r => {
+    const name = String(r.resultName ?? r.resultTypeName ?? "").toLowerCase();
+    const id = Number(r.resultTypeID ?? r.resultTypeId ?? -1);
+    return name.includes("end") || name.includes("final") || id === 2;
+  }) || results.at(-1);
+  if(!final) return "–";
+  const a = final.pointsTeam1 ?? final.PointsTeam1;
+  const b = final.pointsTeam2 ?? final.PointsTeam2;
+  return (a == null || b == null) ? "–" : `${a}:${b}`;
+}
+
+function groupName(m){
+  return m.group?.groupName ??
+         m.group?.GroupName ??
+         ("Gruppe " + (m.group?.groupOrderID ?? m.group?.GroupOrderID ?? "?"));
+}
+
+(async function(){
+  const summary=document.getElementById("summary");
+  const status=document.getElementById("status");
+  const details=document.getElementById("details");
+
+  try{
+    const r = await fetch(url,{headers:{Accept:"application/json"},cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status+" "+r.statusText);
+    const data = await r.json();
+    if(!Array.isArray(data)) throw new Error("Antwort ist kein Array.");
+
+    const rounds = new Map();
+    for(const m of data){
+      const name = groupName(m);
+      if(!rounds.has(name)) rounds.set(name,[]);
+      rounds.get(name).push(m);
+    }
+
+    const wanted = /achtelfinale|viertelfinale|halbfinale|finale/i;
+    const wantedRounds = [...rounds.keys()].filter(x => wanted.test(String(x)));
+
+    summary.className = data.length ? "ok" : "warn";
+    summary.textContent =
+      `OpenLigaDB erreichbar. Spiele: ${data.length} | Runden/Gruppen: ${rounds.size} | ` +
+      `relevante KO-Runden gefunden: ${wantedRounds.length}.`;
+
+    status.className = wantedRounds.length >= 4 ? "ok" : "warn";
+    status.textContent = wantedRounds.length >= 4
+      ? "Achtelfinale bis Finale sind als eigene Runden vorhanden."
+      : "Nicht alle erwarteten KO-Runden wurden eindeutig erkannt.";
+
+    const order = [...rounds.entries()];
+    let html = `<p><strong>Alle gefundenen Runden:</strong> ${esc(order.map(([r])=>r).join(" | "))}</p>`;
+
+    for(const [round, matches] of order){
+      const relevant = wanted.test(String(round));
+      html += `<div class="round ${relevant ? "target" : ""}">`;
+      html += `<h3>${esc(round)} – ${matches.length} Spiele${relevant ? " [für OSC relevant]" : ""}</h3>`;
+      html += `<table><thead><tr><th>Datum</th><th>Paarung</th><th>Ergebnis</th><th>beendet</th></tr></thead><tbody>`;
+      for(const m of matches){
+        const home = m.team1?.teamName ?? m.team1?.TeamName ?? "?";
+        const away = m.team2?.teamName ?? m.team2?.TeamName ?? "?";
+        const date = m.matchDateTime ?? m.MatchDateTime ?? "";
+        const finished = m.matchIsFinished ?? m.MatchIsFinished;
+        html += `<tr>
+          <td>${esc(date)}</td>
+          <td>${esc(home)} – ${esc(away)}</td>
+          <td>${esc(finalScore(m))}</td>
+          <td>${finished === true ? "ja" : "nein"}</td>
+        </tr>`;
+      }
+      html += `</tbody></table></div>`;
+    }
+    details.innerHTML = html;
+
+  }catch(e){
+    summary.className="err";
+    summary.textContent="OpenLigaDB-Abruf fehlgeschlagen.";
+    status.className="err";
+    status.textContent="Vorsaison-Spielplanabruf FEHLGESCHLAGEN.";
+    details.innerHTML="<p>"+esc(e.message || e)+"</p>";
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>
