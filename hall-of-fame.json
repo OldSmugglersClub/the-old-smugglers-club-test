@@ -1,70 +1,129 @@
 {
   "aktuellerChampion": {
-    "name": "Manuel",
+    "name": "TEST NeuChamp",
     "wettbewerb": "Gesamtwertung",
     "titel": "Gesamtchampion",
-    "saison": "2025/2026",
-    "jahr": "2025/2026",
+    "jahr": "2026/2027",
     "label": "Old Smugglers Saison-Champion",
-    "offen": false
+    "saison": "2026/2027",
+    "offen": false,
+    "teilnehmerId": "p-neu",
+    "punkte": 345,
+    "bestaetigtAm": "2027-06-01T12:00:00Z"
   },
   "teamChampion": {
-    "saison": "",
-    "name": "Keine Vorsaisonwertung",
-    "offen": true,
-    "erstmals": "2026/2027"
+    "saison": "2026/2027",
+    "name": "Old Smugglers Team",
+    "offen": false,
+    "punkte": 100,
+    "bestaetigtAm": "2027-06-01T12:00:00Z"
   },
   "meister": {
-    "saison": "2025/2026",
-    "name": "Manuel",
-    "offen": false
+    "saison": "2026/2027",
+    "name": "TEST Sieger bundesliga",
+    "offen": false,
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w0",
+    "punkte": 10,
+    "label": "Bundesliga"
   },
   "dfbPokal": {
-    "saison": "2025/2026",
-    "name": "Manuel",
-    "offen": false
+    "saison": "2026/2027",
+    "name": "TEST Sieger dfb-pokal",
+    "offen": false,
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w1",
+    "punkte": 11,
+    "label": "DFB-Pokal"
   },
   "championsLeague": {
-    "saison": "2025/2026",
-    "name": "ZweikampfGott",
-    "offen": false
+    "saison": "2026/2027",
+    "name": "TEST Sieger champions-league",
+    "offen": false,
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w2",
+    "punkte": 12,
+    "label": "Champions League"
   },
   "europaLeague": {
-    "saison": "2025/2026",
-    "name": "Marius",
-    "offen": false
+    "saison": "2026/2027",
+    "name": "TEST Sieger europa-league",
+    "offen": false,
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w3",
+    "punkte": 13,
+    "label": "Europa League"
   },
   "smugglerauftraege": {
-    "saison": "",
-    "name": "Erstmals 2026/2027",
-    "offen": true,
-    "erstmals": "2026/2027"
+    "saison": "2026/2027",
+    "name": "TEST Sieger smugglerauftraege",
+    "offen": false,
+    "erstmals": "2026/2027",
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w6",
+    "punkte": 16,
+    "label": "Smuggleraufträge"
   },
   "bonuswettbewerb": {
-    "saison": "2025/2026",
-    "name": "Marius",
+    "saison": "2026/2027",
+    "name": "TEST Bonuschamp",
     "offen": false,
     "fragen": 25,
-    "punkteProAntwort": 5
+    "punkteProAntwort": 5,
+    "teilnehmerId": "p-bonus",
+    "punkte": 55,
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "quelle": "Kicktipp-Bonusrangliste"
   },
   "weihnachtsregatta": {
     "jahr": "",
-    "saison": "",
-    "name": "Erstmals 2026/2027",
-    "offen": true,
-    "erstmals": "2026/2027"
+    "saison": "2026/2027",
+    "name": "TEST Sieger weihnachtsregatta",
+    "offen": false,
+    "erstmals": "2026/2027",
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w7",
+    "punkte": 17,
+    "label": "Weihnachtsregatta"
   },
   "piratenkodex": {
-    "saison": "",
-    "name": "Erstmals 2026/2027",
-    "offen": true,
-    "erstmals": "2026/2027"
+    "saison": "2026/2027",
+    "name": "TEST Sieger piratenkodex",
+    "offen": false,
+    "erstmals": "2026/2027",
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w5",
+    "punkte": 15,
+    "label": "Piratenkodex"
+  },
+  "relegation": {
+    "saison": "2026/2027",
+    "name": "TEST Sieger relegation",
+    "offen": false,
+    "erstmals": "2026/2027",
+    "bestaetigtAm": "2027-06-01T12:00:00Z",
+    "teilnehmerId": "w4",
+    "punkte": 14,
+    "label": "Relegation"
   },
   "meisterchronik": [
+    {
+      "saison": "2024/2025",
+      "name": "TEST Historisch",
+      "offen": false
+    },
     {
       "saison": "2025/2026",
       "name": "Manuel",
       "offen": false
+    },
+    {
+      "saison": "2026/2027",
+      "name": "TEST NeuChamp",
+      "teilnehmerId": "p-neu",
+      "punkte": 345,
+      "offen": false,
+      "bestaetigtAm": "2027-06-01T12:00:00Z"
     }
   ],
   "rekorde": {
@@ -107,9 +166,201 @@
   },
   "meta": {
     "titel": "Ehrenlogbuch des Old Smugglers Club",
-    "stand": "05.08.2026",
-    "hinweis": "Bestätigte Titel bleiben erhalten, bis ein neuer Titel durch den Admin ausdrücklich freigegeben wurde.",
+    "stand": "2027-06-01T12:00:00Z",
+    "hinweis": "Nur bestätigte Titel und Rekorde werden dauerhaft eingetragen.",
     "schemaVersion": 2,
-    "adminUebergabeErforderlich": true
+    "adminUebergabeErforderlich": true,
+    "generatorVersion": "6.2.0-a6-HF3-HF5"
+  },
+  "schemaVersion": 3,
+  "datenVersion": 1,
+  "aktualisiertAm": "2027-06-01T12:00:00Z",
+  "saison": "2026/2027",
+  "quelle": "Admin 6.2.0-a6-HF3-HF5 – bestätigte Titel, Bestandsschutz und Website-Zielstruktur",
+  "aktuelleSaison": {
+    "saison": "2026/2027",
+    "wettbewerbe": {
+      "bundesliga": {
+        "id": "bundesliga",
+        "label": "bundesliga",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w0",
+          "name": "TEST Sieger bundesliga",
+          "punkte": 10,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      },
+      "dfb-pokal": {
+        "id": "dfb-pokal",
+        "label": "dfb-pokal",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w1",
+          "name": "TEST Sieger dfb-pokal",
+          "punkte": 11,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      },
+      "champions-league": {
+        "id": "champions-league",
+        "label": "champions-league",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w2",
+          "name": "TEST Sieger champions-league",
+          "punkte": 12,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      },
+      "europa-league": {
+        "id": "europa-league",
+        "label": "europa-league",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w3",
+          "name": "TEST Sieger europa-league",
+          "punkte": 13,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      },
+      "relegation": {
+        "id": "relegation",
+        "label": "relegation",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w4",
+          "name": "TEST Sieger relegation",
+          "punkte": 14,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      },
+      "piratenkodex": {
+        "id": "piratenkodex",
+        "label": "piratenkodex",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w5",
+          "name": "TEST Sieger piratenkodex",
+          "punkte": 15,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      },
+      "smugglerauftraege": {
+        "id": "smugglerauftraege",
+        "label": "smugglerauftraege",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w6",
+          "name": "TEST Sieger smugglerauftraege",
+          "punkte": 16,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      },
+      "weihnachtsregatta": {
+        "id": "weihnachtsregatta",
+        "label": "weihnachtsregatta",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "w7",
+          "name": "TEST Sieger weihnachtsregatta",
+          "punkte": 17,
+          "bestaetigtAm": "2027-06-01T12:00:00Z"
+        }
+      }
+    },
+    "gesamtChampion": {
+      "name": "TEST NeuChamp",
+      "wettbewerb": "Gesamtwertung",
+      "titel": "Gesamtchampion",
+      "jahr": "2026/2027",
+      "label": "Old Smugglers Saison-Champion",
+      "saison": "2026/2027",
+      "offen": false,
+      "teilnehmerId": "p-neu",
+      "punkte": 345,
+      "bestaetigtAm": "2027-06-01T12:00:00Z"
+    },
+    "gesamtTeamSieger": {
+      "saison": "2026/2027",
+      "name": "Old Smugglers Team",
+      "offen": false,
+      "punkte": 100,
+      "bestaetigtAm": "2027-06-01T12:00:00Z"
+    },
+    "status": "abgeschlossen"
+  },
+  "pruefung": {
+    "gueltig": true,
+    "hinweise": [],
+    "entscheidungen": [
+      "Bundesliga: TEST Sieger bundesliga (2026/2027) übernommen.",
+      "DFB-Pokal: TEST Sieger dfb-pokal (2026/2027) übernommen.",
+      "Champions League: TEST Sieger champions-league (2026/2027) übernommen.",
+      "Europa League: TEST Sieger europa-league (2026/2027) übernommen.",
+      "Relegation: TEST Sieger relegation (2026/2027) übernommen.",
+      "Piratenkodex: TEST Sieger piratenkodex (2026/2027) übernommen.",
+      "Smuggleraufträge: TEST Sieger smugglerauftraege (2026/2027) übernommen.",
+      "Weihnachtsregatta: TEST Sieger weihnachtsregatta (2026/2027) übernommen.",
+      "Bonuswettbewerb: TEST Bonuschamp (2026/2027) aus der Kicktipp-Bonusrangliste übernommen.",
+      "Saison-Gesamtchampion: TEST NeuChamp (2026/2027) übernommen."
+    ],
+    "bestandsschutz": true,
+    "websiteFeldzuordnung": true,
+    "fehlendeWebsiteFelder": [],
+    "bonuswettbewerb": {
+      "erforderlich": true,
+      "vorhanden": true,
+      "gueltig": true,
+      "anzahlErstplatzierte": 1
+    }
   }
 }
