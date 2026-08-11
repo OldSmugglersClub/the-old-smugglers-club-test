@@ -10,7 +10,7 @@
     const base=clone(await json("./hall-of-fame.json",{}));
     const view=await json("./website-view.json",{});
     const update=view?.hallOfFame;
-    const baseSpecial=Array.isArray(base.besondereLeistungen)?base.besondereLeistungen.find(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false)):null;
+    const baseSpecial=Array.isArray(base.besondereLeistungen)?base.besondereLeistungen.filter(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false)).at(-1):null;
     if(baseSpecial) base.ehrenmitglieder={label:baseSpecial.titel,wert:baseSpecial.name,offen:false};
     if(!update||update.freigegeben!==true){
       base.meta={...(base.meta||{}),runtime:"Historische Ehrungen werden angezeigt."};
@@ -19,7 +19,7 @@
     const result=clone(base);
     result.aktuellerChampion=mergeEntry(result.aktuellerChampion,update.gesamtChampion);
     result.teamChampion=mergeEntry(result.teamChampion,update.gesamtTeamSieger);
-    const mapping={bundesliga:"meister","dfb-pokal":"dfbPokal","champions-league":"championsLeague","europa-league":"europaLeague",smugglerauftraege:"smugglerauftraege",bonuswettbewerb:"bonuswettbewerb",weihnachtsregatta:"weihnachtsregatta",piratenkodex:"piratenkodex"};
+    const mapping={bundesliga:"meister","dfb-pokal":"dfbPokal","champions-league":"championsLeague","europa-league":"europaLeague",smugglerauftraege:"smugglerauftraege",bonuswettbewerb:"bonuswettbewerb",weihnachtsregatta:"weihnachtsregatta",piratenkodex:"piratenkodex",relegation:"relegation"};
     for(const [id,key] of Object.entries(mapping)) result[key]=mergeEntry(result[key],update.wettbewerbe?.[id]);
     if(Array.isArray(update.besondereLeistungen)){
       const existing=Array.isArray(result.besondereLeistungen)?result.besondereLeistungen:[];
@@ -28,7 +28,7 @@
     }
     if(Array.isArray(update.meisterchronik)) result.meisterchronik=update.meisterchronik.filter(x=>x&&x.freigegeben===true&&x.name&&x.saison);
     if(update.rekorde&&update.rekordeFreigegeben===true) result.rekorde={...(result.rekorde||{}),...update.rekorde};
-    const special=result.besondereLeistungen?.[0];
+    const special=Array.isArray(result.besondereLeistungen)?result.besondereLeistungen.filter(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false)).at(-1):null;
     if(special) result.ehrenmitglieder={label:special.titel,wert:special.name,offen:false};
     result.meta={...(result.meta||{}),runtime:"Das Ehrenlogbuch wurde aktualisiert."};
     return result;

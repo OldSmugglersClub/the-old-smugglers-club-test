@@ -104,6 +104,19 @@
       "name": "ZweikampfGott",
       "jahr": "2026",
       "offen": false
+    },
+    {
+      "jahr": "2028",
+      "saison": "2028",
+      "kategorie": "Ehrenchampion Sonderwettbewerb",
+      "titel": "Champion der EM-Sonderrunde 2028",
+      "name": "TEST Ehrenchamp",
+      "teilnehmerId": "p-test",
+      "punkte": 28,
+      "wettbewerbId": "em-sonderrunde-2028",
+      "offen": false,
+      "bestaetigt": true,
+      "bestaetigtAm": "2028-07-15T18:00:00Z"
     }
   ],
   "ehrenmitglieder": {
@@ -113,9 +126,61 @@
   },
   "meta": {
     "titel": "Ehrenlogbuch des Old Smugglers Club",
-    "stand": "05.08.2026",
-    "hinweis": "Bestätigte Titel bleiben erhalten, bis ein neuer Titel durch den Admin ausdrücklich freigegeben wurde.",
+    "stand": "2028-07-15T18:00:00Z",
+    "hinweis": "Nur bestätigte Titel und Rekorde werden dauerhaft eingetragen.",
     "schemaVersion": 2,
-    "adminUebergabeErforderlich": true
+    "adminUebergabeErforderlich": true,
+    "generatorVersion": "6.2.0-a6-HF3-HF6"
+  },
+  "schemaVersion": 3,
+  "datenVersion": 1,
+  "aktualisiertAm": "2028-07-15T18:00:00Z",
+  "saison": "2026/2027",
+  "quelle": "Admin 6.2.0-a6-HF3-HF6 – bestätigte Titel, Bestandsschutz und Website-Zielstruktur",
+  "aktuelleSaison": {
+    "saison": "2026/2027",
+    "wettbewerbe": {
+      "em-sonderrunde-2028": {
+        "id": "em-sonderrunde-2028",
+        "label": "EM-Sonderrunde 2028",
+        "status": "abgeschlossen",
+        "abschluss": {
+          "completed": true,
+          "target": null,
+          "processed": 0,
+          "source": "stammdaten-status"
+        },
+        "sieger": {
+          "participantId": "p-test",
+          "name": "TEST Ehrenchamp",
+          "punkte": 28,
+          "bestaetigtAm": "2028-07-15T18:00:00Z"
+        }
+      }
+    },
+    "gesamtChampion": null,
+    "gesamtTeamSieger": null,
+    "status": "laufend"
+  },
+  "pruefung": {
+    "gueltig": true,
+    "hinweise": [],
+    "entscheidungen": [],
+    "bestandsschutz": true,
+    "websiteFeldzuordnung": true,
+    "fehlendeWebsiteFelder": [],
+    "bonuswettbewerb": {
+      "erforderlich": false,
+      "vorhanden": false,
+      "gueltig": true,
+      "anzahlErstplatzierte": 0
+    },
+    "ehrenchampions": {
+      "gueltig": true,
+      "hinweise": [],
+      "entscheidungen": [
+        "Champion der EM-Sonderrunde 2028: TEST Ehrenchamp übernommen."
+      ]
+    }
   }
 }
