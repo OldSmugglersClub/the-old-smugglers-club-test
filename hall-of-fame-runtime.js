@@ -10,7 +10,7 @@
     const base=clone(await json("./hall-of-fame.json",{}));
     const view=await json("./website-view.json",{});
     const update=view?.hallOfFame;
-    const baseSpecial=Array.isArray(base.besondereLeistungen)?base.besondereLeistungen.filter(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false)).at(-1):null;
+    const baseSpecial=Array.isArray(base.besondereLeistungen)?base.besondereLeistungen.find(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false)):null;
     if(baseSpecial) base.ehrenmitglieder={label:baseSpecial.titel,wert:baseSpecial.name,offen:false};
     if(!update||update.freigegeben!==true){
       base.meta={...(base.meta||{}),runtime:"Historische Ehrungen werden angezeigt."};
@@ -28,7 +28,7 @@
     }
     if(Array.isArray(update.meisterchronik)) result.meisterchronik=update.meisterchronik.filter(x=>x&&x.freigegeben===true&&x.name&&x.saison);
     if(update.rekorde&&update.rekordeFreigegeben===true) result.rekorde={...(result.rekorde||{}),...update.rekorde};
-    const special=Array.isArray(result.besondereLeistungen)?result.besondereLeistungen.filter(x=>x&&x.name&&x.titel&&(x.bestaetigt===true||x.freigegeben===true||x.offen===false)).at(-1):null;
+    const special=result.besondereLeistungen?.[0];
     if(special) result.ehrenmitglieder={label:special.titel,wert:special.name,offen:false};
     result.meta={...(result.meta||{}),runtime:"Das Ehrenlogbuch wurde aktualisiert."};
     return result;
