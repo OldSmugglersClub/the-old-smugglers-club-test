@@ -7,6 +7,7 @@
   let gameDataUrl = "./spieldaten.json";
   let teamDataUrl = "./teams.json";
   let bundesligaTableUrl = "./bundesliga-tabelle.json";
+  const openLigaBundesligaTableUrl = "https://api.openligadb.de/getbltable/bl1/2026";
 
   let competitionConfigUrl = "./wettbewerbe.json";
   const DEFAULT_COMPETITIONS = [
@@ -60,6 +61,44 @@
 
   function numericScore(value) {
     return Number.isFinite(value) ? value : null;
+  }
+
+  function mapOpenLigaBundesligaTable(data) {
+    if (!Array.isArray(data) || !data.length) return null;
+    const rows = data.map(team => ({
+      id: "",
+      name: team && team.teamName ? String(team.teamName) : "Team offen",
+      played: Number(team && team.matches || 0),
+      wins: Number(team && team.won || 0),
+      draws: Number(team && team.draw || 0),
+      losses: Number(team && team.lost || 0),
+      goalsFor: Number(team && team.goals || 0),
+      goalsAgainst: Number(team && team.opponentGoals || 0),
+      points: Number(team && team.points || 0),
+      goalDifference: Number(team && team.goalDiff || 0)
+    }));
+    return {
+      rows,
+      playedMatches: Math.round(rows.reduce((sum, team) => sum + team.played, 0) / 2),
+      status: "",
+      source: "openligadb"
+    };
+  }
+
+  async function fetchOpenLigaBundesligaTable() {
+    try {
+      const response = await fetch(openLigaBundesligaTableUrl, {
+        cache: "no-store",
+        headers: { "Accept": "application/json" }
+      });
+      if (!response.ok) throw new Error(`OpenLigaDB: HTTP ${response.status}`);
+      const mapped = mapOpenLigaBundesligaTable(await response.json());
+      if (!mapped || !mapped.rows.length) throw new Error("OpenLigaDB: leere oder ungültige Tabelle");
+      return mapped;
+    } catch (error) {
+      console.warn("OpenLigaDB-Bundesliga-Tabelle nicht verfügbar; lokaler Tabellen-Fallback wird verwendet.", error);
+      return null;
+    }
   }
 
   function calculateBundesligaTable(gameData, teamData, tableData) {
@@ -155,8 +194,8 @@
     };
   }
 
-  function renderBundesligaTable(gameData, teamData, tableData, root) {
-    const standings = calculateBundesligaTable(gameData, teamData, tableData);
+  function renderBundesligaTable(gameData, teamData, tableData, root, externalStandings = null) {
+    const standings = externalStandings || calculateBundesligaTable(gameData, teamData, tableData);
     const article = document.createElement("section");
     article.className = "dynamic-section standings-section";
 
@@ -190,7 +229,7 @@
 
     standings.rows.forEach((team, index) => {
       const tr = document.createElement("tr");
-      const goalDifference = team.goalsFor - team.goalsAgainst;
+      const goalDifference = Number.isFinite(team.goalDifference) ? team.goalDifference : team.goalsFor - team.goalsAgainst;
       const values = [
         index + 1,
         team.name,
@@ -221,9 +260,11 @@
 
     const note = document.createElement("p");
     note.className = "data-note";
-    note.textContent = standings.playedMatches
-      ? "Die Tabelle wird automatisch aus den in spieldaten.json hinterlegten Endergebnissen berechnet."
-      : "Die Mannschaften sind vorbereitet. Ergebnisse und Tabelle werden nach Saisonstart automatisch aus spieldaten.json aufgebaut.";
+    note.textContent = standings.source === "openligadb"
+      ? "Aktuelle Tabellendaten: OpenLigaDB. Bei Nichterreichbarkeit wird automatisch die bisherige lokale Tabellenlogik verwendet."
+      : (standings.playedMatches
+          ? "Lokaler Fallback: Tabelle aus den in spieldaten.json hinterlegten Endergebnissen."
+          : "Lokaler Fallback: Mannschaften sind vorbereitet; Ergebnisse werden nach Saisonstart aus spieldaten.json aufgebaut.");
     article.appendChild(note);
     root.appendChild(article);
   }
@@ -1062,7 +1103,7 @@ function renderCards(cards) {
     root.appendChild(quickActions);
   }
 
-  function renderSections(sections, buttons, gameData, teamData, tableData) {
+  function renderSections(sections, buttons, gameData, teamData, tableData, openLigaTableData = null) {
     const root = $("dynamic-sections");
     root.innerHTML = "";
     document.body.classList.add(`page-${slug}`);
@@ -1072,7 +1113,7 @@ function renderCards(cards) {
       renderQuickBackButton(buttons, root);
     }
     if (slug === "bundesliga") {
-      renderBundesligaTable(gameData, teamData, tableData, root);
+      renderBundesligaTable(gameData, teamData, tableData, root, openLigaTableData);
       renderBundesligaStatistics(gameData, teamData, root);
     }
     safeArray(sections).filter(s => s && s.anzeigen !== false).forEach(section => {
@@ -1169,12 +1210,13 @@ function renderCards(cards) {
           window.OSCDataRegistry.url("wettbewerbe")
         ]);
       }
-      const [data, centralGameData, teamData, bundesligaTableData, competitionConfig] = await Promise.all([
+      const [data, centralGameData, teamData, bundesligaTableData, competitionConfig, openLigaBundesligaTableData] = await Promise.all([
         fetchJson(jsonUrl, true),
         fetchJson(gameDataUrl, false),
         fetchJson(teamDataUrl, false),
         slug === "bundesliga" ? fetchJson(bundesligaTableUrl, false) : Promise.resolve({ teams: [] }),
-        fetchJson(competitionConfigUrl, false)
+        fetchJson(competitionConfigUrl, false),
+        slug === "bundesliga" ? fetchOpenLigaBundesligaTable() : Promise.resolve(null)
       ]);
 
       currentTeamData = teamData && typeof teamData === "object" ? teamData : { teams: [] };
@@ -1209,7 +1251,7 @@ function renderCards(cards) {
             : [centralSection, ...editorialSections])
         : editorialSections;
 
-      renderSections(sections, data.buttons, centralGameData, teamData, bundesligaTableData);
+      renderSections(sections, data.buttons, centralGameData, teamData, bundesligaTableData, openLigaBundesligaTableData);
       renderButtons(data.buttons);
       text("footer-text", data.fusszeile);
       await loadFooterVersion();
