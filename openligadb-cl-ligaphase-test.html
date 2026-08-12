@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenLigaDB CL Ligaphasen-Test</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1180px;margin:35px auto;padding:0 18px;background:#111;color:#eee}
+.box{border:1px solid #666;border-radius:12px;padding:20px;background:#1b1b1b;margin-bottom:20px}
+.ok{color:#8fd18f}.warn{color:#f5c76d}.err{color:#ff9c9c}
+table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #444;text-align:left}
+code{word-break:break-all}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>OpenLigaDB – CL-Ligaphase 2025/26</h1>
+<p>Berechnung ausschließlich aus <strong>1.–8. Spieltag</strong> von <code>getmatchdata/ucl/2025</code>.</p>
+<p id="status">Abruf läuft …</p>
+</div>
+<div class="box">
+<h2>Prüfung</h2><div id="check"></div>
+</div>
+<div class="box">
+<h2>Berechnete Ligaphasen-Tabelle</h2>
+<table><thead><tr><th>Pl.</th><th>Verein</th><th>Sp.</th><th>S</th><th>U</th><th>N</th><th>Tore</th><th>Diff.</th><th>Pkt.</th></tr></thead><tbody id="rows"></tbody></table>
+</div>
+<script>
+const esc=v=>String(v??"").replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+const getName=m=>String(m?.group?.groupName??m?.group?.GroupName??"").trim();
+function score(m){
+ const rs=Array.isArray(m.matchResults)?m.matchResults:[];
+ const r=rs.find(x=>Number(x.resultTypeID??x.resultTypeId)===2) || rs.at(-1);
+ if(!r)return null;
+ const a=Number(r.pointsTeam1),b=Number(r.pointsTeam2);
+ return Number.isFinite(a)&&Number.isFinite(b)?[a,b]:null;
+}
+(async()=>{
+ const st=document.getElementById("status"), ck=document.getElementById("check"), body=document.getElementById("rows");
+ try{
+  const r=await fetch("https://api.openligadb.de/getmatchdata/ucl/2025",{cache:"no-store"});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  const all=await r.json();
+  const wanted=new Set(Array.from({length:8},(_,i)=>`${i+1}. Spieltag`));
+  const games=all.filter(m=>wanted.has(getName(m)));
+  const teams=new Map();
+  function T(obj){
+   const id=String(obj?.teamId??obj?.teamID??obj?.teamName??"");
+   if(!teams.has(id))teams.set(id,{name:obj?.teamName??"?",sp:0,s:0,u:0,n:0,gf:0,ga:0,p:0});
+   return teams.get(id);
+  }
+  let usable=0;
+  for(const m of games){
+   const sc=score(m); if(!sc)continue;
+   usable++;
+   const a=T(m.team1),b=T(m.team2),[ga,gb]=sc;
+   a.sp++;b.sp++;a.gf+=ga;a.ga+=gb;b.gf+=gb;b.ga+=ga;
+   if(ga>gb){a.s++;b.n++;a.p+=3}else if(gb>ga){b.s++;a.n++;b.p+=3}else{a.u++;b.u++;a.p++;b.p++}
+  }
+  const arr=[...teams.values()].sort((a,b)=>b.p-a.p||((b.gf-b.ga)-(a.gf-a.ga))||b.gf-a.gf||a.name.localeCompare(b.name,"de"));
+  const allEight=arr.length===36 && arr.every(t=>t.sp===8);
+  st.className=allEight?"ok":"warn";
+  st.textContent=`Gefunden: ${games.length} Spiele | verwertbar: ${usable} | Teams: ${arr.length}.`;
+  ck.innerHTML=`<p class="${allEight?"ok":"warn"}"><strong>${allEight?"BESTANDEN":"NOCH NICHT BESTANDEN"}</strong> – ${allEight?"36 Teams mit jeweils exakt 8 Ligaphasen-Spielen.":"Nicht alle 36 Teams besitzen exakt 8 verwertbare Spiele."}</p>`+
+   `<p>Spiele je Team: ${esc(arr.map(x=>x.sp).join(", "))}</p>`;
+  arr.forEach((t,i)=>{
+   const d=t.gf-t.ga;
+   body.insertAdjacentHTML("beforeend",`<tr><td>${i+1}</td><td>${esc(t.name)}</td><td>${t.sp}</td><td>${t.s}</td><td>${t.u}</td><td>${t.n}</td><td>${t.gf}:${t.ga}</td><td>${d>0?"+":""}${d}</td><td>${t.p}</td></tr>`);
+  });
+ }catch(e){st.className="err";st.textContent="Fehler: "+(e.message||e);}
+})();
+</script>
+</body></html>
