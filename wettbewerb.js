@@ -550,6 +550,8 @@
   }
 
   const OPENLIGADB_CL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/ucl/2025";
+  const OPENLIGADB_EL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/uel/2025";
+  const EUROPA_LEAGUE_FALLBACK_PROTOTYPE_URL = "./europa-league-ko-2025-test.json";
   const OPENLIGADB_DFB_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/dfb/2025";
   const DFB_BRACKET_ROUNDS = [
     { key: "achtelfinale", label: "Achtelfinale" },
@@ -968,6 +970,203 @@
     source.className = "data-note ko-source-note";
     source.textContent = "Sportdaten: OpenLigaDB · Darstellung ausschließlich als externe Wettbewerbsinformation.";
     section.appendChild(source);
+    root.appendChild(section);
+  }
+
+  const EUROPA_LEAGUE_ROUNDS = [
+    { key: "achtelfinale", label: "Achtelfinale", expected: 8 },
+    { key: "viertelfinale", label: "Viertelfinale", expected: 4 },
+    { key: "halbfinale", label: "Halbfinale", expected: 2 },
+    { key: "finale", label: "Finale", expected: 1 }
+  ];
+
+  function europaLeagueRoundKey(match) {
+    const label = normalizeRoundLabel(
+      match?.group?.groupName ??
+      match?.group?.GroupName ??
+      ""
+    );
+    if (label.includes("achtelfinale")) return "achtelfinale";
+    if (label.includes("viertelfinale")) return "viertelfinale";
+    if (label.includes("halbfinale")) return "halbfinale";
+    if (label.includes("endspiel") || label === "finale" || label.includes(" finale")) return "finale";
+    return "";
+  }
+
+  function aggregateTwoLegRound(matches, roundKey) {
+    if (roundKey === "finale") return safeArray(matches);
+
+    const pairs = new Map();
+
+    safeArray(matches).forEach(match => {
+      const a = bracketTeamKey(openLigaDbTeamName(match?.team1));
+      const b = bracketTeamKey(openLigaDbTeamName(match?.team2));
+      if (!a || !b) return;
+      const key = [a, b].sort().join("::");
+      if (!pairs.has(key)) pairs.set(key, []);
+      pairs.get(key).push(match);
+    });
+
+    return [...pairs.values()].map(games => {
+      const sorted = games.slice().sort((a, b) =>
+        String(a?.matchDateTime ?? "").localeCompare(String(b?.matchDateTime ?? ""))
+      );
+
+      const first = sorted[0];
+      const firstHomeKey = bracketTeamKey(openLigaDbTeamName(first?.team1));
+      let goals1 = 0;
+      let goals2 = 0;
+      let complete = sorted.length >= 2;
+
+      sorted.forEach(game => {
+        const scoreText = openLigaDbFinalResult(game);
+        const match = String(scoreText || "").match(/^(\d+):(\d+)$/);
+        if (!match) {
+          complete = false;
+          return;
+        }
+
+        const score = [Number(match[1]), Number(match[2])];
+        const homeKey = bracketTeamKey(openLigaDbTeamName(game?.team1));
+
+        if (homeKey === firstHomeKey) {
+          goals1 += score[0];
+          goals2 += score[1];
+        } else {
+          goals1 += score[1];
+          goals2 += score[0];
+        }
+      });
+
+      const last = sorted.at(-1);
+      return {
+        team1: first?.team1,
+        team2: first?.team2,
+        matchDateTime: last?.matchDateTime ?? first?.matchDateTime ?? "",
+        matchResults: complete ? [{
+          resultTypeID: 2,
+          resultName: "Gesamt",
+          pointsTeam1: goals1,
+          pointsTeam2: goals2
+        }] : []
+      };
+    });
+  }
+
+  function manualEuropaLeagueMatch(item, roundKey) {
+    const result = String(item?.gesamt || "").match(/(\d+)\s*:\s*(\d+)/);
+    return {
+      team1: { teamName: item?.team1 || "Team offen" },
+      team2: { teamName: item?.team2 || "Team offen" },
+      matchDateTime: "",
+      matchResults: result ? [{
+        resultTypeID: 2,
+        resultName: roundKey === "finale" ? "Endergebnis" : "Gesamt",
+        pointsTeam1: Number(result[1]),
+        pointsTeam2: Number(result[2])
+      }] : []
+    };
+  }
+
+  function europaLeagueRoundFromOpenLigaDb(matches, roundKey, expected) {
+    const raw = safeArray(matches).filter(match => europaLeagueRoundKey(match) === roundKey);
+    const aggregated = aggregateTwoLegRound(raw, roundKey);
+
+    const valid = aggregated.length === expected &&
+      aggregated.every(match => Boolean(openLigaDbFinalResult(match)));
+
+    return valid ? aggregated : null;
+  }
+
+  function europaLeagueRoundFromFallback(fallbackData, roundKey, expected) {
+    const items = safeArray(fallbackData?.runden?.[roundKey]);
+    if (items.length !== expected) return [];
+    return items.map(item => manualEuropaLeagueMatch(item, roundKey));
+  }
+
+  function renderEuropaLeagueKnockoutPrototype(openLigaDbMatches, fallbackData, root) {
+    if (slug !== "europa-league") return;
+
+    const groups = new Map();
+    const sources = new Map();
+
+    EUROPA_LEAGUE_ROUNDS.forEach(round => {
+      const automatic = europaLeagueRoundFromOpenLigaDb(openLigaDbMatches, round.key, round.expected);
+      if (automatic) {
+        groups.set(round.key, automatic);
+        sources.set(round.key, "OpenLigaDB");
+      } else {
+        groups.set(round.key, europaLeagueRoundFromFallback(fallbackData, round.key, round.expected));
+        sources.set(round.key, "Fallback");
+      }
+    });
+
+    const total = [...groups.values()].reduce((sum, matches) => sum + matches.length, 0);
+    if (!total) return;
+
+    const section = document.createElement("section");
+    section.className = "dynamic-section ko-bracket-section";
+
+    const headingRow = document.createElement("div");
+    headingRow.className = "section-heading-row";
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Europa League · Turnierbaum";
+
+    const badge = document.createElement("span");
+    badge.className = "data-status-badge";
+    badge.textContent = "Test · OpenLigaDB + lokaler Fallback 2025/26";
+
+    headingRow.append(heading, badge);
+    section.appendChild(headingRow);
+
+    const note = document.createElement("p");
+    note.className = "data-note";
+    note.textContent = "OpenLigaDB wird rundenweise bevorzugt. Nur unvollständige K.-o.-Runden werden durch den lokalen Test-Fallback ergänzt.";
+    section.appendChild(note);
+
+    const scroll = document.createElement("div");
+    scroll.className = "ko-bracket-scroll";
+
+    const bracket = document.createElement("div");
+    bracket.className = "ko-bracket";
+    bracket.setAttribute("aria-label", "Europa-League-Turnierbaum");
+
+    EUROPA_LEAGUE_ROUNDS.forEach(round => {
+      const column = document.createElement("section");
+      column.className = `ko-round ko-round--${round.key}`;
+
+      const title = document.createElement("h3");
+      title.className = "ko-round__title";
+      title.textContent = `${round.label} · ${sources.get(round.key)}`;
+      column.appendChild(title);
+
+      const list = document.createElement("div");
+      list.className = "ko-round__matches";
+
+      const matches = groups.get(round.key) || [];
+      if (!matches.length) {
+        const open = document.createElement("div");
+        open.className = "ko-match ko-match--open";
+        open.textContent = "Noch nicht feststehend";
+        list.appendChild(open);
+      } else {
+        matches.forEach(match => list.appendChild(createBracketMatch(match)));
+      }
+
+      column.appendChild(list);
+      bracket.appendChild(column);
+    });
+
+    scroll.appendChild(bracket);
+    section.appendChild(scroll);
+    activateBracketConnections(bracket);
+
+    const source = document.createElement("p");
+    source.className = "data-note ko-source-note";
+    source.textContent = "Sportdaten: OpenLigaDB; fehlende Test-Runden: lokaler verifizierter Fallback 2025/26.";
+    section.appendChild(source);
+
     root.appendChild(section);
   }
 
@@ -1566,7 +1765,7 @@ function renderCards(cards) {
     root.appendChild(quickActions);
   }
 
-  function renderSections(sections, buttons, gameData, teamData, tableData, openLigaDbDfbMatches, openLigaDbClTable) {
+  function renderSections(sections, buttons, gameData, teamData, tableData, openLigaDbDfbMatches, openLigaDbClTable, openLigaDbElMatches, europaLeagueFallback) {
     const root = $("dynamic-sections");
     root.innerHTML = "";
     document.body.classList.add(`page-${slug}`);
@@ -1574,6 +1773,7 @@ function renderCards(cards) {
     renderCompetitionSituation(gameData, teamData, root);
     renderChampionsLeagueTable(openLigaDbClTable, root);
     renderChampionsLeagueKnockoutPrototype(openLigaDbClTable, root);
+    renderEuropaLeagueKnockoutPrototype(openLigaDbElMatches, europaLeagueFallback, root);
     renderDfbKnockoutPrototype(openLigaDbDfbMatches, root);
     if (slug === "bundesliga" || slug === "dynamo-dresden") {
       renderQuickBackButton(buttons, root);
@@ -1676,7 +1876,7 @@ function renderCards(cards) {
           window.OSCDataRegistry.url("wettbewerbe")
         ]);
       }
-      const [data, centralGameData, teamData, bundesligaTableData, competitionConfig, openLigaDbDfbMatches, openLigaDbClTable] = await Promise.all([
+      const [data, centralGameData, teamData, bundesligaTableData, competitionConfig, openLigaDbDfbMatches, openLigaDbClTable, openLigaDbElMatches, europaLeagueFallback] = await Promise.all([
         fetchJson(jsonUrl, true),
         fetchJson(gameDataUrl, false),
         fetchJson(teamDataUrl, false),
@@ -1687,7 +1887,13 @@ function renderCards(cards) {
           : Promise.resolve([]),
         slug === "champions-league"
           ? fetchJson(OPENLIGADB_CL_MATCHES_PROTOTYPE_URL, false)
-          : Promise.resolve([])
+          : Promise.resolve([]),
+        slug === "europa-league"
+          ? fetchJson(OPENLIGADB_EL_MATCHES_PROTOTYPE_URL, false)
+          : Promise.resolve([]),
+        slug === "europa-league"
+          ? fetchJson(EUROPA_LEAGUE_FALLBACK_PROTOTYPE_URL, false)
+          : Promise.resolve({ runden: {} })
       ]);
 
       currentTeamData = teamData && typeof teamData === "object" ? teamData : { teams: [] };
@@ -1722,7 +1928,7 @@ function renderCards(cards) {
             : [centralSection, ...editorialSections])
         : editorialSections;
 
-      renderSections(sections, data.buttons, centralGameData, teamData, bundesligaTableData, openLigaDbDfbMatches, openLigaDbClTable);
+      renderSections(sections, data.buttons, centralGameData, teamData, bundesligaTableData, openLigaDbDfbMatches, openLigaDbClTable, openLigaDbElMatches, europaLeagueFallback);
       renderButtons(data.buttons);
       text("footer-text", data.fusszeile);
       await loadFooterVersion();
