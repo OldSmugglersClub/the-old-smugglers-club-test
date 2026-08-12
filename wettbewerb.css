@@ -846,10 +846,10 @@ body.page-dynamo-dresden{
 .ko-bracket{
   position:relative;
   display:grid;
-  grid-template-columns:repeat(4,minmax(248px,1fr));
-  gap:38px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:28px;
   width:100%;
-  min-width:1118px;
+  min-width:0;
   box-sizing:border-box;
   align-items:stretch;
   isolation:isolate;
