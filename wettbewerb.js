@@ -549,10 +549,10 @@
     return wrap;
   }
 
-  const OPENLIGADB_CL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/ucl/2025";
+  const OPENLIGADB_CL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/ucl/2026";
   const OPENLIGADB_EL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/uel/2026";
   const EUROPA_LEAGUE_FALLBACK_PROTOTYPE_URL = "./europa-league-ko-2026.json";
-  const OPENLIGADB_DFB_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/dfb/2025";
+  const OPENLIGADB_DFB_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/dfb/2026";
   const DFB_BRACKET_ROUNDS = [
     { key: "achtelfinale", label: "Achtelfinale" },
     { key: "viertelfinale", label: "Viertelfinale" },
@@ -918,7 +918,7 @@
     heading.textContent = "Champions League · Turnierbaum";
     const badge = document.createElement("span");
     badge.className = "data-status-badge";
-    badge.textContent = "Prototyp · OpenLigaDB 2025/26";
+    badge.textContent = "OpenLigaDB 2026/27";
     headingRow.append(heading, badge);
     section.appendChild(headingRow);
 
@@ -1210,7 +1210,7 @@
     heading.textContent = "DFB-Pokal · Turnierbaum";
     const badge = document.createElement("span");
     badge.className = "data-status-badge";
-    badge.textContent = "Prototyp · OpenLigaDB 2025/26";
+    badge.textContent = "OpenLigaDB 2026/27";
     headingRow.append(heading, badge);
     section.appendChild(headingRow);
 
