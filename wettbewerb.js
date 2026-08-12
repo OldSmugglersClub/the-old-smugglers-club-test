@@ -549,6 +549,7 @@
     return wrap;
   }
 
+  const OPENLIGADB_CL_TABLE_PROTOTYPE_URL = "https://api.openligadb.de/getbltable/ucl/2025";
   const OPENLIGADB_DFB_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/dfb/2025";
   const DFB_BRACKET_ROUNDS = [
     { key: "achtelfinale", label: "Achtelfinale" },
@@ -712,6 +713,105 @@
     } else {
       window.addEventListener("resize", redraw, { passive: true });
     }
+  }
+
+  function openLigaDbNumber(row, ...keys) {
+    for (const key of keys) {
+      const value = Number(row && row[key]);
+      if (Number.isFinite(value)) return value;
+    }
+    return 0;
+  }
+
+  function renderChampionsLeagueTable(openLigaDbTable, root) {
+    if (slug !== "champions-league") return;
+
+    const rows = safeArray(openLigaDbTable);
+    const section = document.createElement("section");
+    section.className = "dynamic-section standings-section";
+
+    const headingRow = document.createElement("div");
+    headingRow.className = "section-heading-row";
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Champions-League-Tabelle";
+
+    const badge = document.createElement("span");
+    badge.className = "data-status-badge";
+    badge.textContent = rows.length
+      ? `Prototyp · OpenLigaDB 2025/26 · ${rows.length} Teams`
+      : "OpenLigaDB · Tabelle derzeit leer";
+
+    headingRow.append(heading, badge);
+    section.appendChild(headingRow);
+
+    if (!rows.length) {
+      const note = document.createElement("p");
+      note.className = "data-note";
+      note.textContent = "OpenLigaDB liefert derzeit keine verwertbare Champions-League-Tabelle.";
+      section.appendChild(note);
+      root.appendChild(section);
+      return;
+    }
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "table-scroll";
+
+    const table = document.createElement("table");
+    table.className = "data-table standings-table";
+    table.innerHTML = "<thead><tr><th>Pl.</th><th>Verein</th><th>Sp.</th><th>S</th><th>U</th><th>N</th><th>Tore</th><th>Diff.</th><th>Pkt.</th></tr></thead>";
+
+    const tbody = document.createElement("tbody");
+
+    rows.forEach((row, index) => {
+      const teamNameValue = String(row?.teamName ?? row?.TeamName ?? "Team offen").trim() || "Team offen";
+      const played = openLigaDbNumber(row, "matches", "Matches", "played", "Played");
+      const wins = openLigaDbNumber(row, "won", "Won", "wins", "Wins");
+      const draws = openLigaDbNumber(row, "draw", "Draw", "draws", "Draws");
+      const losses = openLigaDbNumber(row, "lost", "Lost", "losses", "Losses");
+      const goalsFor = openLigaDbNumber(row, "goals", "Goals", "goalsFor", "GoalsFor");
+      const goalsAgainst = openLigaDbNumber(row, "opponentGoals", "OpponentGoals", "goalsAgainst", "GoalsAgainst");
+      const goalDifference = openLigaDbNumber(row, "goalDiff", "GoalDiff") || (goalsFor - goalsAgainst);
+      const points = openLigaDbNumber(row, "points", "Points");
+
+      const tr = document.createElement("tr");
+      const values = [
+        index + 1,
+        teamNameValue,
+        played,
+        wins,
+        draws,
+        losses,
+        `${goalsFor}:${goalsAgainst}`,
+        goalDifference > 0 ? `+${goalDifference}` : String(goalDifference),
+        points
+      ];
+
+      values.forEach((value, columnIndex) => {
+        const cell = document.createElement(columnIndex === 0 ? "th" : "td");
+        if (columnIndex === 0) cell.scope = "row";
+
+        if (columnIndex === 1) {
+          cell.appendChild(createTeamIdentity("", teamNameValue, "team-identity--table"));
+        } else {
+          cell.textContent = value;
+        }
+        tr.appendChild(cell);
+      });
+
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    wrapper.appendChild(table);
+    section.appendChild(wrapper);
+
+    const note = document.createElement("p");
+    note.className = "data-note";
+    note.textContent = "Aktuelle Sportdaten: OpenLigaDB. Diese Tabelle dient ausschließlich der externen Wettbewerbsdarstellung und beeinflusst keine OSC-/Kicktipp-Wertung.";
+
+    section.appendChild(note);
+    root.appendChild(section);
   }
 
   function renderDfbKnockoutPrototype(openLigaDbMatches, root) {
@@ -1309,12 +1409,13 @@ function renderCards(cards) {
     root.appendChild(quickActions);
   }
 
-  function renderSections(sections, buttons, gameData, teamData, tableData, openLigaDbDfbMatches) {
+  function renderSections(sections, buttons, gameData, teamData, tableData, openLigaDbDfbMatches, openLigaDbClTable) {
     const root = $("dynamic-sections");
     root.innerHTML = "";
     document.body.classList.add(`page-${slug}`);
     renderCompetitionNavigator(root);
     renderCompetitionSituation(gameData, teamData, root);
+    renderChampionsLeagueTable(openLigaDbClTable, root);
     renderDfbKnockoutPrototype(openLigaDbDfbMatches, root);
     if (slug === "bundesliga" || slug === "dynamo-dresden") {
       renderQuickBackButton(buttons, root);
@@ -1417,7 +1518,7 @@ function renderCards(cards) {
           window.OSCDataRegistry.url("wettbewerbe")
         ]);
       }
-      const [data, centralGameData, teamData, bundesligaTableData, competitionConfig, openLigaDbDfbMatches] = await Promise.all([
+      const [data, centralGameData, teamData, bundesligaTableData, competitionConfig, openLigaDbDfbMatches, openLigaDbClTable] = await Promise.all([
         fetchJson(jsonUrl, true),
         fetchJson(gameDataUrl, false),
         fetchJson(teamDataUrl, false),
@@ -1425,6 +1526,9 @@ function renderCards(cards) {
         fetchJson(competitionConfigUrl, false),
         slug === "dfb-pokal"
           ? fetchJson(OPENLIGADB_DFB_PROTOTYPE_URL, false)
+          : Promise.resolve([]),
+        slug === "champions-league"
+          ? fetchJson(OPENLIGADB_CL_TABLE_PROTOTYPE_URL, false)
           : Promise.resolve([])
       ]);
 
@@ -1460,7 +1564,7 @@ function renderCards(cards) {
             : [centralSection, ...editorialSections])
         : editorialSections;
 
-      renderSections(sections, data.buttons, centralGameData, teamData, bundesligaTableData, openLigaDbDfbMatches);
+      renderSections(sections, data.buttons, centralGameData, teamData, bundesligaTableData, openLigaDbDfbMatches, openLigaDbClTable);
       renderButtons(data.buttons);
       text("footer-text", data.fusszeile);
       await loadFooterVersion();
