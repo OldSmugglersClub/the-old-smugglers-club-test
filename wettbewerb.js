@@ -787,7 +787,7 @@
     const badge = document.createElement("span");
     badge.className = "data-status-badge";
     const complete = rows.length === 36 && rows.every(team => team.played === 8);
-    badge.textContent = complete ? "OpenLigaDB 2025/26 · Ligaphase vollständig" : `OpenLigaDB 2025/26 · ${rows.length} Teams`;
+    badge.textContent = complete ? "OpenLigaDB 2026/27 · Ligaphase vollständig" : `OpenLigaDB 2026/27 · ${rows.length} Teams`;
     headingRow.append(heading, badge);
     section.appendChild(headingRow);
 
@@ -1216,7 +1216,7 @@
 
     const note = document.createElement("p");
     note.className = "data-note";
-    note.textContent = "Vollständiger Prototyp mit realen Vorsaisondaten. Für die Saison 2026/27 werden später nur die jeweils bereits feststehenden K.-o.-Runden angezeigt.";
+    note.textContent = "Für die Saison 2026/27 werden nur die jeweils bereits feststehenden K.-o.-Runden angezeigt.";
     section.appendChild(note);
 
     const groups = new Map(DFB_BRACKET_ROUNDS.map(round => [round.key, []]));
