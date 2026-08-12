@@ -836,16 +836,21 @@ body.page-dynamo-dresden{
 /* OpenLigaDB DFB-KO-Baum-Prototyp V2 – Testrepository */
 .ko-bracket-section{overflow:hidden}
 .ko-bracket-scroll{
+  width:100%;
+  max-width:100%;
   overflow-x:auto;
-  padding:4px 2px 12px;
+  box-sizing:border-box;
+  padding:4px 8px 12px 2px;
   scrollbar-color:rgba(204,150,55,.8) rgba(20,12,6,.7);
 }
 .ko-bracket{
   position:relative;
   display:grid;
-  grid-template-columns:repeat(4,minmax(285px,1fr));
-  gap:54px;
-  min-width:1260px;
+  grid-template-columns:repeat(4,minmax(248px,1fr));
+  gap:38px;
+  width:100%;
+  min-width:1118px;
+  box-sizing:border-box;
   align-items:stretch;
   isolation:isolate;
 }
@@ -956,16 +961,24 @@ body.page-dynamo-dresden{
 
 @media(max-width:900px){
   .ko-bracket{
-    grid-template-columns:repeat(4,270px);
-    gap:46px;
-    min-width:1218px;
+    grid-template-columns:repeat(4,248px);
+    gap:34px;
+    min-width:1094px;
   }
 }
 @media(max-width:700px){
   .ko-bracket{
-    grid-template-columns:repeat(4,255px);
-    gap:42px;
-    min-width:1146px;
+    grid-template-columns:repeat(4,244px);
+    gap:30px;
+    min-width:1066px;
   }
   .ko-match .team-identity__name{font-size:.82rem}
+}
+
+/* V2-FIX: Finale vollständig innerhalb der Turnierbaum-Gesamtkachel */
+.ko-round,
+.ko-round__title,
+.ko-match{
+  max-width:100%;
+  box-sizing:border-box;
 }
