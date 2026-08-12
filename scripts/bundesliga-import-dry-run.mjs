@@ -30,6 +30,7 @@ const TEAM_ALIASES = {
   "sport-club freiburg": "freiburg",
   "sc freiburg": "freiburg",
   "sv elversberg": "elversberg",
+  "sv 07 elversberg": "elversberg",
   "sv werder bremen": "werder-bremen",
   "werder bremen": "werder-bremen",
   "tsg hoffenheim": "hoffenheim",
