@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenLigaDB CL-KO-Aggregationstest</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1180px;margin:35px auto;padding:0 18px;background:#111;color:#eee}
+.box{border:1px solid #666;border-radius:12px;padding:20px;background:#1b1b1b;margin-bottom:20px}
+.ok{color:#8fd18f}.warn{color:#f5c76d}.err{color:#ff9c9c}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:8px;border-bottom:1px solid #444;text-align:left;vertical-align:top}
+code{word-break:break-all}
+h3{margin-top:24px}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h1>OpenLigaDB – Champions League K.-o.-Aggregation 2025/26</h1>
+<p>Isolierter Test aus <code>getmatchdata/ucl/2025</code>.</p>
+<p id="status">Abruf läuft …</p>
+</div>
+
+<div class="box">
+<h2>Aggregierte K.-o.-Paarungen</h2>
+<div id="details"></div>
+</div>
+
+<script>
+const esc=v=>String(v??"").replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+
+function roundName(m){
+  return String(m?.group?.groupName ?? m?.group?.GroupName ?? "").trim();
+}
+
+function teamName(t){
+  return String(t?.teamName ?? t?.TeamName ?? "?").trim();
+}
+
+function teamKey(t){
+  return String(t?.teamId ?? t?.teamID ?? t?.TeamId ?? t?.TeamID ?? teamName(t));
+}
+
+function finalScore(match){
+  const results=Array.isArray(match?.matchResults)?match.matchResults:[];
+  const r=
+    results.find(x=>Number(x?.resultTypeID ?? x?.resultTypeId ?? x?.ResultTypeID)===2) ||
+    results.find(x=>{
+      const n=String(x?.resultName ?? x?.resultTypeName ?? "").toLowerCase();
+      return n.includes("end") || n.includes("final");
+    }) ||
+    results.at(-1);
+
+  if(!r)return null;
+  const a=Number(r?.pointsTeam1 ?? r?.PointsTeam1);
+  const b=Number(r?.pointsTeam2 ?? r?.PointsTeam2);
+  return Number.isFinite(a)&&Number.isFinite(b)?[a,b]:null;
+}
+
+function pairKey(m){
+  const a=teamKey(m?.team1), b=teamKey(m?.team2);
+  return [a,b].sort().join("::");
+}
+
+function normalizeKoRound(name){
+  const n=String(name||"").toLowerCase();
+
+  if(n.includes("playoff")) return "Playoffs";
+  if(n.includes("achtelfinale")) return "Achtelfinale";
+  if(n.includes("viertelfinale")) return "Viertelfinale";
+  if(n.includes("halbfinale")) return "Halbfinale";
+  if(n==="finale" || n.includes(" finale")) return "Finale";
+
+  return "";
+}
+
+function aggregateRound(matches, label){
+  if(label==="Finale"){
+    return matches.map(m=>{
+      const sc=finalScore(m);
+      return {
+        team1:teamName(m.team1),
+        team2:teamName(m.team2),
+        firstLeg:sc,
+        secondLeg:null,
+        aggregate:sc,
+        matches:[m]
+      };
+    });
+  }
+
+  const groups=new Map();
+
+  for(const m of matches){
+    const key=pairKey(m);
+    if(!groups.has(key))groups.set(key,[]);
+    groups.get(key).push(m);
+  }
+
+  const result=[];
+
+  for(const games of groups.values()){
+    games.sort((a,b)=>String(a?.matchDateTime??"").localeCompare(String(b?.matchDateTime??"")));
+
+    const first=games[0], second=games[1] ?? null;
+    const firstScore=finalScore(first);
+    const secondScore=second ? finalScore(second) : null;
+
+    const t1Key=teamKey(first.team1);
+    const t2Key=teamKey(first.team2);
+
+    let agg1=0, agg2=0, hasAll=true;
+
+    for(const game of games){
+      const sc=finalScore(game);
+      if(!sc){hasAll=false;break;}
+
+      const homeKey=teamKey(game.team1);
+
+      if(homeKey===t1Key){
+        agg1+=sc[0]; agg2+=sc[1];
+      }else{
+        agg1+=sc[1]; agg2+=sc[0];
+      }
+    }
+
+    result.push({
+      team1:teamName(first.team1),
+      team2:teamName(first.team2),
+      firstLeg:firstScore,
+      secondLeg:secondScore,
+      aggregate:hasAll?[agg1,agg2]:null,
+      matches:games
+    });
+  }
+
+  return result;
+}
+
+(async()=>{
+  const status=document.getElementById("status");
+  const details=document.getElementById("details");
+
+  try{
+    const r=await fetch("https://api.openligadb.de/getmatchdata/ucl/2025",{cache:"no-store"});
+    if(!r.ok)throw new Error("HTTP "+r.status);
+
+    const all=await r.json();
+    const ko=all.filter(m=>normalizeKoRound(roundName(m)));
+
+    const grouped=new Map();
+    for(const m of ko){
+      const key=normalizeKoRound(roundName(m));
+      if(!grouped.has(key))grouped.set(key,[]);
+      grouped.get(key).push(m);
+    }
+
+    const order=["Playoffs","Achtelfinale","Viertelfinale","Halbfinale","Finale"];
+    let html="";
+    let totalPairs=0;
+    let warning=false;
+
+    for(const label of order){
+      const raw=grouped.get(label) || [];
+      const pairs=aggregateRound(raw,label);
+      totalPairs+=pairs.length;
+
+      const expected={
+        "Playoffs":8,
+        "Achtelfinale":8,
+        "Viertelfinale":4,
+        "Halbfinale":2,
+        "Finale":1
+      }[label];
+
+      if(pairs.length!==expected)warning=true;
+
+      html+=`<h3>${esc(label)} – ${pairs.length} Paarungen</h3>`;
+      html+=`<table><thead><tr><th>Paarung</th><th>Hinspiel</th><th>Rückspiel</th><th>Gesamt</th></tr></thead><tbody>`;
+
+      for(const p of pairs){
+        const f=p.firstLeg ? `${p.firstLeg[0]}:${p.firstLeg[1]}` : "–";
+        const s=p.secondLeg ? `${p.secondLeg[0]}:${p.secondLeg[1]}` : "–";
+        const a=p.aggregate ? `${p.aggregate[0]}:${p.aggregate[1]}` : "–";
+        html+=`<tr><td>${esc(p.team1)} – ${esc(p.team2)}</td><td>${esc(f)}</td><td>${esc(s)}</td><td>${esc(a)}</td></tr>`;
+      }
+
+      html+="</tbody></table>";
+    }
+
+    status.className=warning?"warn":"ok";
+    status.textContent=warning
+      ? `OpenLigaDB erreichbar. Aggregation technisch möglich, aber mindestens eine Runde hat nicht die erwartete Paarungszahl.`
+      : `BESTANDEN – 23 K.-o.-Paarungen korrekt aggregiert (8 Playoffs, 8 Achtelfinale, 4 Viertelfinale, 2 Halbfinale, 1 Finale).`;
+
+    details.innerHTML=html;
+
+  }catch(e){
+    status.className="err";
+    status.textContent="Fehler: "+(e.message||e);
+  }
+})();
+</script>
+
+</body>
+</html>
