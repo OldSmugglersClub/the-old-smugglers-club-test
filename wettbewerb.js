@@ -597,6 +597,15 @@
     return String(team?.teamName ?? team?.TeamName ?? "Team offen").trim() || "Team offen";
   }
 
+  function bracketTeamKey(value) {
+    return String(value || "")
+      .toLocaleLowerCase("de")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+  }
+
   function createBracketMatch(match) {
     const card = document.createElement("article");
     card.className = "ko-match";
@@ -606,6 +615,9 @@
 
     const homeName = openLigaDbTeamName(match?.team1);
     const awayName = openLigaDbTeamName(match?.team2);
+    card.dataset.team1 = bracketTeamKey(homeName);
+    card.dataset.team2 = bracketTeamKey(awayName);
+
     teams.append(
       createTeamIdentity("", homeName, "ko-team"),
       createTeamIdentity("", awayName, "ko-team")
@@ -628,6 +640,78 @@
     meta.append(result, date);
     card.append(teams, meta);
     return card;
+  }
+
+  function bracketCardTeams(card) {
+    return [card?.dataset?.team1, card?.dataset?.team2].filter(Boolean);
+  }
+
+  function drawBracketConnections(bracket) {
+    if (!bracket) return;
+    const oldSvg = bracket.querySelector(".ko-bracket__connections");
+    if (oldSvg) oldSvg.remove();
+
+    const rounds = [...bracket.querySelectorAll(".ko-round")];
+    if (rounds.length < 2) return;
+
+    const width = Math.max(bracket.scrollWidth, bracket.clientWidth);
+    const height = Math.max(bracket.scrollHeight, bracket.clientHeight);
+    if (!width || !height) return;
+
+    const baseRect = bracket.getBoundingClientRect();
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "ko-bracket__connections");
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    svg.setAttribute("width", width);
+    svg.setAttribute("height", height);
+    svg.setAttribute("aria-hidden", "true");
+
+    const connected = new Set();
+
+    for (let roundIndex = 1; roundIndex < rounds.length; roundIndex += 1) {
+      const previousCards = [...rounds[roundIndex - 1].querySelectorAll(".ko-match:not(.ko-match--open)")];
+      const currentCards = [...rounds[roundIndex].querySelectorAll(".ko-match:not(.ko-match--open)")];
+
+      currentCards.forEach(currentCard => {
+        const currentTeams = new Set(bracketCardTeams(currentCard));
+        const targetRect = currentCard.getBoundingClientRect();
+
+        previousCards.forEach(previousCard => {
+          const sharedTeam = bracketCardTeams(previousCard).find(team => currentTeams.has(team));
+          if (!sharedTeam) return;
+
+          const connectionKey = `${roundIndex}:${sharedTeam}:${previousCard.dataset.team1}:${previousCard.dataset.team2}`;
+          if (connected.has(connectionKey)) return;
+          connected.add(connectionKey);
+
+          const sourceRect = previousCard.getBoundingClientRect();
+          const x1 = sourceRect.right - baseRect.left;
+          const y1 = sourceRect.top - baseRect.top + sourceRect.height / 2;
+          const x2 = targetRect.left - baseRect.left;
+          const y2 = targetRect.top - baseRect.top + targetRect.height / 2;
+          const middleX = x1 + Math.max(12, (x2 - x1) / 2);
+
+          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", `M ${x1} ${y1} H ${middleX} V ${y2} H ${x2}`);
+          path.setAttribute("class", "ko-bracket__connection");
+          svg.appendChild(path);
+        });
+      });
+    }
+
+    bracket.prepend(svg);
+  }
+
+  function activateBracketConnections(bracket) {
+    const redraw = () => window.requestAnimationFrame(() => drawBracketConnections(bracket));
+    redraw();
+
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(redraw);
+      observer.observe(bracket);
+    } else {
+      window.addEventListener("resize", redraw, { passive: true });
+    }
   }
 
   function renderDfbKnockoutPrototype(openLigaDbMatches, root) {
@@ -703,6 +787,7 @@
 
     scroll.appendChild(bracket);
     section.appendChild(scroll);
+    activateBracketConnections(bracket);
 
     const source = document.createElement("p");
     source.className = "data-note ko-source-note";
