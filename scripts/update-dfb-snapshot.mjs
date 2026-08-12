@@ -140,6 +140,11 @@ const currentJson = JSON.stringify(current.matches ?? []);
 const candidateJson = JSON.stringify(candidate);
 const changed = currentJson !== candidateJson;
 
+if (!changed) {
+  console.log("KEINE SPORTLICHE ÄNDERUNG – Snapshot bleibt unverändert.");
+  process.exit(0);
+}
+
 const next = {
   ...current,
   competition: "dfb-pokal",

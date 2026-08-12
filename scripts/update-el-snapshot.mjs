@@ -239,6 +239,11 @@ if (!validation.ok) {
 const changed =
   JSON.stringify(current.matches ?? []) !== JSON.stringify(loaded.matches);
 
+if (!changed) {
+  console.log("KEINE SPORTLICHE ÄNDERUNG – Snapshot bleibt unverändert.");
+  process.exit(0);
+}
+
 const next = {
   ...current,
   competition: COMPETITION,

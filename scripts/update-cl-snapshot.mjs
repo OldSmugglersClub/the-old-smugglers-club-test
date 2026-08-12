@@ -82,6 +82,11 @@ if (!verdict.ok) {
 }
 
 const changed = JSON.stringify(current.matches ?? []) !== JSON.stringify(fresh);
+
+if (!changed) {
+  console.log("KEINE SPORTLICHE ÄNDERUNG – Snapshot bleibt unverändert.");
+  process.exit(0);
+}
 const next = {...current, competition:COMPETITION, season:"2026/27", source:"OpenLigaDB",
   leagueShortcut:SHORTCUT, lastSuccessfulCheck:now,
   lastChange:changed ? now : current.lastChange, status:"valid", matches:fresh};

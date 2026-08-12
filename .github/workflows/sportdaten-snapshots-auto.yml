@@ -1,0 +1,49 @@
+name: Sportdaten-Snapshots – automatisch
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 8 * * *"
+    - cron: "17 15,17,19,21 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osc-sportdaten-snapshots
+  cancel-in-progress: false
+
+jobs:
+  update-snapshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: DFB-Pokal prüfen
+        env:
+          OSC_TEST_MODE: live
+        run: node scripts/update-dfb-snapshot.mjs
+
+      - name: Champions League prüfen
+        env:
+          OSC_TEST_MODE: live
+        run: node scripts/update-cl-snapshot.mjs
+
+      - name: Europa League prüfen
+        env:
+          OSC_TEST_MODE: live
+        run: node scripts/update-el-snapshot.mjs
+
+      - name: Gültige Snapshot-Änderungen committen
+        shell: bash
+        run: |
+          if git diff --quiet -- dfb-pokal-sportdaten.json champions-league-sportdaten.json europa-league-sportdaten.json; then
+            echo "Keine sportliche Änderung – kein Commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dfb-pokal-sportdaten.json champions-league-sportdaten.json europa-league-sportdaten.json
+          git commit -m "Sportdaten-Snapshots aktualisieren"
+          git push
