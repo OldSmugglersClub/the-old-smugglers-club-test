@@ -928,8 +928,10 @@
     const scroll = document.createElement("div");
     scroll.className = "ko-bracket-scroll";
     const bracket = document.createElement("div");
-    bracket.className = "ko-bracket";
+    bracket.className = "ko-bracket ko-bracket--champions-league";
     bracket.setAttribute("aria-label", "Champions-League-Turnierbaum");
+    bracket.style.gridTemplateColumns = "repeat(5, minmax(250px, 1fr))";
+    bracket.style.minWidth = "1370px";
 
     rounds.forEach(round => {
       const column = document.createElement("section");
