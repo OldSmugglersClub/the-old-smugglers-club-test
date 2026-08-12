@@ -2,7 +2,7 @@
   "competition": "europa-league",
   "season": "2026/27",
   "source": "OpenLigaDB",
-  "leagueShortcut": "uel",
+  "leagueShortcut": null,
   "lastSuccessfulCheck": null,
   "lastChange": null,
   "status": "empty",
