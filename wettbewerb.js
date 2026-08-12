@@ -549,7 +549,7 @@
     return wrap;
   }
 
-  const OPENLIGADB_CL_TABLE_PROTOTYPE_URL = "https://api.openligadb.de/getbltable/ucl/2025";
+  const OPENLIGADB_CL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/ucl/2025";
   const OPENLIGADB_DFB_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/dfb/2025";
   const DFB_BRACKET_ROUNDS = [
     { key: "achtelfinale", label: "Achtelfinale" },
@@ -723,95 +723,102 @@
     return 0;
   }
 
-  function renderChampionsLeagueTable(openLigaDbTable, root) {
+  function renderChampionsLeagueTable(openLigaDbMatches, root) {
     if (slug !== "champions-league") return;
 
-    const rows = safeArray(openLigaDbTable);
+    const leaguePhaseMatches = safeArray(openLigaDbMatches).filter(match => {
+      const groupName = String(match?.group?.groupName ?? match?.group?.GroupName ?? "");
+      const matchday = Number(groupName.match(/(\d+)\.\s*Spieltag/i)?.[1]);
+      return Number.isFinite(matchday) && matchday >= 1 && matchday <= 8;
+    });
+
+    const teams = new Map();
+
+    function ensureTeam(team) {
+      const id = String(team?.teamId ?? team?.teamID ?? team?.TeamId ?? team?.TeamID ?? "");
+      const name = openLigaDbTeamName(team);
+      const key = id || bracketTeamKey(name);
+      if (!teams.has(key)) {
+        teams.set(key, { id, name, played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0, points: 0 });
+      }
+      return teams.get(key);
+    }
+
+    leaguePhaseMatches.forEach(match => {
+      const home = ensureTeam(match?.team1);
+      const away = ensureTeam(match?.team2);
+      const results = safeArray(match?.matchResults);
+      const finalResult = results.find(result => Number(result?.resultTypeID ?? result?.resultTypeId ?? result?.ResultTypeID ?? -1) === 2)
+        || results.find(result => {
+          const name = String(result?.resultName ?? result?.resultTypeName ?? "").toLocaleLowerCase("de");
+          return name.includes("end") || name.includes("final");
+        })
+        || results.at(-1);
+      if (!finalResult) return;
+      const homeGoals = Number(finalResult?.pointsTeam1 ?? finalResult?.PointsTeam1);
+      const awayGoals = Number(finalResult?.pointsTeam2 ?? finalResult?.PointsTeam2);
+      if (!Number.isFinite(homeGoals) || !Number.isFinite(awayGoals)) return;
+
+      home.played += 1; away.played += 1;
+      home.goalsFor += homeGoals; home.goalsAgainst += awayGoals;
+      away.goalsFor += awayGoals; away.goalsAgainst += homeGoals;
+      if (homeGoals > awayGoals) { home.wins += 1; away.losses += 1; home.points += 3; }
+      else if (homeGoals < awayGoals) { away.wins += 1; home.losses += 1; away.points += 3; }
+      else { home.draws += 1; away.draws += 1; home.points += 1; away.points += 1; }
+    });
+
+    const rows = [...teams.values()].sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      const gdA = a.goalsFor - a.goalsAgainst;
+      const gdB = b.goalsFor - b.goalsAgainst;
+      if (gdB !== gdA) return gdB - gdA;
+      if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+      return a.name.localeCompare(b.name, "de");
+    });
+
     const section = document.createElement("section");
     section.className = "dynamic-section standings-section";
-
     const headingRow = document.createElement("div");
     headingRow.className = "section-heading-row";
-
     const heading = document.createElement("h2");
     heading.textContent = "Champions-League-Tabelle";
-
     const badge = document.createElement("span");
     badge.className = "data-status-badge";
-    badge.textContent = rows.length
-      ? `Prototyp · OpenLigaDB 2025/26 · ${rows.length} Teams`
-      : "OpenLigaDB · Tabelle derzeit leer";
-
+    const complete = rows.length === 36 && rows.every(team => team.played === 8);
+    badge.textContent = complete ? "OpenLigaDB 2025/26 · Ligaphase vollständig" : `OpenLigaDB 2025/26 · ${rows.length} Teams`;
     headingRow.append(heading, badge);
     section.appendChild(headingRow);
 
     if (!rows.length) {
       const note = document.createElement("p");
       note.className = "data-note";
-      note.textContent = "OpenLigaDB liefert derzeit keine verwertbare Champions-League-Tabelle.";
-      section.appendChild(note);
-      root.appendChild(section);
-      return;
+      note.textContent = "OpenLigaDB liefert derzeit keine verwertbaren Daten für die Champions-League-Ligaphase.";
+      section.appendChild(note); root.appendChild(section); return;
     }
 
-    const wrapper = document.createElement("div");
-    wrapper.className = "table-scroll";
-
-    const table = document.createElement("table");
-    table.className = "data-table standings-table";
+    const wrapper = document.createElement("div"); wrapper.className = "table-scroll";
+    const table = document.createElement("table"); table.className = "data-table standings-table";
     table.innerHTML = "<thead><tr><th>Pl.</th><th>Verein</th><th>Sp.</th><th>S</th><th>U</th><th>N</th><th>Tore</th><th>Diff.</th><th>Pkt.</th></tr></thead>";
-
     const tbody = document.createElement("tbody");
-
-    rows.forEach((row, index) => {
-      const teamNameValue = String(row?.teamName ?? row?.TeamName ?? "Team offen").trim() || "Team offen";
-      const played = openLigaDbNumber(row, "matches", "Matches", "played", "Played");
-      const wins = openLigaDbNumber(row, "won", "Won", "wins", "Wins");
-      const draws = openLigaDbNumber(row, "draw", "Draw", "draws", "Draws");
-      const losses = openLigaDbNumber(row, "lost", "Lost", "losses", "Losses");
-      const goalsFor = openLigaDbNumber(row, "goals", "Goals", "goalsFor", "GoalsFor");
-      const goalsAgainst = openLigaDbNumber(row, "opponentGoals", "OpponentGoals", "goalsAgainst", "GoalsAgainst");
-      const goalDifference = openLigaDbNumber(row, "goalDiff", "GoalDiff") || (goalsFor - goalsAgainst);
-      const points = openLigaDbNumber(row, "points", "Points");
-
+    rows.forEach((team, index) => {
       const tr = document.createElement("tr");
-      const values = [
-        index + 1,
-        teamNameValue,
-        played,
-        wins,
-        draws,
-        losses,
-        `${goalsFor}:${goalsAgainst}`,
-        goalDifference > 0 ? `+${goalDifference}` : String(goalDifference),
-        points
-      ];
-
+      const gd = team.goalsFor - team.goalsAgainst;
+      const values = [index + 1, team.name, team.played, team.wins, team.draws, team.losses, `${team.goalsFor}:${team.goalsAgainst}`, gd > 0 ? `+${gd}` : String(gd), team.points];
       values.forEach((value, columnIndex) => {
         const cell = document.createElement(columnIndex === 0 ? "th" : "td");
         if (columnIndex === 0) cell.scope = "row";
-
-        if (columnIndex === 1) {
-          cell.appendChild(createTeamIdentity("", teamNameValue, "team-identity--table"));
-        } else {
-          cell.textContent = value;
-        }
+        if (columnIndex === 1) cell.appendChild(createTeamIdentity(team.id, team.name, "team-identity--table"));
+        else cell.textContent = value;
         tr.appendChild(cell);
       });
-
       tbody.appendChild(tr);
     });
-
-    table.appendChild(tbody);
-    wrapper.appendChild(table);
-    section.appendChild(wrapper);
-
-    const note = document.createElement("p");
-    note.className = "data-note";
-    note.textContent = "Aktuelle Sportdaten: OpenLigaDB. Diese Tabelle dient ausschließlich der externen Wettbewerbsdarstellung und beeinflusst keine OSC-/Kicktipp-Wertung.";
-
-    section.appendChild(note);
-    root.appendChild(section);
+    table.appendChild(tbody); wrapper.appendChild(table); section.appendChild(wrapper);
+    const note = document.createElement("p"); note.className = "data-note";
+    note.textContent = complete
+      ? "Die Tabelle wurde ausschließlich aus den acht Spieltagen der Champions-League-Ligaphase berechnet. K.-o.-Spiele verändern diesen Endstand nicht."
+      : "Die Tabelle wird ausschließlich aus den bereits verfügbaren Spieltagen 1–8 der Champions-League-Ligaphase berechnet.";
+    section.appendChild(note); root.appendChild(section);
   }
 
   function renderDfbKnockoutPrototype(openLigaDbMatches, root) {
@@ -1528,7 +1535,7 @@ function renderCards(cards) {
           ? fetchJson(OPENLIGADB_DFB_PROTOTYPE_URL, false)
           : Promise.resolve([]),
         slug === "champions-league"
-          ? fetchJson(OPENLIGADB_CL_TABLE_PROTOTYPE_URL, false)
+          ? fetchJson(OPENLIGADB_CL_MATCHES_PROTOTYPE_URL, false)
           : Promise.resolve([])
       ]);
 
