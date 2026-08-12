@@ -1084,6 +1084,29 @@
     return items.map(item => manualEuropaLeagueMatch(item, roundKey));
   }
 
+  function europaLeagueRoundHasConflict(openLigaDbRound, fallbackRound) {
+    if (!safeArray(openLigaDbRound).length || !safeArray(fallbackRound).length) return false;
+    if (openLigaDbRound.length !== fallbackRound.length) return true;
+
+    const byPair = matches => new Map(matches.map(match => {
+      const a = bracketTeamKey(openLigaDbTeamName(match?.team1));
+      const b = bracketTeamKey(openLigaDbTeamName(match?.team2));
+      return [[a, b].sort().join("::"), openLigaDbFinalResult(match)];
+    }));
+
+    const automatic = byPair(openLigaDbRound);
+    const fallback = byPair(fallbackRound);
+
+    if (automatic.size !== fallback.size) return true;
+
+    for (const [key, fallbackResult] of fallback) {
+      if (!automatic.has(key)) return true;
+      if (automatic.get(key) !== fallbackResult) return true;
+    }
+
+    return false;
+  }
+
   function renderEuropaLeagueKnockoutPrototype(openLigaDbMatches, fallbackData, root) {
     if (slug !== "europa-league") return;
 
@@ -1092,11 +1115,16 @@
 
     EUROPA_LEAGUE_ROUNDS.forEach(round => {
       const automatic = europaLeagueRoundFromOpenLigaDb(openLigaDbMatches, round.key, round.expected);
-      if (automatic) {
+      const fallback = europaLeagueRoundFromFallback(fallbackData, round.key, round.expected);
+
+      if (automatic && fallback.length && europaLeagueRoundHasConflict(automatic, fallback)) {
+        groups.set(round.key, fallback);
+        sources.set(round.key, "Fallback · Datenkonflikt");
+      } else if (automatic) {
         groups.set(round.key, automatic);
         sources.set(round.key, "OpenLigaDB");
       } else {
-        groups.set(round.key, europaLeagueRoundFromFallback(fallbackData, round.key, round.expected));
+        groups.set(round.key, fallback);
         sources.set(round.key, "Fallback");
       }
     });
