@@ -831,3 +831,111 @@ body.page-dynamo-dresden{
     padding-right:.35rem;
   }
 }
+
+
+/* OpenLigaDB DFB-KO-Baum-Prototyp – Testrepository */
+.ko-bracket-section{overflow:hidden}
+.ko-bracket-scroll{
+  overflow-x:auto;
+  padding:4px 2px 12px;
+  scrollbar-color:rgba(204,150,55,.8) rgba(20,12,6,.7);
+}
+.ko-bracket{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(220px,1fr));
+  gap:30px;
+  min-width:980px;
+  align-items:stretch;
+}
+.ko-round{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.ko-round__title{
+  margin:0 0 12px;
+  padding:.55rem .7rem;
+  border:1px solid rgba(190,132,49,.55);
+  border-radius:8px;
+  color:#edcf87;
+  background:linear-gradient(180deg,rgba(72,43,20,.9),rgba(29,17,8,.94));
+  text-align:center;
+  font-size:1rem;
+}
+.ko-round__matches{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  gap:12px;
+}
+.ko-match{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  min-height:72px;
+  padding:10px 11px;
+  border:1px solid rgba(183,122,35,.5);
+  border-radius:8px;
+  background:linear-gradient(145deg,rgba(49,29,13,.88),rgba(15,9,5,.94));
+  box-shadow:inset 0 1px rgba(255,255,255,.035),0 5px 12px rgba(0,0,0,.2);
+}
+.ko-round:not(:last-child) .ko-match::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  right:-31px;
+  width:30px;
+  border-top:1px solid rgba(201,145,53,.55);
+}
+.ko-match__teams{
+  min-width:0;
+  display:grid;
+  gap:6px;
+  align-content:center;
+}
+.ko-match .team-identity{
+  min-width:0;
+  gap:7px;
+}
+.ko-match .team-identity__badge{
+  width:24px;
+  height:24px;
+  flex:0 0 24px;
+}
+.ko-match .team-identity__name{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:.88rem;
+}
+.ko-match__meta{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-end;
+  gap:5px;
+  white-space:nowrap;
+}
+.ko-match__result{
+  color:#edcf87;
+  font-size:1rem;
+}
+.ko-match__date{
+  color:#c9ad78;
+  font-size:.72rem;
+}
+.ko-match--open{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  font-style:italic;
+  text-align:center;
+}
+.ko-source-note{margin-bottom:0}
+@media(max-width:700px){
+  .ko-bracket{min-width:900px;gap:24px}
+  .ko-round:not(:last-child) .ko-match::after{right:-25px;width:24px}
+}
