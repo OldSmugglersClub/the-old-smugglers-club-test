@@ -1,0 +1,47 @@
+name: CL EL Snapshot – manueller Test
+on:
+  workflow_dispatch:
+    inputs:
+      competition:
+        description: "Wettbewerb"
+        required: true
+        default: "cl"
+        type: choice
+        options: [cl, el]
+      test_mode:
+        description: "Testmodus"
+        required: true
+        default: "live"
+        type: choice
+        options: [live, empty, conflict]
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+      - name: Snapshot prüfen
+        env:
+          OSC_TEST_MODE: ${{ inputs.test_mode }}
+        run: |
+          if [ "${{ inputs.competition }}" = "cl" ]; then
+            node scripts/update-cl-snapshot.mjs
+          else
+            node scripts/update-el-snapshot.mjs
+          fi
+      - name: Änderungen committen
+        shell: bash
+        run: |
+          if git diff --quiet -- champions-league-sportdaten.json europa-league-sportdaten.json; then
+            echo "Keine persistente Änderung."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add champions-league-sportdaten.json europa-league-sportdaten.json
+          git commit -m "Update CL/EL Sportdaten-Snapshot"
+          git push
