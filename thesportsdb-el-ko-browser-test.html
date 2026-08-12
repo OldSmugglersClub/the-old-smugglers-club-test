@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TheSportsDB Europa-League KO-Test</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1180px;margin:35px auto;padding:0 18px;background:#111;color:#eee}
+.box{border:1px solid #666;border-radius:12px;padding:20px;background:#1b1b1b;margin-bottom:20px}
+.ok{color:#8fd18f}.warn{color:#f5c76d}.err{color:#ff9c9c}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:8px;border-bottom:1px solid #444;text-align:left;vertical-align:top}
+code{word-break:break-all}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>TheSportsDB – Europa League 2025/26</h1>
+<p>Isolierter Browser-Test. League-ID <code>4481</code>, Saison <code>2025-2026</code>.</p>
+<p id="status">Abruf läuft …</p>
+</div>
+
+<div class="box">
+<h2>Gefundene Runden</h2>
+<div id="rounds"></div>
+</div>
+
+<div class="box">
+<h2>Späte Runden / mögliche K.-o.-Phase</h2>
+<div id="details"></div>
+</div>
+
+<script>
+const API="https://www.thesportsdb.com/api/v1/json/123/eventsseason.php?id=4481&s=2025-2026";
+const esc=v=>String(v??"").replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+
+(async()=>{
+ const status=document.getElementById("status");
+ const roundsEl=document.getElementById("rounds");
+ const details=document.getElementById("details");
+
+ try{
+   const r=await fetch(API,{cache:"no-store"});
+   if(!r.ok) throw new Error("HTTP "+r.status);
+   const data=await r.json();
+   const events=Array.isArray(data?.events)?data.events:[];
+
+   const groups=new Map();
+   for(const e of events){
+     const round=String(e?.intRound ?? "ohne");
+     if(!groups.has(round)) groups.set(round,[]);
+     groups.get(round).push(e);
+   }
+
+   const sorted=[...groups.entries()].sort((a,b)=>Number(a[0])-Number(b[0]));
+
+   status.className=events.length?"ok":"warn";
+   status.textContent=`Events empfangen: ${events.length} | unterschiedliche intRound-Werte: ${sorted.length}.`;
+
+   roundsEl.innerHTML="<table><thead><tr><th>intRound</th><th>Events</th><th>Datumsbereich</th></tr></thead><tbody>"+
+     sorted.map(([round,items])=>{
+       const dates=items.map(x=>x.dateEvent).filter(Boolean).sort();
+       return `<tr><td>${esc(round)}</td><td>${items.length}</td><td>${esc(dates[0]||"–")} bis ${esc(dates.at(-1)||"–")}</td></tr>`;
+     }).join("")+"</tbody></table>";
+
+   const late=sorted.filter(([round])=>Number(round)>=9);
+   let h="";
+   for(const [round,items] of late){
+     h+=`<h3>intRound ${esc(round)} – ${items.length} Events</h3>`;
+     h+="<table><thead><tr><th>Datum</th><th>Paarung</th><th>Ergebnis</th><th>Status</th></tr></thead><tbody>";
+     for(const e of items.sort((a,b)=>String(a.dateEvent||"").localeCompare(String(b.dateEvent||"")))){
+       const score=(e.intHomeScore!==null && e.intAwayScore!==null)
+         ? `${e.intHomeScore}:${e.intAwayScore}` : "–";
+       h+=`<tr><td>${esc(e.dateEvent||"")}</td><td>${esc(e.strHomeTeam||"?")} – ${esc(e.strAwayTeam||"?")}</td><td>${esc(score)}</td><td>${esc(e.strStatus||"")}</td></tr>`;
+     }
+     h+="</tbody></table>";
+   }
+   details.innerHTML=h || '<p class="warn">Keine intRound-Werte ab 9 gefunden.</p>';
+ }catch(e){
+   status.className="err";
+   status.textContent="Fehler: "+(e.message||e);
+ }
+})();
+</script>
+</body>
+</html>
