@@ -550,8 +550,8 @@
   }
 
   const OPENLIGADB_CL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/ucl/2025";
-  const OPENLIGADB_EL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/uel/2025";
-  const EUROPA_LEAGUE_FALLBACK_PROTOTYPE_URL = "./europa-league-ko-2025-test.json";
+  const OPENLIGADB_EL_MATCHES_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/uel/2026";
+  const EUROPA_LEAGUE_FALLBACK_PROTOTYPE_URL = "./europa-league-ko-2026.json";
   const OPENLIGADB_DFB_PROTOTYPE_URL = "https://api.openligadb.de/getmatchdata/dfb/2025";
   const DFB_BRACKET_ROUNDS = [
     { key: "achtelfinale", label: "Achtelfinale" },
@@ -1143,7 +1143,7 @@
 
     const badge = document.createElement("span");
     badge.className = "data-status-badge";
-    badge.textContent = "Test · OpenLigaDB + lokaler Fallback 2025/26";
+    badge.textContent = "OpenLigaDB + lokaler Fallback 2026/27";
 
     headingRow.append(heading, badge);
     section.appendChild(headingRow);
@@ -1192,7 +1192,7 @@
 
     const source = document.createElement("p");
     source.className = "data-note ko-source-note";
-    source.textContent = "Sportdaten: OpenLigaDB; fehlende Test-Runden: lokaler verifizierter Fallback 2025/26.";
+    source.textContent = "Sportdaten: OpenLigaDB; fehlende Runden: lokaler Fallback 2026/27.";
     section.appendChild(source);
 
     root.appendChild(section);
