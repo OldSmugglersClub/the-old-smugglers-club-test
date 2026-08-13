@@ -1,0 +1,44 @@
+name: Bundesliga Autoimport – Phase 5F-HF1 Regression
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase5f_hf1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: Korrigierte finale Regression ausführen
+        run: node scripts/bundesliga-autoimport-phase5f-hf1-regression.mjs
+
+      - name: Echte spieldaten.json schützen
+        shell: bash
+        run: |
+          if git diff --quiet -- spieldaten.json; then
+            echo "BESTANDEN: echte spieldaten.json unverändert."
+          else
+            echo "FEHLER: echte spieldaten.json wurde verändert."
+            git diff -- spieldaten.json
+            exit 1
+          fi
+
+      - name: Testdateien auflisten
+        shell: bash
+        run: |
+          ls -l \
+            phase5f-hf1-ergebnis.json \
+            spieldaten.phase5f-hf1-noapi.json \
+            spieldaten.phase5f-hf1-geschlossen.json
+
+      - name: Schreibschutz bestätigen
+        shell: bash
+        run: |
+          echo "Workflow-Berechtigung: contents: read"
+          echo "Kein git add, kein git commit, kein git push."
+          echo "BESTANDEN: 5F-HF1 ist reiner Regressionstest."
