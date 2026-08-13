@@ -846,10 +846,10 @@ body.page-dynamo-dresden{
 .ko-bracket{
   position:relative;
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:28px;
+  grid-template-columns:repeat(4,minmax(248px,1fr));
+  gap:38px;
   width:100%;
-  min-width:0;
+  min-width:1118px;
   box-sizing:border-box;
   align-items:stretch;
   isolation:isolate;
@@ -982,3 +982,69 @@ body.page-dynamo-dresden{
   max-width:100%;
   box-sizing:border-box;
 }
+
+/* Tippverteilung pro Spiel – Feature-Test 1 */
+.tip-distribution{
+  grid-column:1 / -1;
+  display:grid;
+  gap:7px;
+  padding-top:10px;
+  border-top:1px solid rgba(205,164,81,.22);
+}
+.tip-distribution__heading{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  color:#d8c49a;
+  font-size:.78rem;
+}
+.tip-distribution__heading strong{
+  color:#e5c06b;
+  font-size:.82rem;
+  letter-spacing:.02em;
+  text-align:left;
+}
+.tip-distribution__row{
+  display:grid;
+  grid-template-columns:minmax(112px,.65fr) minmax(120px,2fr) minmax(58px,auto);
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+.tip-distribution__label{
+  color:#dfd1b3;
+  font-size:.76rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+.tip-distribution__track{
+  display:block;
+  height:8px;
+  overflow:hidden;
+  border:1px solid rgba(224,190,116,.22);
+  border-radius:999px;
+  background:rgba(5,4,3,.55);
+}
+.tip-distribution__fill{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:inherit;
+}
+.tip-distribution__row--home .tip-distribution__fill{background:#4f8754}
+.tip-distribution__row--draw .tip-distribution__fill{background:#c59a43}
+.tip-distribution__row--away .tip-distribution__fill{background:#9f4d47}
+.tip-distribution__amount{
+  color:#f1dfb0;
+  font-size:.78rem;
+  font-weight:900;
+  text-align:right;
+  white-space:nowrap;
+}
+@media(max-width:650px){
+  .tip-distribution__heading{align-items:flex-start;flex-direction:column;gap:2px;text-align:left}
+  .tip-distribution__row{grid-template-columns:minmax(98px,.85fr) minmax(80px,1.6fr) minmax(54px,auto);gap:7px}
+  .tip-distribution__label,.tip-distribution__amount{font-size:.72rem}
+}
+
