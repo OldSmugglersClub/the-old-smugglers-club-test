@@ -1,0 +1,39 @@
+name: Bundesliga Zeitfenster – Read-only Simulation
+
+on:
+  workflow_dispatch:
+    inputs:
+      check_at:
+        description: "Optionaler Prüfzeitpunkt als ISO-Zeit, z.B. 2026-08-28T22:45:00+02:00; leer = jetzt"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: Zeitfenster simulieren
+        env:
+          OSC_CHECK_AT: ${{ inputs.check_at }}
+        shell: bash
+        run: |
+          if [ -z "$OSC_CHECK_AT" ]; then
+            unset OSC_CHECK_AT
+          fi
+          node scripts/bundesliga-zeitfenster-simulation.mjs
+
+      - name: Schreibschutz prüfen
+        shell: bash
+        run: |
+          if git diff --quiet -- spieldaten.json; then
+            echo "BESTANDEN: spieldaten.json unverändert."
+          else
+            echo "FEHLER: spieldaten.json wurde verändert."
+            exit 1
+          fi
