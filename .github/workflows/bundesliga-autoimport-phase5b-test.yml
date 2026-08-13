@@ -1,0 +1,35 @@
+name: Bundesliga Autoimport – Phase 5B Live Read-only
+
+on:
+  workflow_dispatch:
+    inputs:
+      check_at:
+        description: "Simulierter Prüfzeitpunkt; Standard = 28.08.2026 22:31 MESZ"
+        required: false
+        default: "2026-08-28T22:31:00+02:00"
+
+permissions:
+  contents: read
+
+jobs:
+  phase5b:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: Zeitfenster und OpenLigaDB live prüfen
+        env:
+          OSC_CHECK_AT: ${{ inputs.check_at }}
+        run: node scripts/bundesliga-autoimport-phase5b-test.mjs
+
+      - name: Schreibschutz prüfen
+        shell: bash
+        run: |
+          if git diff --quiet -- spieldaten.json; then
+            echo "BESTANDEN: spieldaten.json unverändert – kein Commit."
+          else
+            echo "FEHLER: spieldaten.json wurde verändert."
+            git diff -- spieldaten.json
+            exit 1
+          fi
