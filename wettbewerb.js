@@ -1647,45 +1647,40 @@ function renderCards(cards) {
     const wrap = document.createElement("div");
     wrap.className = "tip-distribution";
 
-    const heading = document.createElement("div");
-    heading.className = "tip-distribution__heading";
     const title = document.createElement("strong");
-    title.textContent = "Tippverteilung";
-    const meta = document.createElement("span");
-    const missing = Number(distribution.nichtAbgegeben);
-    meta.textContent = `${submitted} abgegebene Tipps${Number.isFinite(missing) && missing > 0 ? ` · ${missing} Nichtabgabe${missing === 1 ? "" : "n"}` : ""}`;
-    heading.append(title, meta);
-    wrap.appendChild(heading);
+    title.className = "tip-distribution__title";
+    title.textContent = "Tippverteilung:";
+    wrap.appendChild(title);
 
-    [
-      ["1", "Heimsieg", "home"],
-      ["X", "Remis", "draw"],
-      ["2", "Auswärtssieg", "away"]
-    ].forEach(([key, label, modifier]) => {
+    [["1", "Heimsieg", "home"], ["X", "Remis", "draw"], ["2", "Auswärtssieg", "away"]].forEach(([key, label, modifier]) => {
       const value = valueFor(key);
-      const row = document.createElement("div");
-      row.className = `tip-distribution__row tip-distribution__row--${modifier}`;
+      const item = document.createElement("span");
+      item.className = `tip-distribution__item tip-distribution__item--${modifier}`;
+      item.title = `${key} · ${label}: ${value.count} Tipp${value.count === 1 ? "" : "s"}`;
 
-      const labelNode = document.createElement("span");
-      labelNode.className = "tip-distribution__label";
-      labelNode.textContent = `${key} · ${label}`;
-
+      const keyNode = document.createElement("b");
+      keyNode.className = "tip-distribution__key";
+      keyNode.textContent = key;
       const track = document.createElement("span");
       track.className = "tip-distribution__track";
       const fill = document.createElement("span");
       fill.className = "tip-distribution__fill";
       fill.style.width = `${value.percent}%`;
       track.appendChild(fill);
-
       const amount = document.createElement("span");
       amount.className = "tip-distribution__amount";
       amount.textContent = `${String(value.percent).replace(".", ",")} %`;
-      amount.title = `${value.count} Tipp${value.count === 1 ? "" : "s"}`;
-
-      row.append(labelNode, track, amount);
-      wrap.appendChild(row);
+      item.append(keyNode, track, amount);
+      wrap.appendChild(item);
     });
 
+    const meta = document.createElement("span");
+    meta.className = "tip-distribution__meta";
+    const missing = Number(distribution.nichtAbgegeben);
+    const total = submitted + (Number.isFinite(missing) && missing > 0 ? missing : 0);
+    meta.textContent = total > submitted ? `${submitted} von ${total} Tipps` : `${submitted} Tipps`;
+    if (Number.isFinite(missing) && missing > 0) meta.title = `${missing} Nichtabgabe${missing === 1 ? "" : "n"}`;
+    wrap.appendChild(meta);
     return wrap;
   }
 
