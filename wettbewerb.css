@@ -983,99 +983,129 @@ body.page-dynamo-dresden{
   box-sizing:border-box;
 }
 
-/* Tippverteilung pro Spiel – TV-TEST4: Titel unter Datum, Balkengruppe zentriert */
+/* Tippverteilung pro Spiel – TV-TEST6: stabile 3-Zonen-Struktur */
 .tip-distribution{
   grid-column:1 / -1;
   display:grid;
-  grid-template-columns:minmax(120px,.7fr) minmax(0,1.8fr) auto;
-  gap:12px;
+  grid-template-columns:minmax(150px,1fr) minmax(420px,auto) minmax(150px,1fr);
   align-items:center;
+  column-gap:18px;
   min-width:0;
   padding-top:8px;
-  border-top:1px solid rgba(205,164,81,.28);
-  color:#dfcfa8;
-  font-size:.78rem;
+  border-top:1px solid rgba(205,164,81,.22);
+  color:#d8c49a;
+  font-size:.76rem;
 }
 .tip-distribution__title{
   grid-column:1;
-  color:#efc968;
-  font-size:.80rem;
-  font-weight:800;
+  justify-self:start;
+  color:#e5c06b;
+  font-size:.78rem;
   letter-spacing:.01em;
   white-space:nowrap;
-  text-align:left;
 }
-.tip-distribution__title::before{content:"";display:none}
-.tip-distribution__bars{
+.tip-distribution__center{
   grid-column:2;
+  justify-self:center;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   gap:18px;
   min-width:0;
 }
 .tip-distribution__item{
   display:grid;
-  grid-template-columns:auto minmax(78px,145px) auto;
+  grid-template-columns:auto 110px auto;
   align-items:center;
-  gap:7px;
-  flex:0 1 210px;
-  max-width:210px;
+  gap:6px;
   min-width:0;
 }
-.tip-distribution__key{font-size:.80rem;font-weight:900;text-shadow:0 0 8px rgba(0,0,0,.45)}
-.tip-distribution__track{display:block;width:100%;height:10px;overflow:hidden;border:1px solid rgba(224,190,116,.36);border-radius:4px;background:rgba(5,4,3,.72);box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
-.tip-distribution__fill{display:block;width:0;height:100%;border-radius:3px}
-.tip-distribution__item--home .tip-distribution__key,.tip-distribution__item--home .tip-distribution__amount{color:#7fd087}
-.tip-distribution__item--draw .tip-distribution__key,.tip-distribution__item--draw .tip-distribution__amount{color:#f0c45a}
-.tip-distribution__item--away .tip-distribution__key,.tip-distribution__item--away .tip-distribution__amount{color:#e8756d}
-.tip-distribution__item--home .tip-distribution__fill{background:#4f9458;box-shadow:0 0 7px rgba(79,148,88,.28)}
-.tip-distribution__item--draw .tip-distribution__fill{background:#d1a13f;box-shadow:0 0 7px rgba(209,161,63,.24)}
-.tip-distribution__item--away .tip-distribution__fill{background:#b44e47;box-shadow:0 0 7px rgba(180,78,71,.26)}
-.tip-distribution__amount{font-size:.78rem;font-weight:900;white-space:nowrap}
-.tip-distribution__meta{grid-column:3;color:#eadcbf;font-size:.76rem;white-space:nowrap;text-align:right}
-@media(max-width:980px){
-  .tip-distribution__bars{gap:11px}
-  .tip-distribution__item{grid-template-columns:auto minmax(58px,1fr) auto;flex-basis:180px}
+.tip-distribution__key{
+  font-size:.78rem;
+  font-weight:900;
 }
-@media(max-width:820px){
-  .tip-distribution{grid-template-columns:1fr;row-gap:7px;padding-inline:4px}
-  .tip-distribution__title{grid-column:1;text-align:center}
-  .tip-distribution__bars{grid-column:1;width:100%;flex-wrap:wrap;gap:9px}
-  .tip-distribution__item{grid-template-columns:auto minmax(70px,1fr) auto;flex:1 1 180px;max-width:none}
-  .tip-distribution__meta{grid-column:1;text-align:right}
+.tip-distribution__item--home .tip-distribution__key,
+.tip-distribution__item--home .tip-distribution__amount{color:#70b978}
+.tip-distribution__item--draw .tip-distribution__key,
+.tip-distribution__item--draw .tip-distribution__amount{color:#e1b54f}
+.tip-distribution__item--away .tip-distribution__key,
+.tip-distribution__item--away .tip-distribution__amount{color:#d96a62}
+.tip-distribution__track{
+  display:block;
+  width:110px;
+  height:10px;
+  overflow:hidden;
+  border:1px solid rgba(224,190,116,.24);
+  border-radius:4px;
+  background:rgba(5,4,3,.55);
 }
-@media(max-width:520px){
-  .tip-distribution__bars{display:grid;grid-template-columns:1fr;gap:7px}
-  .tip-distribution__item{grid-template-columns:auto minmax(54px,1fr) auto;width:100%;max-width:100%}
-  .tip-distribution__track{height:9px}
+.tip-distribution__fill{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:3px;
+}
+.tip-distribution__item--home .tip-distribution__fill{background:#5b9b62}
+.tip-distribution__item--draw .tip-distribution__fill{background:#d3a748}
+.tip-distribution__item--away .tip-distribution__fill{background:#b9564f}
+.tip-distribution__amount{
+  font-size:.76rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+.tip-distribution__meta{
+  grid-column:3;
+  justify-self:end;
+  color:#dfd1b3;
+  font-size:.74rem;
+  white-space:nowrap;
 }
 
-/* TV-TEST5 – Ausrichtung korrigiert: Titel links, Balken zentriert, Anzahl rechts */
-@media(min-width:821px){
+@media(max-width:980px){
   .tip-distribution{
-    position:relative;
-    display:grid;
-    grid-template-columns:minmax(150px,1fr) auto minmax(150px,1fr);
-    align-items:center;
-    column-gap:18px;
+    grid-template-columns:1fr auto;
+    row-gap:8px;
   }
   .tip-distribution__title{
     grid-column:1;
+  }
+  .tip-distribution__meta{
+    grid-column:2;
+  }
+  .tip-distribution__center{
+    grid-column:1 / -1;
+    grid-row:2;
+    justify-self:center;
+    flex-wrap:wrap;
+  }
+}
+
+@media(max-width:620px){
+  .tip-distribution{
+    grid-template-columns:1fr;
+    row-gap:7px;
+  }
+  .tip-distribution__title,
+  .tip-distribution__center,
+  .tip-distribution__meta{
+    grid-column:1;
+  }
+  .tip-distribution__title{
     justify-self:start;
-    margin:0;
+  }
+  .tip-distribution__center{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:6px;
   }
   .tip-distribution__item{
-    grid-row:1;
-    max-width:none;
-    flex:none;
+    grid-template-columns:auto minmax(60px,1fr) auto;
   }
-  .tip-distribution__item--home{grid-column:2;justify-self:start;transform:translateX(-220px)}
-  .tip-distribution__item--draw{grid-column:2;justify-self:center}
-  .tip-distribution__item--away{grid-column:2;justify-self:end;transform:translateX(220px)}
+  .tip-distribution__track{
+    width:100%;
+  }
   .tip-distribution__meta{
-    grid-column:3;
     justify-self:end;
-    margin-left:0;
   }
 }

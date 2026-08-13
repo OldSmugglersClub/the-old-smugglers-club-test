@@ -1652,10 +1652,16 @@ function renderCards(cards) {
     title.textContent = "Tippverteilung:";
     wrap.appendChild(title);
 
-    const bars = document.createElement("span");
-    bars.className = "tip-distribution__bars";
-    [["1", "Heimsieg", "home"], ["X", "Remis", "draw"], ["2", "Auswärtssieg", "away"]].forEach(([key, label, modifier]) => {
+    const center = document.createElement("div");
+    center.className = "tip-distribution__center";
+
+    [
+      ["1", "Heimsieg", "home"],
+      ["X", "Remis", "draw"],
+      ["2", "Auswärtssieg", "away"]
+    ].forEach(([key, label, modifier]) => {
       const value = valueFor(key);
+
       const item = document.createElement("span");
       item.className = `tip-distribution__item tip-distribution__item--${modifier}`;
       item.title = `${key} · ${label}: ${value.count} Tipp${value.count === 1 ? "" : "s"}`;
@@ -1663,26 +1669,36 @@ function renderCards(cards) {
       const keyNode = document.createElement("b");
       keyNode.className = "tip-distribution__key";
       keyNode.textContent = key;
+
       const track = document.createElement("span");
       track.className = "tip-distribution__track";
+
       const fill = document.createElement("span");
       fill.className = "tip-distribution__fill";
       fill.style.width = `${value.percent}%`;
       track.appendChild(fill);
+
       const amount = document.createElement("span");
       amount.className = "tip-distribution__amount";
       amount.textContent = `${String(value.percent).replace(".", ",")} %`;
+
       item.append(keyNode, track, amount);
-      bars.appendChild(item);
+      center.appendChild(item);
     });
-    wrap.appendChild(bars);
+
+    wrap.appendChild(center);
 
     const meta = document.createElement("span");
     meta.className = "tip-distribution__meta";
+
     const missing = Number(distribution.nichtAbgegeben);
     const total = submitted + (Number.isFinite(missing) && missing > 0 ? missing : 0);
     meta.textContent = total > submitted ? `${submitted} von ${total} Tipps` : `${submitted} Tipps`;
-    if (Number.isFinite(missing) && missing > 0) meta.title = `${missing} Nichtabgabe${missing === 1 ? "" : "n"}`;
+
+    if (Number.isFinite(missing) && missing > 0) {
+      meta.title = `${missing} Nichtabgabe${missing === 1 ? "" : "n"}`;
+    }
+
     wrap.appendChild(meta);
     return wrap;
   }
