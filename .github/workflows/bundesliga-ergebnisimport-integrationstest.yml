@@ -1,0 +1,30 @@
+name: Bundesliga Ergebnisimport – Integrationstest
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrationstest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+      - name: Reale spieldaten-Struktur testen
+        run: node scripts/bundesliga-ergebnisimport-integrationstest.mjs
+      - name: Echte spieldaten.json auf Unverändertheit prüfen
+        shell: bash
+        run: |
+          if git diff --quiet -- spieldaten.json; then
+            echo "BESTANDEN: spieldaten.json unverändert."
+          else
+            echo "FEHLER: spieldaten.json wurde verändert."
+            git diff -- spieldaten.json
+            exit 1
+          fi
+      - name: Temporäre Testdatei hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundesliga-integrationstest-vorschau
+          path: spieldaten.integration-test.json
+          retention-days: 7
+          if-no-files-found: error
