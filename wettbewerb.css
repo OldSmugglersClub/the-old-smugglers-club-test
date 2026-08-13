@@ -1050,3 +1050,32 @@ body.page-dynamo-dresden{
   .tip-distribution__item{grid-template-columns:auto minmax(54px,1fr) auto;width:100%;max-width:100%}
   .tip-distribution__track{height:9px}
 }
+
+/* TV-TEST5 – Ausrichtung korrigiert: Titel links, Balken zentriert, Anzahl rechts */
+@media(min-width:821px){
+  .tip-distribution{
+    position:relative;
+    display:grid;
+    grid-template-columns:minmax(150px,1fr) auto minmax(150px,1fr);
+    align-items:center;
+    column-gap:18px;
+  }
+  .tip-distribution__title{
+    grid-column:1;
+    justify-self:start;
+    margin:0;
+  }
+  .tip-distribution__item{
+    grid-row:1;
+    max-width:none;
+    flex:none;
+  }
+  .tip-distribution__item--home{grid-column:2;justify-self:start;transform:translateX(-220px)}
+  .tip-distribution__item--draw{grid-column:2;justify-self:center}
+  .tip-distribution__item--away{grid-column:2;justify-self:end;transform:translateX(220px)}
+  .tip-distribution__meta{
+    grid-column:3;
+    justify-self:end;
+    margin-left:0;
+  }
+}
