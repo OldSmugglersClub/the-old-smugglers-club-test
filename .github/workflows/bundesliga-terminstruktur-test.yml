@@ -1,0 +1,28 @@
+name: Bundesliga Terminstruktur – Read-only Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  termintest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: Bundesliga-Terminstruktur analysieren
+        run: node scripts/bundesliga-terminstruktur-test.mjs
+
+      - name: Schreibschutz prüfen
+        shell: bash
+        run: |
+          if git diff --quiet -- spieldaten.json; then
+            echo "BESTANDEN: spieldaten.json unverändert."
+          else
+            echo "FEHLER: spieldaten.json wurde verändert."
+            git diff -- spieldaten.json
+            exit 1
+          fi
