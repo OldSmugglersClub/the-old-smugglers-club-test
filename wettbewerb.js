@@ -1652,6 +1652,8 @@ function renderCards(cards) {
     title.textContent = "Tippverteilung:";
     wrap.appendChild(title);
 
+    const bars = document.createElement("span");
+    bars.className = "tip-distribution__bars";
     [["1", "Heimsieg", "home"], ["X", "Remis", "draw"], ["2", "Auswärtssieg", "away"]].forEach(([key, label, modifier]) => {
       const value = valueFor(key);
       const item = document.createElement("span");
@@ -1671,8 +1673,9 @@ function renderCards(cards) {
       amount.className = "tip-distribution__amount";
       amount.textContent = `${String(value.percent).replace(".", ",")} %`;
       item.append(keyNode, track, amount);
-      wrap.appendChild(item);
+      bars.appendChild(item);
     });
+    wrap.appendChild(bars);
 
     const meta = document.createElement("span");
     meta.className = "tip-distribution__meta";
