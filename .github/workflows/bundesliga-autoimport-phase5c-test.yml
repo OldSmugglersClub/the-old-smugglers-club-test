@@ -1,0 +1,59 @@
+name: Bundesliga Autoimport – Phase 5C Schreib-E2E
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase5c:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: Kontrollierten Schreibtest ausführen
+        run: node scripts/bundesliga-autoimport-phase5c-test.mjs
+
+      - name: Echte spieldaten.json schützen
+        shell: bash
+        run: |
+          if git diff --quiet -- spieldaten.json; then
+            echo "BESTANDEN: echte spieldaten.json unverändert."
+          else
+            echo "FEHLER: echte spieldaten.json wurde verändert."
+            git diff -- spieldaten.json
+            exit 1
+          fi
+
+      - name: Testdatei für Commit-Simulation vorbereiten
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f spieldaten.phase5c-test.json phase5c-ergebnis.json
+          git commit -m "TEST Phase 5C Bundesliga-Ergebnisimport"
+          echo "BESTANDEN: lokaler Test-Commit wurde erzeugt."
+          echo "WICHTIG: Es erfolgt absichtlich KEIN git push."
+
+      - name: Commit-Simulation prüfen
+        shell: bash
+        run: |
+          git show --stat --oneline --summary HEAD
+          git diff HEAD^ HEAD --name-only
+          if git diff HEAD^ HEAD --name-only | grep -qx "spieldaten.json"; then
+            echo "FEHLER: echte spieldaten.json ist Bestandteil des Test-Commits."
+            exit 1
+          fi
+          echo "BESTANDEN: echte spieldaten.json ist nicht Bestandteil des Test-Commits."
+
+      - name: Prüfdaten hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundesliga-phase5c-pruefdaten
+          path: |
+            spieldaten.phase5c-test.json
+            phase5c-ergebnis.json
+          retention-days: 7
+          if-no-files-found: error
