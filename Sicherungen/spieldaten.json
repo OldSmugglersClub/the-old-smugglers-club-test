@@ -31,29 +31,7 @@
           "heimTeamId": "nuernberg",
           "auswaertsTeamId": "dynamo-dresden",
           "ergebnisNach90MinutenBestaetigt": true,
-          "aktualisiertAm": "2026-08-09T18:11:13.460Z",
-          "tippverteilung": {
-            "schemaVersion": 1,
-            "quelle": "SYNTHETISCHE TESTDATEN – NICHT PRODUKTIV",
-            "stand": "2026-08-13T22:00:00.000Z",
-            "abgegeben": 95,
-            "nichtAbgegeben": 0,
-            "verborgen": 0,
-            "tendenzen": {
-              "1": {
-                "anzahl": 41,
-                "prozent": 43.2
-              },
-              "X": {
-                "anzahl": 21,
-                "prozent": 22.1
-              },
-              "2": {
-                "anzahl": 33,
-                "prozent": 34.7
-              }
-            }
-          }
+          "aktualisiertAm": "2026-08-09T18:11:13.460Z"
         },
         {
           "id": "sma-2026-27-02-013",
@@ -901,29 +879,7 @@
           "notiz": "",
           "quelleStand": "2026-07-30",
           "heimTeamId": "bayern-muenchen",
-          "auswaertsTeamId": "stuttgart",
-          "tippverteilung": {
-            "schemaVersion": 1,
-            "quelle": "SYNTHETISCHE TESTDATEN – NICHT PRODUKTIV",
-            "stand": "2026-08-13T22:00:00.000Z",
-            "abgegeben": 92,
-            "nichtAbgegeben": 3,
-            "verborgen": 0,
-            "tendenzen": {
-              "1": {
-                "anzahl": 59,
-                "prozent": 64.1
-              },
-              "X": {
-                "anzahl": 17,
-                "prozent": 18.5
-              },
-              "2": {
-                "anzahl": 16,
-                "prozent": 17.4
-              }
-            }
-          }
+          "auswaertsTeamId": "stuttgart"
         },
         {
           "id": "bl-2026-27-01-003",
@@ -7963,29 +7919,7 @@
           "notiz": "Piratenkodex I – El Clasico",
           "quelleStand": "2026-07-30",
           "heimTeamId": "barcelona",
-          "auswaertsTeamId": "real-madrid",
-          "tippverteilung": {
-            "schemaVersion": 1,
-            "quelle": "SYNTHETISCHE TESTDATEN – NICHT PRODUKTIV",
-            "stand": "2026-08-13T22:00:00.000Z",
-            "abgegeben": 94,
-            "nichtAbgegeben": 1,
-            "verborgen": 0,
-            "tendenzen": {
-              "1": {
-                "anzahl": 28,
-                "prozent": 29.8
-              },
-              "X": {
-                "anzahl": 25,
-                "prozent": 26.6
-              },
-              "2": {
-                "anzahl": 41,
-                "prozent": 43.6
-              }
-            }
-          }
+          "auswaertsTeamId": "real-madrid"
         },
         {
           "id": "pk-2026-27-02-madonnina",
@@ -8135,29 +8069,7 @@
           "notiz": "Smugglers Weihnachtsregatta",
           "quelleStand": "2026-07-30",
           "heimTeamId": "manchester-united",
-          "auswaertsTeamId": "nottingham-forest",
-          "tippverteilung": {
-            "schemaVersion": 1,
-            "quelle": "SYNTHETISCHE TESTDATEN – NICHT PRODUKTIV",
-            "stand": "2026-08-13T22:00:00.000Z",
-            "abgegeben": 93,
-            "nichtAbgegeben": 2,
-            "verborgen": 0,
-            "tendenzen": {
-              "1": {
-                "anzahl": 35,
-                "prozent": 37.6
-              },
-              "X": {
-                "anzahl": 30,
-                "prozent": 32.3
-              },
-              "2": {
-                "anzahl": 28,
-                "prozent": 30.1
-              }
-            }
-          }
+          "auswaertsTeamId": "nottingham-forest"
         },
         {
           "id": "wr-2026-27-02",
