@@ -1,7 +1,17 @@
 import fs from "node:fs";
+import {
+  hasResult,
+  bundesligaMatches,
+  applyConfirmedResult,
+  finalizeBatch,
+  readJson,
+  writeJson
+} from "./bundesliga-ergebnisimport-core.mjs";
 
-const SPIELDATEN_PATH = "spieldaten.json";
+const SPIELDATEN_PATH = process.env.OSC_SPIELDATEN_PATH || "spieldaten.json";
 const API_URL = "https://api.openligadb.de/getmatchdata/bl1/2026";
+const API_FIXTURE_PATH = process.env.OSC_API_FIXTURE_PATH || "";
+const CHECK_AT = process.env.OSC_CHECK_AT || "";
 
 const MIN_AFTER_KICKOFF = 120;
 const MAX_AFTER_KICKOFF = 24 * 60;
@@ -54,69 +64,36 @@ function teamIdFromApi(team) {
   return TEAM_ALIASES[name] ?? null;
 }
 
-function localBundesligaMatches(data) {
-  return (Array.isArray(data?.saisons) ? data.saisons : [])
-    .flatMap(season => Array.isArray(season?.spiele) ? season.spiele : [])
-    .filter(match =>
-      match?.wettbewerb === "bundesliga" &&
-      match?.saison === "2026/2027"
-    );
-}
-
-function hasLocalResult(match) {
-  return Number.isInteger(match?.heimtore) &&
-         Number.isInteger(match?.auswaertstore);
-}
-
 function kickoffUtc(match) {
-  if (!match?.datum || !match?.anstoss || match?.terminBestaetigt !== true) {
-    return null;
-  }
+  if (!match?.datum || !match?.anstoss || match?.terminBestaetigt !== true) return null;
 
-  const raw = `${match.datum}T${match.anstoss}:00`;
-  const naive = new Date(raw + "Z");
+  const naive = new Date(`${match.datum}T${match.anstoss}:00Z`);
   if (Number.isNaN(naive.getTime())) return null;
 
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Berlin",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit",
     hourCycle: "h23"
   }).formatToParts(naive);
 
   const values = Object.fromEntries(parts.map(p => [p.type, p.value]));
   const renderedAsUtc = Date.UTC(
-    +values.year,
-    +values.month - 1,
-    +values.day,
-    +values.hour,
-    +values.minute,
-    +values.second
+    +values.year, +values.month - 1, +values.day,
+    +values.hour, +values.minute, +values.second
   );
-  const offset = renderedAsUtc - naive.getTime();
-
-  return new Date(naive.getTime() - offset);
+  return new Date(naive.getTime() - (renderedAsUtc - naive.getTime()));
 }
 
 function relevantOpenMatches(matches, now) {
   const eligible = [];
-
   for (const match of matches) {
-    if (hasLocalResult(match)) continue;
-
+    if (hasResult(match)) continue;
     const kickoff = kickoffUtc(match);
     if (!kickoff) continue;
 
     const minutes = (now.getTime() - kickoff.getTime()) / 60000;
-
-    if (
-      minutes >= MIN_AFTER_KICKOFF &&
-      minutes <= MAX_AFTER_KICKOFF
-    ) {
+    if (minutes >= MIN_AFTER_KICKOFF && minutes <= MAX_AFTER_KICKOFF) {
       eligible.push({
         id: match.id,
         spieltagNummer: match.spieltagNummer,
@@ -126,7 +103,6 @@ function relevantOpenMatches(matches, now) {
       });
     }
   }
-
   return eligible;
 }
 
@@ -136,9 +112,7 @@ function finalScore(match) {
   const results = Array.isArray(match?.matchResults) ? match.matchResults : [];
   const final =
     results.find(r => Number(r?.resultTypeID ?? r?.resultTypeId) === 2) ||
-    results.find(r =>
-      /end|final/i.test(String(r?.resultName ?? r?.resultTypeName ?? ""))
-    ) ||
+    results.find(r => /end|final/i.test(String(r?.resultName ?? r?.resultTypeName ?? ""))) ||
     results.at(-1);
 
   if (!final) return null;
@@ -158,53 +132,34 @@ function fixtureKey(spieltag, homeId, awayId) {
 
 function buildLocalIndex(localMatches) {
   const index = new Map();
-
   for (const match of localMatches) {
-    const key = fixtureKey(
-      match?.spieltagNummer,
-      match?.heimTeamId,
-      match?.auswaertsTeamId
-    );
-
-    if (index.has(key)) {
-      throw new Error(`Doppelter lokaler Bundesliga-Schlüssel: ${key}`);
-    }
-
+    const key = fixtureKey(match?.spieltagNummer, match?.heimTeamId, match?.auswaertsTeamId);
+    if (index.has(key)) throw new Error(`Doppelter lokaler Bundesliga-Schlüssel: ${key}`);
     index.set(key, match);
   }
-
   return index;
 }
 
 function validateAndPlan(data, apiMatches) {
-  const localMatches = localBundesligaMatches(data);
+  const localMatches = bundesligaMatches(data);
 
   if (localMatches.length !== 306) {
-    throw new Error(
-      `Lokaler Bundesliga-Spielplan unvollständig: ${localMatches.length}/306.`
-    );
+    throw new Error(`Lokaler Bundesliga-Spielplan unvollständig: ${localMatches.length}/306.`);
   }
 
   if (!Array.isArray(apiMatches) || apiMatches.length !== 306) {
     throw new Error(
-      `OpenLigaDB-Spielplan unvollständig/unerwartet: ${
-        Array.isArray(apiMatches) ? apiMatches.length : "kein Array"
-      }/306.`
+      `OpenLigaDB-Spielplan unvollständig/unerwartet: ${Array.isArray(apiMatches) ? apiMatches.length : "kein Array"}/306.`
     );
   }
 
   const localIndex = buildLocalIndex(localMatches);
   const matchedLocalIds = new Set();
   const mappingErrors = [];
-  const conflicts = [];
-  const updates = [];
+  const planned = [];
 
   for (const apiMatch of apiMatches) {
-    const spieltag = Number(
-      apiMatch?.group?.groupOrderID ??
-      apiMatch?.group?.GroupOrderID
-    );
-
+    const spieltag = Number(apiMatch?.group?.groupOrderID ?? apiMatch?.group?.GroupOrderID);
     const homeId = teamIdFromApi(apiMatch?.team1);
     const awayId = teamIdFromApi(apiMatch?.team2);
 
@@ -218,16 +173,11 @@ function validateAndPlan(data, apiMatches) {
       continue;
     }
 
-    const local = localIndex.get(
-      fixtureKey(spieltag, homeId, awayId)
-    );
-
+    const local = localIndex.get(fixtureKey(spieltag, homeId, awayId));
     if (!local) {
       mappingErrors.push({
         matchID: apiMatch?.matchID ?? null,
-        spieltag,
-        homeId,
-        awayId,
+        spieltag, homeId, awayId,
         reason: "Keine passende lokale Paarung"
       });
       continue;
@@ -238,41 +188,17 @@ function validateAndPlan(data, apiMatches) {
     const score = finalScore(apiMatch);
     if (!score) continue;
 
-    if (hasLocalResult(local)) {
-      if (
-        local.heimtore !== score.home ||
-        local.auswaertstore !== score.away
-      ) {
-        conflicts.push({
-          localId: local.id,
-          lokal: `${local.heimtore}:${local.auswaertstore}`,
-          openLigaDB: `${score.home}:${score.away}`
-        });
-      }
-      continue;
-    }
-
-    updates.push({
-      local,
+    planned.push({
+      localId: local.id,
       home: score.home,
       away: score.away
     });
   }
 
-  const unmatchedLocal = localMatches.filter(
-    match => !matchedLocalIds.has(match.id)
-  );
-
+  const unmatchedLocal = localMatches.filter(m => !matchedLocalIds.has(m.id));
   if (mappingErrors.length || unmatchedLocal.length) {
     throw new Error(
       `Paarungszuordnung unvollständig: API-Fehler ${mappingErrors.length}, lokal offen ${unmatchedLocal.length}. Keine Änderung.`
-    );
-  }
-
-  if (conflicts.length) {
-    const first = conflicts[0];
-    throw new Error(
-      `ERGEBNISKONFLIKT: ${first.localId} lokal ${first.lokal}, OpenLigaDB ${first.openLigaDB}. Keine Änderung.`
     );
   }
 
@@ -280,53 +206,58 @@ function validateAndPlan(data, apiMatches) {
     localMatches: localMatches.length,
     apiMatches: apiMatches.length,
     matched: matchedLocalIds.size,
-    updates
+    planned
   };
 }
 
 function berlinDate(date) {
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Berlin",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
+    year: "numeric", month: "2-digit", day: "2-digit"
   }).formatToParts(date);
-
-  const values = Object.fromEntries(parts.map(p => [p.type, p.value]));
-  return `${values.year}-${values.month}-${values.day}`;
+  const v = Object.fromEntries(parts.map(p => [p.type, p.value]));
+  return `${v.year}-${v.month}-${v.day}`;
 }
 
-function applyUpdates(data, plan, today) {
-  if (!plan.updates.length) return 0;
-
-  for (const item of plan.updates) {
-    item.local.heimtore = item.home;
-    item.local.auswaertstore = item.away;
-    item.local.status = "beendet";
-    item.local.quelleStand = today;
+async function loadApiMatches() {
+  if (API_FIXTURE_PATH) {
+    if (!fs.existsSync(API_FIXTURE_PATH)) {
+      throw new Error(`API-Testfixture fehlt: ${API_FIXTURE_PATH}`);
+    }
+    console.log(`TESTMODUS: API-Daten aus ${API_FIXTURE_PATH}.`);
+    return readJson(API_FIXTURE_PATH);
   }
 
-  data.aktualisiert = today;
-  data.datenVersion = Number(data.datenVersion || 0) + 1;
+  let response;
+  try {
+    response = await fetch(API_URL, { headers: { Accept: "application/json" } });
+  } catch (error) {
+    throw new Error(`OpenLigaDB nicht erreichbar: ${error.message}. Keine Änderung.`);
+  }
 
-  return plan.updates.length;
+  if (!response.ok) {
+    throw new Error(`OpenLigaDB HTTP ${response.status}. Keine Änderung.`);
+  }
+
+  return await response.json();
 }
 
 if (!fs.existsSync(SPIELDATEN_PATH)) {
-  throw new Error("spieldaten.json fehlt.");
+  throw new Error(`${SPIELDATEN_PATH} fehlt.`);
 }
 
-const originalText = fs.readFileSync(SPIELDATEN_PATH, "utf8");
-const data = JSON.parse(originalText);
-const localMatches = localBundesligaMatches(data);
+const data = readJson(SPIELDATEN_PATH);
+const localMatches = bundesligaMatches(data);
 
 if (localMatches.length !== 306) {
-  throw new Error(
-    `Lokaler Bundesliga-Spielplan unvollständig: ${localMatches.length}/306.`
-  );
+  throw new Error(`Lokaler Bundesliga-Spielplan unvollständig: ${localMatches.length}/306.`);
 }
 
-const now = new Date();
+const now = CHECK_AT ? new Date(CHECK_AT) : new Date();
+if (Number.isNaN(now.getTime())) {
+  throw new Error(`Ungültiger Prüfzeitpunkt: ${CHECK_AT}`);
+}
+
 const eligible = relevantOpenMatches(localMatches, now);
 
 console.log(JSON.stringify({
@@ -342,56 +273,48 @@ if (!eligible.length) {
   process.exit(0);
 }
 
-console.log(
-  `OPENLIGADB-ABRUF: ${eligible.length} offene(s) Spiel(e) befinden sich im Prüffenster.`
-);
-
-let response;
-try {
-  response = await fetch(API_URL, {
-    headers: { Accept: "application/json" }
-  });
-} catch (error) {
-  throw new Error(
-    `OpenLigaDB nicht erreichbar: ${error.message}. Keine Änderung.`
-  );
-}
-
-if (!response.ok) {
-  throw new Error(
-    `OpenLigaDB HTTP ${response.status}. Keine Änderung.`
-  );
-}
-
-const apiMatches = await response.json();
+const apiMatches = await loadApiMatches();
 const plan = validateAndPlan(data, apiMatches);
 
 console.log(JSON.stringify({
   localBundesligaMatches: plan.localMatches,
   apiMatches: plan.apiMatches,
   matched: plan.matched,
-  proposedResultUpdates: plan.updates.length
+  bestaetigteEndergebnisseInQuelle: plan.planned.length
 }, null, 2));
 
-if (!plan.updates.length) {
-  console.log(
-    "KEINE SPORTLICHE ÄNDERUNG: Noch keine neuen bestätigten Bundesliga-Endergebnisse."
-  );
+if (!plan.planned.length) {
+  console.log("KEINE SPORTLICHE ÄNDERUNG: Noch keine bestätigten Bundesliga-Endergebnisse in der Quelle.");
   process.exit(0);
 }
 
-/*
- * Erst nachdem die gesamte API-Antwort validiert und alle Konflikte ausgeschlossen
- * sind, wird die lokale Datenstruktur verändert. Dadurch entsteht kein Teilupdate.
- */
 const today = berlinDate(now);
-const changed = applyUpdates(data, plan, today);
 
-fs.writeFileSync(
-  SPIELDATEN_PATH,
-  JSON.stringify(data, null, 2) + "\n",
-  "utf8"
-);
+/*
+ * Atomare Schutzregel:
+ * Erst alle geplanten Ergebnisse über den gemeinsamen Core prüfen/anwenden.
+ * Bei einem Konflikt wirft applyConfirmedResult einen Fehler, bevor geschrieben wird.
+ * Da die Datei erst ganz am Ende geschrieben wird, gibt es kein Teilupdate.
+ */
+let changed = 0;
+for (const item of plan.planned) {
+  changed += applyConfirmedResult(
+    data,
+    item.localId,
+    item.home,
+    item.away,
+    today
+  );
+}
+
+finalizeBatch(data, changed, today);
+
+if (!changed) {
+  console.log("KEINE SPORTLICHE ÄNDERUNG: Alle bestätigten Ergebnisse waren bereits identisch gespeichert.");
+  process.exit(0);
+}
+
+writeJson(SPIELDATEN_PATH, data);
 
 console.log(
   `IMPORT ERFOLGREICH: ${changed} neue Bundesliga-Endergebnis(se) übernommen; datenVersion exakt +1.`
