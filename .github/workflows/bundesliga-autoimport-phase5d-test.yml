@@ -1,0 +1,45 @@
+name: Bundesliga Autoimport – Phase 5D Core-E2E
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase5d:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: Gemeinsamen Import-Codepfad testen
+        run: node scripts/bundesliga-autoimport-phase5d-test.mjs
+
+      - name: Echte spieldaten.json schützen
+        shell: bash
+        run: |
+          git diff --quiet -- spieldaten.json || {
+            echo "FEHLER: echte spieldaten.json wurde verändert."
+            exit 1
+          }
+          echo "BESTANDEN: echte spieldaten.json unverändert."
+
+      - name: Lokalen Commit simulieren
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f spieldaten.phase5d-test.json phase5d-ergebnis.json
+          git commit -m "TEST Phase 5D Bundesliga Autoimport Core-E2E"
+          echo "BESTANDEN: lokaler Commit erzeugt; kein Push."
+
+      - name: Commit-Inhalt prüfen
+        shell: bash
+        run: |
+          git diff HEAD^ HEAD --name-only
+          if git diff HEAD^ HEAD --name-only | grep -qx "spieldaten.json"; then
+            echo "FEHLER: echte spieldaten.json im Test-Commit."
+            exit 1
+          fi
+          echo "BESTANDEN: echte spieldaten.json nicht im Test-Commit."
