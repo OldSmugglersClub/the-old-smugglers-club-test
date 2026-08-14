@@ -1109,3 +1109,63 @@ body.page-dynamo-dresden{
     justify-self:end;
   }
 }
+
+/* DYNAMO-LAYOUT-TEST1
+   Nur Desktop: einheitliche Spalten und feste Wappenpositionen
+   auf der Dynamo-/Smugglerauftrag-Seite.
+   Mobile <= 800px bleibt unverändert. */
+@media(min-width:801px){
+  .page-dynamo-dresden .central-match-list .match-row{
+    grid-template-columns:220px minmax(0,1fr) 260px;
+    column-gap:18px;
+  }
+
+  .page-dynamo-dresden .central-match-list .match-meta{
+    justify-self:start;
+    width:100%;
+    text-align:left;
+  }
+
+  .page-dynamo-dresden .central-match-list .match-pairing{
+    grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);
+    column-gap:14px;
+    width:100%;
+  }
+
+  .page-dynamo-dresden .central-match-list .match-pairing .team-identity--home,
+  .page-dynamo-dresden .central-match-list .match-pairing .team-identity--away{
+    display:grid;
+    grid-template-columns:34px minmax(0,1fr);
+    align-items:center;
+    justify-content:stretch;
+    gap:9px;
+    width:100%;
+    text-align:left;
+  }
+
+  .page-dynamo-dresden .central-match-list .match-pairing .team-identity__badge{
+    grid-column:1;
+    justify-self:start;
+  }
+
+  .page-dynamo-dresden .central-match-list .match-pairing .team-identity__name{
+    grid-column:2;
+    justify-self:start;
+    text-align:left;
+    white-space:normal;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+
+  .page-dynamo-dresden .central-match-list .match-pairing__separator{
+    justify-self:center;
+  }
+
+  .page-dynamo-dresden .central-match-list .match-result-wrap{
+    justify-self:end;
+    width:100%;
+    justify-content:flex-end;
+  }
+}
+
