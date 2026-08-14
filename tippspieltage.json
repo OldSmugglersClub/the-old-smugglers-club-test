@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "datenVersion": 4,
-  "aktualisiert": "2026-07-31",
+  "aktualisiert": "2026-08-14",
   "aktiveSaison": "2026-27",
   "hinweis": "Zentrale 1:1-Abbildung der in Kicktipp angelegten Wertungsspieltage. Ein Tippspieltag kann ein oder mehrere reale Spiele enthalten.",
   "regeln": {
@@ -11,10 +11,10 @@
   },
   "planung": {
     "smugglerauftraegeGesamtProSaison": 34,
-    "smugglerauftraegeAktuellAngelegt": 16,
-    "weitereSmugglerauftraege": "Update für 2027 folgt um Weihnachten 2026",
+    "smugglerauftraegeAktuellAngelegt": 34,
+    "weitereSmugglerauftraege": "Alle 34 Smugglerauftrag-Tippspieltage für die Saison 2026/2027 sind angelegt.",
     "dynamoSpieleVollstaendigVorhanden": true,
-    "dynamoSpieleHinweis": "Alle 34 Dynamo-Spiele sind in spieldaten.json vorhanden. Die 18 Tippspieltage für 2027 werden beim Weihnachts-Update in die Gesamtfolge eingefügt."
+    "dynamoSpieleHinweis": "Alle 34 Dynamo-Spiele und alle 34 zugehörigen Smugglerauftrag-Tippspieltage sind vollständig vorhanden."
   },
   "saisons": [
     {
@@ -24,22 +24,6 @@
       "tippspieltage": [
         {
           "nummer": 1,
-          "name": "Bonus",
-          "saison": "2026/2027",
-          "aktiv": true,
-          "status": "saisonbegleitend",
-          "typ": "bonuswettbewerb",
-          "spieltagssieger": true,
-          "anzahlEreignisse": 25,
-          "wertung": {
-            "punkteProRichtigerAntwort": 5,
-            "maximalPunkte": 125,
-            "zaehltZurGesamtwertung": true
-          },
-          "hinweis": "25 Saisonfragen. Jede richtige Antwort bringt 5 Bonuspunkte; die Auswertung erfolgt im Saisonverlauf."
-        },
-        {
-          "nummer": 2,
           "name": "Smugglerauftrag Auftakt",
           "saison": "2026/2027",
           "aktiv": true,
@@ -56,7 +40,7 @@
           ]
         },
         {
-          "nummer": 3,
+          "nummer": 2,
           "name": "Smugglerauftrag Goldrausch",
           "saison": "2026/2027",
           "aktiv": true,
@@ -73,7 +57,7 @@
           ]
         },
         {
-          "nummer": 4,
+          "nummer": 3,
           "name": "Smugglerauftrag Anker",
           "saison": "2026/2027",
           "aktiv": true,
@@ -90,7 +74,7 @@
           ]
         },
         {
-          "nummer": 5,
+          "nummer": 4,
           "name": "1. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -102,8 +86,8 @@
           }
         },
         {
-          "nummer": 6,
-          "name": "Smugglerauftrag",
+          "nummer": 5,
+          "name": "Smugglerauftrag Flagge",
           "saison": "2026/2027",
           "aktiv": true,
           "status": "geplant",
@@ -119,7 +103,7 @@
           ]
         },
         {
-          "nummer": 7,
+          "nummer": 6,
           "name": "2. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -131,7 +115,7 @@
           }
         },
         {
-          "nummer": 8,
+          "nummer": 7,
           "name": "1. Spieltag - CL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -143,8 +127,8 @@
           }
         },
         {
-          "nummer": 9,
-          "name": "Smugglerauftrag",
+          "nummer": 8,
+          "name": "Smugglerauftrag Schatzinsel",
           "saison": "2026/2027",
           "aktiv": true,
           "status": "geplant",
@@ -160,7 +144,7 @@
           ]
         },
         {
-          "nummer": 10,
+          "nummer": 9,
           "name": "3. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -172,8 +156,8 @@
           }
         },
         {
-          "nummer": 11,
-          "name": "Smugglerauftrag",
+          "nummer": 10,
+          "name": "Smugglerauftrag Breitseite",
           "saison": "2026/2027",
           "aktiv": true,
           "status": "geplant",
@@ -189,7 +173,7 @@
           ]
         },
         {
-          "nummer": 12,
+          "nummer": 11,
           "name": "4. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -201,7 +185,7 @@
           }
         },
         {
-          "nummer": 13,
+          "nummer": 12,
           "name": "Smugglerauftrag Nebel",
           "saison": "2026/2027",
           "aktiv": true,
@@ -218,7 +202,7 @@
           ]
         },
         {
-          "nummer": 14,
+          "nummer": 13,
           "name": "5. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -230,7 +214,7 @@
           }
         },
         {
-          "nummer": 15,
+          "nummer": 14,
           "name": "2. Spieltag - CL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -242,7 +226,7 @@
           }
         },
         {
-          "nummer": 16,
+          "nummer": 15,
           "name": "Smugglerauftrag Ghostship",
           "saison": "2026/2027",
           "aktiv": true,
@@ -259,7 +243,7 @@
           ]
         },
         {
-          "nummer": 17,
+          "nummer": 16,
           "name": "6. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -271,7 +255,7 @@
           }
         },
         {
-          "nummer": 18,
+          "nummer": 17,
           "name": "3. Spieltag - CL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -283,7 +267,7 @@
           }
         },
         {
-          "nummer": 19,
+          "nummer": 18,
           "name": "Piratenkodex I - El Clasico",
           "saison": "2026/2027",
           "aktiv": true,
@@ -294,8 +278,8 @@
           ]
         },
         {
-          "nummer": 20,
-          "name": "Smugglerauftrag",
+          "nummer": 19,
+          "name": "Smugglerauftrag Kurs",
           "saison": "2026/2027",
           "aktiv": true,
           "status": "geplant",
@@ -311,7 +295,7 @@
           ]
         },
         {
-          "nummer": 21,
+          "nummer": 20,
           "name": "7. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -323,7 +307,7 @@
           }
         },
         {
-          "nummer": 22,
+          "nummer": 21,
           "name": "Piratenkodex II - Madonnina",
           "saison": "2026/2027",
           "aktiv": true,
@@ -334,7 +318,7 @@
           ]
         },
         {
-          "nummer": 23,
+          "nummer": 22,
           "name": "Smugglerauftrag Kompass",
           "saison": "2026/2027",
           "aktiv": true,
@@ -351,7 +335,7 @@
           ]
         },
         {
-          "nummer": 24,
+          "nummer": 23,
           "name": "8. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -363,7 +347,7 @@
           }
         },
         {
-          "nummer": 25,
+          "nummer": 24,
           "name": "4. Spieltag - CL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -375,7 +359,7 @@
           }
         },
         {
-          "nummer": 26,
+          "nummer": 25,
           "name": "Smugglerauftrag Meuterei",
           "saison": "2026/2027",
           "aktiv": true,
@@ -392,7 +376,7 @@
           ]
         },
         {
-          "nummer": 27,
+          "nummer": 26,
           "name": "9. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -404,7 +388,7 @@
           }
         },
         {
-          "nummer": 28,
+          "nummer": 27,
           "name": "Piratenkodex III - NW Derby",
           "saison": "2026/2027",
           "aktiv": true,
@@ -415,7 +399,7 @@
           ]
         },
         {
-          "nummer": 29,
+          "nummer": 28,
           "name": "Smugglerauftrag Sturm",
           "saison": "2026/2027",
           "aktiv": true,
@@ -432,7 +416,7 @@
           ]
         },
         {
-          "nummer": 30,
+          "nummer": 29,
           "name": "10. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -444,7 +428,7 @@
           }
         },
         {
-          "nummer": 31,
+          "nummer": 30,
           "name": "5. Spieltag - CL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -456,7 +440,7 @@
           }
         },
         {
-          "nummer": 32,
+          "nummer": 31,
           "name": "Smugglerauftrag Bucht",
           "saison": "2026/2027",
           "aktiv": true,
@@ -473,7 +457,7 @@
           ]
         },
         {
-          "nummer": 33,
+          "nummer": 32,
           "name": "11. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -485,7 +469,7 @@
           }
         },
         {
-          "nummer": 34,
+          "nummer": 33,
           "name": "Achtelfinale",
           "saison": "2026/2027",
           "aktiv": true,
@@ -497,7 +481,7 @@
           }
         },
         {
-          "nummer": 35,
+          "nummer": 34,
           "name": "Smugglerauftrag Karte",
           "saison": "2026/2027",
           "aktiv": true,
@@ -514,7 +498,7 @@
           ]
         },
         {
-          "nummer": 36,
+          "nummer": 35,
           "name": "12. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -526,7 +510,7 @@
           }
         },
         {
-          "nummer": 37,
+          "nummer": 36,
           "name": "6. Spieltag - CL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -538,7 +522,7 @@
           }
         },
         {
-          "nummer": 38,
+          "nummer": 37,
           "name": "Smugglerauftrag Angriff",
           "saison": "2026/2027",
           "aktiv": true,
@@ -555,7 +539,7 @@
           ]
         },
         {
-          "nummer": 39,
+          "nummer": 38,
           "name": "13. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -567,7 +551,7 @@
           }
         },
         {
-          "nummer": 40,
+          "nummer": 39,
           "name": "Smugglerauftrag Schatzkammer",
           "saison": "2026/2027",
           "aktiv": true,
@@ -584,7 +568,7 @@
           ]
         },
         {
-          "nummer": 41,
+          "nummer": 40,
           "name": "14. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -596,7 +580,7 @@
           }
         },
         {
-          "nummer": 42,
+          "nummer": 41,
           "name": "Smugglers Weihnachtsregatta",
           "saison": "2026/2027",
           "aktiv": true,
@@ -611,7 +595,7 @@
           ]
         },
         {
-          "nummer": 43,
+          "nummer": 42,
           "name": "Piratenkodex IV - d'Italia",
           "saison": "2026/2027",
           "aktiv": true,
@@ -622,7 +606,7 @@
           ]
         },
         {
-          "nummer": 44,
+          "nummer": 43,
           "name": "15. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -634,7 +618,7 @@
           }
         },
         {
-          "nummer": 45,
+          "nummer": 44,
           "name": "16. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -644,6 +628,23 @@
             "wettbewerb": "bundesliga",
             "spieltagNummer": 16
           }
+        },
+        {
+          "nummer": 45,
+          "name": "Smugglerauftrag Kanonier",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 17,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 17,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-17-147"
+          ]
         },
         {
           "nummer": 46,
@@ -671,6 +672,23 @@
         },
         {
           "nummer": 48,
+          "name": "Smugglerauftrag Krähennest",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 18,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 18,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-18-157"
+          ]
+        },
+        {
+          "nummer": 49,
           "name": "18. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -682,7 +700,7 @@
           }
         },
         {
-          "nummer": 49,
+          "nummer": 50,
           "name": "8. Spieltag - CL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -694,7 +712,24 @@
           }
         },
         {
-          "nummer": 50,
+          "nummer": 51,
+          "name": "Smugglerauftrag Holzbein",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 19,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 19,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-19-166"
+          ]
+        },
+        {
+          "nummer": 52,
           "name": "19. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -706,7 +741,24 @@
           }
         },
         {
-          "nummer": 51,
+          "nummer": 53,
+          "name": "Smugglerauftrag Segeltuch",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 20,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 20,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-20-176"
+          ]
+        },
+        {
+          "nummer": 54,
           "name": "20. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -718,7 +770,7 @@
           }
         },
         {
-          "nummer": 52,
+          "nummer": 55,
           "name": "Piratenkodex V - Le Classique",
           "saison": "2026/2027",
           "aktiv": true,
@@ -729,7 +781,7 @@
           ]
         },
         {
-          "nummer": 53,
+          "nummer": 56,
           "name": "Viertelfinale",
           "saison": "2026/2027",
           "aktiv": true,
@@ -741,7 +793,24 @@
           }
         },
         {
-          "nummer": 54,
+          "nummer": 57,
+          "name": "Smugglerauftrag Todesinsel",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 21,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 21,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-21-185"
+          ]
+        },
+        {
+          "nummer": 58,
           "name": "21. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -753,7 +822,7 @@
           }
         },
         {
-          "nummer": 55,
+          "nummer": 59,
           "name": "Zwischenrunde Hin",
           "saison": "2026/2027",
           "aktiv": true,
@@ -765,7 +834,24 @@
           }
         },
         {
-          "nummer": 56,
+          "nummer": 60,
+          "name": "Smugglerauftrag Buddel",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 22,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 22,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-22-194"
+          ]
+        },
+        {
+          "nummer": 61,
           "name": "22. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -777,7 +863,7 @@
           }
         },
         {
-          "nummer": 57,
+          "nummer": 62,
           "name": "Zwischenrunde Rück",
           "saison": "2026/2027",
           "aktiv": true,
@@ -789,7 +875,24 @@
           }
         },
         {
-          "nummer": 58,
+          "nummer": 63,
+          "name": "Smugglerauftrag Smutje",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 23,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 23,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-23-202"
+          ]
+        },
+        {
+          "nummer": 64,
           "name": "23. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -801,7 +904,24 @@
           }
         },
         {
-          "nummer": 59,
+          "nummer": 65,
+          "name": "Smugglerauftrag Korsaren",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 24,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 24,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-24-212"
+          ]
+        },
+        {
+          "nummer": 66,
           "name": "24. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -813,7 +933,24 @@
           }
         },
         {
-          "nummer": 60,
+          "nummer": 67,
+          "name": "Smugglerauftrag Achtern",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 25,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 25,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-25-223"
+          ]
+        },
+        {
+          "nummer": 68,
           "name": "25. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -825,7 +962,7 @@
           }
         },
         {
-          "nummer": 61,
+          "nummer": 69,
           "name": "Achtelfinale Hin",
           "saison": "2026/2027",
           "aktiv": true,
@@ -837,7 +974,7 @@
           }
         },
         {
-          "nummer": 62,
+          "nummer": 70,
           "name": "Achtelfinale Hin - EL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -849,7 +986,24 @@
           }
         },
         {
-          "nummer": 63,
+          "nummer": 71,
+          "name": "Smugglerauftrag Ahoi",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 26,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 26,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-26-231"
+          ]
+        },
+        {
+          "nummer": 72,
           "name": "26. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -861,7 +1015,7 @@
           }
         },
         {
-          "nummer": 64,
+          "nummer": 73,
           "name": "Piratenkodex VI - ManCU Derby",
           "saison": "2026/2027",
           "aktiv": true,
@@ -872,7 +1026,7 @@
           ]
         },
         {
-          "nummer": 65,
+          "nummer": 74,
           "name": "Achtelfinale Rück",
           "saison": "2026/2027",
           "aktiv": true,
@@ -884,7 +1038,7 @@
           }
         },
         {
-          "nummer": 66,
+          "nummer": 75,
           "name": "Achtelfinale Rück - EL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -896,7 +1050,24 @@
           }
         },
         {
-          "nummer": 67,
+          "nummer": 76,
+          "name": "Smugglerauftrag Taverne",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 27,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 27,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-27-239"
+          ]
+        },
+        {
+          "nummer": 77,
           "name": "27. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -908,7 +1079,24 @@
           }
         },
         {
-          "nummer": 68,
+          "nummer": 78,
+          "name": "Smugglerauftrag Papagei",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 28,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 28,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-28-251"
+          ]
+        },
+        {
+          "nummer": 79,
           "name": "28. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -920,7 +1108,7 @@
           }
         },
         {
-          "nummer": 69,
+          "nummer": 80,
           "name": "Viertelfinale Hin",
           "saison": "2026/2027",
           "aktiv": true,
@@ -932,7 +1120,7 @@
           }
         },
         {
-          "nummer": 70,
+          "nummer": 81,
           "name": "Viertelfinale Hin - EL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -944,7 +1132,24 @@
           }
         },
         {
-          "nummer": 71,
+          "nummer": 82,
+          "name": "Smugglerauftrag Donnerbräu",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 29,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 29,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-29-256"
+          ]
+        },
+        {
+          "nummer": 83,
           "name": "29. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -956,7 +1161,7 @@
           }
         },
         {
-          "nummer": 72,
+          "nummer": 84,
           "name": "Viertelfinale Rück",
           "saison": "2026/2027",
           "aktiv": true,
@@ -968,7 +1173,7 @@
           }
         },
         {
-          "nummer": 73,
+          "nummer": 85,
           "name": "Viertelfinale Rück - EL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -980,7 +1185,24 @@
           }
         },
         {
-          "nummer": 74,
+          "nummer": 86,
+          "name": "Smugglerauftrag Bilge",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 30,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 30,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-30-263"
+          ]
+        },
+        {
+          "nummer": 87,
           "name": "30. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -992,7 +1214,7 @@
           }
         },
         {
-          "nummer": 75,
+          "nummer": 88,
           "name": "Halbfinale",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1004,7 +1226,24 @@
           }
         },
         {
-          "nummer": 76,
+          "nummer": 89,
+          "name": "Smugglerauftrag Tagelage",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 31,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 31,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-31-274"
+          ]
+        },
+        {
+          "nummer": 90,
           "name": "31. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1016,7 +1255,7 @@
           }
         },
         {
-          "nummer": 77,
+          "nummer": 91,
           "name": "Halbfinale Hin",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1028,7 +1267,7 @@
           }
         },
         {
-          "nummer": 78,
+          "nummer": 92,
           "name": "Halbfinale Hin - EL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1040,7 +1279,7 @@
           }
         },
         {
-          "nummer": 79,
+          "nummer": 93,
           "name": "Halbfinale Rück",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1052,7 +1291,7 @@
           }
         },
         {
-          "nummer": 80,
+          "nummer": 94,
           "name": "Halbfinale Rück - EL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1064,7 +1303,24 @@
           }
         },
         {
-          "nummer": 81,
+          "nummer": 95,
+          "name": "Smugglerauftrag Puppdeck",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 32,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 32,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-32-288"
+          ]
+        },
+        {
+          "nummer": 96,
           "name": "32. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1076,7 +1332,24 @@
           }
         },
         {
-          "nummer": 82,
+          "nummer": 97,
+          "name": "Smugglerauftrag Klüsen",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "geplant",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 33,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 33,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-33-291"
+          ]
+        },
+        {
+          "nummer": 98,
           "name": "33. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1088,7 +1361,24 @@
           }
         },
         {
-          "nummer": 83,
+          "nummer": 99,
+          "name": "Smugglerauftrag Vogelfrei",
+          "saison": "2026/2027",
+          "aktiv": true,
+          "status": "terminiert",
+          "typ": "smugglerauftrag",
+          "bezugsSpieltag": 34,
+          "spielAuswahl": {
+            "wettbewerb": "2-bundesliga",
+            "spieltagNummer": 34,
+            "teamId": "dynamo-dresden"
+          },
+          "spielIds": [
+            "sma-2026-27-34-298"
+          ]
+        },
+        {
+          "nummer": 100,
           "name": "34. Spieltag",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1100,7 +1390,7 @@
           }
         },
         {
-          "nummer": 84,
+          "nummer": 101,
           "name": "Finale - EL",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1112,7 +1402,7 @@
           }
         },
         {
-          "nummer": 85,
+          "nummer": 102,
           "name": "1. Spieltag - Relegation",
           "saison": "2026/2027",
           "aktiv": true,
@@ -1132,7 +1422,7 @@
           "hinweis": "Alle vier Relegationsspiele werden gemeinsam als ein Kicktipp-Spieltag gewertet."
         },
         {
-          "nummer": 86,
+          "nummer": 103,
           "name": "Finale",
           "saison": "2026/2027",
           "aktiv": true,
