@@ -1110,30 +1110,30 @@ body.page-dynamo-dresden{
   }
 }
 
-/* DYNAMO-LAYOUT-TEST1
-   Nur Desktop: einheitliche Spalten und feste Wappenpositionen
-   auf der Dynamo-/Smugglerauftrag-Seite.
-   Mobile <= 800px bleibt unverändert. */
+/* GLOBAL-MATCH-LAYOUT-TEST1
+   Desktop-Korrektur fuer alle normalen Spielplanlisten aus createMatchList().
+   Vereinheitlicht Datum, Paarung, Status und Wappenachsen.
+   KO-Baeume, Tabellen und Mobile <= 800px bleiben unberuehrt. */
 @media(min-width:801px){
-  .page-dynamo-dresden .central-match-list .match-row{
+  .match-list .match-row{
     grid-template-columns:220px minmax(0,1fr) 260px;
     column-gap:18px;
   }
 
-  .page-dynamo-dresden .central-match-list .match-meta{
+  .match-list .match-meta{
     justify-self:start;
     width:100%;
     text-align:left;
   }
 
-  .page-dynamo-dresden .central-match-list .match-pairing{
+  .match-list .match-pairing{
     grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);
     column-gap:14px;
     width:100%;
   }
 
-  .page-dynamo-dresden .central-match-list .match-pairing .team-identity--home,
-  .page-dynamo-dresden .central-match-list .match-pairing .team-identity--away{
+  .match-list .match-pairing .team-identity--home,
+  .match-list .match-pairing .team-identity--away{
     display:grid;
     grid-template-columns:34px minmax(0,1fr);
     align-items:center;
@@ -1143,12 +1143,12 @@ body.page-dynamo-dresden{
     text-align:left;
   }
 
-  .page-dynamo-dresden .central-match-list .match-pairing .team-identity__badge{
+  .match-list .match-pairing .team-identity__badge{
     grid-column:1;
     justify-self:start;
   }
 
-  .page-dynamo-dresden .central-match-list .match-pairing .team-identity__name{
+  .match-list .match-pairing .team-identity__name{
     grid-column:2;
     justify-self:start;
     text-align:left;
@@ -1158,11 +1158,11 @@ body.page-dynamo-dresden{
     hyphens:none;
   }
 
-  .page-dynamo-dresden .central-match-list .match-pairing__separator{
+  .match-list .match-pairing__separator{
     justify-self:center;
   }
 
-  .page-dynamo-dresden .central-match-list .match-result-wrap{
+  .match-list .match-result-wrap{
     justify-self:end;
     width:100%;
     justify-content:flex-end;
