@@ -1,8 +1,8 @@
 {
   "bereich": "Sonderduelle",
-  "statusSchild": "6 von 8 festgelegt",
+  "statusSchild": "7 von 7 festgelegt",
   "titel": "Piratenkodex",
-  "beschreibung": "Acht ausgewählte europäische Traditionsduelle bilden in der Saison 2026/27 jeweils einen eigenen Wertungsspieltag und fließen vollständig in die Einzel-Gesamtwertung ein.",
+  "beschreibung": "Sieben ausgewählte europäische Traditionsduelle bilden in der Saison 2026/27 jeweils einen eigenen Wertungsspieltag und fließen vollständig in die Einzel-Gesamtwertung ein.",
   "karten": [
     {
       "titel": "Wertung",
@@ -10,7 +10,7 @@
     },
     {
       "titel": "Saison 2026/27",
-      "text": "Sechs Duelle sind bereits festgelegt. Piratenkodex VII und VIII werden beim Weihnachts-Update ergänzt."
+      "text": "Alle sieben Piratenkodex-Duelle der Saison 2026/27 sind festgelegt."
     },
     {
       "titel": "Auswahl",
@@ -31,8 +31,7 @@
         "Piratenkodex IV – Derby d’Italia",
         "Piratenkodex V – Le Classique",
         "Piratenkodex VI – Manchester Derby",
-        "Piratenkodex VII – Weihnachts-Update 2026",
-        "Piratenkodex VIII – Weihnachts-Update 2026"
+        "Piratenkodex VII – Title Decider"
       ]
     }
   ],

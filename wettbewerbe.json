@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "datenVersion": 2,
-  "aktualisiert": "2026-07-31",
+  "datenVersion": 3,
+  "aktualisiert": "2026-08-14",
   "beschreibung": "Zentrales Register für Wettbewerbsnavigation, Saisonmetadaten und Zuordnung der Spiele aus spieldaten.json.",
   "wettbewerbe": [
     {
@@ -117,10 +117,10 @@
       "scheduleTitle": "Ausgewählte Spiele des Piratenkodex",
       "saison": {
         "seasonLabel": "Piratenkodex",
-        "tippspieltageZiel": 8,
-        "spieleZiel": 8,
+        "tippspieltageZiel": 7,
+        "spieleZiel": 7,
         "zeitraum": "Saison 2026/2027",
-        "status": "6 von 8 vorbereitet"
+        "status": "7 von 7 vorbereitet"
       }
     },
     {
