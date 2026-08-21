@@ -3,14 +3,14 @@
   "season": "2026/27",
   "source": "OpenLigaDB",
   "leagueShortcut": "dfb",
-  "lastSuccessfulCheck": "2026-08-12T19:30:51.479Z",
-  "lastChange": "2026-08-12T19:30:51.479Z",
+  "lastSuccessfulCheck": "2026-08-21T17:01:28.332Z",
+  "lastChange": "2026-08-21T17:01:28.332Z",
   "status": "valid",
   "matches": [
     {
       "matchID": 81832,
       "matchDateTime": "2026-08-21T18:00:00",
-      "timeZoneID": "W. Europe Standard Time",
+      "timeZoneID": null,
       "leagueId": 4945,
       "leagueName": "DFB Pokal 2026/2027",
       "leagueSeason": 2026,
@@ -35,10 +35,188 @@
         "teamIconUrl": "https://i.imgur.com/X8NFkOb.png",
         "teamGroupName": null
       },
-      "lastUpdateDateTime": "2026-07-05T11:29:56.773",
+      "lastUpdateDateTime": "2026-08-21T18:58:24.957",
       "matchIsFinished": false,
-      "matchResults": [],
-      "goals": [],
+      "matchResults": [
+        {
+          "resultID": 127243,
+          "resultName": "Halbzeit",
+          "pointsTeam1": 0,
+          "pointsTeam2": 10,
+          "resultOrderID": 1,
+          "resultTypeID": 1,
+          "resultTypeKind": "HalfTime",
+          "resultDescription": "Ergebnis nach Ende der ersten Halbzeit"
+        },
+        {
+          "resultID": 127244,
+          "resultName": "Endergebnis",
+          "pointsTeam1": 0,
+          "pointsTeam2": 10,
+          "resultOrderID": 2,
+          "resultTypeID": 2,
+          "resultTypeKind": "After90Minutes",
+          "resultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+        }
+      ],
+      "goals": [
+        {
+          "goalID": 145743,
+          "scoreTeam1": 0,
+          "scoreTeam2": 11,
+          "matchMinute": null,
+          "goalGetterID": 0,
+          "goalGetterName": "",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145744,
+          "scoreTeam1": 0,
+          "scoreTeam2": 12,
+          "matchMinute": null,
+          "goalGetterID": 0,
+          "goalGetterName": "",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": true,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145729,
+          "scoreTeam1": 0,
+          "scoreTeam2": 1,
+          "matchMinute": 4,
+          "goalGetterID": 27199,
+          "goalGetterName": "Jonathan Burkardt",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145732,
+          "scoreTeam1": 0,
+          "scoreTeam2": 2,
+          "matchMinute": 10,
+          "goalGetterID": 23363,
+          "goalGetterName": "Robin Koch",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145733,
+          "scoreTeam1": 0,
+          "scoreTeam2": 3,
+          "matchMinute": 17,
+          "goalGetterID": 23700,
+          "goalGetterName": "A. Amaimouni-Echghouyab",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145734,
+          "scoreTeam1": 0,
+          "scoreTeam2": 4,
+          "matchMinute": 29,
+          "goalGetterID": 27199,
+          "goalGetterName": "Jonathan Burkardt",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145736,
+          "scoreTeam1": 0,
+          "scoreTeam2": 5,
+          "matchMinute": 34,
+          "goalGetterID": 20128,
+          "goalGetterName": "C. Uzun",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145737,
+          "scoreTeam1": 0,
+          "scoreTeam2": 6,
+          "matchMinute": 36,
+          "goalGetterID": 20128,
+          "goalGetterName": "C. Uzun",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145738,
+          "scoreTeam1": 0,
+          "scoreTeam2": 7,
+          "matchMinute": 41,
+          "goalGetterID": 27199,
+          "goalGetterName": "Jonathan Burkardt",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145739,
+          "scoreTeam1": 0,
+          "scoreTeam2": 8,
+          "matchMinute": 44,
+          "goalGetterID": 27201,
+          "goalGetterName": "Elias Baum",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        },
+        {
+          "goalID": 145741,
+          "scoreTeam1": 0,
+          "scoreTeam2": 9,
+          "matchMinute": 46,
+          "goalGetterID": 23685,
+          "goalGetterName": "Younes Ebnoutalib",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": true,
+          "comment": null
+        },
+        {
+          "goalID": 145742,
+          "scoreTeam1": 0,
+          "scoreTeam2": 10,
+          "matchMinute": 50,
+          "goalGetterID": 14306,
+          "goalGetterName": "Mario Götze",
+          "scoringTeamId": 91,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": true,
+          "comment": null
+        }
+      ],
       "location": null,
       "numberOfViewers": null
     },
@@ -70,10 +248,45 @@
         "teamIconUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Karlsruher_SC_Logo_2.svg",
         "teamGroupName": null
       },
-      "lastUpdateDateTime": "2026-07-05T11:30:17.763",
+      "lastUpdateDateTime": "2026-08-21T18:51:18.91",
       "matchIsFinished": false,
-      "matchResults": [],
-      "goals": [],
+      "matchResults": [
+        {
+          "resultID": 127247,
+          "resultName": "Halbzeit",
+          "pointsTeam1": 1,
+          "pointsTeam2": 0,
+          "resultOrderID": 1,
+          "resultTypeID": 1,
+          "resultTypeKind": "HalfTime",
+          "resultDescription": "Ergebnis nach Ende der ersten Halbzeit"
+        },
+        {
+          "resultID": 127248,
+          "resultName": "Endergebnis",
+          "pointsTeam1": 1,
+          "pointsTeam2": 0,
+          "resultOrderID": 2,
+          "resultTypeID": 2,
+          "resultTypeKind": "After90Minutes",
+          "resultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+        }
+      ],
+      "goals": [
+        {
+          "goalID": 145735,
+          "scoreTeam1": 1,
+          "scoreTeam2": 0,
+          "matchMinute": 35,
+          "goalGetterID": 27154,
+          "goalGetterName": "Montell Ndikom",
+          "scoringTeamId": 188,
+          "isPenalty": false,
+          "isOwnGoal": false,
+          "isOvertime": false,
+          "comment": null
+        }
+      ],
       "location": null,
       "numberOfViewers": null
     },
@@ -105,9 +318,30 @@
         "teamIconUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Logo_1_FC_Kaiserslautern.svg",
         "teamGroupName": null
       },
-      "lastUpdateDateTime": "2026-07-05T11:30:37.443",
+      "lastUpdateDateTime": "2026-08-21T18:01:21.67",
       "matchIsFinished": false,
-      "matchResults": [],
+      "matchResults": [
+        {
+          "resultID": 127245,
+          "resultName": "Halbzeit",
+          "pointsTeam1": 0,
+          "pointsTeam2": 0,
+          "resultOrderID": 1,
+          "resultTypeID": 1,
+          "resultTypeKind": "HalfTime",
+          "resultDescription": "Ergebnis nach Ende der ersten Halbzeit"
+        },
+        {
+          "resultID": 127246,
+          "resultName": "Endergebnis",
+          "pointsTeam1": 0,
+          "pointsTeam2": 0,
+          "resultOrderID": 2,
+          "resultTypeID": 2,
+          "resultTypeKind": "After90Minutes",
+          "resultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+        }
+      ],
       "goals": [],
       "location": null,
       "numberOfViewers": null
@@ -1046,7 +1280,7 @@
       "team2": {
         "teamId": 9,
         "teamName": "FC Schalke 04",
-        "shortName": "Schalke",
+        "shortName": "S04",
         "teamIconUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/FC_Schalke_04_Logo.png",
         "teamGroupName": null
       },
